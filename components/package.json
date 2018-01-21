@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts-ts": "2.12.0",
+    "recompose": "^0.26.0",
     "ts-loader": "^3.3.0",
     "typescript": "^2.6.2"
   },
