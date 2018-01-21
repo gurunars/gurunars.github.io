@@ -10,9 +10,11 @@
     "typescript": "^2.6.2"
   },
   "scripts": {
-    "test": "react-scripts-ts test --env=jsdom",
-    "plop": "./node_modules/.bin/plop",
-    "start": "./node_modules/.bin/start-storybook -p 9001 -c .storybook"
+    "prettier": "prettier",
+    "test-watch": "react-scripts-ts test --env=jsdom",
+    "test": "CI=true react-scripts-ts test --env=jsdom",
+    "plop": "plop",
+    "start": "start-storybook -p 9001 -c .storybook"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.10",
@@ -26,6 +28,7 @@
     "@types/storybook__addon-actions": "^3.0.1",
     "@types/storybook__react": "^3.0.6",
     "plop": "^1.9.1",
+    "prettier": "1.10.2",
     "react-test-renderer": "^16.2.0"
   }
 }
