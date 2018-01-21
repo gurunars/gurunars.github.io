@@ -3,6 +3,8 @@
         "tslint-react"
     ],
     "rules": {
+        "no-redundant-jsdoc": true,
+        "class-name": true,
         "align": [
             true,
             "parameters",
@@ -20,12 +22,16 @@
         "forin": true,
         "indent": [
             true,
-            "spaces"
+            "spaces",
+            2
         ],
+        "arrow-return-shorthand": true,
         "interface-name": [
             true,
             "never-prefix"
         ],
+        "only-arrow-functions": true,
+        "promise-function-async": true,
         "jsdoc-format": true,
         "jsx-no-lambda": false,
         "jsx-no-multiline-js": false,
@@ -34,6 +40,7 @@
             true,
             120
         ],
+        "no-var-keyword": true,
         "member-ordering": [
             true,
             "public-before-private",
@@ -86,6 +93,7 @@
         "trailing-comma": [
             false
         ],
+        "await-promise": true,
         "triple-equals": [
             true,
             "allow-null-check"
