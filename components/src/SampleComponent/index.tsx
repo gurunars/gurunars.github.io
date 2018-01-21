@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 const SampleComponent = ({
   title,
@@ -9,7 +9,7 @@ const SampleComponent = ({
   }) => (
     <button
       style={{
-        cursor: 'pointer'
+        cursor: "pointer"
       }}
       onClick={onClick}
     >
