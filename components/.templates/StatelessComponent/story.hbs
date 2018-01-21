@@ -3,12 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import centered from '@storybook/addon-centered';
 
-import SampleComponent from '.';
+import {{name}} from '.';
 
-storiesOf('SampleComponent', module)
+storiesOf('{{name}}', module)
   .addDecorator(centered)
   .add('basic', () => (
-    <SampleComponent 
+    <{{name}} 
       title="Sample Title" 
       onClick={action('onClick')} />
   )); 
