@@ -5,6 +5,11 @@
     "rules": {
         "no-redundant-jsdoc": true,
         "class-name": true,
+        "arrow-parens": [
+            true,
+            "ban-single-arg-parens"
+        ],
+        "no-unnecessary-callback-wrapper": true,
         "align": [
             true,
             "parameters",
