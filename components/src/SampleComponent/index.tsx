@@ -4,17 +4,17 @@ const SampleComponent = ({
   title,
   onClick
 }: {
-  title: string;
-  onClick: () => void;
-}) => (
-  <button
-    style={{
-      cursor: 'pointer'
-    }}
-    onClick={onClick}
-  >
-    {title}
-  </button>
-);
+    title: string,
+    onClick: () => void
+  }) => (
+    <button
+      style={{
+        cursor: 'pointer'
+      }}
+      onClick={onClick}
+    >
+      {title}
+    </button>
+  );
 
 export default SampleComponent;
