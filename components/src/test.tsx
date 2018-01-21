@@ -1,4 +1,4 @@
-import * as React from 'react';
-import initStoryshots from '@storybook/addon-storyshots';
+import * as React from "react";
+import initStoryshots from "@storybook/addon-storyshots";
 
 initStoryshots();
