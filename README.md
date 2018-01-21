@@ -8,6 +8,8 @@ PSD-2 project
     yarn install
     yarn start
 
+[React libraries](https://github.com/brillout/awesome-react-components)
+
 ## backend dev
 
     sudo pip install virtualenv
