@@ -1,9 +1,7 @@
 import * as React from "react";
 
-const SampleComponent = ({
-  title,
-  onClick
-}: {
+const SampleComponent = (
+  { title, onClick }: {
     title: string,
     onClick: () => void
   }) => (
