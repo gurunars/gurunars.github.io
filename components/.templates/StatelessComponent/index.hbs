@@ -1,19 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 
-const {{name}} = ({ 
-    title,
-    onClick
-} : {
+const {{name}} = (
+  { title, onClick }: {
     title: string,
     onClick: () => void
-}) => 
-<button 
-    style=\{{
-        cursor: 'pointer'
-    }} 
-    onClick={onClick}
->
-    {title}
-</button>;
+  }) => (
+    <button
+      style=\{{
+        cursor: "pointer"
+      }}
+      onClick={onClick}
+    >
+      {title}
+    </button>
+  );
 
 export default {{name}};
