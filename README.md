@@ -12,9 +12,19 @@ PSD-2 project
 
 ## components dev
 
+### Initialize
+
     cd components
     yarn install
     yarn start
+
+### Create new component
+
+    yarn plop MyComponentName
+
+### Run tests (via jest)
+
+    yarn test
 
 ## backend dev
 
