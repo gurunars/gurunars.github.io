@@ -13,7 +13,8 @@
     "typescript": "^2.6.2"
   },
   "scripts": {
-    "prettier": "prettier --write \"src/**/*.tsx\"",
+    "lint": "tslint \"src/**/*.tsx\"",
+    "prettier": "tslint --fix \"src/**/*.tsx\"",
     "test-watch": "react-scripts-ts test --env=jsdom",
     "test": "CI=true react-scripts-ts test --env=jsdom",
     "plop": "plop",
