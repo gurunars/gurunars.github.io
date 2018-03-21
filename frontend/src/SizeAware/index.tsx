@@ -13,7 +13,10 @@ export default class SizeAware extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    this.updateDimensions();
+    this.state = {
+      width: 0,
+      height: 0
+    };
   }
 
   render() {

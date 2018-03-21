@@ -2,15 +2,14 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered";
 
-import SizeAware from ".";
+import HashAware from ".";
 
-storiesOf("SizeAware", module)
+storiesOf("HashAware", module)
   .addDecorator(centered)
   .add("basic", () => (
-    <SizeAware>
-      {(width, height) => <div>
-        <p>Width: {width}</p>
-        <p>Height: {height}</p>
+    <HashAware>
+      {hash => <div>
+        <p>Hash: {hash}</p>
       </div>}
-    </SizeAware>
+    </HashAware>
   ));

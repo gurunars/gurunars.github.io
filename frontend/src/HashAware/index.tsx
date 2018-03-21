@@ -1,49 +1,42 @@
 import * as React from "react";
 
 type Props = {
-  children: (width: number, height: number) => React.ReactElement<any>
+  children: (hash: string) => React.ReactElement<any>
 };
 
 type State = {
-  width: number,
-  height: number
+  hash: string
 };
 
-export default class SizeAware extends React.Component<Props, State> {
+export default class HashAware extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    this.updateDimensions();
+    this.state = {
+      hash: ""
+    };
   }
 
   render() {
-    return this.props.children(
-      this.state.width,
-      this.state.height
-    );
+    return this.props.children(this.state.hash);
   }
 
-  updateDimensions = () => {
+  updateHash = () => {
     this.setState({
-      width: window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth,
-      height: window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight
+      hash: window.location.hash
     });
   }
 
   componentWillMount() {
-    this.updateDimensions();
+    this.updateHash();
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions);
+    window.addEventListener("hashchange", this.updateHash);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener("hashchange", this.updateHash);
   }
 
 }
