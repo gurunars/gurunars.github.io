@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Resizable from "../Resizable";
+import SizeAware from "../SizeAware";
 
 const isMobile = () => navigator.userAgent.match(/Android/i)
   || navigator.userAgent.match(/webOS/i)
@@ -23,7 +23,7 @@ const responsive = <Props extends {}>(
   desktopView = desktopView || tabletView || mobileView;
 
   return (props: Props) => (
-    <Resizable>
+    <SizeAware>
       {(width, height) => {
         if (isMobile() || width < 770) {
           return mobileView(props);
@@ -33,7 +33,7 @@ const responsive = <Props extends {}>(
           return desktopView(props);
         }
       }}
-    </Resizable>
+    </SizeAware>
   );
 };
 

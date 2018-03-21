@@ -2,15 +2,15 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered";
 
-import Resizable from ".";
+import SizeAware from ".";
 
-storiesOf("Resizable", module)
+storiesOf("SizeAware", module)
   .addDecorator(centered)
   .add("basic", () => (
-    <Resizable>
+    <SizeAware>
       {(width, height) => <div>
         <p>Width: {width}</p>
         <p>Height: {height}</p>
       </div>}
-    </Resizable>
+    </SizeAware>
   ));

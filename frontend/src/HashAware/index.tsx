@@ -9,7 +9,7 @@ type State = {
   height: number
 };
 
-export default class Resizable extends React.Component<Props, State> {
+export default class SizeAware extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
