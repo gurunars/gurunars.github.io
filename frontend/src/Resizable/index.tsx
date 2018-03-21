@@ -25,8 +25,12 @@ export default class Resizable extends React.Component<Props, State> {
 
   updateDimensions = () => {
     this.setState({
-      width: window.innerWidth,
+      width: window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth,
       height: window.innerHeight
+        || document.documentElement.clientHeight
+        || document.body.clientHeight
     });
   }
 
