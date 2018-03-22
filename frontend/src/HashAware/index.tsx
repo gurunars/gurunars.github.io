@@ -23,7 +23,7 @@ export default class HashAware extends React.Component<Props, State> {
 
   updateHash = () => {
     this.setState({
-      hash: window.location.hash
+      hash: window.top.location.hash
     });
   }
 
@@ -32,11 +32,11 @@ export default class HashAware extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    window.addEventListener("hashchange", this.updateHash);
+    window.top.addEventListener("hashchange", this.updateHash);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("hashchange", this.updateHash);
+    window.top.removeEventListener("hashchange", this.updateHash);
   }
 
 }
