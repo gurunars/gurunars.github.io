@@ -4,8 +4,13 @@ import jsonpack from "jsonpack";
 
 import HashAware from "../HashAware";
 
-const deserialize = (location: string): Object =>
-  jsonpack.unpack(location.replace("#", ""));
+const deserialize = (location: string): Object => {
+  try {
+    return jsonpack.unpack(location.replace("#", ""));
+  } catch {
+    return {};
+  }
+}
 
 const serialize = (params: Object): string =>
   "#" + jsonpack.pack(params);

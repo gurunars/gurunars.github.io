@@ -4,20 +4,20 @@ import centered from "@storybook/addon-centered";
 
 import Link from ".";
 
-storiesOf("HashAware", module)
+storiesOf("Link", module)
   .addDecorator(centered)
   .add("basic", () => (
     <div>
-      <Link params={{ "one": "ONE" }}>
-        {isActive => <p>One: {isActive}</p>}
+      <Link params={{ "active": "ONE" }}>
+        {isActive => <p>One: {isActive ? "yes" : "no"}</p>}
       </Link>
       <br />
-      <Link params={{ "two": "TWO" }}>
-        {isActive => <p>Two: {isActive}</p>}
+      <Link params={{ "active": "TWO" }}>
+        {isActive => <p>Two: {isActive ? "yes" : "no"}</p>}
       </Link>
       <br />
-      <Link params={{ "three": "THREE" }}>
-        {isActive => <p>Three: {isActive}</p>}
+      <Link params={{ "active": "THREE" }}>
+        {isActive => <p>Three: {isActive ? "yes" : "no"}</p>}
       </Link>
     </div>
   ));
