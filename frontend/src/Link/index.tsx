@@ -24,7 +24,7 @@ const Link = (props: {
       {hash => {
         const params = props.params;
         const originalParams = deserialize(hash);
-        const isActive = _.some(originalParams, params);
+        const isActive = _.some([originalParams], params);
         const newParams = _.merge({}, originalParams, params);
         return <a href={serialize(newParams)}>{props.children(isActive)}</a>;
       }}
