@@ -16,8 +16,10 @@ const deserialize = (location: string): Object => {
 const serialize = (params: Object): string =>
   "#" + jsonpack.pack(params);
 
+type LinkSupplier = (isActive: boolean) => React.ReactElement<any>;
+
 const Link = (props: {
-  children: (isActive: boolean) => React.ReactElement<any>,
+  children: LinkSupplier | React.ReactElement<any>,
   params: Object
 }): React.ReactElement<any> => (
     <HashAware>
@@ -26,7 +28,15 @@ const Link = (props: {
         const originalParams = deserialize(hash);
         const isActive = _.some([originalParams], params);
         const newParams = _.merge({}, originalParams, params);
-        return <a href={serialize(newParams)}>{props.children(isActive)}</a>;
+
+        let payload: React.ReactElement<any>;
+        if (typeof props.children === "function") {
+          payload = props.children(isActive);
+        } else {
+          payload = props.children;
+        }
+
+        return <a href={serialize(newParams)}>{payload}</a>;
       }}
     </HashAware>
   );

@@ -13,8 +13,8 @@ const isMobile = () => navigator.userAgent.match(/Android/i)
 const responsive = <Props extends {}>(
   { desktopView, mobileView, tabletView }: {
     desktopView: (props?: Props) => React.ReactElement<any>,
-    mobileView: (props?: Props) => React.ReactElement<any>,
-    tabletView: (props?: Props) => React.ReactElement<any>
+    mobileView?: (props?: Props) => React.ReactElement<any>,
+    tabletView?: (props?: Props) => React.ReactElement<any>
   }
 ) => {
 
