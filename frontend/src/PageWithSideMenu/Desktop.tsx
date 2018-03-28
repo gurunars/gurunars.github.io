@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { VisibilityProps } from "./props";
 
-import maximize from "./maximize.svg";
-import minimize from "./minimize.svg";
+const maximize = require("./maximize.svg");
+const minimize = require("./minimize.svg");
 
 const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => (
   <img

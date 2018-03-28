@@ -8,5 +8,6 @@
     "editor.formatOnSave": false
   },
   "editor.tabSize": 2,
-  "tslint.autoFixOnSave": true
+  "tslint.autoFixOnSave": true,
+  "typescript.tsdk": "frontend/node_modules/typescript/lib"
 }
