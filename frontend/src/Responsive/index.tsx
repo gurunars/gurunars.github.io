@@ -10,11 +10,13 @@ const isMobile = () => navigator.userAgent.match(/Android/i)
   || navigator.userAgent.match(/BlackBerry/i)
   || navigator.userAgent.match(/Windows Phone/i);
 
+type ElementSupplier<Props> = (props?: Props) => React.ReactElement<any>;
+
 const responsive = <Props extends {}>(
   { desktopView, mobileView, tabletView }: {
-    desktopView: (props?: Props) => React.ReactElement<any>,
-    mobileView?: (props?: Props) => React.ReactElement<any>,
-    tabletView?: (props?: Props) => React.ReactElement<any>
+    desktopView: ElementSupplier<Props>,
+    mobileView?: ElementSupplier<Props>,
+    tabletView?: ElementSupplier<Props>
   }
 ) => {
 
@@ -26,9 +28,9 @@ const responsive = <Props extends {}>(
     <SizeAware>
       {(width, height) => {
         if (isMobile() || width < 770) {
-          return mobileView(props);
+          return desktopView(props);
         } else if (width < 1250) {
-          return tabletView(props);
+          return desktopView(props);
         } else {
           return desktopView(props);
         }
