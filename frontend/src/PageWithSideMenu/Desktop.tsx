@@ -5,26 +5,20 @@ import { VisibilityProps } from "./props";
 import maximize from "./maximize.svg";
 import minimize from "./minimize.svg";
 
-const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => {
-
-  let icon = props.menuIsVisible ? minimize : maximize;
-
-  return (
-    <img
-      src={icon}
-      onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
-      style={{
-        cursor: "pointer",
-        position: "absolute",
-        bottom: 10,
-        left: 10,
-        marginLeft: 4,
-        zIndex: 100
-      }}
-    />
-  );
-
-};
+const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => (
+  <img
+    src={props.menuIsVisible ? minimize : maximize}
+    onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
+    style={{
+      cursor: "pointer",
+      position: "absolute",
+      bottom: 10,
+      left: 10,
+      marginLeft: 4,
+      zIndex: 100
+    }}
+  />
+);
 
 const MaximizedMenu = (props: {
   menu: React.ReactElement<any>
