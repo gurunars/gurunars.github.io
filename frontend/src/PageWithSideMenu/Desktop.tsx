@@ -3,7 +3,7 @@ import * as React from "react";
 import { CoreProps } from "./props";
 
 const PageWithSideMenu = (props: CoreProps): React.ReactElement<any> => {
-  const menuWidth = props.menuWidth || 250;
+  const menuWidth = 250;
 
   return (
     <div
