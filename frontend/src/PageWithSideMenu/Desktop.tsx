@@ -1,55 +1,36 @@
 import * as React from "react";
+import * as _ from "lodash";
 
 import { VisibilityProps } from "./props";
 
 const maximize = require("./maximize.svg");
 const minimize = require("./minimize.svg");
 
-const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => (
-  <img
-    src={props.menuIsVisible ? minimize : maximize}
-    onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
-    style={{
-      cursor: "pointer",
-      position: "absolute",
-      bottom: 10,
-      right: 10,
-      marginLeft: 4,
-      zIndex: 100
-    }}
-  />
-);
-
-const MaximizedMenu = (props: {
-  menu: React.ReactElement<any>
-} & VisibilityProps): React.ReactElement<any> => (
-    <div
-      style={{
-        position: "absolute",
-        backgroundColor: "#1B2E3C",
-        padding: 5,
-        width: 250,
-        height: "100%"
-      }}
-    >
-      {props.menu}
-      <IconMinMax {...props} />
-    </div>
-  );
+const BASE_STYLE = {
+  position: "absolute",
+  bottom: 0,
+  left: 0
+};
 
 const PageWithSideMenu = (props: {
   menu: React.ReactElement<any>,
-  content: React.ReactElement<any>
+  content: React.ReactElement<any>,
+  menuWidth?: number,
 } & VisibilityProps): React.ReactElement<any> => {
-
   let menuWidth;
-  let menu;
+  let style;
 
   if (props.menuIsVisible) {
-    menu = <MaximizedMenu menu={props.menu} {...props} />;
-    menuWidth = 250;
+    menuWidth = props.menuWidth || 250;
+    style = {
+      width: menuWidth,
+      height: "100%"
+    };
   } else {
-    menu = <IconMinMax {...props} />;
+    style = {
+      width: 30,
+      height: 30,
+    };
     menuWidth = 0;
   }
 
@@ -59,7 +40,21 @@ const PageWithSideMenu = (props: {
         position: "relative", height: "100%", width: "100%"
       }}
     >
-      {menu}
+      <div style={_.merge({}, BASE_STYLE, style)}>
+        {props.menuIsVisible ? props.menu : null}
+        <img
+          src={props.menuIsVisible ? minimize : maximize}
+          onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
+          style={{
+            cursor: "pointer",
+            position: "absolute",
+            bottom: 10,
+            right: 10,
+            marginLeft: 4,
+            zIndex: 100
+          }}
+        />
+      </div>
       <div
         style={{
           position: "absolute",

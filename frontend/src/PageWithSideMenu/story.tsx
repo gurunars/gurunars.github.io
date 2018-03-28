@@ -8,7 +8,17 @@ import PlainPageWithSideMenu from "./Desktop";
 const enhance = compose(
   withState("menuIsVisible", "menuIsVisibleOnChange", true),
   withProps({
-    menu: <div>MENU</div>,
+    menu: (
+      <div 
+        style={{
+          padding: 5,
+          backgroundColor: "#1B2E3C",
+          width: "100%",
+          height: "100%"
+        }}
+      >MENU
+      </div>
+    ),
     content: <div>CONTENT</div>
   })
 );
