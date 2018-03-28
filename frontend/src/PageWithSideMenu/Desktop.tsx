@@ -1,24 +1,17 @@
 import * as React from "react";
 import * as _ from "lodash";
 
-import { VisibilityProps } from "./props";
-
-const maximize = require("./maximize.svg");
-const minimize = require("./minimize.svg");
-
-const BASE_STYLE = {
-  position: "absolute",
-  bottom: 0,
-  left: 0
-};
+import { CoreProps } from "./props";
 
 const PageWithSideMenu = (props: {
-  menu: React.ReactElement<any>,
-  content: React.ReactElement<any>,
   menuWidth?: number,
-} & VisibilityProps): React.ReactElement<any> => {
+  maximizeIcon?: React.ReactElement<any>,
+  minimizeIcon?: React.ReactElement<any>
+} & CoreProps): React.ReactElement<any> => {
   let menuWidth;
   let style;
+  let icon;
+  let iconStyle;
 
   if (props.menuIsVisible) {
     menuWidth = props.menuWidth || 250;
@@ -26,34 +19,51 @@ const PageWithSideMenu = (props: {
       width: menuWidth,
       height: "100%"
     };
+    icon = props.minimizeIcon || <pre>[-]</pre>;
+    iconStyle = { right: 10 };
   } else {
     style = {
-      width: 30,
-      height: 30,
+      width: 0,
+      height: 0,
     };
     menuWidth = 0;
+    icon = props.maximizeIcon || <pre>[+]</pre>;
+    iconStyle = { left: 10 };
   }
 
   return (
     <div
       style={{
-        position: "relative", height: "100%", width: "100%"
+        position: "relative", 
+        height: "100%", 
+        width: "100%"
       }}
     >
-      <div style={_.merge({}, BASE_STYLE, style)}>
-        {props.menuIsVisible ? props.menu : null}
-        <img
-          src={props.menuIsVisible ? minimize : maximize}
-          onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
-          style={{
-            cursor: "pointer",
+      <div 
+        style={_.merge(
+          {}, {
             position: "absolute",
-            bottom: 10,
-            right: 10,
-            marginLeft: 4,
-            zIndex: 100
-          }}
-        />
+            bottom: 0,
+            left: 0
+          }, 
+          style
+        )}
+      >
+        {props.menuIsVisible ? props.menu : null}
+        <div
+          onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
+          style={_.merge(
+            {}, {
+              cursor: "pointer",
+              position: "absolute",
+              bottom: 10,
+              zIndex: 100
+            }, 
+            iconStyle
+          )}
+        >
+        {icon}
+        </div>
       </div>
       <div
         style={{
