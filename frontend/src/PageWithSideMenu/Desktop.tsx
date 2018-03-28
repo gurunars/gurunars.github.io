@@ -13,7 +13,7 @@ const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => (
       cursor: "pointer",
       position: "absolute",
       bottom: 10,
-      left: 10,
+      right: 10,
       marginLeft: 4,
       zIndex: 100
     }}
