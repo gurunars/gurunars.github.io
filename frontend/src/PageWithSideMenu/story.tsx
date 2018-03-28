@@ -1,21 +1,26 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered";
-import { withState } from "recompose";
+import { host } from "storybook-host";
+import { withState, withProps, compose } from "recompose";
 
-import PlainPageWithSideMenu from ".";
+import PlainPageWithSideMenu from "./Desktop";
 
-const PageWithSideMenu = withState(
-  "menuIsVisible",
-  "menuIsVisibleOnChange",
-  true
-)(PlainPageWithSideMenu);
+const enhance = compose(
+  withState("menuIsVisible", "menuIsVisibleOnChange", true),
+  withProps({
+    menu: <div>MENU</div>,
+    content: <div>CONTENT</div>
+  })
+);
+
+const PageWithSideMenu = enhance(PlainPageWithSideMenu);
 
 storiesOf("PageWithSideMenu", module)
-  .addDecorator(centered)
+  .addDecorator(host({
+    align: "center bottom",
+    height: 600,
+    width: 800,
+  }))
   .add("basic", () => (
-    <PageWithSideMenu
-      menu={<div>MENU</div>}
-      content={<div>CONTENT</div>}
-    />
+    <PageWithSideMenu />
   ));

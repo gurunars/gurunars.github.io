@@ -1,38 +1,24 @@
 import * as React from "react";
 
-import Icon from "react-svg-icons";
-
 import { VisibilityProps } from "./props";
 
 const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => {
 
-  let icon;
-  let style;
-  if (props.menuIsVisible) {
-    icon = "minimize";
-    style = {
-      position: "absolute",
-      right: 10,
-      marginLeft: 4
-    };
-  } else {
-    icon = "maximize";
-    style = {
-      position: "fixed",
-      left: 10,
-      marginLeft: 4
-    };
-  }
+  let icon = props.menuIsVisible ? "minimize" : "maximize";
 
   return (
-    <Icon
+    <span
       onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
-      style={style}
-      name={icon}
-      width={30}
-      height={30}
-      color="#FFFFFF"
-    />
+      style={{
+        cursor: "pointer",
+        position: "absolute",
+        bottom: 10,
+        left: 10,
+        marginLeft: 4,
+        zIndex: 100
+      }}
+    >{icon}
+    </span>
   );
 
 };
