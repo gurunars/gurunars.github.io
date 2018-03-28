@@ -2,12 +2,16 @@ import * as React from "react";
 
 import { VisibilityProps } from "./props";
 
+import maximize from "./maximize.svg";
+import minimize from "./minimize.svg";
+
 const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => {
 
-  let icon = props.menuIsVisible ? "minimize" : "maximize";
+  let icon = props.menuIsVisible ? minimize : maximize;
 
   return (
-    <span
+    <img
+      src={icon}
       onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
       style={{
         cursor: "pointer",
@@ -17,8 +21,7 @@ const IconMinMax = (props: VisibilityProps): React.ReactElement<any> => {
         marginLeft: 4,
         zIndex: 100
       }}
-    >{icon}
-    </span>
+    />
   );
 
 };
