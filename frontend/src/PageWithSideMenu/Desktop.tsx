@@ -2,18 +2,22 @@ import * as React from "react";
 
 import { CoreProps } from "./props";
 
-const PageWithSideMenu = (props: CoreProps): React.ReactElement<any> => {
-  const menuWidth = 250;
+export type DesktopProps = {
+  menuWidth?: number
+};
+
+const PageWithSideMenu = (props: CoreProps & DesktopProps): React.ReactElement<any> => {
+  const menuWidth = props.menuWidth || 250;
 
   return (
     <div
       style={{
-        position: "relative", 
-        height: "100%", 
+        position: "relative",
+        height: "100%",
         width: "100%"
       }}
     >
-      <div 
+      <div
         style={{
           position: "absolute",
           bottom: 0,
