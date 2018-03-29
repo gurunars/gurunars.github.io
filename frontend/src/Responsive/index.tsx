@@ -28,9 +28,9 @@ const responsive = <Props extends {}>(
     <SizeAware>
       {(width, height) => {
         if (isMobile() || width < 770) {
-          return desktopView(props);
+          return mobileView != null ? mobileView(props) : desktopView(props);
         } else if (width < 1250) {
-          return desktopView(props);
+          return tabletView != null ? tabletView(props) : desktopView(props);
         } else {
           return desktopView(props);
         }
