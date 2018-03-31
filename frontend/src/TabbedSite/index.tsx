@@ -6,6 +6,7 @@ const BORDER = "1px solid black";
 
 export interface Page {
   alias: string;
+  withBorder?: boolean;
   color?: string;
   tab: React.ReactElement<any>;
   content: React.ReactElement<any>;
@@ -85,15 +86,17 @@ const Tab = (props: {
     cursor: "pointer"
   };
 
+  const coloredBorder = "1px solid " + props.page.color;
+
   ["Bottom", "Left", "Top", "Right"].forEach(pos => {
     style["margin" + pos] = "5px";
-    style["border" + pos] = BORDER;
+    style["border" + pos] = props.page.withBorder ? BORDER : coloredBorder;
   });
 
   const place = tabWidgetConfig.tabBarBorderPlacement;
 
   style["margin" + place] = "-1px";
-  style["border" + place] = props.isSelected ? "1px solid " + props.page.color : BORDER;
+  style["border" + place] = props.isSelected ? coloredBorder : BORDER;
 
   return (
     <div
