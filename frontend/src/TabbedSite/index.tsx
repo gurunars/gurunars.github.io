@@ -19,9 +19,6 @@ const Tab = (props: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    borderTop: BORDER,
-    borderLeft: BORDER,
-    borderRight: BORDER,
     marginBottom: "-1px",
     marginLeft: "5px",
     marginRight: "5px",
@@ -70,7 +67,7 @@ const TabbedSite = (
           flexFlow: "row",
           flex: "0 1 auto",
           width: "100%",
-          borderBottom: "1px solid black"
+          borderBottom: BORDER
         }}
       >
         {props.pages.map(page => (

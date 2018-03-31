@@ -5,6 +5,8 @@ import { action } from "@storybook/addon-actions";
 
 import TabbedSite from ".";
 
+const BORDER = "1px solid black";
+
 const getTab = (title: string) => ({
   alias: title,
   tab:
@@ -12,6 +14,9 @@ const getTab = (title: string) => ({
       <p
         style={{
           height: "100%",
+          borderTop: BORDER,
+          borderLeft: BORDER,
+          borderRight: BORDER,
           paddingTop: "5px",
           paddingBottom: "5px",
           paddingLeft: "10px",
