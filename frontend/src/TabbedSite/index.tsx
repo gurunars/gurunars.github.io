@@ -93,8 +93,10 @@ const Tab = (props: {
     style["border" + pos] = props.page.withBorder ? BORDER : coloredBorder;
   });
 
-  style["margin" + tabWidgetConfig.tabBarBorderPlacement] = "-1px";
-  style["border" + tabWidgetConfig.tabBarBorderPlacement] = props.isSelected ? coloredBorder : BORDER;
+  const place = tabWidgetConfig.tabBarBorderPlacement;
+
+  style["margin" + place] = "-1px";
+  style["border" + place] = props.isSelected ? coloredBorder : BORDER;
 
   return (
     <div
