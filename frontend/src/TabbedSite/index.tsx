@@ -38,12 +38,12 @@ const Tab = (props: {
     Object.assign({}, baseStyle, unselectedStyle);
 
   return (
-    <span
+    <div
       style={style}
       onClick={props.onClick}
     >
       {props.view}
-    </span>
+    </div>
   );
 };
 
