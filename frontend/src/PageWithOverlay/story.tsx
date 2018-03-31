@@ -1,6 +1,5 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { host } from "storybook-host";
 
 import PageWithOverlay from ".";
@@ -11,8 +10,14 @@ storiesOf("PageWithOverlay", module)
     height: 600,
     width: 800,
   }))
-  .add("basic", () => (
-    <PageWithOverlay 
-      title="Sample Title" 
-      onClick={action("onClick")} />
+  .add("With overlay", () => (
+    <PageWithOverlay
+      backgroundContent={<p>Background content</p>}
+      foregroundContent={<p>Foreground content</p>}
+    />
+  ))
+  .add("Without overlay", () => (
+    <PageWithOverlay
+      backgroundContent={<p>Background content</p>}
+    />
   )); 
