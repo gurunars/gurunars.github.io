@@ -93,11 +93,11 @@ const TabbedSite = (
       <div
         style={{
           position: "relative",
-          height: "calc(100%-" + TAB_BAR_HEIGHT + ")",
+          height: "calc(100% - " + TAB_BAR_HEIGHT + ")",
           width: "100%",
           backgroundColor: BG_COLOR,
           display: "flex",
-          overflowY: "scroll"
+          overflowY: "auto"
         }}
       >
         {renderPage(props.pages, props.selectedPage)}
