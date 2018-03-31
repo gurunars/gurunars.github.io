@@ -1,0 +1,25 @@
+import * as React from "react";
+import { storiesOf } from "@storybook/react";
+import { host } from "storybook-host";
+import { action } from "@storybook/addon-actions";
+
+import TabbedSite from ".";
+
+const PAGES = {
+  one: () => <p>ONE</p>,
+  two: () => <p>TWO</p>
+};
+
+storiesOf("TabbedSite", module)
+  .addDecorator(host({
+    align: "center bottom",
+    height: 600,
+    width: 800,
+  }))
+  .add("basic", () => (
+    <TabbedSite
+      pages={PAGES}
+      selectedPage="one"
+      selectedPageOnChange={page => action("click")(page)}
+    />
+  ));
