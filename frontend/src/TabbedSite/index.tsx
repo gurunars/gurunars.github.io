@@ -4,10 +4,19 @@ import * as _ from "lodash";
 const BG_COLOR = "white";
 const BORDER = "1px solid black";
 
-interface Page {
+export interface Page {
   alias: string;
   tab: React.ReactElement<any>;
   content: React.ReactElement<any>;
+}
+
+export interface PageCollection {
+  pages: Page[];
+}
+
+export interface PageSelector {
+  selectedPage: string;
+  selectedPageOnChange: (selectedPage: string) => void;
 }
 
 const Tab = (props: {
@@ -43,15 +52,6 @@ const Tab = (props: {
     </div>
   );
 };
-
-export interface PageCollection {
-  pages: Page[];
-}
-
-export interface PageSelector {
-  selectedPage: string;
-  selectedPageOnChange: (selectedPage: string) => void;
-}
 
 const TabbedSite = (props: PageCollection & PageSelector) => (
   <div
