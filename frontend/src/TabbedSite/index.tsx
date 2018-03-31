@@ -103,14 +103,19 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
 
   const borderPlacement = getTabBarBorderPosition(props.tabPlacement);
 
-  const baseStyle = {
+  const baseStyle: React.CSSProperties = {
     display: "flex",
     flexFlow: isHorizontal(props.tabPlacement) ? "column" : "row",
-    flex: "0 1 auto",
-    width: "100%"
+    flex: "0 1 auto"
   };
 
   baseStyle["border" + borderPlacement] = BORDER;
+
+  if (isHorizontal(props.tabPlacement)) {
+    baseStyle.height = "100%";
+  } else {
+    baseStyle.width = "100%";
+  }
 
   const tabBar = (
     <div style={baseStyle}>
