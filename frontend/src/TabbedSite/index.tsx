@@ -107,25 +107,19 @@ const Tab = (props: {
 };
 
 const TabbedSite = (props: PageCollection & PageSelector) => {
-
   const tabWidgetConfig = getTabWidgetConfig(props.tabPlacement);
 
-  const baseStyle: React.CSSProperties = {
+  const tabBarStyle: React.CSSProperties = {
     display: "flex",
     flexFlow: tabWidgetConfig.isHorizontal ? "column" : "row",
     flex: "0 1 auto"
   };
 
-  baseStyle["border" + tabWidgetConfig.tabBarBorderPlacement] = BORDER;
-
-  if (tabWidgetConfig.isHorizontal) {
-    baseStyle.height = "100%";
-  } else {
-    baseStyle.width = "100%";
-  }
+  tabBarStyle["border" + tabWidgetConfig.tabBarBorderPlacement] = BORDER;
+  tabBarStyle[tabWidgetConfig.isHorizontal ? "height" : "width"] = "100%";
 
   const tabBar = (
-    <div style={baseStyle}>
+    <div style={tabBarStyle}>
       {props.pages.map(page => (
         <Tab
           page={page}
@@ -136,15 +130,6 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
       ))}
     </div>
   );
-
-  let tabBarBefore;
-  let tabBarAfter;
-
-  if (tabWidgetConfig.isAfter) {
-    tabBarAfter = tabBar;
-  } else {
-    tabBarBefore = tabBar;
-  }
 
   const selected = _.find(
     props.pages,
@@ -163,7 +148,7 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
       }}
     >
 
-      {tabBarBefore}
+      {tabWidgetConfig.isAfter ? null : tabBar}
 
       <div
         style={{
@@ -175,10 +160,10 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
           overflowY: "auto"
         }}
       >
-        {(selected || { content: <div /> }).content}
+        {selected ? selected.content : null}
       </div>
 
-      {tabBarAfter}
+      {tabWidgetConfig.isAfter ? tabBar : null}
 
     </div>
   );

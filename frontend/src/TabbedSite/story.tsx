@@ -8,7 +8,7 @@ import PlainTabbedSite, { PageCollection, TabPlacement } from ".";
 const getTab = (title: string) => ({
   alias: title,
   color: title,
-  withBorder: false,
+  withBorder: true,
   tab:
     (
       <p
