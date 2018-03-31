@@ -5,7 +5,7 @@ const BG_COLOR = "white";
 const TAB_BAR_HEIGHT = "35px";
 
 interface Pages {
-  [title: string]: () => React.ReactElement<any>;
+  [title: string]: React.ReactElement<any>;
 }
 
 const Tab = (props: {
@@ -47,14 +47,6 @@ const Tab = (props: {
       {props.title}
     </span>
   );
-};
-
-const renderPage = (
-  pages: Pages,
-  selectedPage: string
-): React.ReactElement<any> => {
-  const renderer = pages[selectedPage];
-  return (renderer == null) ? <div /> : renderer();
 };
 
 const TabbedSite = (
@@ -100,7 +92,7 @@ const TabbedSite = (
           overflowY: "auto"
         }}
       >
-        {renderPage(props.pages, props.selectedPage)}
+        {props.pages[props.selectedPage]}
       </div>
 
     </div>

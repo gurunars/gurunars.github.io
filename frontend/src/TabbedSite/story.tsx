@@ -6,8 +6,8 @@ import { action } from "@storybook/addon-actions";
 import TabbedSite from ".";
 
 const PAGES = {
-  one: () => <p>ONE</p>,
-  two: () => <p>TWO</p>
+  one: <p>ONE</p>,
+  two: <p>TWO</p>
 };
 
 storiesOf("TabbedSite", module)
