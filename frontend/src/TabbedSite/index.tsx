@@ -22,17 +22,49 @@ export interface PageSelector {
   selectedPageOnChange: (selectedPage: string) => void;
 }
 
-const getTabBarBorderPosition = (placement?: TabPlacement): string => {
+type TabWidgetConfig = {
+  tabBarBorderPlacement: string;
+  isHorizontal: boolean;
+  isAfter: boolean;
+  alignItems: "center" | "flex-start" | "flex-end";
+  justifyContent: "center" | "flex-start" | "flex-end";
+};
+
+const getTabWidgetConfig = (placement?: TabPlacement): TabWidgetConfig => {
   switch (placement) {
     case "right":
-      return "Left";
+      return {
+        tabBarBorderPlacement: "Left",
+        isHorizontal: true,
+        isAfter: true,
+        justifyContent: "flex-start",
+        alignItems: "center"
+      };
     case "bottom":
-      return "Top";
+      return {
+        tabBarBorderPlacement: "Top",
+        isHorizontal: false,
+        isAfter: true,
+        justifyContent: "center",
+        alignItems: "flex-start"
+      };
     case "left":
-      return "Right";
+      return {
+        tabBarBorderPlacement: "Right",
+        isHorizontal: true,
+        isAfter: false,
+        justifyContent: "flex-end",
+        alignItems: "center"
+      };
     case "top":
     default:
-      return "Bottom";
+      return {
+        tabBarBorderPlacement: "Bottom",
+        isHorizontal: false,
+        isAfter: false,
+        justifyContent: "center",
+        alignItems: "flex-end"
+      };
   }
 };
 
@@ -42,10 +74,12 @@ const Tab = (props: {
   isSelected: boolean,
   onClick: () => void
 }) => {
-  const baseStyle = {
+  const tabWidgetConfig = getTabWidgetConfig(props.placement);
+
+  const style: React.CSSProperties = {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: tabWidgetConfig.alignItems,
+    justifyContent: tabWidgetConfig.justifyContent,
     marginBottom: "5px",
     marginLeft: "5px",
     marginRight: "5px",
@@ -53,17 +87,10 @@ const Tab = (props: {
     cursor: "pointer"
   };
 
-  const negativeMarginSide = getTabBarBorderPosition(props.placement);
-
-  baseStyle["margin" + negativeMarginSide] = "-1px";
-
-  const unselectedStyle = {
-    borderBottom: BORDER
-  };
-
-  const style = props.isSelected ?
-    baseStyle as React.CSSProperties :
-    Object.assign({}, baseStyle, unselectedStyle);
+  style["margin" + tabWidgetConfig.tabBarBorderPlacement] = "-1px";
+  if (!props.isSelected) {
+    style["border" + tabWidgetConfig.tabBarBorderPlacement] = BORDER;
+  }
 
   return (
     <div
@@ -75,43 +102,19 @@ const Tab = (props: {
   );
 };
 
-const isHorizontal = (placement?: TabPlacement): boolean => {
-  switch (placement) {
-    case "right":
-    case "left":
-      return true;
-    case "bottom":
-    case "top":
-    default:
-      return false;
-  }
-};
-
-const isAfter = (placement?: TabPlacement): boolean => {
-  switch (placement) {
-    case "top":
-    case "left":
-      return false;
-    case "right":
-    case "bottom":
-    default:
-      return true;
-  }
-};
-
 const TabbedSite = (props: PageCollection & PageSelector) => {
 
-  const borderPlacement = getTabBarBorderPosition(props.tabPlacement);
+  const tabWidgetConfig = getTabWidgetConfig(props.tabPlacement);
 
   const baseStyle: React.CSSProperties = {
     display: "flex",
-    flexFlow: isHorizontal(props.tabPlacement) ? "column" : "row",
+    flexFlow: tabWidgetConfig.isHorizontal ? "column" : "row",
     flex: "0 1 auto"
   };
 
-  baseStyle["border" + borderPlacement] = BORDER;
+  baseStyle["border" + tabWidgetConfig.tabBarBorderPlacement] = BORDER;
 
-  if (isHorizontal(props.tabPlacement)) {
+  if (tabWidgetConfig.isHorizontal) {
     baseStyle.height = "100%";
   } else {
     baseStyle.width = "100%";
@@ -134,7 +137,7 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
   let tabBarBefore;
   let tabBarAfter;
 
-  if (isAfter(props.tabPlacement)) {
+  if (tabWidgetConfig.isAfter) {
     tabBarAfter = tabBar;
   } else {
     tabBarBefore = tabBar;
@@ -149,7 +152,7 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
         backgroundColor: BG_COLOR,
         overflowY: "hidden",
         display: "flex",
-        flexFlow: isHorizontal(props.tabPlacement) ? "row" : "column"
+        flexFlow: tabWidgetConfig.isHorizontal ? "row" : "column"
       }}
     >
 
