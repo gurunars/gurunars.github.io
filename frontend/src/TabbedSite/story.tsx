@@ -24,15 +24,16 @@ const getTab = (title: string) => ({
     ),
   content:
     (
-      <p
+      <div
         style={{
           padding: "10px",
+          height: "100%",
           width: "100%",
           backgroundColor: title
         }}
       >
-        {title}
-      </p>
+        <p>{title}</p>
+      </div>
     )
 });
 

@@ -85,7 +85,9 @@ const TabbedSite = (
 
       <div
         style={{
+          position: "relative",
           flex: "1 1 auto",
+          height: "100%",
           width: "100%",
           backgroundColor: BG_COLOR,
           overflowY: "auto"
