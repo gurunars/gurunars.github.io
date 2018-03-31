@@ -7,6 +7,8 @@ import PlainTabbedSite, { PageCollection, TabPlacement } from ".";
 
 const getTab = (title: string) => ({
   alias: title,
+  color: title,
+  withBorder: false,
   tab:
     (
       <p
@@ -60,7 +62,7 @@ storiesOf("TabbedSite", module)
     height: 600,
     width: 800,
   }))
+  .add("Top tab bar", () => getTabbedSite("top"))
   .add("Left tab bar", () => getTabbedSite("left"))
-  .add("Right tab bar", () => getTabbedSite("right"))
   .add("Bottom tab bar", () => getTabbedSite("bottom"))
-  .add("Top tab bar", () => getTabbedSite("top"));
+  .add("Right tab bar", () => getTabbedSite("right"));

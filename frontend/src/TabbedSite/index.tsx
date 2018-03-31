@@ -6,6 +6,8 @@ const BORDER = "1px solid black";
 
 export interface Page {
   alias: string;
+  withBorder?: boolean;
+  color?: string;
   tab: React.ReactElement<any>;
   content: React.ReactElement<any>;
 }
@@ -69,8 +71,8 @@ const getTabWidgetConfig = (placement?: TabPlacement): TabWidgetConfig => {
 };
 
 const Tab = (props: {
+  page: Page,
   placement?: TabPlacement,
-  view: React.ReactElement<any>,
   isSelected: boolean,
   onClick: () => void
 }) => {
@@ -80,24 +82,26 @@ const Tab = (props: {
     display: "flex",
     alignItems: tabWidgetConfig.alignItems,
     justifyContent: tabWidgetConfig.justifyContent,
-    marginBottom: "5px",
-    marginLeft: "5px",
-    marginRight: "5px",
-    marginTop: "5px",
+    backgroundColor: props.page.color,
     cursor: "pointer"
   };
 
+  const coloredBorder = "1px solid " + props.page.color;
+
+  ["Bottom", "Left", "Top", "Right"].forEach(pos => {
+    style["margin" + pos] = "5px";
+    style["border" + pos] = props.page.withBorder ? BORDER : coloredBorder;
+  });
+
   style["margin" + tabWidgetConfig.tabBarBorderPlacement] = "-1px";
-  if (!props.isSelected) {
-    style["border" + tabWidgetConfig.tabBarBorderPlacement] = BORDER;
-  }
+  style["border" + tabWidgetConfig.tabBarBorderPlacement] = props.isSelected ? coloredBorder : BORDER;
 
   return (
     <div
       style={style}
       onClick={props.onClick}
     >
-      {props.view}
+      {props.page.tab}
     </div>
   );
 };
@@ -124,9 +128,8 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
     <div style={baseStyle}>
       {props.pages.map(page => (
         <Tab
+          page={page}
           placement={props.tabPlacement}
-          key={page.alias}
-          view={page.tab}
           isSelected={page.alias === props.selectedPage}
           onClick={() => props.selectedPageOnChange(page.alias)}
         />
@@ -143,13 +146,17 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
     tabBarBefore = tabBar;
   }
 
+  const selected = _.find(
+    props.pages,
+    page => page.alias === props.selectedPage
+  );
+
   return (
     <div
       style={{
         position: "relative",
         width: "100%",
         height: "100%",
-        backgroundColor: BG_COLOR,
         overflowY: "hidden",
         display: "flex",
         flexFlow: tabWidgetConfig.isHorizontal ? "row" : "column"
@@ -164,16 +171,11 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
           flex: "1 1 auto",
           height: "100%",
           width: "100%",
-          backgroundColor: BG_COLOR,
+          backgroundColor: selected ? selected.color : BG_COLOR,
           overflowY: "auto"
         }}
       >
-        {
-          (_.find(
-            props.pages,
-            page => page.alias === props.selectedPage
-          ) || { content: <div /> }).content
-        }
+        {(selected || { content: <div /> }).content}
       </div>
 
       {tabBarAfter}
