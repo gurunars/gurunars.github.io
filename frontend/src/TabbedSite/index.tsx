@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as _ from "lodash";
 
-const BG_COLOR = "white";
 const TAB_BAR_HEIGHT = "35px";
+const BORDER = "1px solid black";
 
 interface Page {
   alias: string;
@@ -19,26 +19,23 @@ const Tab = (props: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    border: "1px solid black",
-    paddingLeft: "10px",
-    paddingRight: "10px",
+    borderTop: BORDER,
+    borderLeft: BORDER,
+    borderRight: BORDER,
     marginBottom: "-1px",
     marginLeft: "5px",
     marginRight: "5px",
     marginTop: "5px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    color: "black",
-    backgroundColor: BG_COLOR
+    cursor: "pointer"
   };
 
-  const selectedStyle = {
-    borderBottom: "1px solid " + BG_COLOR
+  const unselectedStyle = {
+    borderBottom: BORDER
   };
 
   const style = props.isSelected ?
-    Object.assign({}, baseStyle, selectedStyle) :
-    baseStyle as React.CSSProperties;
+    baseStyle as React.CSSProperties :
+    Object.assign({}, baseStyle, unselectedStyle);
 
   return (
     <span
@@ -61,7 +58,6 @@ const TabbedSite = (
         position: "relative",
         width: "100%",
         height: "100%",
-        backgroundColor: BG_COLOR,
         overflowY: "hidden"
       }}
     >
@@ -89,7 +85,6 @@ const TabbedSite = (
           position: "relative",
           height: "calc(100% - " + TAB_BAR_HEIGHT + ")",
           width: "100%",
-          backgroundColor: BG_COLOR,
           display: "flex",
           overflowY: "auto"
         }}
