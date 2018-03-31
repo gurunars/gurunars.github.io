@@ -22,7 +22,7 @@ export interface PageSelector {
   selectedPageOnChange: (selectedPage: string) => void;
 }
 
-const getNegativeMarginSide = (placement?: TabPlacement): string => {
+const getTabBarBorderPosition = (placement?: TabPlacement): string => {
   switch (placement) {
     case "right":
       return "Left";
@@ -53,7 +53,7 @@ const Tab = (props: {
     cursor: "pointer"
   };
 
-  const negativeMarginSide = getNegativeMarginSide(props.placement);
+  const negativeMarginSide = getTabBarBorderPosition(props.placement);
 
   baseStyle["margin" + negativeMarginSide] = "-1px";
 
@@ -75,39 +75,45 @@ const Tab = (props: {
   );
 };
 
-const getFlexFlow = (placement?: TabPlacement) => {
+const isHorizontal = (placement?: TabPlacement): boolean => {
   switch (placement) {
     case "right":
     case "left":
-      return "row";
+      return true;
     case "bottom":
     case "top":
     default:
-      return "column";
+      return false;
   }
 };
 
-const TabbedSite = (props: PageCollection & PageSelector) => (
-  <div
-    style={{
-      position: "relative",
-      width: "100%",
-      height: "100%",
-      backgroundColor: BG_COLOR,
-      overflowY: "hidden",
-      display: "flex",
-      flexFlow: getFlexFlow(props.tabPlacement)
-    }}
-  >
-    <div
-      style={{
-        display: "flex",
-        flexFlow: "row",
-        flex: "0 1 auto",
-        width: "100%",
-        borderBottom: BORDER
-      }}
-    >
+const isAfter = (placement?: TabPlacement): boolean => {
+  switch (placement) {
+    case "top":
+    case "left":
+      return false;
+    case "right":
+    case "bottom":
+    default:
+      return true;
+  }
+};
+
+const TabbedSite = (props: PageCollection & PageSelector) => {
+
+  const borderPlacement = getTabBarBorderPosition(props.tabPlacement);
+
+  const baseStyle = {
+    display: "flex",
+    flexFlow: isHorizontal(props.tabPlacement) ? "column" : "row",
+    flex: "0 1 auto",
+    width: "100%"
+  };
+
+  baseStyle["border" + borderPlacement] = BORDER;
+
+  const tabBar = (
+    <div style={baseStyle}>
       {props.pages.map(page => (
         <Tab
           placement={props.tabPlacement}
@@ -118,26 +124,54 @@ const TabbedSite = (props: PageCollection & PageSelector) => (
         />
       ))}
     </div>
+  );
 
+  let tabBarBefore;
+  let tabBarAfter;
+
+  if (isAfter(props.tabPlacement)) {
+    tabBarAfter = tabBar;
+  } else {
+    tabBarBefore = tabBar;
+  }
+
+  return (
     <div
       style={{
         position: "relative",
-        flex: "1 1 auto",
-        height: "100%",
         width: "100%",
+        height: "100%",
         backgroundColor: BG_COLOR,
-        overflowY: "auto"
+        overflowY: "hidden",
+        display: "flex",
+        flexFlow: isHorizontal(props.tabPlacement) ? "row" : "column"
       }}
     >
-      {
-        (_.find(
-          props.pages,
-          page => page.alias === props.selectedPage
-        ) || { content: <div /> }).content
-      }
-    </div>
 
-  </div>
-);
+      {tabBarBefore}
+
+      <div
+        style={{
+          position: "relative",
+          flex: "1 1 auto",
+          height: "100%",
+          width: "100%",
+          backgroundColor: BG_COLOR,
+          overflowY: "auto"
+        }}
+      >
+        {
+          (_.find(
+            props.pages,
+            page => page.alias === props.selectedPage
+          ) || { content: <div /> }).content
+        }
+      </div>
+
+      {tabBarAfter}
+
+    </div>
+  );
+};
 
 export default TabbedSite;
