@@ -44,61 +44,65 @@ const Tab = (props: {
   );
 };
 
-const TabbedSite = (
-  props: {
-    pages: Page[],
-    selectedPage: string,
-    selectedPageOnChange: (selectedPage: string) => void
-  }) => (
+export interface PageCollection {
+  pages: Page[];
+}
+
+export interface PageSelector {
+  selectedPage: string;
+  selectedPageOnChange: (selectedPage: string) => void;
+}
+
+const TabbedSite = (props: PageCollection & PageSelector) => (
+  <div
+    style={{
+      position: "relative",
+      width: "100%",
+      height: "100%",
+      backgroundColor: BG_COLOR,
+      overflowY: "hidden",
+      display: "flex",
+      flexFlow: "column"
+    }}
+  >
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "row",
+        flex: "0 1 auto",
+        width: "100%",
+        borderBottom: BORDER
+      }}
+    >
+      {props.pages.map(page => (
+        <Tab
+          key={page.alias}
+          view={page.tab}
+          isSelected={page.alias === props.selectedPage}
+          onClick={() => props.selectedPageOnChange(page.alias)}
+        />
+      ))}
+    </div>
+
     <div
       style={{
         position: "relative",
-        width: "100%",
+        flex: "1 1 auto",
         height: "100%",
+        width: "100%",
         backgroundColor: BG_COLOR,
-        overflowY: "hidden",
-        display: "flex",
-        flexFlow: "column"
+        overflowY: "auto"
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexFlow: "row",
-          flex: "0 1 auto",
-          width: "100%",
-          borderBottom: BORDER
-        }}
-      >
-        {props.pages.map(page => (
-          <Tab
-            key={page.alias}
-            view={page.tab}
-            isSelected={page.alias === props.selectedPage}
-            onClick={() => props.selectedPageOnChange(page.alias)}
-          />
-        ))}
-      </div>
-
-      <div
-        style={{
-          position: "relative",
-          flex: "1 1 auto",
-          height: "100%",
-          width: "100%",
-          backgroundColor: BG_COLOR,
-          overflowY: "auto"
-        }}
-      >
-        {
-          (_.find(
-            props.pages,
-            page => page.alias === props.selectedPage
-          ) || { content: <div /> }).content
-        }
-      </div>
-
+      {
+        (_.find(
+          props.pages,
+          page => page.alias === props.selectedPage
+        ) || { content: <div /> }).content
+      }
     </div>
-  );
+
+  </div>
+);
 
 export default TabbedSite;

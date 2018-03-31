@@ -1,9 +1,9 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
-import { action } from "@storybook/addon-actions";
+import { withState, withProps, compose } from "recompose";
 
-import TabbedSite from ".";
+import PlainTabbedSite, { PageCollection } from ".";
 
 const BORDER = "1px solid black";
 
@@ -44,6 +44,17 @@ const getTab = (title: string) => ({
 
 const PAGES = ["white", "yellow", "red", "green", "blue"];
 
+const TabbedSite = compose(
+  withProps(
+    { "pages": PAGES.map(getTab) }
+  ),
+  withState(
+    "selectedPage",
+    "selectedPageOnChange",
+    (props: PageCollection) => props.pages[0].alias
+  )
+)(PlainTabbedSite);
+
 storiesOf("TabbedSite", module)
   .addDecorator(host({
     align: "center bottom",
@@ -51,9 +62,5 @@ storiesOf("TabbedSite", module)
     width: 800,
   }))
   .add("basic", () => (
-    <TabbedSite
-      pages={PAGES.map(getTab)}
-      selectedPage="yellow"
-      selectedPageOnChange={page => action("click")(page)}
-    />
+    <TabbedSite />
   ));
