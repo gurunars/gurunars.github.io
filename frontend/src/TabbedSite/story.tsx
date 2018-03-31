@@ -13,6 +13,7 @@ const getTab = (title: string) => ({
         style={{
           height: "100%",
           paddingTop: "5px",
+          paddingBottom: "5px",
           paddingLeft: "10px",
           paddingRight: "10px",
           backgroundColor: title

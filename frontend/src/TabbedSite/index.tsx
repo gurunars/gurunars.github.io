@@ -2,7 +2,6 @@ import * as React from "react";
 import * as _ from "lodash";
 
 const BG_COLOR = "white";
-const TAB_BAR_HEIGHT = "35px";
 const BORDER = "1px solid black";
 
 interface Page {
@@ -60,15 +59,17 @@ const TabbedSite = (
         width: "100%",
         height: "100%",
         backgroundColor: BG_COLOR,
-        overflowY: "hidden"
+        overflowY: "hidden",
+        display: "flex",
+        flexFlow: "column"
       }}
     >
       <div
         style={{
-          position: "relative",
           display: "flex",
+          flexFlow: "row",
+          flex: "0 1 auto",
           width: "100%",
-          height: TAB_BAR_HEIGHT,
           borderBottom: "1px solid black"
         }}
       >
@@ -84,11 +85,9 @@ const TabbedSite = (
 
       <div
         style={{
-          position: "relative",
-          height: "calc(100% - " + TAB_BAR_HEIGHT + ")",
+          flex: "1 1 auto",
           width: "100%",
           backgroundColor: BG_COLOR,
-          display: "flex",
           overflowY: "auto"
         }}
       >
