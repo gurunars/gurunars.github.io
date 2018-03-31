@@ -4,12 +4,14 @@ import * as _ from "lodash";
 const BG_COLOR = "white";
 const TAB_BAR_HEIGHT = "35px";
 
-interface Pages {
-  [title: string]: React.ReactElement<any>;
+interface Page {
+  alias: string;
+  tab: React.ReactElement<any>;
+  content: React.ReactElement<any>;
 }
 
 const Tab = (props: {
-  title: string,
+  view: React.ReactElement<any>,
   isSelected: boolean,
   onClick: () => void
 }) => {
@@ -40,18 +42,17 @@ const Tab = (props: {
 
   return (
     <span
-      key={props.title}
       style={style}
       onClick={props.onClick}
     >
-      {props.title}
+      {props.view}
     </span>
   );
 };
 
 const TabbedSite = (
   props: {
-    pages: Pages,
+    pages: Page[],
     selectedPage: string,
     selectedPageOnChange: (selectedPage: string) => void
   }) => (
@@ -73,11 +74,12 @@ const TabbedSite = (
           borderBottom: "1px solid black"
         }}
       >
-        {_.keys(props.pages).map(title => (
+        {props.pages.map(page => (
           <Tab
-            title={title}
-            isSelected={title === props.selectedPage}
-            onClick={() => props.selectedPageOnChange(title)}
+            key={page.alias}
+            view={page.tab}
+            isSelected={page.alias === props.selectedPage}
+            onClick={() => props.selectedPageOnChange(page.alias)}
           />
         ))}
       </div>
@@ -92,7 +94,12 @@ const TabbedSite = (
           overflowY: "auto"
         }}
       >
-        {props.pages[props.selectedPage]}
+        {
+          (_.find(
+            props.pages,
+            page => page.alias === props.selectedPage
+          ) || { content: <div /> }).content
+        }
       </div>
 
     </div>

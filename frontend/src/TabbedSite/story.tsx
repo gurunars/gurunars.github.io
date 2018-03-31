@@ -5,10 +5,17 @@ import { action } from "@storybook/addon-actions";
 
 import TabbedSite from ".";
 
-const PAGES = {
-  one: <p>ONE</p>,
-  two: <p>TWO</p>
-};
+const PAGES = [
+  {
+    alias: "one",
+    tab: <p>One</p>,
+    content: <p>ONE</p>
+  }, {
+    alias: "two",
+    tab: <p>Two</p>,
+    content: <p>TWO</p>
+  }
+];
 
 storiesOf("TabbedSite", module)
   .addDecorator(host({
