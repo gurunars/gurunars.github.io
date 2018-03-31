@@ -1,13 +1,8 @@
 import * as React from "react";
 import * as _ from "lodash";
 
-const BG_COLOR = "white";
-const BORDER = "1px solid black";
-
 export interface Page {
   alias: string;
-  withBorder?: boolean;
-  color?: string;
   tab: React.ReactElement<any>;
   content: React.ReactElement<any>;
 }
@@ -82,21 +77,14 @@ const Tab = (props: {
     display: "flex",
     alignItems: tabWidgetConfig.alignItems,
     justifyContent: tabWidgetConfig.justifyContent,
-    backgroundColor: props.page.color,
     cursor: "pointer"
   };
 
-  const coloredBorder = "1px solid " + props.page.color;
-
   ["Bottom", "Left", "Top", "Right"].forEach(pos => {
     style["margin" + pos] = "5px";
-    style["border" + pos] = props.page.withBorder ? BORDER : coloredBorder;
   });
 
-  const place = tabWidgetConfig.tabBarBorderPlacement;
-
-  style["margin" + place] = "-1px";
-  style["border" + place] = props.isSelected ? coloredBorder : BORDER;
+  style["margin" + tabWidgetConfig.tabBarBorderPlacement] = "-1px";
 
   return (
     <div
@@ -117,7 +105,6 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
     flex: "0 1 auto"
   };
 
-  tabBarStyle["border" + tabWidgetConfig.tabBarBorderPlacement] = BORDER;
   tabBarStyle[tabWidgetConfig.isHorizontal ? "height" : "width"] = "100%";
 
   const tabBar = (
@@ -158,7 +145,6 @@ const TabbedSite = (props: PageCollection & PageSelector) => {
           flex: "1 1 auto",
           height: "100%",
           width: "100%",
-          backgroundColor: selected ? selected.color : BG_COLOR,
           overflowY: "auto"
         }}
       >

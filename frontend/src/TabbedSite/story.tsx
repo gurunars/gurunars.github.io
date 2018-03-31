@@ -7,7 +7,6 @@ import PlainTabbedSite, { PageCollection, TabPlacement } from ".";
 
 const getTab = (title: string) => ({
   alias: title,
-  color: title,
   withBorder: true,
   tab:
     (
@@ -17,7 +16,8 @@ const getTab = (title: string) => ({
           paddingTop: "5px",
           paddingBottom: "5px",
           paddingLeft: "10px",
-          paddingRight: "10px"
+          paddingRight: "10px",
+          backgroundColor: title
         }}
       >
         {title}
@@ -29,7 +29,8 @@ const getTab = (title: string) => ({
         style={{
           padding: "10px",
           height: "100%",
-          width: "100%"
+          width: "100%",
+          backgroundColor: title
         }}
       >
         <p>{title}</p>
