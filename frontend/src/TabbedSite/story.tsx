@@ -1,9 +1,42 @@
 import * as React from "react";
+import * as _ from "lodash";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 import { withState, withProps, compose } from "recompose";
 
 import PlainTabbedSite, { PageCollection, TabPlacement } from ".";
+
+const logoTab = {
+  alias: "logo",
+  color: "white",
+  withBorder: false,
+  tab:
+    (
+      <p
+        style={{
+          height: "100%",
+          paddingTop: "15px",
+          paddingBottom: "15px",
+          paddingLeft: "15px",
+          paddingRight: "15px",
+        }}
+      >
+        Logo
+      </p>
+    ),
+  content:
+    (
+      <div
+        style={{
+          padding: "10px",
+          height: "100%",
+          width: "100%"
+        }}
+      >
+        <p>LOGO</p>
+      </div>
+    )
+};
 
 const getTab = (title: string) => ({
   alias: title,
@@ -17,8 +50,7 @@ const getTab = (title: string) => ({
           paddingTop: "5px",
           paddingBottom: "5px",
           paddingLeft: "10px",
-          paddingRight: "10px",
-          backgroundColor: title
+          paddingRight: "10px"
         }}
       >
         {title}
@@ -30,8 +62,7 @@ const getTab = (title: string) => ({
         style={{
           padding: "10px",
           height: "100%",
-          width: "100%",
-          backgroundColor: title
+          width: "100%"
         }}
       >
         <p>{title}</p>
@@ -39,12 +70,12 @@ const getTab = (title: string) => ({
     )
 });
 
-const PAGES = ["white", "yellow", "red", "green", "blue"];
+const PAGES = ["yellow", "red", "green", "blue"];
 
 const getTabbedSite = (placement: TabPlacement) => {
   const TabbedSite = compose(
     withProps({
-      "pages": PAGES.map(getTab),
+      "pages": _.concat([logoTab], PAGES.map(getTab)),
       "tabPlacement": placement
     }),
     withState(
