@@ -10,8 +10,11 @@ export interface Page {
   content: React.ReactElement<any>;
 }
 
+export type TabPlacement = "top" | "bottom" | "left" | "right";
+
 export interface PageCollection {
   pages: Page[];
+  tabPlacement?: TabPlacement;
 }
 
 export interface PageSelector {
@@ -19,7 +22,22 @@ export interface PageSelector {
   selectedPageOnChange: (selectedPage: string) => void;
 }
 
+const getNegativeMarginSide = (placement?: TabPlacement): string => {
+  switch (placement) {
+    case "right":
+      return "Left";
+    case "bottom":
+      return "Top";
+    case "left":
+      return "Right";
+    case "top":
+    default:
+      return "Bottom";
+  }
+};
+
 const Tab = (props: {
+  placement?: TabPlacement,
   view: React.ReactElement<any>,
   isSelected: boolean,
   onClick: () => void
@@ -28,12 +46,16 @@ const Tab = (props: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: "-1px",
+    marginBottom: "5px",
     marginLeft: "5px",
     marginRight: "5px",
     marginTop: "5px",
     cursor: "pointer"
   };
+
+  const negativeMarginSide = getNegativeMarginSide(props.placement);
+
+  baseStyle["margin" + negativeMarginSide] = "-1px";
 
   const unselectedStyle = {
     borderBottom: BORDER
@@ -53,6 +75,18 @@ const Tab = (props: {
   );
 };
 
+const getFlexFlow = (placement?: TabPlacement) => {
+  switch (placement) {
+    case "right":
+    case "left":
+      return "row";
+    case "bottom":
+    case "top":
+    default:
+      return "column";
+  }
+};
+
 const TabbedSite = (props: PageCollection & PageSelector) => (
   <div
     style={{
@@ -62,7 +96,7 @@ const TabbedSite = (props: PageCollection & PageSelector) => (
       backgroundColor: BG_COLOR,
       overflowY: "hidden",
       display: "flex",
-      flexFlow: "column"
+      flexFlow: getFlexFlow(props.tabPlacement)
     }}
   >
     <div
@@ -76,6 +110,7 @@ const TabbedSite = (props: PageCollection & PageSelector) => (
     >
       {props.pages.map(page => (
         <Tab
+          placement={props.tabPlacement}
           key={page.alias}
           view={page.tab}
           isSelected={page.alias === props.selectedPage}
