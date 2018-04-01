@@ -1,9 +1,10 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { host } from "storybook-host";
 
-import Carousel from ".";
+import CursorIcon from "./CursorIcon";
+
+const next = require("./next.svg");
 
 storiesOf("Carousel", module)
   .addDecorator(host({
@@ -12,7 +13,10 @@ storiesOf("Carousel", module)
     width: 800,
   }))
   .add("basic", () => (
-    <Carousel 
-      title="Sample Title" 
-      onClick={action("onClick")} />
+    <CursorIcon
+      icon={next}
+      reference={{
+        id: "FOOBAR"
+      }}
+    />
   )); 
