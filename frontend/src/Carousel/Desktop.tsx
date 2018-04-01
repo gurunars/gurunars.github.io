@@ -60,6 +60,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
           position: "absolute",
           display: "flex",
           color: "black",
+          cursor: "pointer",
           top: 10,
           right: 10,
           width: dims * 2,

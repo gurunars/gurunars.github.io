@@ -12,6 +12,7 @@ const CursorIcon = (props: {
       style={{
         position: "relative",
         color: props.targetPosition ? "black" : "gray",
+        cursor: props.targetPosition ? "pointer" : "not-allowed",
         width: dims,
         height: dims
       }}
