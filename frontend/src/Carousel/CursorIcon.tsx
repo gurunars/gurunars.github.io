@@ -4,17 +4,22 @@ const CursorIcon = <T extends {}>(props: {
   icon: (color?: string) => React.ReactElement<any>,
   reference?: T | null
 }) => {
+  const style: React.CSSProperties = {
+    position: "relative",
+    width: "30px",
+    height: "30px"
+  };
   if (props.reference) {
     return (
-      <span>
+      <div style={style}>
         {props.icon()}
-      </span>
+      </div>
     );
   } else {
     return (
-      <span>
+      <div style={style}>
         {props.icon("red")}
-      </span>
+      </div>
     );
   }
 };
