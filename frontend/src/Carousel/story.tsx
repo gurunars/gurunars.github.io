@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 
 import Desktop from "./Desktop";
+import Mobile from "./Mobile";
 import { Item } from "./Cursor";
 
 interface MyItem extends Item {
@@ -32,6 +33,14 @@ storiesOf("Carousel", module)
     height: 600,
     width: 800,
   }))
+  .add("Mobile/previous and next", () => (
+    <Mobile
+      items={items}
+      selectedId="one"
+    >
+      {(current: MyItem) => (<div>{current.title}</div>)}
+    </Mobile>
+  ))
   .add("Desktop/previous and next", () => (
     <Desktop
       items={items}
