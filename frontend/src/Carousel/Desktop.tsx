@@ -3,9 +3,9 @@ import * as React from "react";
 import CursorIcon from "./CursorIcon";
 
 import Link from "../Link";
-import next from "./next";
-import prev from "./prev";
-import close from "./close";
+import next from "./icons/next";
+import prev from "./icons/prev";
+import close from "./icons/close";
 import { Item, Cursor, getCursorItems } from "./Cursor";
 
 const Carousel = <T extends Item>(props: {
