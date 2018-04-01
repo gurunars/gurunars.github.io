@@ -9,7 +9,7 @@ interface Item {
   title: string;
 }
 
-const item: Item = {
+const first: Item = {
   title: "Item one"
 };
 
@@ -17,7 +17,7 @@ const items: Item[] = [
   {
     title: "Item zero"
   },
-  item,
+  first,
   {
     title: "Item two"
   }
@@ -35,14 +35,17 @@ const ListView = (props: {
             cursor: "pointer",
             padding: "5px"
           }}
-          onClick={() => props.selectedPostionOnChange(index)}
+          onClick={() => {
+            console.log(index);
+            props.selectedPostionOnChange(index);
+          }}
         >{cursor.title}
         </p>
       ))}
     </div>
   );
 
-const ItemView = (props: { item: Item }) => <h1>{item.title}</h1>;
+const ItemView = (props: { item: Item }) => <h1>{props.item.title}</h1>;
 
 const CollectionView = compose(
   withProps({

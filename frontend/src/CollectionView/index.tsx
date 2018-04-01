@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as _ from "lodash";
 
 import Carousel from "../Carousel";
 import PageWithOverlay from "../PageWithOverlay";
@@ -28,7 +29,7 @@ const CollectionView = <T extends {}>(
         selectedPostionOnChange: props.selectedPositionOnChange
       })}
       foregroundContent={
-        props.selectedPosition ? (
+        !_.isNil(props.selectedPosition) ? (
           <Carousel
             items={props.items}
             selectedPostion={props.selectedPosition || 0}
