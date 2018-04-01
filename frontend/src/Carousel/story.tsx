@@ -4,7 +4,7 @@ import { host } from "storybook-host";
 
 import CursorIcon from "./CursorIcon";
 
-import { Prev, Next } from "../Icons";
+import { prev, next } from "../Icons";
 
 storiesOf("Carousel", module)
   .addDecorator(host({
