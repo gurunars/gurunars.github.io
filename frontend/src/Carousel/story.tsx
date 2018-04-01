@@ -17,13 +17,13 @@ storiesOf("Carousel", module)
     <div>
       <CursorIcon
         icon={next}
-        reference={{
+        item={{
           id: "FOOBAR"
         }}
       />
       <CursorIcon
         icon={prev}
-        reference={{
+        item={{
           id: "FOOBAR"
         }}
       />

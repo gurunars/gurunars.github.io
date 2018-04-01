@@ -13,7 +13,6 @@ export const getCursorItems = <T extends Item>(
   id: string
 ): Cursor<T> => {
 
-  let cursor: Cursor<T>;
   let index = items.findIndex(page => page.id === id);
   index = index > -1 ? index : -404;
 
