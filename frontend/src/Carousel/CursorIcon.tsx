@@ -2,7 +2,7 @@ import * as React from "react";
 
 const CursorIcon = <T extends {}>(props: {
   icon: string,
-  reference: T | null
+  reference?: T | null
 }) => {
   const dims = 30;
   const icon = (
@@ -22,7 +22,7 @@ const CursorIcon = <T extends {}>(props: {
     );
   } else {
     return (
-      <span>
+      <span style={{ fill: "red" }}>
         {icon}
       </span>
     );

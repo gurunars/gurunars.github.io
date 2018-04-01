@@ -5,6 +5,7 @@ import { host } from "storybook-host";
 import CursorIcon from "./CursorIcon";
 
 const next = require("./next.svg");
+const prev = require("./prev.svg");
 
 storiesOf("Carousel", module)
   .addDecorator(host({
@@ -12,11 +13,29 @@ storiesOf("Carousel", module)
     height: 600,
     width: 800,
   }))
-  .add("basic", () => (
-    <CursorIcon
-      icon={next}
-      reference={{
-        id: "FOOBAR"
-      }}
-    />
+  .add("Icon with reference", () => (
+    <div>
+      <CursorIcon
+        icon={next}
+        reference={{
+          id: "FOOBAR"
+        }}
+      />
+      <CursorIcon
+        icon={prev}
+        reference={{
+          id: "FOOBAR"
+        }}
+      />
+    </div>
+  ))
+  .add("Icon without reference", () => (
+    <div>
+      <CursorIcon
+        icon={next}
+      />
+      <CursorIcon
+        icon={prev}
+      />
+    </div>
   )); 
