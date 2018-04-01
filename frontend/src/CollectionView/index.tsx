@@ -34,7 +34,7 @@ const CollectionView = <T extends {}>(
             items={props.items}
             selectedPostion={props.selectedPosition || 0}
             close={() => props.selectedPositionOnChange(null)}
-            goTo={pos => props.selectedPositionOnChange}
+            goTo={pos => props.selectedPositionOnChange(pos)}
           >
             {item => props.itemView({ item: item })}
           </Carousel>

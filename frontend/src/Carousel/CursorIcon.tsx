@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as _ from "lodash";
 
 const CursorIcon = (props: {
   icon: React.ReactElement<any>,
@@ -6,13 +7,14 @@ const CursorIcon = (props: {
   goTo: (targetPosition: number) => void
 }) => {
   const dims = 30;
+  const isEmpty = _.isNil(props.targetPosition);
   return (
     <div
-      onClick={() => props.targetPosition ? props.goTo(props.targetPosition) : null}
+      onClick={() => isEmpty ? null : props.goTo(props.targetPosition || 0)}
       style={{
         position: "relative",
-        color: props.targetPosition ? "black" : "gray",
-        cursor: props.targetPosition ? "pointer" : "not-allowed",
+        color: isEmpty ? "gray" : "black",
+        cursor: isEmpty ? "not-allowed" : "pointer",
         width: dims,
         height: dims
       }}

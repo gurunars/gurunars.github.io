@@ -36,7 +36,6 @@ const ListView = (props: {
             padding: "5px"
           }}
           onClick={() => {
-            console.log(index);
             props.selectedPostionOnChange(index);
           }}
         >{cursor.title}
