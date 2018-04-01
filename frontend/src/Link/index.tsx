@@ -20,7 +20,8 @@ type LinkSupplier = (isActive: boolean) => React.ReactElement<any>;
 
 const Link = (props: {
   children: LinkSupplier | React.ReactElement<any>,
-  params: Object
+  params: Object,
+  style?: React.CSSProperties
 }): React.ReactElement<any> => (
     <HashAware>
       {hash => {
@@ -36,7 +37,7 @@ const Link = (props: {
           payload = props.children;
         }
 
-        return <a href={serialize(newParams)}>{payload}</a>;
+        return <a style={props.style} href={serialize(newParams)}>{payload}</a>;
       }}
     </HashAware>
   );

@@ -2,6 +2,7 @@ import * as React from "react";
 
 import CursorIcon from "./CursorIcon";
 
+import Link from "../Link";
 import next from "./next";
 import prev from "./prev";
 import close from "./prev";
