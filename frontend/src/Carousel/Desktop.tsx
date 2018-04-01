@@ -63,28 +63,13 @@ const Carousel = <T extends Item>(props: {
         style={{
           position: "absolute",
           display: "flex",
+          color: "black",
           top: 10,
           right: 10,
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "white",
-          cursor: "pointer",
           width: dims * 2,
-          height: dims * 2,
-          borderRadius: "50%",
-          marginLeft: 5,
-          border: "2px solid black"
+          height: dims * 2
         }}
-      >
-        <div
-          style={{
-            width: dims * 1.2,
-            height: dims * 1.2,
-            color: "black"
-          }}
-        >{close}
-        </div>
+      >{close}
       </Link>
 
     </div>
