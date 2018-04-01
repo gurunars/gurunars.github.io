@@ -47,7 +47,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
       </div>
 
       <div style={mainAreaStyle}>
-        {props.children(cursor.current)}
+        {props.children(props.items[cursor.current || -1])}
       </div>
 
       <div style={controlsStyle}>
