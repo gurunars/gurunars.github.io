@@ -5,7 +5,7 @@ import responsive from "../Responsive";
 const OverlayDecorator = (props: { children: React.ReactElement<any> }) => (
   <div
     style={{
-      position: "fixed",
+      position: "absolute",
       backgroundColor: "rgba(0,0,0,0.5)",
       top: "0%",
       left: "0%",
@@ -17,7 +17,7 @@ const OverlayDecorator = (props: { children: React.ReactElement<any> }) => (
     <div
       style={{
         display: "flex",
-        position: "fixed",
+        position: "absolute",
         top: "5%",
         left: "5%",
         width: "90%",
