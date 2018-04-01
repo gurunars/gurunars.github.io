@@ -1,10 +1,9 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
+import { action } from "@storybook/addon-actions";
 
-import PlainDesktop from "./Desktop";
-import PlainMobile from "./Mobile";
-import Props from "./Props";
+import Carousel from ".";
 
 interface Item {
   title: string;
@@ -30,19 +29,13 @@ storiesOf("Carousel", module)
     height: 600,
     width: 800,
   }))
-  .add("Mobile/previous and next", () => (
-    <Mobile
+  .add("Previous and next", () => (
+    <Carousel
       items={items}
       selectedPostion={1}
+      close={action("CLOSE")}
+      goTo={action("GO TO")}
     >
       {(current: Item) => (<div>{current.title}</div>)}
-    </Mobile>
-  ))
-  .add("Desktop/previous and next", () => (
-    <Desktop
-      items={items}
-      selectedPostion={1}
-    >
-      {(current: Item) => (<div>{current.title}</div>)}
-    </Desktop>
-  )); 
+    </Carousel>
+  ));

@@ -1,18 +1,8 @@
-import * as React from "react";
+import Desktop from "./Desktop";
+import Mobile from "./Mobile";
+import responsive from "../Responsive";
 
-const Carousel = (
-  { title, onClick }: {
-    title: string,
-    onClick: () => void
-  }) => (
-    <button
-      style={{
-        cursor: "pointer"
-      }}
-      onClick={onClick}
-    >
-      {title}
-    </button>
-  );
-
-export default Carousel;
+export default responsive({
+  desktopView: Desktop,
+  mobileView: Mobile
+});

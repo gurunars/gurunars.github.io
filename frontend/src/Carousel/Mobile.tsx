@@ -70,7 +70,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
         </div>
 
         <div style={controlsStyle}>
-          <CursorIcon icon={prev} targetPosition={cursor.next} goTo={props.goTo} />
+          <CursorIcon icon={next} targetPosition={cursor.next} goTo={props.goTo} />
         </div>
 
       </div>
