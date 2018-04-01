@@ -29,7 +29,15 @@ const ListView = (props: {
 }) => (
     <div>
       {props.items.map((cursor, index) => (
-        <p onClick={() => props.selectedPostionOnChange(index)}>{cursor.title}</p>
+        <p
+          key={index}
+          style={{
+            cursor: "pointer",
+            padding: "5px"
+          }}
+          onClick={() => props.selectedPostionOnChange(index)}
+        >{cursor.title}
+        </p>
       ))}
     </div>
   );
@@ -42,7 +50,7 @@ const CollectionView = compose(
     listView: ListView,
     itemView: ItemView
   }),
-  withState("selectedPosition", "selectedPostionOnChange", null)
+  withState("selectedPosition", "selectedPositionOnChange", null)
 )(PlainCollectionView);
 
 storiesOf("CollectionView", module)

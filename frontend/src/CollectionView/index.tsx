@@ -15,8 +15,8 @@ interface ViewConfig<T extends {}> {
 }
 
 interface PositionHolder {
-  selectedPostion: number | null;
-  selectedPostionOnChange: (selectedPosition: number | null) => void;
+  selectedPosition: number | null;
+  selectedPositionOnChange: (selectedPosition: number | null) => void;
 }
 
 const CollectionView = <T extends {}>(
@@ -25,15 +25,15 @@ const CollectionView = <T extends {}>(
     <PageWithOverlay
       backgroundContent={props.listView({
         items: props.items,
-        selectedPostionOnChange: props.selectedPostionOnChange
+        selectedPostionOnChange: props.selectedPositionOnChange
       })}
       foregroundContent={
-        props.selectedPostion ? (
+        props.selectedPosition ? (
           <Carousel
             items={props.items}
-            selectedPostion={props.selectedPostion || 0}
-            close={() => props.selectedPostionOnChange(null)}
-            goTo={pos => props.selectedPostionOnChange}
+            selectedPostion={props.selectedPosition || 0}
+            close={() => props.selectedPositionOnChange(null)}
+            goTo={pos => props.selectedPositionOnChange}
           >
             {item => props.itemView({ item: item })}
           </Carousel>
