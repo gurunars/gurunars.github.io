@@ -8,12 +8,12 @@ import prev from "./prev";
 import close from "./close";
 import { Item, Cursor, getCursorItems } from "./Cursor";
 
-const Carousel = <Reference extends {}, Payload extends {}>(props: {
-  items: Item[],
+const Carousel = <T extends Item>(props: {
+  items: T[],
   selectedId: string,
-  children: (item: Item | null) => React.ReactElement<any>
+  children: any
 }): React.ReactElement<any> => {
-  const cursor: Cursor<Item> = getCursorItems(props.items, props.selectedId);
+  const cursor: Cursor<T> = getCursorItems(props.items, props.selectedId);
 
   const dims = 15;
   const controlsWidth = 50;
@@ -90,3 +90,5 @@ const Carousel = <Reference extends {}, Payload extends {}>(props: {
     </div>
   );
 };
+
+export default Carousel;

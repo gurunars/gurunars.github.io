@@ -2,10 +2,29 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 
-import CursorIcon from "./CursorIcon";
+import Desktop from "./Desktop";
+import { Item } from "./Cursor";
 
-import next from "./next";
-import prev from "./prev";
+interface MyItem extends Item {
+  title: string;
+}
+
+const item: MyItem = {
+  id: "one",
+  title: "Item one"
+};
+
+const items: MyItem[] = [
+  {
+    id: "zero",
+    title: "Item zero"
+  },
+  item,
+  {
+    id: "two",
+    title: "Item two"
+  }
+];
 
 storiesOf("Carousel", module)
   .addDecorator(host({
@@ -13,29 +32,11 @@ storiesOf("Carousel", module)
     height: 600,
     width: 800,
   }))
-  .add("Icon with reference", () => (
-    <div>
-      <CursorIcon
-        icon={next}
-        item={{
-          id: "FOOBAR"
-        }}
-      />
-      <CursorIcon
-        icon={prev}
-        item={{
-          id: "FOOBAR"
-        }}
-      />
-    </div>
-  ))
-  .add("Icon without reference", () => (
-    <div>
-      <CursorIcon
-        icon={next}
-      />
-      <CursorIcon
-        icon={prev}
-      />
-    </div>
+  .add("Desktop/previous and next", () => (
+    <Desktop
+      items={items}
+      selectedId="one"
+    >
+      {(current: MyItem) => (<div>{current.title}</div>)}
+    </Desktop>
   )); 

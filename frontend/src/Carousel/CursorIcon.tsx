@@ -5,7 +5,7 @@ import { Item } from "./Cursor";
 
 const CursorIcon = (props: {
   icon: React.ReactElement<any>,
-  item?: Item
+  item?: Item | null
 }) => {
   const dims = 30;
   const icon = (
