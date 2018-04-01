@@ -1,24 +1,21 @@
-export interface Item {
-  id: string;
+export interface Cursor {
+  current: number | null;
+  next: number | null;
+  previous: number | null;
 }
 
-export interface Cursor<T extends Item> {
-  current: T | null;
-  next: T | null;
-  previous: T | null;
-}
+const getIndex = (items: any[], index: number): number | null => {
+  if (index < 0 || index >= items.length) {
+    return null;
+  } else {
+    return index;
+  }
+};
 
-export const getCursorItems = <T extends Item>(
-  items: T[],
-  id: string
-): Cursor<T> => {
-
-  let index = items.findIndex(page => page.id === id);
-  index = index > -1 ? index : -404;
-
-  return {
-    current: items[index],
-    next: items[index + 1],
-    previous: items[index - 1]
-  };
+export const getCursorItems = (items: any[], index: number): Cursor => {
+  return ({
+    current: getIndex(items, index),
+    next: getIndex(items, index + 1),
+    previous: getIndex(items, index - 1)
+  });
 };

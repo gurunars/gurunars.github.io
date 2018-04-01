@@ -2,18 +2,14 @@ import * as React from "react";
 
 import CursorIcon from "./CursorIcon";
 
-import Link from "../Link";
 import next from "./icons/next";
 import prev from "./icons/prev";
 import close from "./icons/close";
-import { Item, Cursor, getCursorItems } from "./Cursor";
+import { Cursor, getCursorItems } from "./Cursor";
+import Props from "./Props";
 
-const Carousel = <T extends Item>(props: {
-  items: T[],
-  selectedId: string,
-  children: any
-}): React.ReactElement<any> => {
-  const cursor: Cursor<T> = getCursorItems(props.items, props.selectedId);
+const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
+  const cursor: Cursor = getCursorItems(props.items, props.selectedPostion);
 
   const dims = 15;
   const controlsSize = 50;
@@ -58,23 +54,23 @@ const Carousel = <T extends Item>(props: {
       >
 
         <div style={controlsStyle}>
-          <CursorIcon icon={prev} item={cursor.previous} />
+          <CursorIcon icon={prev} targetPosition={cursor.previous} goTo={props.goTo} />
         </div>
 
         <div style={controlsStyle}>
-          <Link
-            params={{ id: null }}
+          <div
+            onClick={props.close}
             style={{
               color: "black",
               width: dims * 2,
               height: dims * 2,
             }}
           >{close}
-          </Link>
+          </div>
         </div>
 
         <div style={controlsStyle}>
-          <CursorIcon icon={next} item={cursor.next} />
+          <CursorIcon icon={prev} targetPosition={cursor.next} goTo={props.goTo} />
         </div>
 
       </div>
