@@ -1,24 +1,25 @@
 import * as React from "react";
+import Link from "../Link";
 
-const CursorIcon = <T extends {}>(props: {
+const CursorIcon = (props: {
   icon: React.ReactElement<any>,
-  reference?: T | null
+  reference?: Object
 }) => {
   const dims = 30;
-  const style: React.CSSProperties = {
-    position: "relative",
-    width: dims,
-    height: dims
-  };
-  if (props.reference) {
-    return (
-      <div style={style}>{props.icon}</div>
-    );
-  } else {
-    return (
-      <div style={Object.assign(style, { color: "red" })}>{props.icon}</div>
-    );
-  }
+  const icon = (
+    <div
+      style={{
+        position: "relative",
+        color: props.reference ? "black" : "gray",
+        width: dims,
+        height: dims
+      }}
+    >{props.icon}
+    </div>
+  );
+  return props.reference ? (
+    <Link params={props.reference}>{icon}</Link>
+  ) : icon;
 };
 
 export default CursorIcon;
