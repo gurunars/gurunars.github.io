@@ -1,9 +1,10 @@
 import * as React from "react";
 
 const CursorIcon = <T extends {}>(props: {
-  icon: (color?: string) => React.ReactElement<any>,
+  icon: string,
   reference?: T | null
 }) => {
+  const icon = <img src={props.icon} />;
   const style: React.CSSProperties = {
     position: "relative",
     width: "30px",
@@ -11,15 +12,11 @@ const CursorIcon = <T extends {}>(props: {
   };
   if (props.reference) {
     return (
-      <div style={style}>
-        {props.icon()}
-      </div>
+      <div style={style}>{icon}</div>
     );
   } else {
     return (
-      <div style={style}>
-        {props.icon("red")}
-      </div>
+      <div style={Object.assign(style, { fill: "red" })}>{icon}</div>
     );
   }
 };
