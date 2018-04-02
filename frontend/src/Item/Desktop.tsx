@@ -27,34 +27,11 @@ const ItemView = ({ item, openItem }: {
 }): React.ReactElement<any> => (
     <div
       style={{
-        display: "inline-block",
         position: "relative",
-        verticalAlign: "top",
-        width: 300,
-        height: 220,
-        margin: 10
+        width: "100%",
+        height: "100%"
       }}
     >
-      <div
-        style={{
-          backgroundColor: "rgba(0, 0, 0, 0.3)",
-          height: 40,
-          width: "100%",
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          padding: 5,
-          marginTop: 5,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-start",
-          justifyContent: "flex-start"
-        }}
-      >
-        {item.links.map((link: Reference) =>
-          <a key={link.url} href={link.url}>{link.name}</a>
-        )}
-      </div>
       <div
         style={{
           position: "relative",
@@ -79,6 +56,26 @@ const ItemView = ({ item, openItem }: {
         <span style={merge(metaInfoStyle, { right: 0 })}>
           {durationToString(item.duration)}
         </span>
+      </div>
+      <div
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          height: 40,
+          width: "100%",
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          padding: 5,
+          marginTop: 5,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "flex-start",
+          justifyContent: "flex-start"
+        }}
+      >
+        {item.links.map((link: Reference) =>
+          <a key={link.url} href={link.url}>{link.name}</a>
+        )}
       </div>
     </div>
   );
