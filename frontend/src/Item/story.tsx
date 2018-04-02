@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { host } from "storybook-host";
 
-import Item from ".";
+import { Small, Large } from ".";
 
 const item = {
   title: "Title",
@@ -58,8 +58,13 @@ storiesOf("Item", module)
     width: 800,
   }))
   .add("small", () => (
-    <Item
+    <Small
       item={item}
       openItem={action("OpenItem")}
+    />
+  ))
+  .add("large", () => (
+    <Large
+      item={item}
     />
   )); 
