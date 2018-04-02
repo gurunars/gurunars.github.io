@@ -18,6 +18,15 @@ storiesOf("Link", module)
       }} 
     />
   ))
+  .add("CircleUrl with type", () => (
+    <CircleUrl
+      link={{
+        name: "FOO",
+        url: "bar",
+        type: "amazon"
+      }} 
+    />
+  ))
   .add("CircleUrl without type", () => (
     <CircleUrl
       link={{

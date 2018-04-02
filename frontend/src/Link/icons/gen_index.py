@@ -1,5 +1,7 @@
 import os
 
+# TODO: run this script on build
+
 def get_icons():
     for fil in os.listdir("."):
         if not fil.endswith(".svg"):
