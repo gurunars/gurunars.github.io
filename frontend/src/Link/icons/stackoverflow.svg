@@ -9,27 +9,28 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="68.26667"
+   height="68.26667"
    id="svg4231"
    version="1.1"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="New document 26">
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="stackoverflow.svg"
+   viewBox="0 0 64 64">
   <defs
      id="defs4233">
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 32 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="64 : 32 : 1"
-       inkscape:persp3d-origin="32 : 21.333333 : 1"
+       inkscape:vp_x="0 : 31.999998 : 1"
+       inkscape:vp_y="0 : 999.99995 : 0"
+       inkscape:vp_z="63.999997 : 31.999998 : 1"
+       inkscape:persp3d-origin="31.999998 : 21.333332 : 1"
        id="perspective4239" />
     <inkscape:perspective
        id="perspective4219"
-       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
-       inkscape:vp_z="1 : 0.5 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:persp3d-origin="0.49999998 : 0.33333331 : 1"
+       inkscape:vp_z="0.99999995 : 0.49999998 : 1"
+       inkscape:vp_y="0 : 999.99995 : 0"
+       inkscape:vp_x="0 : 0.49999998 : 1"
        sodipodi:type="inkscape:persp3d" />
   </defs>
   <sodipodi:namedview
@@ -46,8 +47,8 @@
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="1280"
-     inkscape:window-height="674"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1" />
@@ -59,7 +60,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -68,52 +69,53 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer">
     <path
-       style="fill:#919191;fill-opacity:1;stroke:none"
+       style="fill:#000000;fill-opacity:1;stroke:none"
        id="path2830"
-       d="m 8.2066776,36.963544 4.4013074,0.04316 -0.153441,19.598393 29.291258,0 0,-19.527506 4.637782,0 0,24.287331 -38.200679,0 0.023777,-24.401371 z" />
+       d="m 8.2066776,36.963544 4.4013074,0.04316 -0.153441,19.598393 H 41.745802 V 37.077591 h 4.637782 V 61.364922 H 8.182905 L 8.206682,36.963551 Z"
+       inkscape:connector-curvature="0" />
     <rect
-       style="fill:#919191;fill-opacity:1;stroke:none"
+       style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3604"
        y="48.549992"
        x="15.383667"
        height="4.881876"
        width="22.944817" />
     <rect
-       style="fill:#919191;fill-opacity:1;stroke:none"
+       style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3606"
-       transform="matrix(0.9953749,0.09606666,-0.09606666,0.9953749,0,0)"
+       transform="rotate(5.5127158)"
        y="38.051189"
        x="19.667879"
        height="5.0039229"
        width="23.066864" />
     <rect
-       style="fill:#919191;fill-opacity:1;stroke:none"
+       style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3606-1"
-       transform="matrix(0.96240291,0.27162592,-0.27162592,0.96240291,0,0)"
+       transform="rotate(15.761041)"
        y="23.81143"
        x="25.447008"
        height="5.0039229"
        width="23.066864" />
     <rect
-       style="fill:#919191;fill-opacity:1;stroke:none"
+       style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3606-1-3"
-       transform="matrix(0.85597805,0.51701216,-0.51701216,0.85597805,0,0)"
+       transform="rotate(31.132046)"
        y="3.8206301"
        x="29.64859"
        height="5.0039229"
        width="23.066864" />
     <rect
-       style="fill:#919191;fill-opacity:1;stroke:none"
+       style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3606-1-3-7"
-       transform="matrix(0.58242689,0.81288309,-0.81288309,0.58242689,0,0)"
+       transform="rotate(54.378581)"
        y="-23.514734"
        x="26.646437"
        height="5.0039229"
        width="23.066864" />
     <rect
-       style="fill:#919191;fill-opacity:1;stroke:none"
+       style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3606-1-3-7-6"
-       transform="matrix(0.16480989,0.98632535,-0.98632535,0.16480989,0,0)"
+       transform="rotate(80.513809)"
        y="-49.081326"
        x="11.107887"
        height="5.0039229"
