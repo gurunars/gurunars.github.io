@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { merge } from "../utils";
+import getIconForType from "./icons";
 
 export interface Link {
   name: string;
@@ -23,6 +24,7 @@ export const CircleUrl = ({ link, style }: {
     style={
       merge((style || {}), {
         display: "flex",
+        position: "relative",
         alignItems: "center",
         justifyContent: "center",
         cursor: "pointer",
@@ -33,6 +35,12 @@ export const CircleUrl = ({ link, style }: {
       })} 
     href={link.url}
   >
-    +
+    <img 
+      style={{
+        width: "70%",
+        height: "70%"
+      }}
+      src={getIconForType(link.type)} 
+    />
   </a>
 );

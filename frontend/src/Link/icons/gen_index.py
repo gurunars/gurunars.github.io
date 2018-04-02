@@ -13,7 +13,7 @@ dicts = []
 
 for icon in icons:
     imports.append(
-        'const {name} = require("./{name}.svg)'.format(name=icon)
+        'const {name} = require("./{name}.svg")'.format(name=icon)
     )
     dicts.append(
         '{name}: {name}'.format(name=icon)
@@ -30,6 +30,8 @@ const icons = {{
 
 const getIconForType = (type: string) =>
     icons[type] || fallback; 
+
+export default getIconForType;
 """.format(
     imports=";\n".join(imports),
     dicts=",\n    ".join(dicts)
