@@ -19,10 +19,10 @@ export const CircleUrl = ({ link, style }: {
   style?: React.CSSProperties 
 }) => (
   <a 
-    data-tip={link.name} 
+    title={link.name} 
     style={
       merge((style || {}), {
-        display: "inline-flex",
+        display: "flex",
         alignItems: "center",
         justifyContent: "center",
         cursor: "pointer",
