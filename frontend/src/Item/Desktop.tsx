@@ -27,7 +27,9 @@ const ItemView = ({ item, openItem }: {
 }): React.ReactElement<any> => (
     <div
       style={{
+        display: "flex",
         position: "relative",
+        flexDirection: "column",
         width: "100%",
         height: "100%"
       }}
@@ -36,7 +38,7 @@ const ItemView = ({ item, openItem }: {
         style={{
           position: "relative",
           width: "100%",
-          height: "calc(100% - 40px)"
+          flex: "1 1 auto"
         }}
       >
         <span
@@ -61,8 +63,8 @@ const ItemView = ({ item, openItem }: {
         style={{
           backgroundColor: "rgba(0, 0, 0, 0.3)",
           height: 40,
+          flex: "0 1 40px",
           width: "100%",
-          position: "absolute",
           bottom: 0,
           left: 0,
           padding: 5,
