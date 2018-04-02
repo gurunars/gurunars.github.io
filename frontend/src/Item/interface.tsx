@@ -1,23 +1,19 @@
+import { Link } from "../Link";
+
 export interface Duration {
   start: Date;
   end?: Date;
 }
 
-export interface Reference {
-  name: string;
-  url: string;
-  type?: string;
-}
-
 export interface Item {
   title: string;
   achievements: string[];
-  location: Reference;
-  references: Reference[];
+  location: Link;
+  references: Link[];
   type: string;
   tags: string[];
   description: string;
-  links: Reference[];
+  links: Link[];
   duration: Duration;
 }
 

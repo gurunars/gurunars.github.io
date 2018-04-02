@@ -1,7 +1,8 @@
 import * as React from "react";
 
-import { Item, Reference, durationToString } from "./interface";
+import { Item, durationToString } from "./interface";
 import { merge } from "../utils";
+import { Url } from "../Link";
 
 const baseStyle = {
   display: "block",
@@ -49,12 +50,10 @@ const ItemView = ({ item, openItem }: {
         <span style={merge(baseStyle, { fontSize: "0.8em", marginTop: 10 })}>
           {item.description}
         </span>
-        <a
-          href={item.location.url}
+        <Url 
+          link={item.location}
           style={merge(metaInfoStyle, { bottom: 0, width: 160 })}
-        >
-          {item.location.name}
-        </a>
+        />
         <span style={merge(metaInfoStyle, { right: 0 })}>
           {durationToString(item.duration)}
         </span>
@@ -75,9 +74,7 @@ const ItemView = ({ item, openItem }: {
           justifyContent: "flex-start"
         }}
       >
-        {item.links.map((link: Reference) =>
-          <a key={link.url} href={link.url}>{link.name}</a>
-        )}
+        {item.links.map(link => <Url key={link.name} link={link} />)}
       </div>
     </div>
   );
