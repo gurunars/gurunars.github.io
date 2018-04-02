@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Item, durationToString } from "./interface";
 import { merge } from "../utils";
-import { Url } from "../Link";
+import { Url, CircleUrl } from "../Link";
 
 const baseStyle = {
   display: "block",
@@ -74,7 +74,13 @@ const ItemView = ({ item, openItem }: {
           justifyContent: "flex-start"
         }}
       >
-        {item.links.map(link => <Url key={link.name} link={link} />)}
+        {item.links.map(link => (
+          <CircleUrl 
+            style={{marginRight: 5}} 
+            key={link.name} 
+            link={link} 
+          />
+        ))}
       </div>
     </div>
   );

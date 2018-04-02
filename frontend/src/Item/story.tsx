@@ -34,13 +34,16 @@ const item = {
   links: [
     {
       name: "Name of the lnk1",
-      url: "url-to-lnk1"
+      url: "url-to-lnk1",
+      type: "amazon"
     }, {
       name: "Name of the lnk2",
-      url: "url-to-lnk2"
+      url: "url-to-lnk2",
+      type: "github"
     }, {
       name: "Name of the lnk3",
-      url: "url-to-lnk3"
+      url: "url-to-lnk3",
+      type: "email"
     }
   ],
   duration: {
