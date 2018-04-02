@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as _ from "lodash";
+import { Set } from "immutable";
 
-import { TypeToSpecMapping, Spec } from "../interface";
+import { TypeToSpecMapping, Spec } from "../Item/interface";
 
 const SpecView = ({spec, isSelected, isSelectedOnChange}: {
   spec: Spec,
@@ -18,7 +19,7 @@ const SpecView = ({spec, isSelected, isSelectedOnChange}: {
       textAlign: "center",
       padding: 5,
       backgroundColor: spec.color,
-      textDecoration: !isSelected ? "line-through" : "none"
+      textDecoration: isSelected ? "line-through" : "none"
     }} 
     onClick={() => isSelectedOnChange(!isSelected)}
   >
@@ -26,30 +27,24 @@ const SpecView = ({spec, isSelected, isSelectedOnChange}: {
   </span>
 );
 
-const SpecFilter = (props: {
+export const SpecFilter = (props: {
   selectedSpecs: string[]
   selectedSpecsOnChange: (selectedSpecs: string[]) => void
 }): React.ReactElement<any> => (
   <div>
     <b style={{marginRight: 10, whiteSpace: "nowrap"}}>Project types: </b>
     {_.map(TypeToSpecMapping, (value, key) =>
-      <SpecView spec={value} />
-    })}
+      <SpecView 
+        spec={value} 
+        isSelected={props.selectedSpecs.indexOf(key) > -1} 
+        isSelectedOnChange={isSelected => 
+          props.selectedSpecsOnChange(
+            isSelected ? 
+              Set(props.selectedSpecs).add(key).toArray() : 
+              Set(props.selectedSpecs).remove(key).toArray()
+          )
+        }
+      />
+    )}
   </div>
 );
-
-const Toolbar = (props: {
-  title: string,
-  onClick: () => void
-}): React.ReactElement<any> => (
-    <button
-      style={{
-        cursor: "pointer"
-      }}
-      onClick={props.onClick}
-    >
-      {props.title}
-    </button>
-  );
-
-export default Toolbar;
