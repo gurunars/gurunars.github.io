@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { host } from "storybook-host";
 
-import Desktop from "./Desktop";
+import Desktop from ".";
 
 const item = {
   title: "Title",
