@@ -3,6 +3,25 @@ import * as React from "react";
 import { Url, FullUrl } from "../Link";
 import { Item, durationToString } from "./interface";
 
+const Section = (props: {
+  title: string,
+  data: any
+}) => (
+  <div>
+    <h4
+      style={{
+        paddingTop: 10,
+        paddingBottom: 10
+      }}
+    >
+      {props.title}
+    </h4>
+    <div>
+      {props.data}
+    </div>
+  </div>
+);
+
 const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
   <div>
     <h3>{item.title}</h3>
@@ -25,90 +44,54 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
         paddingBottom: 10
       }}
     >
-
-        {item.description && (
-          <div>
-              <h4
-                style={{
-                  paddingTop: 10,
-                  paddingBottom: 10
-                }}
-              >
-                Description
-              </h4>
-              <div>
-                {item.description}
-              </div>
-          </div>
-        )}
-        {item.achievements && (
-          <div>
-              <h4 
-                style={{
-                  paddingTop: 10,
-                  paddingBottom: 10
-                }}
-              >
-                Achievements
-              </h4>
-              <ul 
-                style={{
-                  paddingLeft: 20
-                }}
-              >
-                {item.achievements.map(value => <li key={value}>{value}</li>)}
-              </ul>
-          </div>
-        )}
-        {item.references && (
-          <div>
-            <h4 
-              style={{
-                paddingTop: 10,
-                paddingBottom: 10
-              }}
-            >
-              References
-            </h4>
-            <ul 
-              style={{
-                paddingLeft: 20
-              }}
-            >
-              {item.references.map(reference => (
-                <li key={reference.name}><Url link={reference} /></li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <div 
-          style={{
-            marginTop: 10
-          }}
-        >
-          {item.tags.map(tag => (
-            <i
-              key={tag}
-              style={{
-                backgroundColor: "Beige",
-                display: "inline-block",
-                textDecoration: "none",
-                whiteSpace: "pre",
-                color: "Black",
-                marginLift: 5,
-                marginRight: 5,
-                paddingTop: 3,
-                paddingBottom: 3,
-                paddingLeft: 10,
-                paddingRight: 10,
-                fontSize: 12,
-                borderRadius: 5
-              }}
-            >
-            {tag}
-            </i>
+      {item.description && (
+        <Section 
+          title="Description" 
+          data={item.description} 
+        />) 
+      }
+      {item.achievements && (
+        <Section 
+          title="Achievements" 
+          data={item.achievements.map(value => <li key={value}>{value}</li>)} 
+        />) 
+      }
+      {item.achievements && (
+        <Section 
+          title="References" 
+          data={item.references.map(reference => (
+            <li key={reference.name}><Url link={reference} /></li>
           ))}
-        </div>
+        />) 
+      }
+      <div 
+        style={{
+          marginTop: 10
+        }}
+      >
+        {item.tags.map(tag => (
+          <i
+            key={tag}
+            style={{
+              backgroundColor: "Beige",
+              display: "inline-block",
+              textDecoration: "none",
+              whiteSpace: "pre",
+              color: "Black",
+              marginLift: 5,
+              marginRight: 5,
+              paddingTop: 3,
+              paddingBottom: 3,
+              paddingLeft: 10,
+              paddingRight: 10,
+              fontSize: 12,
+              borderRadius: 5
+            }}
+          >
+          {tag}
+          </i>
+        ))}
+      </div>
 
     </div>
 
