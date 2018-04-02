@@ -57,7 +57,7 @@ storiesOf("Item", module)
     height: 600,
     width: 800,
   }))
-  .add("desktop", () => (
+  .add("small", () => (
     <Item
       item={item}
       openItem={action("OpenItem")}
