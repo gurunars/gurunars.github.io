@@ -37,6 +37,26 @@ const ItemView = ({ item, openItem }: {
     >
       <div
         style={{
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          height: 40,
+          width: "100%",
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          padding: 5,
+          marginTop: 5,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "flex-start",
+          justifyContent: "flex-start"
+        }}
+      >
+        {item.links.map((link: Reference) =>
+          <a key={link.url} href={link.url}>{link.name}</a>
+        )}
+      </div>
+      <div
+        style={{
           position: "relative",
           width: "100%",
           height: "calc(100% - 40px)"
@@ -59,26 +79,6 @@ const ItemView = ({ item, openItem }: {
         <span style={merge(metaInfoStyle, { right: 0 })}>
           {durationToString(item.duration)}
         </span>
-      </div>
-      <div
-        style={{
-          backgroundColor: "rgba(0, 0, 0, 0.3)",
-          height: 40,
-          width: "100%",
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          padding: 5,
-          marginTop: 5,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-start",
-          justifyContent: "flex-start"
-        }}
-      >
-        {item.links.map((link: Reference) =>
-          <a key={link.url} href={link.url}>{link.name}</a>
-        )}
       </div>
     </div>
   );
