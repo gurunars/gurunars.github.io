@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Item, durationToString } from "./interface";
+import { Item, durationToString, getTypeSpec } from "./interface";
 import { merge } from "../utils";
 import { Url, CircleUrl } from "../Link";
 
@@ -29,6 +29,7 @@ const ItemView = ({ item, openItem }: {
     <div
       style={{
         display: "flex",
+        color: getTypeSpec(item.type).color,
         position: "relative",
         flexDirection: "column",
         width: "100%",

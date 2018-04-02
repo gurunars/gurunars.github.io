@@ -23,3 +23,32 @@ const format = (date?: Date | null) =>
 
 export const durationToString = (duration: Duration) =>
   format(duration.start) + " - " + (format(duration.end) || "NOW");
+
+export interface Spec {
+  humanReadableName: string;
+  color: string;  
+}
+
+export const TypeToSpecMapping: {[key: string]: Spec} = {
+  openSource: {
+    humanReadableName: "Open Source",
+    color: "PaleGreen"
+  },
+  freelance: {
+    humanReadableName: "Freelance",
+    color: "MistyRose"
+  },
+  fullTimeJob: {
+    humanReadableName: "Full time job",
+    color: "Lavender"
+  },
+  education: {
+    humanReadableName: "Education",
+    color: "Silver"
+  }
+};
+
+export const getTypeSpec = (type: string): Spec => TypeToSpecMapping[type] || {
+  humanReadableName: "Unknown",
+  color: "white"
+};
