@@ -2,8 +2,8 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 
-import { Desktop, RenderItem } from ".";
-import { groupItems, GroupedItems } from "./grouping";
+import { Desktop } from ".";
+import { groupItems } from "./grouping";
 
 interface Item {
   type: string;
@@ -22,11 +22,6 @@ const items: Item[] = [
   {"type": "three", "title": "I"}
 ];
 
-const grouped: GroupedItems<Item>[] = groupItems(items, "type", "title");
-
-const renderItem: RenderItem<Item> = (item: Item) =>
-  <h1>{item.title}</h1>;
-
 storiesOf("GroupedList", module)
   .addDecorator(host({
     align: "center middle",
@@ -34,5 +29,8 @@ storiesOf("GroupedList", module)
     width: 800,
   }))
   .add("basic", () => (
-    <Desktop items={grouped} renderItem={renderItem} />
+    <Desktop 
+      items={groupItems(items, "type", "title")} 
+      renderItem={(props: {item: Item}) => <h1>{props.item.title}</h1>} 
+    />
   )); 

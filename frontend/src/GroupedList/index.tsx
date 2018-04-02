@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { GroupedItems } from "./grouping";
 
-export type RenderItem<T extends {}> = (item: T) => React.ReactElement<any>;
+type RenderItem<T extends {}> = (props: {item: T}) => React.ReactElement<any>;
 
 const Group = <T extends {}>(props: {
   group: GroupedItems<T>, 
@@ -14,7 +14,14 @@ const Group = <T extends {}>(props: {
       pageBreakInside: "avoid"
     }}
   >
-    <h2 style={{ pageBreakAfter: "avoid" }}>{props.group}</h2>
+    <h2 style={{ pageBreakAfter: "avoid" }}>{props.group.group}</h2>
+    <div 
+      style={{
+        display: "flex"
+      }}
+    >
+    {props.group.elements.map(item => props.renderItem({item: item}))}
+    </div>
   </div>
 );
 
@@ -22,11 +29,7 @@ const GroupedList = <T extends {}>(props: {
   items: GroupedItems<T>[],
   renderItem: RenderItem<T>
 }): React.ReactElement<any> => (
-  <div 
-    style={{
-      display: "flex"
-    }}
-  >
+  <div>
     {props.items.map(item => <Group 
       key={item.group} 
       group={item} 
