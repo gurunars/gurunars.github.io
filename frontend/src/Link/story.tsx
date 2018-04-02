@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 
-import { Url, CircleUrl } from ".";
+import { Url, CircleUrl, FullUrl } from ".";
 
 storiesOf("Link", module)
   .addDecorator(host({
@@ -15,6 +15,15 @@ storiesOf("Link", module)
       link={{
         name: "FOO",
         url: "bar"
+      }} 
+    />
+  ))
+  .add("FullUrl with type", () => (
+    <FullUrl
+      link={{
+        name: "FOO",
+        url: "bar",
+        type: "amazon"
       }} 
     />
   ))

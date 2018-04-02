@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { merge } from "../utils";
+
 import getIconForType from "./icons";
 
 export interface Link {
@@ -15,14 +16,9 @@ export const Url = ({ link, style }: {
 }) =>
   <a style={style} href={link.url}>{link.name}</a>;
 
-export const CircleUrl = ({ link, style }: {
-  link: Link, 
-  style?: React.CSSProperties 
-}) => (
-  <a 
-    title={link.name} 
-    style={
-      merge((style || {}), {
+const CircleType = ({ type }: {type?: string}) => (
+  <a
+    style={{
         display: "flex",
         position: "relative",
         alignItems: "center",
@@ -32,15 +28,47 @@ export const CircleUrl = ({ link, style }: {
         height: 30,
         borderRadius: "50%",
         border: "2px solid black"
-      })} 
-    href={link.url}
+      }} 
   >
     <img 
       style={{
         width: "70%",
         height: "70%"
       }}
-      src={getIconForType(link.type)} 
+      src={getIconForType(type)} 
     />
+  </a>
+);
+
+export const CircleUrl = ({ link, style }: {
+  link: Link, 
+  style?: React.CSSProperties 
+}) => (
+  <a 
+    title={link.name} 
+    style={style} 
+    href={link.url}
+  >
+    <CircleType type={link.type} />
+  </a>
+);
+
+export const FullUrl = ({ link, style }: {
+  link: Link, 
+  style?: React.CSSProperties 
+}) => (
+  <a 
+    title={link.name}
+    style={merge({alignItems: "center", display: "inline-flex"}, style || {})} 
+    href={link.url}
+  >
+    <CircleType type={link.type} />
+    <span 
+      style={{
+        marginLeft: "5px"
+      }}
+    >
+      {link.name}
+    </span>
   </a>
 );

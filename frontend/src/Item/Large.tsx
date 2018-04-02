@@ -1,15 +1,10 @@
 import * as React from "react";
 
-import { Url } from "../Link";
+import { Url, FullUrl } from "../Link";
 import { Item, durationToString } from "./interface";
 
 const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
-  <div 
-    style={{
-      margin: 5, 
-      padding: 10
-    }}
-  >
+  <div>
     <h3>{item.title}</h3>
     {item.location && (
       <p style={{fontSize: 14}}>
@@ -33,10 +28,16 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
 
         {item.description && (
           <div>
-              <h4>Description</h4>
-
-              <div style={{marginTop: 10}}>
-                  {item.description}
+              <h4
+                style={{
+                  paddingTop: 10,
+                  paddingBottom: 10
+                }}
+              >
+                Description
+              </h4>
+              <div>
+                {item.description}
               </div>
           </div>
         )}
@@ -119,7 +120,7 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
       }}
     >
       {item.links.map(link => (
-        <Url link={link} style={{marginBottom: 4}} />
+        <FullUrl link={link} style={{marginBottom: 4}} />
       ))}
     </div>
   </div>
