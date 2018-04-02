@@ -21,5 +21,9 @@ export interface Item {
   duration: Duration;
 }
 
+const format = (date?: Date | null) =>
+  date == null ? null :
+    date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+
 export const durationToString = (duration: Duration) =>
-  duration.start + " - " + (duration.end || "NOW");
+  format(duration.start) + " - " + (format(duration.end) || "NOW");
