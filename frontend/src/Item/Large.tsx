@@ -24,7 +24,7 @@ const Section = (props: {
 
 const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
   <div>
-    <h3>{item.title}</h3>
+    <h3 style={{marginBottom: 5}}>{item.title}</h3>
     {item.location && (
       <p style={{fontSize: 14}}>
         <b style={{color: "grey"}}>[at]:</b> 
@@ -38,7 +38,7 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
     <div 
       style={{
         marginLeft: 5,
-        marginTop: 6,
+        marginTop: 8,
         paddingLeft: 10,
         borderLeft: "3px solid grey",
         paddingBottom: 10
@@ -99,7 +99,7 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
       style={{
         display: "flex",
         flexDirection: "column",
-        marginTop: 5
+        marginTop: 10
       }}
     >
       {item.links.map(link => (
