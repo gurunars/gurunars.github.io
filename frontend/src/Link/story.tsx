@@ -6,9 +6,9 @@ import { Url, CircleUrl } from ".";
 
 storiesOf("Link", module)
   .addDecorator(host({
-    align: "center bottom",
-    height: 600,
-    width: 800,
+    align: "center middle",
+    height: 200,
+    width: 200,
   }))
   .add("Url", () => (
     <Url 
