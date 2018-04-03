@@ -11,7 +11,7 @@ export interface Spec {
 export type TypeToSpecMapping = { [key: string]: Spec };
 
 export interface GroupSpec {
-  alias: string;
+  humanReadableName: string;
   groupBy: string;
   sortBy: string;
   reverse: boolean;

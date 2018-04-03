@@ -25,12 +25,39 @@ const StateSpecFilter = compose(
   )
 )(SpecFilter);
 
+const StateGroupBy = compose(
+  withProps({
+    "mapping": {
+      one: {
+        humanReadableName: "One",
+        groupBy: "group-by-one",
+        sortBy: "sort-by-one",
+        reverse: true
+      },
+      two: {
+        humanReadableName: "Two",
+        groupBy: "group-by-two",
+        sortBy: "sort-by-two",
+        reverse: false
+      }
+    }
+  }),
+  withState(
+    "selectedSpecs",
+    "selectedSpecsOnChange",
+    []
+  )
+)(GroupBy);
+
 storiesOf("Toolbar", module)
   .addDecorator(host({
     align: "center middle",
     height: 600,
     width: 800,
   }))
+  .add("GroupBy", () => (
+    <StateGroupBy />
+  ))
   .add("SpecFilter", () => (
     <StateSpecFilter />
   )); 

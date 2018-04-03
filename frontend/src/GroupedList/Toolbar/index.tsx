@@ -58,8 +58,7 @@ export const SpecFilter = (
     </div>
   );
 
-const GroupView = ({ title, spec, isSelected, isSelectedOnChange }: {
-  title: string,
+const GroupView = ({ spec, isSelected, isSelectedOnChange }: {
   spec: GroupSpec,
   isSelected: boolean,
   isSelectedOnChange: (isSelected: boolean) => void
@@ -71,7 +70,7 @@ const GroupView = ({ title, spec, isSelected, isSelectedOnChange }: {
       })}
       onClick={() => isSelectedOnChange(!isSelected)}
     >
-      {title}
+      {spec.humanReadableName}
     </span>
   );
 
@@ -84,13 +83,12 @@ export const GroupBy = (
   props: { mapping: TitleToGroupSpecMapping } & GroupSpecSelection
 ): React.ReactElement<any> => (
     <div>
-      <b style={{ marginRight: 10, whiteSpace: "nowrap" }}>Project types: </b>
+      <b style={{ marginRight: 10, whiteSpace: "nowrap" }}>Group by: </b>
       {_.map(props.mapping, (value, key) =>
         <GroupView
-          title={key}
           spec={value}
-          isSelected={props.selectedGroup === value.alias}
-          isSelectedOnChange={isSelected => props.selectedGroupOnChange(value.alias)}
+          isSelected={props.selectedGroup === key}
+          isSelectedOnChange={isSelected => props.selectedGroupOnChange(key)}
         />
       )}
     </div>

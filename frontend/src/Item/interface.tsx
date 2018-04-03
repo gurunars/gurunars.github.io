@@ -50,26 +50,26 @@ export const getTypeSpec = (type: string): Spec => TypeToSpecMapping[type] || {
 };
 
 export const Groups: { [key: string]: GroupSpec } = {
-  "Year": {
-    alias: "year",
+  "year": {
+    humanReadableName: "year",
     groupBy: "year",
     sortBy: "timestamp",
     reverse: true
   },
-  "Type": {
-    alias: "humanReadableType",
+  "type": {
+    humanReadableName: "Type",
     groupBy: "humanReadableType",
     sortBy: "timestamp",
     reverse: false
   },
-  "Title": {
-    alias: "titleFirstChar",
+  "title": {
+    humanReadableName: "Title",
     groupBy: "titleFirstChar",
     sortBy: "title",
     reverse: false
   },
-  "Location": {
-    alias: "locationName",
+  "location": {
+    humanReadableName: "Location",
     groupBy: "locationName",
     sortBy: "timestamp",
     reverse: false
