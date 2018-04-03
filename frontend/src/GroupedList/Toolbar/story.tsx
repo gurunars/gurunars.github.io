@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 import { withState, compose, withProps } from "recompose";
 
-import { SpecFilter } from ".";
+import { SpecFilter, GroupBy } from ".";
 
 const StateSpecFilter = compose(
   withProps({
