@@ -10,11 +10,11 @@ const StateSpecFilter = compose(
     "mapping": {
       one: {
         humanReadableName: "One",
-        color: "Red"
+        color: "Yellow"
       },
       two: {
         humanReadableName: "Two",
-        color: "Blue"
+        color: "LightGreen"
       }
     }
   }),
