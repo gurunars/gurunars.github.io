@@ -26,10 +26,10 @@ export const durationToString = (duration: Duration) =>
 
 export interface Spec {
   humanReadableName: string;
-  color: string;  
+  color: string;
 }
 
-export const TypeToSpecMapping: {[key: string]: Spec} = {
+export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
     humanReadableName: "Open Source",
     color: "PaleGreen"
@@ -51,4 +51,33 @@ export const TypeToSpecMapping: {[key: string]: Spec} = {
 export const getTypeSpec = (type: string): Spec => TypeToSpecMapping[type] || {
   humanReadableName: "Unknown",
   color: "white"
+};
+
+interface GroupSpec {
+  groupBy: string;
+  sortBy: string;
+  reverse: boolean;
+}
+
+export const Groups: { [key: string]: GroupSpec } = {
+  "Year": {
+    groupBy: "year",
+    sortBy: "timestamp",
+    reverse: true
+  },
+  "Type": {
+    groupBy: "humanReadableType",
+    sortBy: "timestamp",
+    reverse: false
+  },
+  "Title": {
+    groupBy: "titleFirstChar",
+    sortBy: "title",
+    reverse: false
+  },
+  "Location": {
+    groupBy: "locationName",
+    sortBy: "timestamp",
+    reverse: false
+  }
 };
