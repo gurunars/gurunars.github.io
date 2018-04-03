@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Item, durationToString, getTypeSpec } from "./interface";
+import { Item, durationToString } from "./interface";
 import { merge } from "../utils";
 import { Url, CircleUrl } from "../Link";
 
@@ -29,7 +29,6 @@ const ItemView = ({ item, openItem }: {
     <div
       style={{
         display: "flex",
-        color: getTypeSpec(item.type).color,
         position: "relative",
         flexDirection: "column",
         width: "100%",
@@ -51,7 +50,7 @@ const ItemView = ({ item, openItem }: {
         <span style={merge(baseStyle, { fontSize: "0.8em", marginTop: 10 })}>
           {item.description}
         </span>
-        <Url 
+        <Url
           link={item.location}
           style={merge(metaInfoStyle, { bottom: 0, width: 160 })}
         />
@@ -76,10 +75,10 @@ const ItemView = ({ item, openItem }: {
         }}
       >
         {item.links.map(link => (
-          <CircleUrl 
-            style={{marginRight: 5}} 
-            key={link.name} 
-            link={link} 
+          <CircleUrl
+            style={{ marginRight: 5 }}
+            key={link.name}
+            link={link}
           />
         ))}
       </div>

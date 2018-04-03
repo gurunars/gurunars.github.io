@@ -1,4 +1,5 @@
 import { Link } from "../Link";
+import { Spec, GroupSpec } from "../GroupedList/interfaces";
 
 export interface Duration {
   start: Date;
@@ -24,11 +25,6 @@ const format = (date?: Date | null) =>
 export const durationToString = (duration: Duration) =>
   format(duration.start) + " - " + (format(duration.end) || "NOW");
 
-export interface Spec {
-  humanReadableName: string;
-  color: string;
-}
-
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
     humanReadableName: "Open Source",
@@ -52,12 +48,6 @@ export const getTypeSpec = (type: string): Spec => TypeToSpecMapping[type] || {
   humanReadableName: "Unknown",
   color: "white"
 };
-
-interface GroupSpec {
-  groupBy: string;
-  sortBy: string;
-  reverse: boolean;
-}
 
 export const Groups: { [key: string]: GroupSpec } = {
   "Year": {

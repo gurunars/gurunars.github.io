@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { GroupedItems } from "./grouping";
+import { GroupedItems } from "./interfaces";
 import responsive from "../Responsive";
 
 type RenderItem<T extends {}> = (props: {item: T}) => React.ReactElement<any>;
