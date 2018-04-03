@@ -75,7 +75,7 @@ const GroupView = ({ spec, isSelected, isSelectedOnChange }: {
   );
 
 interface GroupSpecSelection {
-  selectedGroup: string;
+  selectedGroup?: string | null;
   selectedGroupOnChange: (selectedSpecs: string) => void;
 }
 
@@ -87,7 +87,7 @@ export const GroupBy = (
       {_.map(props.mapping, (value, key) =>
         <GroupView
           spec={value}
-          isSelected={props.selectedGroup === key}
+          isSelected={(props.selectedGroup || _.keys(props.mapping)[0]) === key}
           isSelectedOnChange={isSelected => props.selectedGroupOnChange(key)}
         />
       )}

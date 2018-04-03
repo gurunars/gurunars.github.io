@@ -43,9 +43,9 @@ const StateGroupBy = compose(
     }
   }),
   withState(
-    "selectedSpecs",
-    "selectedSpecsOnChange",
-    []
+    "selectedGroup",
+    "selectedGroupOnChange",
+    null
   )
 )(GroupBy);
 
