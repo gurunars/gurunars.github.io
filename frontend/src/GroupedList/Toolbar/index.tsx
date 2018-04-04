@@ -15,7 +15,10 @@ const baseStyle = {
   marginBottom: 5,
   borderRadius: 5,
   textAlign: "center",
-  padding: 5
+  paddingLeft: 10,
+  paddingRight: 10,
+  paddingTop: 5,
+  paddingBottom: 5
 };
 
 interface Alignment {
