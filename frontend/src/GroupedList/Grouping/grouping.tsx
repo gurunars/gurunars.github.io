@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-import { GroupedItems } from "./interfaces";
+import { GroupedItems } from "../interfaces";
 
 export const groupItems = <T extends {}>(
   items: T[],

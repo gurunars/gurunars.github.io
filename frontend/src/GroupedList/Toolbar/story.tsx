@@ -57,7 +57,7 @@ const StateGroupBy = (isVertical?: boolean): React.ReactElement<any> => {
   return <View />;
 };
 
-storiesOf("Toolbar", module)
+storiesOf("GroupedList/Toolbar", module)
   .addDecorator(host({
     align: "center middle",
     height: 600,

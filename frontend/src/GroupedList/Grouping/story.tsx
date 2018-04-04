@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 
-import { Desktop, Mobile } from ".";
+import Grouping from ".";
 import { groupItems } from "./grouping";
 
 interface Item {
@@ -22,21 +22,15 @@ const items: Item[] = [
   {"type": "three", "title": "I"}
 ];
 
-storiesOf("GroupedList", module)
+storiesOf("GroupedList/Grouping", module)
   .addDecorator(host({
     align: "center middle",
     height: 600,
     width: 800,
   }))
-  .add("mobile", () => (
-    <Mobile 
+  .add("responsive", () => (
+    <Grouping 
       items={groupItems(items, "type", "title")} 
       renderItem={(props: {item: Item}) => <h1>{props.item.title}</h1>} 
     />
-  ))
-  .add("desktop", () => (
-    <Desktop 
-      items={groupItems(items, "type", "title")} 
-      renderItem={(props: {item: Item}) => <h1>{props.item.title}</h1>} 
-    />
-  )); 
+  ));

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { GroupedItems } from "./interfaces";
-import responsive from "../Responsive";
+import { GroupedItems } from "../interfaces";
+import responsive from "../../Responsive";
 
 type RenderItem<T extends {}> = (props: {item: T}) => React.ReactElement<any>;
 
@@ -27,10 +27,14 @@ const GroupedList = <T extends {}>(props: {
   </div>
 );
 
-export const Desktop = <T extends {}>(props: {
+type Props<T extends {}> = {
   items: GroupedItems<T>[],
   renderItem: RenderItem<T>
-}): React.ReactElement<any> => (
+};
+
+const Desktop = <T extends {}>(
+  props: Props<T>
+): React.ReactElement<any> => (
   <GroupedList
     items={props.items}
     style={{display: "flex"}}
@@ -49,10 +53,9 @@ export const Desktop = <T extends {}>(props: {
   />
 );
 
-export const Mobile = <T extends {}>(props: {
-  items: GroupedItems<T>[],
-  renderItem: RenderItem<T>
-}): React.ReactElement<any> => (
+const Mobile = <T extends {}>(
+  props: Props<T>
+): React.ReactElement<any> => (
   <GroupedList
     items={props.items}
     renderItem={ item => (
@@ -70,7 +73,9 @@ export const Mobile = <T extends {}>(props: {
   />
 );
 
-export default responsive({
+const Grouping: <T extends {}>(props: Props<T>) => React.ReactElement<any> = responsive({
   desktopView: Desktop,
   mobileView: Mobile
 });
+
+export default Grouping;
