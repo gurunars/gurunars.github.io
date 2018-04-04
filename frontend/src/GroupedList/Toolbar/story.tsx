@@ -63,7 +63,7 @@ storiesOf("Toolbar", module)
     height: 600,
     width: 800,
   }))
-  .add("GroupBy",  () => StateGroupBy(false))
-  .add("GroupBy vertical", () => StateGroupBy(true))
   .add("SpecFilter",  () => StateGroupBy(false))
-  .add("SpecFilter vertical", () => StateSpecFilter(true));
+  .add("SpecFilter vertical", () => StateSpecFilter(true))
+  .add("GroupBy",  () => StateGroupBy(false))
+  .add("GroupBy vertical", () => StateGroupBy(true));

@@ -3,6 +3,7 @@ import * as _ from "lodash";
 import { Set } from "immutable";
 
 import { merge } from "../../utils";
+import responsive from "../../Responsive";
 
 import { TypeToSpecMapping, Spec, TitleToGroupSpecMapping, GroupSpec } from "../interfaces";
 
@@ -11,6 +12,7 @@ const baseStyle = {
   color: "Black",
   marginLift: 10,
   marginRight: 10,
+  marginBottom: 5,
   borderRadius: 5,
   textAlign: "center",
   padding: 5
@@ -19,6 +21,39 @@ const baseStyle = {
 interface Alignment {
   isVertical?: boolean;
 }
+
+type Props = {
+  title: string, 
+  children: JSX.Element[]
+};
+
+const PartialNamedGroup = (
+  isVertical: boolean, 
+  props: Props
+): React.ReactElement<any> => (
+  <div 
+    style={{
+      alignItems: isVertical ? "initial" : "center",
+      display: "flex",
+      flexDirection: isVertical ? "column" : "row"
+    }}
+  >
+    <b 
+      style={{ 
+        marginRight: 10,
+        marginBottom: 8,
+        whiteSpace: "nowrap"
+      }}
+    >{props.title}:
+    </b>
+  {props.children}
+  </div>
+);
+
+const NamedGroup: (props: Props) => React.ReactElement<any> = responsive({
+  desktopView: PartialNamedGroup.bind(null, false),
+  mobileView: PartialNamedGroup.bind(null, true)
+});
 
 const SpecView = ({ spec, isSelected, isSelectedOnChange }: {
   spec: Spec,
@@ -44,19 +79,7 @@ interface SpecSelection {
 export const SpecFilter = (
   props: { mapping: TypeToSpecMapping } & Alignment & SpecSelection
 ): React.ReactElement<any> => (
-    <div 
-      style={{
-        display: "flex",
-        flexDirection: props.isVertical ? "column" : "row"
-      }}
-    >
-      <b 
-        style={{ 
-          marginRight: 10, 
-          whiteSpace: "nowrap"
-        }}
-      >Project types:
-      </b>
+    <NamedGroup title="Project types">
       {_.map(props.mapping, (value, key) =>
         <SpecView
           spec={value}
@@ -70,7 +93,7 @@ export const SpecFilter = (
           }
         />
       )}
-    </div>
+    </NamedGroup>
   );
 
 const GroupView = ({ spec, isSelected, isSelectedOnChange }: {
@@ -81,6 +104,7 @@ const GroupView = ({ spec, isSelected, isSelectedOnChange }: {
     <span
       style={merge(baseStyle, {
         backgroundColor: isSelected ? "#1B2E3C" : "Beige",
+        marginBottom: 5,
         color: isSelected ? "white" : "black"
       })}
       onClick={() => isSelectedOnChange(!isSelected)}
@@ -97,19 +121,7 @@ interface GroupSpecSelection {
 export const GroupBy = (
   props: { mapping: TitleToGroupSpecMapping } & Alignment & GroupSpecSelection
 ): React.ReactElement<any> => (
-    <div 
-      style={{
-        display: "flex",
-        flexDirection: props.isVertical ? "column" : "row"
-      }}
-    >
-      <b 
-        style={{ 
-          marginRight: 10, 
-          whiteSpace: "nowrap"
-        }}
-      >Group by:
-      </b>
+    <NamedGroup title="Group by">
       {_.map(props.mapping, (value, key) =>
         <GroupView
           spec={value}
@@ -117,5 +129,5 @@ export const GroupBy = (
           isSelectedOnChange={isSelected => props.selectedGroupOnChange(key)}
         />
       )}
-    </div>
+    </NamedGroup>
   );
