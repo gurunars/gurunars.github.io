@@ -5,49 +5,57 @@ import { withState, compose, withProps } from "recompose";
 
 import { SpecFilter, GroupBy } from ".";
 
-const StateSpecFilter = compose(
-  withProps({
-    "mapping": {
-      one: {
-        humanReadableName: "One",
-        color: "Yellow"
-      },
-      two: {
-        humanReadableName: "Two",
-        color: "LightGreen"
+const StateSpecFilter = (isVertical?: boolean): React.ReactElement<any> => {
+  const View = compose(
+    withProps({
+      "isVertical": isVertical,
+      "mapping": {
+        one: {
+          humanReadableName: "One",
+          color: "Yellow"
+        },
+        two: {
+          humanReadableName: "Two",
+          color: "LightGreen"
+        }
       }
-    }
-  }),
-  withState(
-    "selectedSpecs",
-    "selectedSpecsOnChange",
-    []
-  )
-)(SpecFilter);
+    }),
+    withState(
+      "selectedSpecs",
+      "selectedSpecsOnChange",
+      []
+    )
+  )(SpecFilter);
+  return <View />;
+};
 
-const StateGroupBy = compose(
-  withProps({
-    "mapping": {
-      one: {
-        humanReadableName: "One",
-        groupBy: "group-by-one",
-        sortBy: "sort-by-one",
-        reverse: true
-      },
-      two: {
-        humanReadableName: "Two",
-        groupBy: "group-by-two",
-        sortBy: "sort-by-two",
-        reverse: false
+const StateGroupBy = (isVertical?: boolean): React.ReactElement<any> => {
+  const View = compose(
+    withProps({
+      "isVertical": isVertical,
+      "mapping": {
+        one: {
+          humanReadableName: "One",
+          groupBy: "group-by-one",
+          sortBy: "sort-by-one",
+          reverse: true
+        },
+        two: {
+          humanReadableName: "Two",
+          groupBy: "group-by-two",
+          sortBy: "sort-by-two",
+          reverse: false
+        }
       }
-    }
-  }),
-  withState(
-    "selectedGroup",
-    "selectedGroupOnChange",
-    null
-  )
-)(GroupBy);
+    }),
+    withState(
+      "selectedGroup",
+      "selectedGroupOnChange",
+      null
+    )
+  )(GroupBy);
+  return <View />;
+};
 
 storiesOf("Toolbar", module)
   .addDecorator(host({
@@ -55,9 +63,7 @@ storiesOf("Toolbar", module)
     height: 600,
     width: 800,
   }))
-  .add("GroupBy", () => (
-    <StateGroupBy />
-  ))
-  .add("SpecFilter", () => (
-    <StateSpecFilter />
-  )); 
+  .add("GroupBy",  () => StateGroupBy(false))
+  .add("GroupBy vertical", () => StateGroupBy(true))
+  .add("SpecFilter",  () => StateGroupBy(false))
+  .add("SpecFilter vertical", () => StateSpecFilter(true));

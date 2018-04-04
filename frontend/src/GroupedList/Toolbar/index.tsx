@@ -16,6 +16,10 @@ const baseStyle = {
   padding: 5
 };
 
+interface Alignment {
+  isVertical?: boolean;
+}
+
 const SpecView = ({ spec, isSelected, isSelectedOnChange }: {
   spec: Spec,
   isSelected: boolean,
@@ -38,10 +42,21 @@ interface SpecSelection {
 }
 
 export const SpecFilter = (
-  props: { mapping: TypeToSpecMapping } & SpecSelection
+  props: { mapping: TypeToSpecMapping } & Alignment & SpecSelection
 ): React.ReactElement<any> => (
-    <div>
-      <b style={{ marginRight: 10, whiteSpace: "nowrap" }}>Project types: </b>
+    <div 
+      style={{
+        display: "flex",
+        flexDirection: props.isVertical ? "column" : "row"
+      }}
+    >
+      <b 
+        style={{ 
+          marginRight: 10, 
+          whiteSpace: "nowrap"
+        }}
+      >Project types:
+      </b>
       {_.map(props.mapping, (value, key) =>
         <SpecView
           spec={value}
@@ -80,10 +95,21 @@ interface GroupSpecSelection {
 }
 
 export const GroupBy = (
-  props: { mapping: TitleToGroupSpecMapping } & GroupSpecSelection
+  props: { mapping: TitleToGroupSpecMapping } & Alignment & GroupSpecSelection
 ): React.ReactElement<any> => (
-    <div>
-      <b style={{ marginRight: 10, whiteSpace: "nowrap" }}>Group by: </b>
+    <div 
+      style={{
+        display: "flex",
+        flexDirection: props.isVertical ? "column" : "row"
+      }}
+    >
+      <b 
+        style={{ 
+          marginRight: 10, 
+          whiteSpace: "nowrap"
+        }}
+      >Group by:
+      </b>
       {_.map(props.mapping, (value, key) =>
         <GroupView
           spec={value}
