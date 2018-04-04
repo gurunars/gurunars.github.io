@@ -5,7 +5,7 @@ import { Set } from "immutable";
 import { merge } from "../../utils";
 import responsive from "../../Responsive";
 
-import { TypeToSpecMapping, Spec, TitleToGroupSpecMapping, GroupSpec } from "../interfaces";
+import { TypeToSpecMapping, TitleToGroupSpecMapping } from "../interfaces";
 
 const baseStyle = {
   cursor: "pointer",
@@ -58,22 +58,6 @@ const NamedGroup: (props: Props) => React.ReactElement<any> = responsive({
   mobileView: PartialNamedGroup.bind(null, true)
 });
 
-const SpecView = ({ spec, isSelected, isSelectedOnChange }: {
-  spec: Spec,
-  isSelected: boolean,
-  isSelectedOnChange: (isSelected: boolean) => void
-}) => (
-    <span
-      style={merge(baseStyle, {
-        backgroundColor: spec.color,
-        textDecoration: isSelected ? "line-through" : "none"
-      })}
-      onClick={() => isSelectedOnChange(!isSelected)}
-    >
-      {spec.humanReadableName}
-    </span>
-  );
-
 interface SpecSelection {
   selectedSpecs: string[];
   selectedSpecsOnChange: (selectedSpecs: string[]) => void;
@@ -83,37 +67,25 @@ export const SpecFilter = (
   props: { mapping: TypeToSpecMapping } & Alignment & SpecSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
-      {_.map(props.mapping, (value, key) =>
-        <SpecView
-          spec={value}
-          isSelected={props.selectedSpecs.indexOf(key) > -1}
-          isSelectedOnChange={isSelected =>
-            props.selectedSpecsOnChange(
+      {_.map(props.mapping, (value, key) => {
+        const isSelected = props.selectedSpecs.indexOf(key) > -1;
+        return (
+          <span
+            style={merge(baseStyle, {
+              backgroundColor: value.color,
+              textDecoration: isSelected ? "line-through" : "none"
+            })}
+            onClick={() => props.selectedSpecsOnChange(
               isSelected ?
                 Set(props.selectedSpecs).add(key).toArray() :
                 Set(props.selectedSpecs).remove(key).toArray()
-            )
-          }
-        />
-      )}
-    </NamedGroup>
-  );
-
-const GroupView = ({ spec, isSelected, isSelectedOnChange }: {
-  spec: GroupSpec,
-  isSelected: boolean,
-  isSelectedOnChange: (isSelected: boolean) => void
-}) => (
-    <span
-      style={merge(baseStyle, {
-        backgroundColor: isSelected ? "#1B2E3C" : "Beige",
-        marginBottom: 5,
-        color: isSelected ? "white" : "black"
+            )}
+          >
+            {value.humanReadableName}
+          </span>
+        );
       })}
-      onClick={() => isSelectedOnChange(!isSelected)}
-    >
-      {spec.humanReadableName}
-    </span>
+    </NamedGroup>
   );
 
 interface GroupSpecSelection {
@@ -124,13 +96,21 @@ interface GroupSpecSelection {
 export const GroupBy = (
   props: { mapping: TitleToGroupSpecMapping } & Alignment & GroupSpecSelection
 ): React.ReactElement<any> => (
-    <NamedGroup title="Group by">
-      {_.map(props.mapping, (value, key) =>
-        <GroupView
-          spec={value}
-          isSelected={(props.selectedGroup || _.keys(props.mapping)[0]) === key}
-          isSelectedOnChange={isSelected => props.selectedGroupOnChange(key)}
-        />
-      )}
-    </NamedGroup>
-  );
+  <NamedGroup title="Project types">
+    {_.map(props.mapping, (value, key) => {
+      const isSelected = (props.selectedGroup || _.keys(props.mapping)[0]) === key;
+      return (
+        <span
+          style={merge(baseStyle, {
+            backgroundColor: isSelected ? "#1B2E3C" : "Beige",
+            marginBottom: 5,
+            color: isSelected ? "white" : "black"
+          })}
+          onClick={() => props.selectedGroupOnChange(key)}
+        >
+          {value.humanReadableName}
+        </span>
+      );
+    })}
+  </NamedGroup>
+);
