@@ -21,10 +21,6 @@ const baseStyle = {
   paddingBottom: 5
 };
 
-interface Alignment {
-  isVertical?: boolean;
-}
-
 type Props = {
   title: string, 
   children: JSX.Element[]
@@ -64,29 +60,29 @@ interface SpecSelection {
 }
 
 export const SpecFilter = (
-  props: { mapping: TypeToSpecMapping } & Alignment & SpecSelection
+  props: { mapping: TypeToSpecMapping } & SpecSelection
 ): React.ReactElement<any> => (
-    <NamedGroup title="Project types">
-      {_.map(props.mapping, (value, key) => {
-        const isSelected = props.selectedSpecs.indexOf(key) > -1;
-        return (
-          <span
-            style={merge(baseStyle, {
-              backgroundColor: value.color,
-              textDecoration: isSelected ? "line-through" : "none"
-            })}
-            onClick={() => props.selectedSpecsOnChange(
-              isSelected ?
-                Set(props.selectedSpecs).add(key).toArray() :
-                Set(props.selectedSpecs).remove(key).toArray()
-            )}
-          >
-            {value.humanReadableName}
-          </span>
-        );
-      })}
-    </NamedGroup>
-  );
+  <NamedGroup title="Project types">
+    {_.map(props.mapping, (value, key) => {
+      const isSelected = props.selectedSpecs.indexOf(key) > -1;
+      return (
+        <span
+          style={merge(baseStyle, {
+            backgroundColor: value.color,
+            textDecoration: isSelected ? "line-through" : "none"
+          })}
+          onClick={() => props.selectedSpecsOnChange(
+            isSelected ?
+              Set(props.selectedSpecs).add(key).toArray() :
+              Set(props.selectedSpecs).remove(key).toArray()
+          )}
+        >
+          {value.humanReadableName}
+        </span>
+      );
+    })}
+  </NamedGroup>
+);
 
 interface GroupSpecSelection {
   selectedGroup?: string | null;
@@ -94,7 +90,9 @@ interface GroupSpecSelection {
 }
 
 export const GroupBy = (
-  props: { mapping: TitleToGroupSpecMapping } & Alignment & GroupSpecSelection
+  props: { 
+    mapping: TitleToGroupSpecMapping 
+  } & GroupSpecSelection
 ): React.ReactElement<any> => (
   <NamedGroup title="Project types">
     {_.map(props.mapping, (value, key) => {
