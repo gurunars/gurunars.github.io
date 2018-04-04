@@ -1,9 +1,17 @@
 import * as React from "react";
 
-const Desktop = (props: {
+import { withState, compose, withProps } from "recompose";
+
+import close from "./icons/close";
+import menu from "./icons/menu";
+
+type Props = {
   toolbar: React.ReactElement<any>,
   content: React.ReactElement<any>
-}): React.ReactElement<any> => (
+};
+
+/*
+const Desktop = (props: Props): React.ReactElement<any> => (
   <div
     style={{
       display: "flex",
@@ -34,13 +42,14 @@ const Desktop = (props: {
     </div>
   </div>
 );
+*/
 
-const Mobile = (props: {
-  toolbar: React.ReactElement<any>,
-  content: React.ReactElement<any>,
-  isToolbarOpen: boolean,
-  isToolbarOpenOnChange: (isToolbarOpen: boolean) => void
-}): React.ReactElement<any> => (
+interface OpenState {
+  isToolbarOpen: boolean;
+  isToolbarOpenOnChange: (isToolbarOpen: boolean) => void;
+}
+
+const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
   <div 
     style={{
       position: "relative",
@@ -51,31 +60,47 @@ const Mobile = (props: {
     {props.isToolbarOpen ? props.toolbar : props.content}
 
     <div
+      onClick={() => props.isToolbarOpenOnChange(!props.isToolbarOpen)}
       style={{
         height: 40,
         width: 40,
         borderRadius: "50%",
         border: "2px solid black",
         backgroundColor: "#1B2E3C",
-        position: "fixed",
+        position: "absolute",
         display: "flex",
         alignItems: "center",
         zIndex: 30,
         bottom: 20,
         right: 20,
-        pointer: "cursor",
+        cursor: "pointer",
         justifyContent: "center",
+        color: "white"
       }}
     >
-      <img 
+      <div 
         style={{
           width: "70%",
           height: "70%"
         }}
-        src={props.isToolbarOpen ? close : open} 
-      />
-
+      >
+        {props.isToolbarOpen ? close : menu} 
+      </div>
     </div>
 
   </div>
 );
+
+const Full = (props: Props): React.ReactElement<any> => {
+  const View = compose(
+    withProps(props),
+    withState(
+      "isToolbarOpen",
+      "isToolbarOpenOnChange",
+      false
+    )
+  )(Mobile);
+  return <View />;
+};
+
+export default Full;

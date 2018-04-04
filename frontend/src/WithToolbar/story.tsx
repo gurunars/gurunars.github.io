@@ -1,6 +1,5 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { host } from "storybook-host";
 
 import WithToolbar from ".";
@@ -13,6 +12,7 @@ storiesOf("WithToolbar", module)
   }))
   .add("basic", () => (
     <WithToolbar 
-      title="Sample Title" 
-      onClick={action("onClick")} />
+      toolbar={<p>TOOLBAR</p>}
+      content={<p>CONTENT</p>}
+    />
   )); 
