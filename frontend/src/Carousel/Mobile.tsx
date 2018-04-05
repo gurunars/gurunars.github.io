@@ -1,10 +1,12 @@
 import * as React from "react";
 
+import FontAwesomeIcon from "../FontAwesome";
+import * as faClose from "@fortawesome/fontawesome-free-regular/faTimesCircle";
+import * as faRight from "@fortawesome/fontawesome-free-regular/faArrowAltCircleRight";
+import * as faLeft from "@fortawesome/fontawesome-free-regular/faArrowAltCircleLeft";
+
 import CursorIcon from "./CursorIcon";
 
-import next from "./icons/next";
-import prev from "./icons/prev";
-import close from "./icons/close";
 import { Cursor, getCursorItems } from "./Cursor";
 import Props from "./Props";
 
@@ -54,7 +56,11 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
       >
 
         <div style={controlsStyle}>
-          <CursorIcon icon={prev} targetPosition={cursor.previous} goTo={props.goTo} />
+          <CursorIcon
+            icon={<FontAwesomeIcon size="2x" icon={faLeft} />}
+            targetPosition={cursor.previous}
+            goTo={props.goTo}
+          />
         </div>
 
         <div style={controlsStyle}>
@@ -66,12 +72,17 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
               width: dims * 2,
               height: dims * 2,
             }}
-          >{close}
+          >
+            <FontAwesomeIcon size="2x" icon={faClose} />
           </div>
         </div>
 
         <div style={controlsStyle}>
-          <CursorIcon icon={next} targetPosition={cursor.next} goTo={props.goTo} />
+          <CursorIcon
+            icon={<FontAwesomeIcon size="2x" icon={faRight} />}
+            targetPosition={cursor.next}
+            goTo={props.goTo}
+          />
         </div>
 
       </div>
