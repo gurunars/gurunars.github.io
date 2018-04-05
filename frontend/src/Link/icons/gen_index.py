@@ -1,5 +1,6 @@
 import os
 from scour.scour import parse_args, start
+from xml.etree.ElementTree import ElementTree
 
 # TODO: run this script on build
 # scour --enable-viewboxing --remove-metadata --enable-id-stripping -i stackoverflow.svg -o stackoverflow.svg.new
@@ -13,6 +14,11 @@ def get_icons():
 
 
 icons = list(get_icons())
+
+
+def drop(svg, key):
+    if key in svg.attrib:
+        del svg.attrib[key]
 
 
 def cleanup(icon):
@@ -31,6 +37,15 @@ def cleanup(icon):
     start(options, input, output)
     os.remove(source)
     os.rename(target, source)
+
+    tree = ElementTree()
+    tree.parse(source)
+    svg = tree.iter().next()
+    for attr in ["style", "verstion", "x", "y"]:
+        drop(svg, attr)
+    svg.attr["width"] = "100%"
+    svg.attr["height"] = "100%"
+    tree.write(source)
 
 
 imports = []
