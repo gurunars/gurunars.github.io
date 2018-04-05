@@ -43,8 +43,8 @@ def cleanup(icon):
     svg = tree.iter().next()
     for attr in ["style", "verstion", "x", "y"]:
         drop(svg, attr)
-    svg.attr["width"] = "100%"
-    svg.attr["height"] = "100%"
+    svg.attrib["width"] = "100%"
+    svg.attrib["height"] = "100%"
     tree.write(source)
 
 
