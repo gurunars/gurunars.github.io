@@ -4,13 +4,13 @@ import { withState, compose, withProps } from "recompose";
 
 import close from "./icons/close";
 import menu from "./icons/menu";
+import responsive from "../Responsive";
 
 type Props = {
   toolbar: React.ReactElement<any>,
   content: React.ReactElement<any>
 };
 
-/*
 const Desktop = (props: Props): React.ReactElement<any> => (
   <div
     style={{
@@ -21,16 +21,16 @@ const Desktop = (props: Props): React.ReactElement<any> => (
       height: "100%"
     }}
   >
-    <div 
+    <div
       style={{
         height: 40,
         flex: "0 1 40px",
         width: "100%"
       }}
     >
-    {props.toolbar}
+      {props.toolbar}
     </div>
-    <div 
+    <div
       style={{
         position: "relative",
         width: "100%",
@@ -38,11 +38,10 @@ const Desktop = (props: Props): React.ReactElement<any> => (
         overflowY: "auto"
       }}
     >
-    {props.content}
+      {props.content}
     </div>
   </div>
 );
-*/
 
 interface OpenState {
   isToolbarOpen: boolean;
@@ -50,7 +49,7 @@ interface OpenState {
 }
 
 const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
-  <div 
+  <div
     style={{
       position: "relative",
       width: "100%",
@@ -78,13 +77,13 @@ const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
         color: "white"
       }}
     >
-      <div 
+      <div
         style={{
           width: "70%",
           height: "70%"
         }}
       >
-        {props.isToolbarOpen ? close : menu} 
+        {props.isToolbarOpen ? close : menu}
       </div>
     </div>
 
@@ -103,4 +102,7 @@ const Full = (props: Props): React.ReactElement<any> => {
   return <View />;
 };
 
-export default Full;
+export default responsive({
+  desktopView: Desktop,
+  mobileView: Full
+});
