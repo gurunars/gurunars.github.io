@@ -1,12 +1,14 @@
 import * as React from "react";
+import ReactSVG from "react-svg";
 
 import CursorIcon from "./CursorIcon";
 
-import next from "./icons/next";
-import prev from "./icons/prev";
-import close from "./icons/close";
 import { Cursor, getCursorItems } from "./Cursor";
 import Props from "./Props";
+
+const close = require("./icons/close.svg");
+const prev = require("./icons/prev.svg");
+const next = require("./icons/next.svg");
 
 const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
   const cursor: Cursor = getCursorItems(props.items, props.selectedPostion);
@@ -54,7 +56,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
       >
 
         <div style={controlsStyle}>
-          <CursorIcon icon={prev} targetPosition={cursor.previous} goTo={props.goTo} />
+          <CursorIcon icon={<ReactSVG path={prev} />} targetPosition={cursor.previous} goTo={props.goTo} />
         </div>
 
         <div style={controlsStyle}>
@@ -66,12 +68,12 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
               width: dims * 2,
               height: dims * 2,
             }}
-          >{close}
+          ><ReactSVG path={close} />
           </div>
         </div>
 
         <div style={controlsStyle}>
-          <CursorIcon icon={next} targetPosition={cursor.next} goTo={props.goTo} />
+          <CursorIcon icon={<ReactSVG path={next} />} targetPosition={cursor.next} goTo={props.goTo} />
         </div>
 
       </div>
