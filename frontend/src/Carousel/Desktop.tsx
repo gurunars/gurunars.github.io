@@ -1,8 +1,5 @@
 import * as React from "react";
 
-import FontAwesomeIcon from "../FontAwesome";
-import * as faCoffee from "@fortawesome/fontawesome-free-solid/faCoffee";
-
 import CursorIcon from "./CursorIcon";
 
 import next from "./icons/next";
@@ -44,8 +41,6 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
         height: "100%"
       }}
     >
-
-      <FontAwesomeIcon icon={faCoffee} />
 
       <div style={controlsStyle}>
         <CursorIcon icon={prev} targetPosition={cursor.previous} goTo={props.goTo} />
