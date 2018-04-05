@@ -27,5 +27,5 @@ storiesOf("About", module)
     width: 800,
   }))
   .add("basic", () => (
-    <About color="black" meta={META} />
+    <About primaryColor="black" secondaryColor="blue" meta={META} />
   )); 
