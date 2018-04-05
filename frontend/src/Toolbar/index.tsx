@@ -81,14 +81,15 @@ export const SpecFilter = (
       const isSelected = props.selectedSpecs.indexOf(key) > -1;
       return (
         <span
+          key={key}
           style={merge(baseStyle, {
             backgroundColor: value.color,
             textDecoration: isSelected ? "line-through" : "none"
           })}
           onClick={() => props.selectedSpecsOnChange(
             isSelected ?
-              Set(props.selectedSpecs).add(key).toArray() :
-              Set(props.selectedSpecs).remove(key).toArray()
+              Set(props.selectedSpecs).remove(key).toArray() :
+              Set(props.selectedSpecs).add(key).toArray()
           )}
         >
           {value.humanReadableName}
@@ -113,6 +114,7 @@ export const GroupBy = (
       const isSelected = (props.selectedGroup || _.keys(props.mapping)[0]) === key;
       return (
         <span
+          key={key}
           style={merge(baseStyle, {
             backgroundColor: isSelected ? "#1B2E3C" : "Beige",
             marginBottom: 5,
