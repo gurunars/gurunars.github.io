@@ -24,25 +24,21 @@ for icon in icons:
     )
 
 text = """
-import * as React from "react";
-import ReactSVG from "react-svg";
-
 const fallback = require("./link.svg");
 
 {imports}
 
 const icons = {{
-    {dicts}
+  {dicts}
 }};
 
-const getIconForType = (type?: string) => (
-  <ReactSVG path={(icons[type || "link"] || fallback) as string} />
-);
+const getIconForType = (type?: string) =>
+  icons[type || "link"] || fallback;
 
 export default getIconForType;
 """.format(
     imports=";\n".join(imports),
-    dicts=",\n    ".join(dicts)
+    dicts=",\n  ".join(dicts)
 )
 
 with open("index.tsx", "w") as fil:

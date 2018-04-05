@@ -1,4 +1,5 @@
 import * as React from "react";
+import ReactSVG from "react-svg";
 
 import { merge } from "../utils";
 
@@ -36,7 +37,7 @@ const CircleType = ({ type }: { type?: string }) => (
         height: "70%"
       }}
     >
-      {getIconForType(type)}
+      <ReactSVG path={getIconForType(type)} />
     </div>
   </a>
 );

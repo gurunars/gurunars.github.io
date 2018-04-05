@@ -20,7 +20,9 @@ const About = ({ meta }: { meta: Meta }): React.ReactElement<any> => (
       alignItems: "center",
       justifyContent: "flex-start",
       height: "100%",
-      maxWidth: 250
+      maxWidth: 250,
+      color: "green",
+      feel: "green"
     }}
   >
     <div

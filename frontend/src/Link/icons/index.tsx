@@ -1,7 +1,4 @@
 
-import * as React from "react";
-import ReactSVG from "react-svg";
-
 const fallback = require("./link.svg");
 
 const skype = require("./skype.svg");
@@ -16,7 +13,7 @@ const amazon = require("./amazon.svg");
 const play = require("./play.svg");
 const link = require("./link.svg");
 const github = require("./github.svg");
-const print = require("./print.svg");
+const print = require("./print.svg")
 
 const icons = {
   skype: skype,
@@ -34,8 +31,7 @@ const icons = {
   print: print
 };
 
-const getIconForType = (type?: string) => (
-  <ReactSVG path={(icons[type || "link"] || fallback) as string} />
-);
+const getIconForType = (type?: string) =>
+  icons[type || "link"] || fallback;
 
 export default getIconForType;
