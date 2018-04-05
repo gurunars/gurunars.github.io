@@ -1,4 +1,7 @@
 
+import * as React from "react";
+import ReactSVG from "react-svg";
+
 const fallback = require("./link.svg");
 
 const skype = require("./skype.svg");
@@ -13,25 +16,26 @@ const amazon = require("./amazon.svg");
 const play = require("./play.svg");
 const link = require("./link.svg");
 const github = require("./github.svg");
-const print = require("./print.svg")
+const print = require("./print.svg");
 
 const icons = {
-    skype: skype,
-    pdf: pdf,
-    phone: phone,
-    email: email,
-    docs: docs,
-    cv: cv,
-    linkedin: linkedin,
-    stackoverflow: stackoverflow,
-    amazon: amazon,
-    play: play,
-    link: link,
-    github: github,
-    print: print
+  skype: skype,
+  pdf: pdf,
+  phone: phone,
+  email: email,
+  docs: docs,
+  cv: cv,
+  linkedin: linkedin,
+  stackoverflow: stackoverflow,
+  amazon: amazon,
+  play: play,
+  link: link,
+  github: github,
+  print: print
 };
 
-const getIconForType = (type?: string): string =>
-    icons[type || -404] || fallback; 
+const getIconForType = (type?: string) => (
+  <ReactSVG path={(icons[type || "link"] || fallback) as string} />
+);
 
 export default getIconForType;
