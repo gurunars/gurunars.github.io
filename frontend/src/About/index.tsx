@@ -12,7 +12,7 @@ export interface Meta {
   media: Link[];
 }
 
-const About = ({ meta }: { meta: Meta }): React.ReactElement<any> => (
+const About = ({ meta, color }: { meta: Meta, color?: string }): React.ReactElement<any> => (
   <div
     style={{
       display: "flex",
@@ -21,8 +21,7 @@ const About = ({ meta }: { meta: Meta }): React.ReactElement<any> => (
       justifyContent: "flex-start",
       height: "100%",
       maxWidth: 250,
-      color: "green",
-      feel: "green"
+      color: color || "black"
     }}
   >
     <div
@@ -91,7 +90,7 @@ const About = ({ meta }: { meta: Meta }): React.ReactElement<any> => (
       }}
     >
       {meta.media.map(media =>
-        <FullUrl key={media.name} link={media} />
+        <FullUrl style={{ color: color || "black" }} key={media.name} link={media} />
       )}
     </div>
 

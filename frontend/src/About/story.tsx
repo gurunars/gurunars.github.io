@@ -27,5 +27,5 @@ storiesOf("About", module)
     width: 800,
   }))
   .add("basic", () => (
-    <About meta={META} />
+    <About color="black" meta={META} />
   )); 
