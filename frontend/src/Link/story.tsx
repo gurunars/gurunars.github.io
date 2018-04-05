@@ -11,20 +11,23 @@ storiesOf("Link", module)
     width: 200,
   }))
   .add("Url", () => (
-    <Url 
+    <Url
       link={{
         name: "FOO",
         url: "bar"
-      }} 
+      }}
     />
   ))
   .add("FullUrl with type", () => (
     <FullUrl
+      style={{
+        color: "red"
+      }}
       link={{
         name: "FOO",
         url: "bar",
         type: "amazon"
-      }} 
+      }}
     />
   ))
   .add("CircleUrl with type", () => (
@@ -33,7 +36,7 @@ storiesOf("Link", module)
         name: "FOO",
         url: "bar",
         type: "amazon"
-      }} 
+      }}
     />
   ))
   .add("CircleUrl without type", () => (
@@ -41,6 +44,6 @@ storiesOf("Link", module)
       link={{
         name: "FOO",
         url: "bar"
-      }} 
+      }}
     />
   )); 

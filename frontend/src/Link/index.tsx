@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as _ from "lodash";
 import ReactSVG from "react-svg";
 
 import { merge } from "../utils";
@@ -17,7 +18,7 @@ export const Url = ({ link, style }: {
 }) =>
   <a style={style} href={link.url}>{link.name}</a>;
 
-const CircleType = ({ type }: { type?: string }) => (
+const CircleType = ({ type, color }: { type?: string, color: string }) => (
   <a
     style={{
       display: "flex",
@@ -28,7 +29,7 @@ const CircleType = ({ type }: { type?: string }) => (
       width: 30,
       height: 30,
       borderRadius: "50%",
-      border: "2px solid black"
+      border: "2px solid " + color
     }}
   >
     <div
@@ -37,7 +38,7 @@ const CircleType = ({ type }: { type?: string }) => (
         height: "70%"
       }}
     >
-      <ReactSVG path={getIconForType(type)} />
+      <ReactSVG path={getIconForType(type)} style={{ fill: color }} />
     </div>
   </a>
 );
@@ -51,7 +52,7 @@ export const CircleUrl = ({ link, style }: {
       style={style}
       href={link.url}
     >
-      <CircleType type={link.type} />
+      <CircleType color={_.get(style, "color", "black")} type={link.type} />
     </a>
   );
 
@@ -64,7 +65,7 @@ export const FullUrl = ({ link, style }: {
       style={merge({ alignItems: "center", display: "inline-flex" }, style || {})}
       href={link.url}
     >
-      <CircleType type={link.type} />
+      <CircleType color={_.get(style, "color", "black")} type={link.type} />
       <span
         style={{
           marginLeft: "5px"
