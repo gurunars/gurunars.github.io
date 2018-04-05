@@ -1,18 +1,20 @@
 import * as React from "react";
 
 import FontAwesomeIcon from "../FontAwesome";
-import * as faTimesCircle from "@fortawesome/fontawesome-free-regular/faTimesCircle";
-import * as faRight from "@fortawesome/fontawesome-free-regular/faArrowAltCircleRight";
-import * as faLeft from "@fortawesome/fontawesome-free-regular/faArrowAltCircleLeft";
+import * as faCoffee from "@fortawesome/fontawesome-free-solid/faCoffee";
 
 import CursorIcon from "./CursorIcon";
 
+import next from "./icons/next";
+import prev from "./icons/prev";
+import close from "./icons/close";
 import { Cursor, getCursorItems } from "./Cursor";
 import Props from "./Props";
 
 const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
   const cursor: Cursor = getCursorItems(props.items, props.selectedPostion);
 
+  const dims = 15;
   const controlsWidth = 50;
 
   const controlsStyle: React.CSSProperties = {
@@ -43,12 +45,10 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
       }}
     >
 
+      <FontAwesomeIcon icon={faCoffee} />
+
       <div style={controlsStyle}>
-        <CursorIcon
-          icon={<FontAwesomeIcon size="2x" icon={faLeft} />}
-          targetPosition={cursor.previous}
-          goTo={props.goTo}
-        />
+        <CursorIcon icon={prev} targetPosition={cursor.previous} goTo={props.goTo} />
       </div>
 
       <div style={mainAreaStyle}>
@@ -56,24 +56,22 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
       </div>
 
       <div style={controlsStyle}>
-        <CursorIcon
-          icon={<FontAwesomeIcon size="2x" icon={faRight} />}
-          targetPosition={cursor.next}
-          goTo={props.goTo}
-        />
+        <CursorIcon icon={next} targetPosition={cursor.next} goTo={props.goTo} />
       </div>
 
       <div
         onClick={props.close}
         style={{
           position: "absolute",
+          display: "flex",
           color: "black",
           cursor: "pointer",
           top: 10,
           right: 10,
+          width: dims * 2,
+          height: dims * 2
         }}
-      >
-        <FontAwesomeIcon size="2x" icon={faTimesCircle} />
+      >{close}
       </div>
 
     </div>
