@@ -1,10 +1,12 @@
 import * as React from "react";
+import ReactSVG from "react-svg";
 
 import { withState, compose, withProps } from "recompose";
 
-import close from "./icons/close";
-import menu from "./icons/menu";
 import responsive from "../Responsive";
+
+const close = require("./icons/close.svg");
+const menu = require("./icons/menu.svg");
 
 type Props = {
   toolbar: React.ReactElement<any>,
@@ -83,7 +85,9 @@ const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
           height: "70%"
         }}
       >
-        {props.isToolbarOpen ? close : menu}
+        <ReactSVG
+          path={props.isToolbarOpen ? close : menu}
+        />
       </div>
     </div>
 
