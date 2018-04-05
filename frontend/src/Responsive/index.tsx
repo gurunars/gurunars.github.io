@@ -12,6 +12,10 @@ const isMobile = () => navigator.userAgent.match(/Android/i)
 
 type ElementSupplier<Props> = (props?: Props) => React.ReactElement<any>;
 
+export interface ForcedLayout {
+  type?: "desktop" | "tablet" | "mobile";
+}
+
 const responsive = <Props extends {}>(
   { desktopView, mobileView, tabletView }: {
     desktopView: ElementSupplier<Props>,
@@ -24,12 +28,12 @@ const responsive = <Props extends {}>(
   mobileView = mobileView || tabletView || desktopView;
   desktopView = desktopView || tabletView || mobileView;
 
-  return (props: Props) => (
+  return (props: ForcedLayout & Props) => (
     <SizeAware>
       {(width, height) => {
-        if (isMobile() || width < 770) {
+        if (props.type === "mobile" || isMobile() || width < 770) {
           return mobileView != null ? mobileView(props) : desktopView(props);
-        } else if (width < 1250) {
+        } else if (props.type === "tablet" || width < 1250) {
           return tabletView != null ? tabletView(props) : desktopView(props);
         } else {
           return desktopView(props);

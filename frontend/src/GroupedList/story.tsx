@@ -11,15 +11,15 @@ interface Item {
 }
 
 const items: Item[] = [
-  {"type": "one", "title": "A"},
-  {"type": "one", "title": "B"},
-  {"type": "one", "title": "C"},
-  {"type": "two", "title": "D"},
-  {"type": "two", "title": "E"},
-  {"type": "two", "title": "F"},
-  {"type": "three", "title": "G"},
-  {"type": "three", "title": "H"},
-  {"type": "three", "title": "I"}
+  { "type": "one", "title": "A" },
+  { "type": "one", "title": "B" },
+  { "type": "one", "title": "C" },
+  { "type": "two", "title": "D" },
+  { "type": "two", "title": "E" },
+  { "type": "two", "title": "F" },
+  { "type": "three", "title": "G" },
+  { "type": "three", "title": "H" },
+  { "type": "three", "title": "I" }
 ];
 
 storiesOf("GroupedList", module)
@@ -28,9 +28,16 @@ storiesOf("GroupedList", module)
     height: 600,
     width: 800,
   }))
-  .add("responsive", () => (
-    <Grouping 
-      items={groupItems(items, "type", "title")} 
-      renderItem={(props: {item: Item}) => <h1>{props.item.title}</h1>} 
+  .add("desktop", () => (
+    <Grouping
+      items={groupItems(items, "type", "title")}
+      renderItem={(props: { item: Item }) => <h1>{props.item.title}</h1>}
+    />
+  ))
+  .add("mobile", () => (
+    <Grouping
+      type="mobile"
+      items={groupItems(items, "type", "title")}
+      renderItem={(props: { item: Item }) => <h1>{props.item.title}</h1>}
     />
   ));
