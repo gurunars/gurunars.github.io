@@ -25,6 +25,7 @@ def cleanup(icon):
         "--enable-id-stripping",
         "--enable-comment-stripping",
         "--strip-xml-space",
+        "--strip-xml-prolog",
         "-i", source, "-o", target
     ])
     start(options, input, output)

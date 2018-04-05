@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="68.267" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" version="1.1" height="68.267">
  <path d="m8.2067 36.964 4.4013 0.04316-0.15344 19.598h29.291v-19.527h4.6378v24.287h-38.201l0.0237-24.401z"/>
- <rect y="48.55" width="22.945" height="4.8819" x="15.384"/>
- <rect y="38.051" width="23.067" height="5.0039" transform="rotate(5.5127)" x="19.668"/>
- <rect y="23.811" width="23.067" height="5.0039" transform="rotate(15.761)" x="25.447"/>
- <rect y="3.8206" width="23.067" height="5.0039" transform="rotate(31.132)" x="29.649"/>
- <rect y="-23.515" width="23.067" height="5.0039" transform="rotate(54.379)" x="26.646"/>
- <rect y="-49.081" width="23.067" height="5.0039" transform="rotate(80.514)" x="11.108"/>
+ <rect y="48.55" width="22.945" x="15.384" height="4.8819"/>
+ <rect y="38.051" width="23.067" x="19.668" transform="rotate(5.5127)" height="5.0039"/>
+ <rect y="23.811" width="23.067" x="25.447" transform="rotate(15.761)" height="5.0039"/>
+ <rect y="3.8206" width="23.067" x="29.649" transform="rotate(31.132)" height="5.0039"/>
+ <rect y="-23.515" width="23.067" x="26.646" transform="rotate(54.379)" height="5.0039"/>
+ <rect y="-49.081" width="23.067" x="11.108" transform="rotate(80.514)" height="5.0039"/>
 </svg>
