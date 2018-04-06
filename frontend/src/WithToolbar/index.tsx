@@ -1,9 +1,9 @@
 import * as React from "react";
-import ReactSVG from "react-svg";
 
 import { withState, compose, withProps } from "recompose";
 
 import responsive from "../Responsive";
+import ActionIcon from "../ActionIcon";
 
 const close = require("./icons/close.svg");
 const menu = require("./icons/menu.svg");
@@ -60,37 +60,10 @@ const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
   >
     {props.isToolbarOpen ? props.toolbar : props.content}
 
-    <div
+    <ActionIcon
       onClick={() => props.isToolbarOpenOnChange(!props.isToolbarOpen)}
-      style={{
-        height: 40,
-        width: 40,
-        borderRadius: "50%",
-        border: "2px solid black",
-        backgroundColor: "#1B2E3C",
-        position: "absolute",
-        display: "flex",
-        alignItems: "center",
-        zIndex: 30,
-        bottom: 20,
-        right: 20,
-        cursor: "pointer",
-        justifyContent: "center",
-        color: "white"
-      }}
-    >
-      <div
-        style={{
-          width: "70%",
-          height: "70%"
-        }}
-      >
-        <ReactSVG
-          path={props.isToolbarOpen ? close : menu}
-        />
-      </div>
-    </div>
-
+      icon={props.isToolbarOpen ? close : menu}
+    />
   </div>
 );
 

@@ -2,6 +2,10 @@ import * as React from "react";
 
 import { merge } from "../utils";
 import responsive from "../Responsive";
+import ActionIcon from "../ActionIcon";
+
+const minimize = require("./icons/minimize.svg");
+const maximize = require("./icons/maximize.svg");
 
 interface Props {
   menuTitle: string;
@@ -31,10 +35,11 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
         height: "100%"
       }}
     >
-      <p
+      <ActionIcon
         onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
+        icon={props.menuIsVisible ? minimize : maximize}
         style={{
-          cursor: "pointer",
+          color: "white",
           zIndex: 100,
           width: 50,
           height: 50,
@@ -42,9 +47,8 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
           bottom: 0,
           left: 0
         }}
-      >
-        FOO
-      </p>
+      />
+
       {props.menuIsVisible ? props.menu : null}
     </div>
     <div
