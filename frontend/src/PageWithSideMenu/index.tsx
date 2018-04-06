@@ -15,33 +15,43 @@ interface MenuVisibility {
   menuIsVisibleOnChange: (state: boolean) => void;
 }
 
-const MENU_WIDTH = 250;
-
-const Desktop = (props: Props): React.ReactElement<any> => (
+const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
   <div
     style={{
+      display: "flex",
       position: "relative",
-      height: "100%",
-      width: "100%"
+      flexDirection: "row",
+      width: "100%",
+      height: "100%"
     }}
   >
     <div
       style={{
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        width: MENU_WIDTH,
+        position: "relative",
         height: "100%"
       }}
     >
-      {props.menu}
+      <p
+        onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
+        style={{
+          cursor: "pointer",
+          zIndex: 100,
+          width: 50,
+          height: 50,
+          position: "absolute",
+          bottom: 0,
+          left: 0
+        }}
+      >
+        FOO
+      </p>
+      {props.menuIsVisible ? props.menu : null}
     </div>
     <div
       style={{
-        position: "absolute",
-        right: 0,
+        position: "relative",
         height: "100%",
-        width: "calc(100% - " + MENU_WIDTH + "px)"
+        flex: "1 1 auto"
       }}
     >
       {props.content}

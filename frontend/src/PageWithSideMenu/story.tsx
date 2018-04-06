@@ -11,7 +11,7 @@ const getWidget = (type: "mobile" | "desktop"): React.ReactElement<any> => {
       type: type,
       menuTitle: "menu",
       contentTitle: "content",
-      menu: <p>MENU</p>,
+      menu: <p style={{ paddingRight: 20 }}>MENU</p>,
       content: <p>CONTENT</p>
     }),
     withState(
