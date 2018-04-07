@@ -57,7 +57,7 @@ export const Groups: { [key: string]: GroupSpec<Item> } = {
 };
 
 const filterItems = (items: Item[], types: string[]): Item[] =>
-  types.length === 0 ? items : _.filter(items, item => types.indexOf(item.type) > -1);
+  types.length === 0 ? items : _.filter(items, item => types.indexOf(item.type) === -1);
 
 const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
   <BaseToolbar
@@ -88,7 +88,7 @@ const Main = (props: {
   return (
     <PageWithOverlay
       foregroundContent={
-        !_.isNil(selectedPosition) ? (
+        selectedPosition > -1 ? (
           <Carousel
             size={flattened.length}
             selectedPostion={selectedPosition || 0}
@@ -107,7 +107,9 @@ const Main = (props: {
           items={grouped}
           renderItem={({item}: {item: Item}) => (
             <Small
-              style={{ color: TypeToSpecMapping[item.type].color }}
+              style={{
+                backgroundColor: TypeToSpecMapping[item.type].color 
+              }}
               item={item} 
               onClick={() => props.selectedIdOnChange(getId(item))} 
             />

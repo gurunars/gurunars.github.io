@@ -15,7 +15,8 @@ const GroupedList = <T extends {}>(props: {
         <div
           style={{
             marginBottom: 15,
-            pageBreakInside: "avoid"
+            pageBreakInside: "avoid",
+            overflowY: "auto"
           }}
         >
           <h2 style={{ pageBreakAfter: "avoid" }}>{item.group}</h2>
@@ -37,14 +38,15 @@ const Desktop = <T extends {}>(
 ): React.ReactElement<any> => (
     <GroupedList
       items={props.items}
-      style={{ display: "flex" }}
       renderItem={item => (
         <div
           style={{
-            display: "inline-block",
+            float: "left",
+            display: "flex",
             position: "relative",
             width: 300,
-            height: 220
+            height: 220,
+            margin: 10
           }}
         >
           {props.renderItem(item)}
