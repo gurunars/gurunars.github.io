@@ -3,7 +3,7 @@ import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
 import BaseToolbar from "../Toolbar";
 import { ResponsiveFlex } from "../Layouts";
 import { Small, Large, Item } from "../Item";
-import CollectionView from "../CollectionView";
+import CollectionView, { PositionHolder } from "../CollectionView";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -64,14 +64,22 @@ const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
   />
 );
 
-/*
+const ColorItemView = (props: { item: Item, openItem: (item: Item) => void }) => (
+  <Small {...props} style={{ color: getTypeSpec(props.item.type).color }} />
+);
+
 const Main = (props: {
   items: Item[],
 
-}) => (
-    <CollectionView>
+} & PositionHolder) => {
+  const itemView;
 
-    </CollectionView>
+  const listView;
+  return (
+    <CollectionView
+      listView={listView}
+      itemView={itemView}
+      {...props}
+    />
   );
-
-  */
+};

@@ -15,7 +15,7 @@ interface ViewConfig<T extends {}> {
   itemView: (props: { item: T }) => React.ReactElement<any>;
 }
 
-interface PositionHolder {
+export interface PositionHolder {
   selectedPosition: number | null;
   selectedPositionOnChange: (selectedPosition: number | null) => void;
 }

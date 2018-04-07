@@ -23,11 +23,12 @@ const metaInfoStyle = {
   fontSize: "0.8em"
 };
 
-const ItemView = ({ item, openItem }: {
+const ItemView = ({ item, openItem, style }: {
   item: Item,
-  openItem: (item: Item) => void
+  openItem: (item: Item) => void,
+  style?: React.CSSProperties
 }): React.ReactElement<any> => (
-    <FullSize style={{ flexDirection: "column" }}>
+    <FullSize style={merge({ flexDirection: "column" }, style || {})}>
       <div
         style={{
           position: "relative",
