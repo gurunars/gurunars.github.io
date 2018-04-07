@@ -3,7 +3,7 @@ import * as React from "react";
 import { GroupedItems } from "./interfaces";
 import responsive, { ForcedLayout } from "../Responsive";
 
-type RenderItem<T extends {}> = (props: { item: T, position: number }) => React.ReactElement<any>;
+type RenderItem<T extends {}> = (props: { item: T }) => React.ReactElement<any>;
 
 const GroupedList = <T extends {}>(props: {
   items: GroupedItems<T>[],
@@ -20,7 +20,7 @@ const GroupedList = <T extends {}>(props: {
         >
           <h2 style={{ pageBreakAfter: "avoid" }}>{item.group}</h2>
           <div style={props.style}>
-            {item.elements.map((element, index) => props.renderItem({ item: element, position: index }))}
+            {item.elements.map(element => props.renderItem({ item: element }))}
           </div>
         </div>
       ))}
