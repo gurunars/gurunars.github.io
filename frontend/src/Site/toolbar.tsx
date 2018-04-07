@@ -59,3 +59,5 @@ const Toolbar = (props: { isVertical: boolean } & SpecSelection & GroupSpecSelec
     <GroupBy mapping={Groups} {...props} />
   </ResponsiveFlex>
 );
+
+export default Toolbar;
