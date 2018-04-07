@@ -1,9 +1,13 @@
 import * as React from "react";
+import * as _ from "lodash";
 import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
 import BaseToolbar from "../Toolbar";
 import { ResponsiveFlex } from "../Layouts";
 import { Small, Large, Item } from "../Item";
-import CollectionView, { PositionHolder } from "../CollectionView";
+
+import Carousel from "../Carousel";
+import PageWithOverlay from "../PageWithOverlay";
+import GroupedList from "../GroupedList";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -68,16 +72,39 @@ const ColorItemView = (props: { item: Item, onClick: () => void }) => (
   <Small {...props} style={{ color: getTypeSpec(props.item.type).color }} />
 );
 
+interface PositionHolder {
+  selectedPosition: number | null;
+  selectedPositionOnChange: (selectedPosition: number | null) => void;
+}
+
 const Main = (props: {
   items: Item[],
-
 } & PositionHolder) => {
   const listView;
-  return (
-    <CollectionView
-      listView={listView}
-      itemView={({ id }: { id: number }) => <ColorItemView id={id} onClick={props.selectedPositionOnChange(id)} />}
-      {...props}
+
+  return(
+    <PageWithOverlay
+      backgroundContent={props.listView({
+        items: props.items,
+        selectedPostionOnChange: props.selectedPositionOnChange
+      })}
+      foregroundContent={
+        !_.isNil(props.selectedPosition) ? (
+          <Carousel
+            size={props.items.length}
+            selectedPostion={props.selectedPosition || 0}
+            close={() => props.selectedPositionOnChange(null)}
+            goTo={pos => props.selectedPositionOnChange(pos)}
+          >
+            {pos => (
+              <Small 
+                item={props.items[pos]} 
+                onClick={() => props.selectedPositionOnChange(pos)} 
+              />
+            )}
+          </Carousel>
+        ) : null
+      }
     />
   );
 };
