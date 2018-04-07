@@ -50,5 +50,4 @@ storiesOf("Toolbar", module)
     height: 600,
     width: 800,
   }))
-  .add("horizontal", () => <StateToolbar />)
-  .add("vertical", () => <StateToolbar />);
+  .add("basic", () => <StateToolbar />);
