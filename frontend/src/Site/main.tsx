@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
 import BaseToolbar from "../Toolbar";
 import { ResponsiveFlex } from "../Layouts";
-import { Small, Large, Item } from "../Item";
+import { Small, Large, Item, getId } from "../Item";
 import WithToolbar from "../WithToolbar";
 
 import Carousel from "../Carousel";
@@ -74,14 +74,14 @@ const ColorItemView = (props: { item: Item, onClick: () => void }) => (
   <Small {...props} style={{ color: getTypeSpec(props.item.type).color }} />
 );
 
-interface PositionHolder {
-  selectedPosition: number | null;
-  selectedPositionOnChange: (selectedPosition: number | null) => void;
+interface IdHodler {
+  selectedId: number | null;
+  selectedIdOnChange: (selectedId: number | null) => void;
 }
 
 const Main = (props: {
   items: Item[],
-} & PositionHolder & SpecSelection & GroupSpecSelection) => {
+} & IdHodler & SpecSelection & GroupSpecSelection) => {
   const group = Groups[props.selectedGroup || "year"];
   const filtered = props.items;
   const grouped = groupItems(
@@ -91,15 +91,16 @@ const Main = (props: {
     group.reverse
   );
   const flattened = _.flatMap(grouped, grp => grp.elements);
+  const selectedPosition = _.findIndex(flattened, item => props.selectedId === getId(item));
   return (
     <PageWithOverlay
       foregroundContent={
-        !_.isNil(props.selectedPosition) ? (
+        !_.isNil(selectedPosition) ? (
           <Carousel
             size={flattened.length}
-            selectedPostion={props.selectedPosition || 0}
-            close={() => props.selectedPositionOnChange(null)}
-            goTo={props.selectedPositionOnChange}
+            selectedPostion={selectedPosition || 0}
+            close={() => props.selectedIdOnChange(null)}
+            goTo={pos => props.selectedIdOnChange(getId(flattened[pos]))}
           >
             {pos => (<Large item={flattened[pos]} />)}
           </Carousel>
