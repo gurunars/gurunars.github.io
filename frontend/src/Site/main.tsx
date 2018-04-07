@@ -81,7 +81,16 @@ interface PositionHolder {
 
 const Main = (props: {
   items: Item[],
-} & PositionHolder & SpecSelection & GroupSpecSelection) => (
+} & PositionHolder & SpecSelection & GroupSpecSelection) => {
+  const group = Groups[props.selectedGroup || "year"];
+  const filtered = props.items;
+  const grouped = groupItems(
+    filtered,
+    group.groupBy,
+    group.sortBy,
+    group.reverse
+  );
+  return (
     <PageWithOverlay
       foregroundContent={
         !_.isNil(props.selectedPosition) ? (
@@ -103,15 +112,11 @@ const Main = (props: {
       </WithToolbar>
     </PageWithOverlay>
   );
+};
 
 /*
  <GroupedList 
-        items={groupItems(
-          props.items, 
-          Groups[props.selectedGroup].groupBy,
-          Groups[props.selectedGroup].sortBy,
-          Groups[props.selectedGroup].reverse
-        )}
+        items={grouped}
         renderItem={({item}: {item: Item}) => (
           <Small 
             item={item} 
