@@ -64,7 +64,7 @@ const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
   />
 );
 
-const ColorItemView = (props: { item: Item, openItem: (item: Item) => void }) => (
+const ColorItemView = (props: { item: Item, onClick: () => void }) => (
   <Small {...props} style={{ color: getTypeSpec(props.item.type).color }} />
 );
 
@@ -72,13 +72,11 @@ const Main = (props: {
   items: Item[],
 
 } & PositionHolder) => {
-  const itemView;
-
   const listView;
   return (
     <CollectionView
       listView={listView}
-      itemView={itemView}
+      itemView={({ id }: { id: number }) => <ColorItemView id={id} onClick={props.selectedPositionOnChange(id)} />}
       {...props}
     />
   );

@@ -60,7 +60,7 @@ storiesOf("Item", module)
   .add("small", () => (
     <Small
       item={item}
-      openItem={action("OpenItem")}
+      onClick={action("OpenItem")}
     />
   ))
   .add("large", () => (

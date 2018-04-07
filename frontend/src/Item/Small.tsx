@@ -23,9 +23,9 @@ const metaInfoStyle = {
   fontSize: "0.8em"
 };
 
-const ItemView = ({ item, openItem, style }: {
+const ItemView = ({ item, onClick, style }: {
   item: Item,
-  openItem: (item: Item) => void,
+  onClick: () => void,
   style?: React.CSSProperties
 }): React.ReactElement<any> => (
     <FullSize style={merge({ flexDirection: "column" }, style || {})}>
@@ -38,7 +38,7 @@ const ItemView = ({ item, openItem, style }: {
       >
         <span
           style={merge(baseStyle, { paddingBottom: 0, fontWeight: "bold" })}
-          onClick={() => openItem(item)}
+          onClick={onClick}
         >{item.title}
         </span>
         <span style={merge(baseStyle, { fontSize: "0.8em", marginTop: 10 })}>
