@@ -3,13 +3,13 @@ import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
 import { withState, compose, withProps } from "recompose";
 
-import { SpecFilter, GroupBy } from ".";
+import Toolbar from ".";
 
-const StateSpecFilter = (isVertical?: boolean): React.ReactElement<any> => {
+const StateToolbar = (isVertical?: boolean): React.ReactElement<any> => {
   const View = compose(
     withProps({
       "isVertical": isVertical,
-      "mapping": {
+      "filterMapping": {
         one: {
           humanReadableName: "One",
           color: "Yellow"
@@ -18,22 +18,8 @@ const StateSpecFilter = (isVertical?: boolean): React.ReactElement<any> => {
           humanReadableName: "Two",
           color: "LightGreen"
         }
-      }
-    }),
-    withState(
-      "selectedSpecs",
-      "selectedSpecsOnChange",
-      []
-    )
-  )(SpecFilter);
-  return <View />;
-};
-
-const StateGroupBy = (isVertical?: boolean): React.ReactElement<any> => {
-  const View = compose(
-    withProps({
-      "isVertical": isVertical,
-      "mapping": {
+      },
+      "groupMapping": {
         one: {
           humanReadableName: "One",
           groupBy: "group-by-one",
@@ -49,11 +35,16 @@ const StateGroupBy = (isVertical?: boolean): React.ReactElement<any> => {
       }
     }),
     withState(
+      "selectedSpecs",
+      "selectedSpecsOnChange",
+      []
+    ),
+    withState(
       "selectedGroup",
       "selectedGroupOnChange",
       null
     )
-  )(GroupBy);
+  )(Toolbar);
   return <View />;
 };
 
@@ -63,5 +54,5 @@ storiesOf("Toolbar", module)
     height: 600,
     width: 800,
   }))
-  .add("SpecFilter",  () => StateSpecFilter(false))
-  .add("GroupBy",  () => StateGroupBy(false));
+  .add("horizontal", () => StateToolbar(false))
+  .add("vertical", () => StateToolbar(true));

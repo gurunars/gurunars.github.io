@@ -1,6 +1,9 @@
 import * as React from "react";
-import { Spec, GroupSpec, SpecFilter, GroupBy, SpecSelection, GroupSpecSelection } from "../Toolbar";
+import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
+import BaseToolbar from "../Toolbar";
 import { ResponsiveFlex } from "../Layouts";
+import { Small, Large, Item } from "../Item";
+import CollectionView from "../CollectionView";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -54,10 +57,21 @@ export const Groups: { [key: string]: GroupSpec } = {
 };
 
 const Toolbar = (props: { isVertical: boolean } & SpecSelection & GroupSpecSelection) => (
-  <ResponsiveFlex>
-    <SpecFilter mapping={TypeToSpecMapping} {...props} />
-    <GroupBy mapping={Groups} {...props} />
-  </ResponsiveFlex>
+  <BaseToolbar
+    groupMapping={Groups}
+    filterMapping={TypeToSpecMapping}
+    {...props}
+  />
 );
 
-export default Toolbar;
+/*
+const Main = (props: {
+  items: Item[],
+
+}) => (
+    <CollectionView>
+
+    </CollectionView>
+  );
+
+  */

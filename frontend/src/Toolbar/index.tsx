@@ -59,11 +59,11 @@ export interface SpecSelection {
   selectedSpecsOnChange: (selectedSpecs: string[]) => void;
 }
 
-export const SpecFilter = (
-  props: { mapping: TypeToSpecMapping } & SpecSelection
+const SpecFilter = (
+  props: { filterMapping: TypeToSpecMapping } & SpecSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
-      {_.map(props.mapping, (value, key) => {
+      {_.map(props.filterMapping, (value, key) => {
         const isSelected = props.selectedSpecs.indexOf(key) > -1;
         return (
           <span
@@ -90,14 +90,12 @@ export interface GroupSpecSelection {
   selectedGroupOnChange: (selectedSpecs: string) => void;
 }
 
-export const GroupBy = (
-  props: {
-    mapping: TitleToGroupSpecMapping
-  } & GroupSpecSelection
+const GroupBy = (
+  props: { groupMapping: TitleToGroupSpecMapping } & GroupSpecSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
-      {_.map(props.mapping, (value, key) => {
-        const isSelected = (props.selectedGroup || _.keys(props.mapping)[0]) === key;
+      {_.map(props.groupMapping, (value, key) => {
+        const isSelected = (props.selectedGroup || _.keys(props.groupMapping)[0]) === key;
         return (
           <span
             key={key}
@@ -114,3 +112,15 @@ export const GroupBy = (
       })}
     </NamedGroup>
   );
+
+const Toolbar = (props: {
+  filterMapping: TypeToSpecMapping,
+  groupMapping: TitleToGroupSpecMapping
+} & SpecSelection & GroupSpecSelection) => (
+    <ResponsiveFlex>
+      <SpecFilter {...props} />
+      <GroupBy {...props} />
+    </ResponsiveFlex>
+  );
+
+export default Toolbar;
