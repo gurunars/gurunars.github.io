@@ -23,16 +23,21 @@ export const FullSize = (props: {
   );
 
 type Props = {
-  children: React.ReactNode
+  children: React.ReactNode,
+  style?: React.CSSProperties
 };
 
 const IResponsiveFlex = (isVertical: boolean, props: Props): React.ReactElement<any> => (
   <div
-    style={{
-      alignItems: isVertical ? "initial" : "center",
-      display: "flex",
-      flexDirection: isVertical ? "column" : "row"
-    }}
+    style={
+      merge(
+        {
+          alignItems: isVertical ? "initial" : "center",
+          display: "flex",
+          flexDirection: isVertical ? "column" : "row"
+        },
+        props.style || {}
+      )}
   >{props.children}
   </div>
 );

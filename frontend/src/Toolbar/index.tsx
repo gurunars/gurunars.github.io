@@ -117,7 +117,12 @@ const Toolbar = (props: {
   filterMapping: TypeToSpecMapping,
   groupMapping: TitleToGroupSpecMapping
 } & SpecSelection & GroupSpecSelection) => (
-    <ResponsiveFlex>
+    <ResponsiveFlex
+      style={{
+        justifyContent: "space-between",
+        width: "100%"
+      }}
+    >
       <SpecFilter {...props} />
       <GroupBy {...props} />
     </ResponsiveFlex>

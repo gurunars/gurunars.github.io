@@ -5,48 +5,44 @@ import { withState, compose, withProps } from "recompose";
 
 import Toolbar from ".";
 
-const StateToolbar = (isVertical?: boolean): React.ReactElement<any> => {
-  const View = compose(
-    withProps({
-      "isVertical": isVertical,
-      "filterMapping": {
-        one: {
-          humanReadableName: "One",
-          color: "Yellow"
-        },
-        two: {
-          humanReadableName: "Two",
-          color: "LightGreen"
-        }
+const StateToolbar = compose(
+  withProps({
+    "filterMapping": {
+      one: {
+        humanReadableName: "One",
+        color: "Yellow"
       },
-      "groupMapping": {
-        one: {
-          humanReadableName: "One",
-          groupBy: "group-by-one",
-          sortBy: "sort-by-one",
-          reverse: true
-        },
-        two: {
-          humanReadableName: "Two",
-          groupBy: "group-by-two",
-          sortBy: "sort-by-two",
-          reverse: false
-        }
+      two: {
+        humanReadableName: "Two",
+        color: "LightGreen"
       }
-    }),
-    withState(
-      "selectedSpecs",
-      "selectedSpecsOnChange",
-      []
-    ),
-    withState(
-      "selectedGroup",
-      "selectedGroupOnChange",
-      null
-    )
-  )(Toolbar);
-  return <View />;
-};
+    },
+    "groupMapping": {
+      one: {
+        humanReadableName: "One",
+        groupBy: "group-by-one",
+        sortBy: "sort-by-one",
+        reverse: true
+      },
+      two: {
+        humanReadableName: "Two",
+        groupBy: "group-by-two",
+        sortBy: "sort-by-two",
+        reverse: false
+      }
+    }
+  }),
+  withState(
+    "selectedSpecs",
+    "selectedSpecsOnChange",
+    []
+  ),
+  withState(
+    "selectedGroup",
+    "selectedGroupOnChange",
+    null
+  )
+)(Toolbar);
 
 storiesOf("Toolbar", module)
   .addDecorator(host({
@@ -54,5 +50,5 @@ storiesOf("Toolbar", module)
     height: 600,
     width: 800,
   }))
-  .add("horizontal", () => StateToolbar(false))
-  .add("vertical", () => StateToolbar(true));
+  .add("horizontal", () => <StateToolbar />)
+  .add("vertical", () => <StateToolbar />);

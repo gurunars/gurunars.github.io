@@ -56,7 +56,7 @@ export const Groups: { [key: string]: GroupSpec } = {
   }
 };
 
-const Toolbar = (props: { isVertical: boolean } & SpecSelection & GroupSpecSelection) => (
+const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
   <BaseToolbar
     groupMapping={Groups}
     filterMapping={TypeToSpecMapping}
