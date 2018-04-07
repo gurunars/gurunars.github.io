@@ -31,7 +31,7 @@ const OverlayDecorator = (props: { children: React.ReactElement<any> }) => (
 );
 
 type Props = {
-  backgroundContent: React.ReactElement<any>,
+  children: React.ReactElement<any>,
   foregroundContent?: React.ReactElement<any> | null
 };
 
@@ -44,14 +44,14 @@ const Desktop = (props: Props) => (
           height: "100%"
         }}
       >
-        {props.backgroundContent}
+        {props.children}
         <OverlayDecorator>{props.foregroundContent}</OverlayDecorator>
       </div>
-    ) : props.backgroundContent
+    ) : props.children
 );
 
 const Mobile = (props: Props) => props.foregroundContent ?
-  props.foregroundContent : props.backgroundContent;
+  props.foregroundContent : props.children;
 
 export default responsive({
   desktopView: Desktop,

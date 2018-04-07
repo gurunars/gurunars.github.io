@@ -10,7 +10,7 @@ const menu = require("./icons/menu.svg");
 
 type Props = {
   toolbar: React.ReactElement<any>,
-  content: React.ReactElement<any>
+  children: React.ReactElement<any>
 };
 
 const Desktop = (props: Props): React.ReactElement<any> => (
@@ -40,7 +40,7 @@ const Desktop = (props: Props): React.ReactElement<any> => (
         overflowY: "auto"
       }}
     >
-      {props.content}
+      {props.children}
     </div>
   </div>
 );
@@ -58,7 +58,7 @@ const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
       height: "100%"
     }}
   >
-    {props.isToolbarOpen ? props.toolbar : props.content}
+    {props.isToolbarOpen ? props.toolbar : props.children}
 
     <ActionIcon
       onClick={() => props.isToolbarOpenOnChange(!props.isToolbarOpen)}

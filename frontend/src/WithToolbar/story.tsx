@@ -11,15 +11,12 @@ storiesOf("WithToolbar", module)
     width: 800,
   }))
   .add("desktop", () => (
-    <WithToolbar
-      toolbar={<p>TOOLBAR</p>}
-      content={<p>CONTENT</p>}
-    />
+    <WithToolbar toolbar={<p>TOOLBAR</p>}>
+      <p>CONTENT</p>
+    </WithToolbar>
   ))
   .add("mobile", () => (
-    <WithToolbar
-      type="mobile"
-      toolbar={<p>TOOLBAR</p>}
-      content={<p>CONTENT</p>}
-    />
+    <WithToolbar type="mobile" toolbar={<p>TOOLBAR</p>}>
+      <p>CONTENT</p>
+    </WithToolbar>
   )); 

@@ -12,12 +12,13 @@ storiesOf("PageWithOverlay", module)
   }))
   .add("With overlay", () => (
     <PageWithOverlay
-      backgroundContent={<p>Background content</p>}
       foregroundContent={<p>Foreground content</p>}
-    />
+    > 
+      <p>Background content</p>
+    </PageWithOverlay>
   ))
   .add("Without overlay", () => (
-    <PageWithOverlay
-      backgroundContent={<p>Background content</p>}
-    />
+    <PageWithOverlay> 
+      <p>Background content</p>
+    </PageWithOverlay>
   )); 

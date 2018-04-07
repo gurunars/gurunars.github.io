@@ -4,10 +4,12 @@ import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
 import BaseToolbar from "../Toolbar";
 import { ResponsiveFlex } from "../Layouts";
 import { Small, Large, Item } from "../Item";
+import WithToolbar from "../WithToolbar";
 
 import Carousel from "../Carousel";
 import PageWithOverlay from "../PageWithOverlay";
 import GroupedList from "../GroupedList";
+import { groupItems } from "../GroupedList/grouping";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -79,22 +81,15 @@ interface PositionHolder {
 
 const Main = (props: {
   items: Item[],
-} & PositionHolder) => {
-  const listView;
-
-  return(
+} & PositionHolder & SpecSelection & GroupSpecSelection) => (
     <PageWithOverlay
-      backgroundContent={props.listView({
-        items: props.items,
-        selectedPostionOnChange: props.selectedPositionOnChange
-      })}
       foregroundContent={
         !_.isNil(props.selectedPosition) ? (
           <Carousel
             size={props.items.length}
             selectedPostion={props.selectedPosition || 0}
             close={() => props.selectedPositionOnChange(null)}
-            goTo={pos => props.selectedPositionOnChange(pos)}
+            goTo={props.selectedPositionOnChange}
           >
             {pos => (
               <Small 
@@ -105,6 +100,28 @@ const Main = (props: {
           </Carousel>
         ) : null
       }
-    />
+    >
+      <WithToolbar 
+        toolbar={<Toolbar {...props} />} 
+      >
+        <p />
+      </WithToolbar>
+    </PageWithOverlay>
   );
-};
+
+/*
+ <GroupedList 
+        items={groupItems(
+          props.items, 
+          Groups[props.selectedGroup].groupBy,
+          Groups[props.selectedGroup].sortBy,
+          Groups[props.selectedGroup].reverse
+        )}
+        renderItem={({item}: {item: Item}) => (
+          <Small 
+            item={item} 
+            onClick={() => props.selectedPositionOnChange(pos)} 
+          />
+        )}
+      />
+*/
