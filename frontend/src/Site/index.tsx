@@ -2,7 +2,6 @@ import * as React from "react";
 import * as _ from "lodash";
 import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
 import BaseToolbar from "../Toolbar";
-import { ResponsiveFlex } from "../Layouts";
 import { Small, Large, Item, getId } from "../Item";
 import WithToolbar from "../WithToolbar";
 
@@ -30,29 +29,29 @@ export const TypeToSpecMapping: { [key: string]: Spec } = {
   }
 };
 
-export const Groups: { [key: string]: GroupSpec } = {
+export const Groups: { [key: string]: GroupSpec<Item> } = {
   "year": {
     humanReadableName: "year",
-    groupBy: "year",
-    sortBy: "timestamp",
+    groupBy: (item: Item) => item.duration.start.getUTCFullYear(),
+    sortBy: (item: Item) => item.duration.start,
     reverse: true
   },
   "type": {
     humanReadableName: "Type",
-    groupBy: "humanReadableType",
-    sortBy: "timestamp",
+    groupBy: (item: Item) => item.type,
+    sortBy: (item: Item) => item.type,
     reverse: false
   },
   "title": {
     humanReadableName: "Title",
-    groupBy: "titleFirstChar",
-    sortBy: "title",
+    groupBy: (item: Item) => item.title[0].toUpperCase(),
+    sortBy: (item: Item) => item.title,
     reverse: false
   },
   "location": {
     humanReadableName: "Location",
-    groupBy: "locationName",
-    sortBy: "timestamp",
+    groupBy: (item: Item) => item.location.name,
+    sortBy: (item: Item) => item.location.name,
     reverse: false
   }
 };
@@ -66,10 +65,6 @@ const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
     filterMapping={TypeToSpecMapping}
     {...props}
   />
-);
-
-const ColoredItemView = (props: { item: Item, onClick: () => void }) => (
-  <Small {...props} style={{ color: TypeToSpecMapping[props.item.type].color }} />
 );
 
 interface IdHodler {
@@ -111,7 +106,8 @@ const Main = (props: {
         <GroupedList 
           items={grouped}
           renderItem={({item}: {item: Item}) => (
-            <Small 
+            <Small
+              style={{ color: TypeToSpecMapping[item.type].color }}
               item={item} 
               onClick={() => props.selectedIdOnChange(getId(item))} 
             />
@@ -121,3 +117,5 @@ const Main = (props: {
     </PageWithOverlay>
   );
 };
+
+export default Main;

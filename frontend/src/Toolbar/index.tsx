@@ -12,14 +12,14 @@ export interface Spec {
 
 export type TypeToSpecMapping = { [key: string]: Spec };
 
-export interface GroupSpec {
+export interface GroupSpec<T extends {}> {
   humanReadableName: string;
-  groupBy: string;
-  sortBy: string;
+  groupBy: (item: T) => Object;
+  sortBy: (item: T) => Object;
   reverse: boolean;
 }
 
-export type TitleToGroupSpecMapping = { [key: string]: GroupSpec };
+export type TitleToGroupSpecMapping<T extends {}> = { [key: string]: GroupSpec<T> };
 
 const baseStyle = {
   cursor: "pointer",
@@ -90,8 +90,8 @@ export interface GroupSpecSelection {
   selectedGroupOnChange: (selectedSpecs: string) => void;
 }
 
-const GroupBy = (
-  props: { groupMapping: TitleToGroupSpecMapping } & GroupSpecSelection
+const GroupBy = <T extends {}>(
+  props: { groupMapping: TitleToGroupSpecMapping<T> } & GroupSpecSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
       {_.map(props.groupMapping, (value, key) => {
@@ -113,9 +113,9 @@ const GroupBy = (
     </NamedGroup>
   );
 
-const Toolbar = (props: {
+const Toolbar = <T extends {}>(props: {
   filterMapping: TypeToSpecMapping,
-  groupMapping: TitleToGroupSpecMapping
+  groupMapping: TitleToGroupSpecMapping<T>
 } & SpecSelection & GroupSpecSelection) => (
     <ResponsiveFlex
       style={{

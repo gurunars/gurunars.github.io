@@ -25,4 +25,4 @@ const format = (date?: Date | null) =>
 export const durationToString = (duration: Duration) =>
   format(duration.start) + " - " + (format(duration.end) || "NOW");
 
-export const getId = (item: Item) => hashCode(item.location + ":" + item.title);
+export const getId = (item: Item) => hashCode(item.location.name + ":" + item.title);
