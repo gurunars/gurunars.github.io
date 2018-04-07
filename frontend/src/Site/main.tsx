@@ -90,17 +90,18 @@ const Main = (props: {
     group.sortBy,
     group.reverse
   );
+  const flattened = _.flatMap(grouped, grp => grp.elements);
   return (
     <PageWithOverlay
       foregroundContent={
         !_.isNil(props.selectedPosition) ? (
           <Carousel
-            size={props.items.length}
+            size={flattened.length}
             selectedPostion={props.selectedPosition || 0}
             close={() => props.selectedPositionOnChange(null)}
             goTo={props.selectedPositionOnChange}
           >
-            {pos => (<Large item={props.items[pos]} />)}
+            {pos => (<Large item={flattened[pos]} />)}
           </Carousel>
         ) : null
       }
