@@ -1,9 +1,9 @@
 import * as React from "react";
 
-export default interface Props<T extends {}> {
-  items: T[];
+export default interface Props {
+  size: number;
   selectedPostion: number;
-  children: (item: T) => React.ReactElement<any>;
+  children: (pos: number) => React.ReactElement<any>;
   close: () => void;
   goTo: (targetPosition: number) => void;
 }

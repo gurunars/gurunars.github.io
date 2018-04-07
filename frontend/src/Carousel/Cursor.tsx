@@ -4,18 +4,18 @@ export interface Cursor {
   previous: number | null;
 }
 
-const getIndex = (items: any[], index: number): number | null => {
-  if (index < 0 || index >= items.length) {
+const getIndex = (size: number, index: number): number | null => {
+  if (index < 0 || index >= size) {
     return null;
   } else {
     return index;
   }
 };
 
-export const getCursorItems = (items: any[], index: number): Cursor => {
+export const getCursorItems = (size: number, index: number): Cursor => {
   return ({
-    current: getIndex(items, index),
-    next: getIndex(items, index + 1),
-    previous: getIndex(items, index - 1)
+    current: getIndex(size, index),
+    next: getIndex(size, index + 1),
+    previous: getIndex(size, index - 1)
   });
 };

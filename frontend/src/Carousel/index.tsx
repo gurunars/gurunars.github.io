@@ -4,7 +4,7 @@ import Mobile from "./Mobile";
 import responsive from "../Responsive";
 import Props from "./Props";
 
-const Carousel: <T extends {}>(props: Props<T>) => React.ReactElement<any> = responsive({
+const Carousel: (props: Props) => React.ReactElement<any> = responsive({
   desktopView: Desktop,
   mobileView: Mobile
 });

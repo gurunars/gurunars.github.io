@@ -31,11 +31,11 @@ storiesOf("Carousel", module)
   }))
   .add("Previous and next", () => (
     <Carousel
-      items={items}
+      size={items.length}
       selectedPostion={1}
       close={action("CLOSE")}
       goTo={action("GO TO")}
     >
-      {(current: Item) => (<div>{current.title}</div>)}
+      {(pos: number) => (<div>{items[pos].title}</div>)}
     </Carousel>
   ));

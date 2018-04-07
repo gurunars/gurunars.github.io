@@ -31,12 +31,12 @@ const CollectionView = <T extends {}>(
       foregroundContent={
         !_.isNil(props.selectedPosition) ? (
           <Carousel
-            items={props.items}
+            size={props.items.length}
             selectedPostion={props.selectedPosition || 0}
             close={() => props.selectedPositionOnChange(null)}
             goTo={pos => props.selectedPositionOnChange(pos)}
           >
-            {item => props.itemView({ item: item })}
+            {pos => props.itemView({item: props.items[pos]})}
           </Carousel>
         ) : null
       }

@@ -12,8 +12,8 @@ const close = require("./icons/close.svg");
 const prev = require("./icons/prev.svg");
 const next = require("./icons/next.svg");
 
-const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
-  const cursor: Cursor = getCursorItems(props.items, props.selectedPostion);
+const Carousel = (props: Props): React.ReactElement<any> => {
+  const cursor: Cursor = getCursorItems(props.size, props.selectedPostion);
 
   const dims = 15;
   const controlsWidth = 50;
@@ -44,7 +44,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
       </div>
 
       <div style={mainAreaStyle}>
-        {props.children(props.items[cursor.current || 0])}
+        {props.children(cursor.current || 0)}
       </div>
 
       <div style={controlsStyle}>
