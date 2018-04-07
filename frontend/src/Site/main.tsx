@@ -91,12 +91,7 @@ const Main = (props: {
             close={() => props.selectedPositionOnChange(null)}
             goTo={props.selectedPositionOnChange}
           >
-            {pos => (
-              <Small 
-                item={props.items[pos]} 
-                onClick={() => props.selectedPositionOnChange(pos)} 
-              />
-            )}
+            {pos => (<Large item={props.items[pos]} />)}
           </Carousel>
         ) : null
       }
