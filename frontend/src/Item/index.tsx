@@ -1,5 +1,3 @@
-import responsive from "../Responsive";
-
 import SmallView from "./Small";
 import LargeView from "./Large";
 export { Item } from "./interface";

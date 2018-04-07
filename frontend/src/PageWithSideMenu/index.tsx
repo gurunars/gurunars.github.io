@@ -3,6 +3,7 @@ import * as React from "react";
 import { merge } from "../utils";
 import responsive from "../Responsive";
 import ActionIcon from "../ActionIcon";
+import { FullSize } from "../Layouts";
 
 const minimize = require("./icons/minimize.svg");
 const maximize = require("./icons/maximize.svg");
@@ -20,15 +21,7 @@ interface MenuVisibility {
 }
 
 const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
-  <div
-    style={{
-      display: "flex",
-      position: "relative",
-      flexDirection: "row",
-      width: "100%",
-      height: "100%"
-    }}
-  >
+  <FullSize style={{ flexDirection: "row" }}>
     <div
       style={{
         position: "relative",
@@ -60,7 +53,7 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
     >
       {props.content}
     </div>
-  </div>
+  </FullSize>
 );
 
 const tabStyle = {
@@ -102,14 +95,7 @@ const Tab = (props: {
   );
 
 const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
-  <div
-    style={{
-      overflowY: "hidden",
-      position: "relative",
-      height: "100%",
-      width: "100%"
-    }}
-  >
+  <FullSize style={{ overflowY: "hidden", flexDirection: "column" }}>
     <div
       style={{
         position: "relative",
@@ -148,7 +134,7 @@ const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
     >
       {props.menuIsVisible ? props.menu : props.content}
     </div>
-  </div>
+  </FullSize>
 );
 
 const PageWithSideMenu = responsive({

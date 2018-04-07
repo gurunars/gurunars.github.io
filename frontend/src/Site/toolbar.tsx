@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Spec, GroupSpec, SpecFilter, GroupBy, SpecSelection, GroupSpecSelection } from "../Toolbar";
+import { ResponsiveFlex } from "../Layouts";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -53,8 +54,8 @@ export const Groups: { [key: string]: GroupSpec } = {
 };
 
 const Toolbar = (props: { isVertical: boolean } & SpecSelection & GroupSpecSelection) => (
-  <div>
+  <ResponsiveFlex>
     <SpecFilter mapping={TypeToSpecMapping} {...props} />
     <GroupBy mapping={Groups} {...props} />
-  </div>
+  </ResponsiveFlex>
 );

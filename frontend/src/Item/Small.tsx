@@ -3,6 +3,7 @@ import * as React from "react";
 import { Item, durationToString } from "./interface";
 import { merge } from "../utils";
 import { Url, CircleUrl } from "../Link";
+import { FullSize } from "../Layouts";
 
 const baseStyle = {
   display: "block",
@@ -26,15 +27,7 @@ const ItemView = ({ item, openItem }: {
   item: Item,
   openItem: (item: Item) => void
 }): React.ReactElement<any> => (
-    <div
-      style={{
-        display: "flex",
-        position: "relative",
-        flexDirection: "column",
-        width: "100%",
-        height: "100%"
-      }}
-    >
+    <FullSize style={{ flexDirection: "column" }}>
       <div
         style={{
           position: "relative",
@@ -82,7 +75,7 @@ const ItemView = ({ item, openItem }: {
           />
         ))}
       </div>
-    </div>
+    </FullSize>
   );
 
 export default ItemView;

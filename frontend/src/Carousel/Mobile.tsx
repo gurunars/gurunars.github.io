@@ -1,6 +1,8 @@
 import * as React from "react";
 import ReactSVG from "react-svg";
 
+import { FullSize } from "../Layouts";
+
 import CursorIcon from "./CursorIcon";
 
 import { Cursor, getCursorItems } from "./Cursor";
@@ -29,13 +31,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
   };
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%"
-      }}
-    >
+    <FullSize>
 
       <div style={mainAreaStyle}>
         {props.children(props.items[cursor.current || 0])}
@@ -78,7 +74,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
 
       </div>
 
-    </div>
+    </FullSize>
   );
 };
 

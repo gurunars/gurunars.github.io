@@ -1,6 +1,8 @@
 import * as React from "react";
 import ReactSVG from "react-svg";
 
+import { FullSize } from "../Layouts";
+
 import CursorIcon from "./CursorIcon";
 
 import { Cursor, getCursorItems } from "./Cursor";
@@ -35,14 +37,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        position: "relative",
-        width: "100%",
-        height: "100%"
-      }}
-    >
+    <FullSize>
 
       <div style={controlsStyle}>
         <CursorIcon icon={<ReactSVG path={prev} />} targetPosition={cursor.previous} goTo={props.goTo} />
@@ -71,7 +66,7 @@ const Carousel = <T extends {}>(props: Props<T>): React.ReactElement<any> => {
       ><ReactSVG path={close} />
       </div>
 
-    </div>
+    </FullSize>
   );
 };
 

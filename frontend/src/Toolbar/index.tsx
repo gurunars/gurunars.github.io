@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import { Set } from "immutable";
 
 import { merge } from "../utils";
-import responsive from "../Responsive";
+import { ResponsiveFlex } from "../Layouts";
 
 export interface Spec {
   humanReadableName: string;
@@ -40,33 +40,19 @@ type Props = {
   children: JSX.Element[]
 };
 
-const PartialNamedGroup = (
-  isVertical: boolean,
-  props: Props
-): React.ReactElement<any> => (
-    <div
+const NamedGroup = (props: Props): React.ReactElement<any> => (
+  <ResponsiveFlex>
+    <b
       style={{
-        alignItems: isVertical ? "initial" : "center",
-        display: "flex",
-        flexDirection: isVertical ? "column" : "row"
+        marginRight: 10,
+        marginBottom: 8,
+        whiteSpace: "nowrap"
       }}
-    >
-      <b
-        style={{
-          marginRight: 10,
-          marginBottom: 8,
-          whiteSpace: "nowrap"
-        }}
-      >{props.title}:
-      </b>
-      {props.children}
-    </div>
-  );
-
-const NamedGroup: (props: Props) => React.ReactElement<any> = responsive({
-  desktopView: PartialNamedGroup.bind(null, false),
-  mobileView: PartialNamedGroup.bind(null, true)
-});
+    >{props.title}:
+    </b>
+    {props.children}
+  </ResponsiveFlex>
+);
 
 export interface SpecSelection {
   selectedSpecs: string[];
