@@ -1,5 +1,5 @@
-import { Link } from "../Link";
-import { Spec, GroupSpec } from "../Toolbar";
+import * as React from "react";
+import { Spec, GroupSpec, SpecFilter, GroupBy, SpecSelection, GroupSpecSelection } from "../Toolbar";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -51,3 +51,10 @@ export const Groups: { [key: string]: GroupSpec } = {
     reverse: false
   }
 };
+
+const Toolbar = (props: { isVertical: boolean } & SpecSelection & GroupSpecSelection) => (
+  <div>
+    <SpecFilter mapping={TypeToSpecMapping} {...props} />
+    <GroupBy mapping={Groups} {...props} />
+  </div>
+);
