@@ -1,18 +1,9 @@
 import * as React from "react";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <header>
-          <h1>Welcome to React</h1>
-        </header>
-        <p>
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = ({portfolio}: {portfolio: any}) => (
+  <div>
+    {JSON.stringify(portfolio)}
+  </div>
+);
 
 export default App;
