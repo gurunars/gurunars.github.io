@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { GroupedItems } from "./interfaces";
-import responsive, { ForcedLayout } from "../Responsive";
+import responsive from "../Responsive";
 
 type RenderItem<T extends {}> = (props: { item: T }) => React.ReactElement<any>;
 
@@ -75,7 +75,7 @@ const Mobile = <T extends {}>(
     />
   );
 
-const Grouping: <T extends {}>(props: ForcedLayout & Props<T>) => React.ReactElement<any> = responsive({
+const Grouping: <T extends {}>(props: Props<T>) => React.ReactElement<any> = responsive({
   desktopView: Desktop,
   mobileView: Mobile
 });

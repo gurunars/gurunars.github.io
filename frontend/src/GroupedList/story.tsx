@@ -36,7 +36,6 @@ storiesOf("GroupedList", module)
   ))
   .add("mobile", () => (
     <Grouping
-      type="mobile"
       items={groupItems(items, "type", "title")}
       renderItem={(props: { item: Item }) => <h1>{props.item.title}</h1>}
     />
