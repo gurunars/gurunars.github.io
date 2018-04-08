@@ -16,11 +16,18 @@ const baseStyle = {
 };
 
 const metaInfoStyle = {
-  position: "absolute",
   bottom: 0,
   padding: 5,
   fontStyle: "italic",
   fontSize: "0.8em"
+};
+
+const flexMax: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  position: "relative",
+  width: "100%",
+  flex: "1 1 auto"
 };
 
 const ItemView = ({ item, onClick, style }: {
@@ -39,33 +46,38 @@ const ItemView = ({ item, onClick, style }: {
         )
       }
     >
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          flex: "1 1 auto"
-        }}
-      >
-        <span
-          style={merge(baseStyle, {
-            paddingBottom: 0,
-            fontWeight: "bold",
-            textDecoration: "underline",
-            color: "blue"
-          })}
-          onClick={onClick}
-        >{item.title}
-        </span>
-        <span style={merge(baseStyle, { fontSize: "0.8em", marginTop: 10 })}>
-          {item.description}
-        </span>
-        <Url
-          link={item.location}
-          style={merge(metaInfoStyle, { bottom: 0, width: 160 })}
-        />
-        <span style={merge(metaInfoStyle, { right: 0 })}>
-          {durationToString(item.duration)}
-        </span>
+      <div style={flexMax}>
+        <div style={flexMax}>
+          <span
+            style={merge(baseStyle, {
+              paddingBottom: 0,
+              fontWeight: "bold",
+              textDecoration: "underline",
+              color: "blue"
+            })}
+            onClick={onClick}
+          >{item.title}
+          </span>
+          <span style={merge(baseStyle, { fontSize: "0.8em", marginTop: 10 })}>
+            {item.description}
+          </span>
+        </div>
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between"
+          }}
+        >
+          <Url
+            link={item.location}
+            style={merge(metaInfoStyle, { bottom: 0, width: 160 })}
+          />
+          <span style={merge(metaInfoStyle, { right: 0 })}>
+            {durationToString(item.duration)}
+          </span>
+        </div>
       </div>
       <div
         style={{

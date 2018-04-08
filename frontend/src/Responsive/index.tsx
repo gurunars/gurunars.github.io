@@ -24,9 +24,9 @@ const responsive = <Props extends {}>(
   }
 ) => {
 
-  tabletView = mobileView || tabletView || desktopView || mobileView;
+  tabletView = tabletView || desktopView || mobileView;
   mobileView = mobileView || tabletView || desktopView;
-  desktopView = mobileView || desktopView || tabletView || mobileView;
+  desktopView = desktopView || tabletView || mobileView;
 
   return (props: ForcedLayout & Props) => (
     <SizeAware>

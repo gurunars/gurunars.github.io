@@ -23,11 +23,15 @@ const Section = (props: {
 );
 
 const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
-  <div>
+  <div
+    style={{
+      position: "relative"
+    }}
+  >
     <h3 style={{marginBottom: 5}}>{item.title}</h3>
     {item.location && (
       <p style={{fontSize: 14}}>
-        <b style={{color: "grey"}}>[at]:</b> 
+        <b style={{color: "grey"}}>[at]:</b>
         <Url link={item.location} />
       </p>
     )}
@@ -35,7 +39,7 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
       <i>{item.type} | {durationToString(item.duration)} </i>
     </p>
 
-    <div 
+    <div
       style={{
         marginLeft: 5,
         marginTop: 8,
@@ -45,26 +49,26 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
       }}
     >
       {item.description && (
-        <Section 
-          title="Description" 
-          data={item.description} 
-        />) 
+        <Section
+          title="Description"
+          data={item.description}
+        />)
       }
       {item.achievements && (
-        <Section 
-          title="Achievements" 
-          data={item.achievements.map(value => <li key={value}>{value}</li>)} 
-        />) 
+        <Section
+          title="Achievements"
+          data={item.achievements.map(value => <li key={value}>{value}</li>)}
+        />)
       }
       {item.achievements && (
-        <Section 
-          title="References" 
+        <Section
+          title="References"
           data={item.references.map(reference => (
             <li key={reference.name}><Url link={reference} /></li>
           ))}
-        />) 
+        />)
       }
-      <div 
+      <div
         style={{
           marginTop: 10
         }}
@@ -95,7 +99,7 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
 
     </div>
 
-    <div 
+    <div
       style={{
         display: "flex",
         flexDirection: "column",
