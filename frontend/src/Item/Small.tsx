@@ -28,7 +28,17 @@ const ItemView = ({ item, onClick, style }: {
   onClick: () => void,
   style?: React.CSSProperties
 }): React.ReactElement<any> => (
-    <FullSize style={merge({ flexDirection: "column" }, style || {})}>
+    <FullSize
+      style={
+        merge(
+          {
+            flexDirection: "column",
+            marginBottom: 10
+          },
+          style || {}
+        )
+      }
+    >
       <div
         style={{
           position: "relative",
@@ -37,7 +47,12 @@ const ItemView = ({ item, onClick, style }: {
         }}
       >
         <span
-          style={merge(baseStyle, { paddingBottom: 0, fontWeight: "bold" })}
+          style={merge(baseStyle, {
+            paddingBottom: 0,
+            fontWeight: "bold",
+            textDecoration: "underline",
+            color: "blue"
+          })}
           onClick={onClick}
         >{item.title}
         </span>
