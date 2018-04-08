@@ -6,7 +6,7 @@ import { FullUrl, Link } from "../Link";
 export interface Meta {
   name: string;
   languages: string[];
-  birthday: string;
+  birthday: Date;
   specialization: string[];
   avatar: string;
   media: Link[];
