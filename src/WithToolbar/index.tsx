@@ -17,8 +17,7 @@ type Props = {
 const Desktop = (props: Props): React.ReactElement<any> => (
   <FullSize
     style={{
-      flexDirection: "column",
-      paddingLeft: 5
+      flexDirection: "column"
     }}
   >
     <div

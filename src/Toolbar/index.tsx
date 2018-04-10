@@ -122,7 +122,8 @@ const Toolbar = <T extends {}>(props: {
       tabletAsMobile={true}
       style={{
         justifyContent: "space-between",
-        width: "100%"
+        width: "100%",
+        padding: 5
       }}
     >
       <SpecFilter {...props} />
