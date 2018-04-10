@@ -13,7 +13,7 @@ const amazon = require("./amazon.svg");
 const play = require("./play.svg");
 const link = require("./link.svg");
 const github = require("./github.svg");
-const print = require("./print.svg")
+const print = require("./print.svg");
 
 const icons = {
   skype: skype,

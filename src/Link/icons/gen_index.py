@@ -63,7 +63,7 @@ for icon in icons:
 text = """
 const fallback = require("./link.svg");
 
-{imports}
+{imports};
 
 const icons = {{
   {dicts}
