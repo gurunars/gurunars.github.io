@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import { Item } from "./Item";
 import { Meta } from "./About";
 
-interface Portfolio {
+export interface Portfolio {
     meta: Meta;
     items: Item[];
 }

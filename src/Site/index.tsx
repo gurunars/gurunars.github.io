@@ -9,6 +9,9 @@ import Carousel from "../Carousel";
 import PageWithOverlay from "../PageWithOverlay";
 import GroupedList from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";
+import { Portfolio } from "../model";
+import PageWithSideMenu from "../PageWithSideMenu";
+import About from "../About";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -100,18 +103,18 @@ const Main = (props: {
         ) : null
       }
     >
-      <WithToolbar 
-        toolbar={<Toolbar {...props} />} 
+      <WithToolbar
+        toolbar={<Toolbar {...props} />}
       >
-        <GroupedList 
+        <GroupedList
           items={grouped}
-          renderItem={({item}: {item: Item}) => (
+          renderItem={({ item }: { item: Item }) => (
             <Small
               style={{
-                backgroundColor: TypeToSpecMapping[item.type].color 
+                backgroundColor: TypeToSpecMapping[item.type].color
               }}
-              item={item} 
-              onClick={() => props.selectedIdOnChange(getId(item))} 
+              item={item}
+              onClick={() => props.selectedIdOnChange(getId(item))}
             />
           )}
         />
