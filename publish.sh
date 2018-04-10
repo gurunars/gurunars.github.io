@@ -6,9 +6,7 @@ DOMAIN_NAME=gurunars.com
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ORIGIN=$(git config remote.origin.url)
-ORIGIN=${ORIGIN/https:\/\/github.com\//git@github.com:}
-ORIGIN=${ORIGIN%/}
+ORIGIN=git@github.com:gurunars/gurunars.github.io.git
 
 NAME=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32)
 
