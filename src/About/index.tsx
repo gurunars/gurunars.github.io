@@ -99,7 +99,11 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
       >
         {meta.media.map(media =>
           <FullUrl
-            style={{ color: secondaryColor || "black", textDecoration: "none" }}
+            style={{
+              color: secondaryColor || "black",
+              textDecoration: "none",
+              paddingBottom: 5
+            }}
             key={media.name}
             link={media}
           />
