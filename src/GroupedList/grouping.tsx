@@ -13,6 +13,6 @@ export const groupItems = <T extends {}>(
       group: group,
       elements: _.orderBy(elements, sortBy, reverse ? "desc" : "asc")
     })),
-    "key",
+    "group",
     reverse ? "desc" : "asc"
   );
