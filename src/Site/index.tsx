@@ -9,9 +9,11 @@ import Carousel from "../Carousel";
 import PageWithOverlay from "../PageWithOverlay";
 import GroupedList from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";
+/*
 import { Portfolio } from "../model";
 import PageWithSideMenu from "../PageWithSideMenu";
 import About from "../About";
+*/
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {

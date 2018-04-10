@@ -3,7 +3,7 @@ import { hashCode } from "../utils";
 
 export interface Duration {
   start: Date;
-  end?: Date;
+  end?: Date | null;
 }
 
 export interface Item {
