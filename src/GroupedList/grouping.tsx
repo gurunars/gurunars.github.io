@@ -4,8 +4,8 @@ import { GroupedItems } from "./interfaces";
 
 export const groupItems = <T extends {}>(
   items: T[],
-  groupBy: string | ((item: T) => Object),
-  sortBy: string | ((item: T) => Object),
+  groupBy: ((item: T) => Object),
+  sortBy: ((item: T) => Object),
   reverse?: boolean
 ): GroupedItems<T>[] =>
   _.orderBy(
