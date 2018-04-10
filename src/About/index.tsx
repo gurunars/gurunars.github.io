@@ -2,6 +2,7 @@ import * as React from "react";
 import * as _ from "lodash";
 
 import { FullUrl, Link } from "../Link";
+import { toString } from "../utils";
 
 export interface Meta {
   name: string;
@@ -52,7 +53,7 @@ const About = ({ meta, primaryColor, secondaryColor }: {
           }}
         >
           <span style={{ fontSize: 24 }}>{meta.name}</span>
-          <i>{meta.birthday}</i>
+          <i>{toString(meta.birthday)}</i>
           <div style={{ marginTop: 5 }}>
             {_.join(meta.languages, " | ")}
           </div>
