@@ -5,6 +5,22 @@ import { withState, compose, withProps } from "recompose";
 
 import Main from ".";
 
+const META = {
+  name: "John Wick",
+  languages: ["EN", "RU"],
+  birthday: new Date("1959.03.24"),
+  specialization: ["Shoot", "Steal", "Blackmail"],
+  avatar: "https://img-www.tf-cdn.com/movie/2/john-wick-chapter-two-2017" +
+    ".jpeg?_v=20170202222435&fit=crop&crop=faces%20top&w=400&h=400",
+  media: [
+    {
+      type: "amazon",
+      url: "wherever",
+      name: "Ama Zone"
+    }
+  ]
+};
+
 const genItem = (title: string, location: string, type: string) => ({
   title: title,
   achievements: [
@@ -64,7 +80,10 @@ const items = [
 
 const StateMain = compose(
   withProps({
-    items: items
+    portfolio: {
+      meta: META,
+      items: items
+    }
   }),
   withState(
     "selectedId",
@@ -80,6 +99,11 @@ const StateMain = compose(
     "selectedGroup",
     "selectedGroupOnChange",
     null
+  ),
+  withState(
+    "menuIsVisible",
+    "menuIsVisibleOnChange",
+    true
   )
 )(Main);
 
@@ -87,7 +111,7 @@ storiesOf("Site", module)
   .addDecorator(host({
     align: "center bottom",
     height: 600,
-    width: 1200,
+    width: 1100,
   }))
   .add("basic", () => (
     <StateMain />

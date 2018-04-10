@@ -29,7 +29,7 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
             alignItems: "center",
             justifyContent: "flex-start",
             height: "100%",
-            maxWidth: 250,
+            minWidth: 250,
             color: primaryColor || "black"
           },
           style || {}
@@ -37,7 +37,7 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
     >
       <div
         style={{
-          width: 250,
+          width: "100%",
           height: 80,
           alignItems: "center",
           padding: 10,
@@ -71,7 +71,7 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
       <div
         style={{
           display: "block",
-          width: 250,
+          width: "100%",
           marginTop: 10,
           paddingTop: 10,
           paddingBottom: 10,
@@ -93,11 +93,8 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
           borderTop: "1px solid grey",
           flexDirection: "column",
           justifyContent: "flex-start",
-          width: 250,
-          paddingTop: 10,
-          paddingBottom: 10,
-          marginTop: 10,
-          marginBottom: 10
+          width: "100%",
+          padding: 10
         }}
       >
         {meta.media.map(media =>
@@ -113,18 +110,22 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
   );
 
 export default responsive({
-  desktopView: ({ meta }: { meta: Meta }) => (
+  mobileView: ({ meta }: { meta: Meta }) => (
     <About
       meta={meta}
       secondaryColor="black"
       primaryColor="black"
     />
   ),
-  mobileView: ({ meta }: { meta: Meta }) => (
+  desktopView: ({ meta }: { meta: Meta }) => (
     <About
       meta={meta}
       secondaryColor="PaleTurquoise"
       primaryColor="white"
+      style={{
+        backgroundColor: "#1B2E3C",
+        padding: 5
+      }}
     />
   )
 });
