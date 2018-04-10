@@ -37,8 +37,8 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
           width: 50,
           height: 50,
           position: "absolute",
-          bottom: 0,
-          left: 0
+          bottom: 5,
+          left: 5
         }}
       />
 

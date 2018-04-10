@@ -4,6 +4,7 @@ import { withState, compose, withProps } from "recompose";
 
 import responsive from "../Responsive";
 import ActionIcon from "../ActionIcon";
+import { FullSize } from "../Layouts";
 
 const close = require("./icons/close.svg");
 const menu = require("./icons/menu.svg");
@@ -14,13 +15,10 @@ type Props = {
 };
 
 const Desktop = (props: Props): React.ReactElement<any> => (
-  <div
+  <FullSize
     style={{
-      display: "flex",
-      position: "relative",
       flexDirection: "column",
-      width: "100%",
-      height: "100%"
+      paddingLeft: 5
     }}
   >
     <div
@@ -40,7 +38,7 @@ const Desktop = (props: Props): React.ReactElement<any> => (
     >
       {props.children}
     </div>
-  </div>
+  </FullSize>
 );
 
 interface OpenState {
