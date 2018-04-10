@@ -7,35 +7,36 @@ const Section = (props: {
   title: string,
   data: any
 }) => (
-  <div>
-    <h4
-      style={{
-        paddingTop: 10,
-        paddingBottom: 10
-      }}
-    >
-      {props.title}
-    </h4>
     <div>
-      {props.data}
+      <h4
+        style={{
+          paddingTop: 10,
+          paddingBottom: 10
+        }}
+      >
+        {props.title}
+      </h4>
+      <div>
+        {props.data}
+      </div>
     </div>
-  </div>
-);
+  );
 
-const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
+const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
   <div
     style={{
+      padding: 10,
       position: "relative"
     }}
   >
-    <h3 style={{marginBottom: 5}}>{item.title}</h3>
+    <h3 style={{ marginBottom: 5 }}>{item.title}</h3>
     {item.location && (
-      <p style={{fontSize: 14}}>
-        <b style={{color: "grey"}}>[at]:</b>
+      <p style={{ fontSize: 14 }}>
+        <b style={{ color: "grey" }}>[at]:</b>
         <Url link={item.location} />
       </p>
     )}
-    <p style={{fontSize: 13}}>
+    <p style={{ fontSize: 13 }}>
       <i>{item.type} | {durationToString(item.duration)} </i>
     </p>
 
@@ -92,7 +93,7 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
               borderRadius: 5
             }}
           >
-          {tag}
+            {tag}
           </i>
         ))}
       </div>
@@ -107,7 +108,7 @@ const ItemView = ({ item }: {item: Item}): React.ReactElement<any> => (
       }}
     >
       {item.links.map(link => (
-        <FullUrl link={link} style={{marginBottom: 4}} />
+        <FullUrl link={link} style={{ marginBottom: 4 }} />
       ))}
     </div>
   </div>

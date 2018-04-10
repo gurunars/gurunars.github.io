@@ -53,7 +53,8 @@ const ItemView = ({ item, onClick, style }: {
               paddingBottom: 0,
               fontWeight: "bold",
               textDecoration: "underline",
-              color: "blue"
+              color: "blue",
+              cursor: "pointer"
             })}
             onClick={onClick}
           >{item.title}
