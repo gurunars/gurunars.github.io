@@ -24,7 +24,7 @@ export const TypeToSpecMapping: { [key: string]: Spec } = {
     color: "MistyRose"
   },
   fullTimeJob: {
-    humanReadableName: "Full time job",
+    humanReadableName: "Full Time Job",
     color: "Lavender"
   },
   education: {
