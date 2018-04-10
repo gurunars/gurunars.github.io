@@ -11,15 +11,15 @@ interface Item {
 }
 
 const items: Item[] = [
-  { "type": "one", "title": "A" },
+  { "type": "two", "title": "D" },
+  { "type": "two", "title": "F" },
+  { "type": "two", "title": "E" },
   { "type": "one", "title": "B" },
   { "type": "one", "title": "C" },
-  { "type": "two", "title": "D" },
-  { "type": "two", "title": "E" },
-  { "type": "two", "title": "F" },
   { "type": "three", "title": "G" },
-  { "type": "three", "title": "H" },
-  { "type": "three", "title": "I" }
+  { "type": "three", "title": "I" },
+  { "type": "one", "title": "A" },
+  { "type": "three", "title": "H" }
 ];
 
 storiesOf("GroupedList", module)
