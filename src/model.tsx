@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 
-import { Item } from "../Item";
-import { Meta } from "../About";
+import { Item } from "./Item";
+import { Meta } from "./About";
 
 interface Portfolio {
     meta: Meta;
@@ -40,3 +40,5 @@ const preprocess = (initial: any): Portfolio => {
         }))
     };
 };
+
+export default preprocess;
