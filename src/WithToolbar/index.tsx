@@ -25,8 +25,6 @@ const Desktop = (props: Props): React.ReactElement<any> => (
   >
     <div
       style={{
-        height: 40,
-        flex: "0 1 40px",
         width: "100%"
       }}
     >

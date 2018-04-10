@@ -23,18 +23,31 @@ export const FullSize = (props: {
   );
 
 type Props = {
+  tabletAsMobile?: boolean,
   children: React.ReactNode,
   style?: React.CSSProperties
 };
 
-const IResponsiveFlex = (isVertical: boolean, props: Props): React.ReactElement<any> => (
+const isVertical = (type: "M" | "T" | "D", props: Props): boolean => {
+  switch (type) {
+    case "M":
+      return true;
+    case "T":
+      return props.tabletAsMobile || false;
+    case "D":
+    default:
+      return false;
+  }
+};
+
+const IResponsiveFlex = (type: "M" | "T" | "D", props: Props): React.ReactElement<any> => (
   <div
     style={
       merge(
         {
-          alignItems: isVertical ? "initial" : "center",
+          alignItems: isVertical(type, props) ? "initial" : "center",
           display: "flex",
-          flexDirection: isVertical ? "column" : "row"
+          flexDirection: isVertical(type, props) ? "column" : "row"
         },
         props.style || {}
       )}
@@ -43,6 +56,7 @@ const IResponsiveFlex = (isVertical: boolean, props: Props): React.ReactElement<
 );
 
 export const ResponsiveFlex: (props: Props) => React.ReactElement<any> = responsive({
-  desktopView: IResponsiveFlex.bind(null, false),
-  mobileView: IResponsiveFlex.bind(null, true)
+  desktopView: IResponsiveFlex.bind(null, "D"),
+  tabletView: IResponsiveFlex.bind(null, "T"),
+  mobileView: IResponsiveFlex.bind(null, "M")
 });

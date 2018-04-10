@@ -109,9 +109,8 @@ const StateMain = compose(
 
 storiesOf("Site", module)
   .addDecorator(host({
-    align: "center bottom",
     height: 600,
-    width: 1100,
+    width: 1300,
   }))
   .add("basic", () => (
     <StateMain />

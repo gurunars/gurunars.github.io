@@ -118,6 +118,7 @@ const Toolbar = <T extends {}>(props: {
   groupMapping: TitleToGroupSpecMapping<T>
 } & SpecSelection & GroupSpecSelection) => (
     <ResponsiveFlex
+      tabletAsMobile={true}
       style={{
         justifyContent: "space-between",
         width: "100%"
