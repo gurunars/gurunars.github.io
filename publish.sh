@@ -2,6 +2,8 @@
 
 set -eu
 
+DOMAIN_NAME=gurunars.com
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ORIGIN=$(git config remote.origin.url)
@@ -15,10 +17,11 @@ yarn build
 mv build /tmp/${NAME}
 cd /tmp/${NAME}
 git init
-git config user.email "publisher@ci-machine"
-git config user.name "Publisher"
+git config user.email publisher@gurunars.com
+git config user.name Publisher
 git checkout -b gh-pages
 touch .nojekyll
+echo "${DOMAIN_NAME}" > CNAME
 git add .
 git commit -am init
 git remote add origin ${ORIGIN}
