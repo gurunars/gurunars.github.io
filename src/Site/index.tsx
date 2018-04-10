@@ -9,11 +9,10 @@ import Carousel from "../Carousel";
 import PageWithOverlay from "../PageWithOverlay";
 import GroupedList from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";
-/*
+
 import { Portfolio } from "../model";
-import PageWithSideMenu from "../PageWithSideMenu";
+import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 import About from "../About";
-*/
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -78,10 +77,10 @@ interface IdHodler {
 }
 
 const Main = (props: {
-  items: Item[],
-} & IdHodler & SpecSelection & GroupSpecSelection) => {
+  portfolio: Portfolio,
+} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility) => {
   const group = Groups[props.selectedGroup || "year"];
-  const filtered = filterItems(props.items, props.selectedSpecs);
+  const filtered = filterItems(props.portfolio.items, props.selectedSpecs);
   const grouped = groupItems(
     filtered,
     group.groupBy,
@@ -91,37 +90,48 @@ const Main = (props: {
   const flattened = _.flatMap(grouped, grp => grp.elements);
   const selectedPosition = _.findIndex(flattened, item => props.selectedId === getId(item));
   return (
-    <PageWithOverlay
-      foregroundContent={
-        selectedPosition > -1 ? (
-          <Carousel
-            size={flattened.length}
-            selectedPostion={selectedPosition || 0}
-            close={() => props.selectedIdOnChange(null)}
-            goTo={pos => props.selectedIdOnChange(getId(flattened[pos]))}
-          >
-            {pos => (<Large item={flattened[pos]} />)}
-          </Carousel>
-        ) : null
-      }
-    >
-      <WithToolbar
-        toolbar={<Toolbar {...props} />}
-      >
-        <GroupedList
-          items={grouped}
-          renderItem={({ item }: { item: Item }) => (
-            <Small
-              style={{
-                backgroundColor: TypeToSpecMapping[item.type].color
-              }}
-              item={item}
-              onClick={() => props.selectedIdOnChange(getId(item))}
-            />
-          )}
+    <PageWithSideMenu
+      menu={
+        <About
+          meta={props.portfolio.meta}
         />
-      </WithToolbar>
-    </PageWithOverlay>
+      }
+      menuTitle="FOO"
+      contentTitle="BAR"
+      {...props}
+    >
+      <PageWithOverlay
+        foregroundContent={
+          selectedPosition > -1 ? (
+            <Carousel
+              size={flattened.length}
+              selectedPostion={selectedPosition || 0}
+              close={() => props.selectedIdOnChange(null)}
+              goTo={pos => props.selectedIdOnChange(getId(flattened[pos]))}
+            >
+              {pos => (<Large item={flattened[pos]} />)}
+            </Carousel>
+          ) : null
+        }
+      >
+        <WithToolbar
+          toolbar={<Toolbar {...props} />}
+        >
+          <GroupedList
+            items={grouped}
+            renderItem={({ item }: { item: Item }) => (
+              <Small
+                style={{
+                  backgroundColor: TypeToSpecMapping[item.type].color
+                }}
+                item={item}
+                onClick={() => props.selectedIdOnChange(getId(item))}
+              />
+            )}
+          />
+        </WithToolbar>
+      </PageWithOverlay>
+    </PageWithSideMenu>
   );
 };
 

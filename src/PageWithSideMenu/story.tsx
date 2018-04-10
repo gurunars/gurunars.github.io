@@ -12,7 +12,7 @@ const getWidget = (type: "mobile" | "desktop"): React.ReactElement<any> => {
       menuTitle: "menu",
       contentTitle: "content",
       menu: <p style={{ paddingRight: 20 }}>MENU</p>,
-      content: <p>CONTENT</p>
+      children: <p>CONTENT</p>
     }),
     withState(
       "menuIsVisible",

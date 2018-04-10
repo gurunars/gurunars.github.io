@@ -2,7 +2,8 @@ import * as React from "react";
 import * as _ from "lodash";
 
 import { FullUrl, Link } from "../Link";
-import { toString } from "../utils";
+import { toString, merge } from "../utils";
+import responsive from "../Responsive";
 
 export interface Meta {
   name: string;
@@ -13,19 +14,26 @@ export interface Meta {
   media: Link[];
 }
 
-const About = ({ meta, primaryColor, secondaryColor }: {
-  meta: Meta, primaryColor: string, secondaryColor: string
+const About = ({ meta, primaryColor, secondaryColor, style }: {
+  meta: Meta,
+  primaryColor: string,
+  secondaryColor: string,
+  style?: React.CSSProperties
 }): React.ReactElement<any> => (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        height: "100%",
-        maxWidth: 250,
-        color: primaryColor || "black"
-      }}
+      style={
+        merge(
+          {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            height: "100%",
+            maxWidth: 250,
+            color: primaryColor || "black"
+          },
+          style || {}
+        )}
     >
       <div
         style={{
@@ -104,4 +112,19 @@ const About = ({ meta, primaryColor, secondaryColor }: {
     </div>
   );
 
-export default About;
+export default responsive({
+  desktopView: ({ meta }: { meta: Meta }) => (
+    <About
+      meta={meta}
+      secondaryColor="black"
+      primaryColor="black"
+    />
+  ),
+  mobileView: ({ meta }: { meta: Meta }) => (
+    <About
+      meta={meta}
+      secondaryColor="PaleTurquoise"
+      primaryColor="white"
+    />
+  )
+});

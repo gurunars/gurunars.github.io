@@ -12,10 +12,10 @@ interface Props {
   menuTitle: string;
   contentTitle: string;
   menu: React.ReactElement<any>;
-  content: React.ReactElement<any>;
+  children: React.ReactElement<any>;
 }
 
-interface MenuVisibility {
+export interface MenuVisibility {
   menuIsVisible: boolean;
   menuIsVisibleOnChange: (state: boolean) => void;
 }
@@ -51,7 +51,7 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
         flex: "1 1 auto"
       }}
     >
-      {props.content}
+      {props.children}
     </div>
   </FullSize>
 );
@@ -132,7 +132,7 @@ const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
         width: "100%"
       }}
     >
-      {props.menuIsVisible ? props.menu : props.content}
+      {props.menuIsVisible ? props.menu : props.children}
     </div>
   </FullSize>
 );
