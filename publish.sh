@@ -17,11 +17,10 @@ cd /tmp/${NAME}
 git init
 git config user.email publisher@gurunars.com
 git config user.name Publisher
-git checkout -b gh-pages
 touch .nojekyll
 echo "${DOMAIN_NAME}" > CNAME
 git add .
 git commit -am init
 git remote add origin ${ORIGIN}
-git push origin gh-pages -f
+git push origin master -f
 rm -rf /tmp/${NAME}
