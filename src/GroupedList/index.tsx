@@ -16,7 +16,8 @@ const GroupedList = <T extends {}>(props: {
           style={{
             marginBottom: 15,
             pageBreakInside: "avoid",
-            overflowY: "auto"
+            overflowY: "auto",
+            padding: 5
           }}
         >
           <h2 style={{ pageBreakAfter: "avoid" }}>{item.group}</h2>
