@@ -25,8 +25,7 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
     <div
       style={{
         position: "relative",
-        height: "100%",
-        marginRight: 5
+        height: "100%"
       }}
     >
       <ActionIcon
