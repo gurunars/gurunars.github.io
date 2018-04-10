@@ -42,8 +42,8 @@ export const Groups: { [key: string]: GroupSpec<Item> } = {
   },
   "type": {
     humanReadableName: "Type",
-    groupBy: (item: Item) => item.type,
-    sortBy: (item: Item) => item.type,
+    groupBy: (item: Item) => TypeToSpecMapping[item.type].humanReadableName,
+    sortBy: (item: Item) => TypeToSpecMapping[item.type].humanReadableName,
     reverse: false
   },
   "title": {
