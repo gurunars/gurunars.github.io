@@ -35,7 +35,7 @@ export const TypeToSpecMapping: { [key: string]: Spec } = {
 
 export const Groups: { [key: string]: GroupSpec<Item> } = {
   "year": {
-    humanReadableName: "year",
+    humanReadableName: "Year",
     groupBy: (item: Item) => item.duration.start.getUTCFullYear(),
     sortBy: (item: Item) => item.duration.start,
     reverse: true
