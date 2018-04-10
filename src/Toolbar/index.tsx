@@ -55,7 +55,7 @@ const NamedGroup = (props: Props): React.ReactElement<any> => (
 );
 
 export interface SpecSelection {
-  selectedSpecs: string[];
+  selectedSpecs: string[] | null;
   selectedSpecsOnChange: (selectedSpecs: string[]) => void;
 }
 
@@ -64,7 +64,8 @@ const SpecFilter = (
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
       {_.map(props.filterMapping, (value, key) => {
-        const isSelected = props.selectedSpecs.indexOf(key) > -1;
+        const specs = props.selectedSpecs || [];
+        const isSelected = specs.indexOf(key) > -1;
         return (
           <span
             key={key}
@@ -74,8 +75,8 @@ const SpecFilter = (
             })}
             onClick={() => props.selectedSpecsOnChange(
               isSelected ?
-                Set(props.selectedSpecs).remove(key).toArray() :
-                Set(props.selectedSpecs).add(key).toArray()
+                Set(specs).remove(key).toArray() :
+                Set(specs).add(key).toArray()
             )}
           >
             {value.humanReadableName}
@@ -86,7 +87,7 @@ const SpecFilter = (
   );
 
 export interface GroupSpecSelection {
-  selectedGroup?: string | null;
+  selectedGroup: string | null;
   selectedGroupOnChange: (selectedSpecs: string) => void;
 }
 

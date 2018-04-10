@@ -80,7 +80,7 @@ const Main = (props: {
   portfolio: Portfolio,
 } & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility) => {
   const group = Groups[props.selectedGroup || "year"];
-  const filtered = filterItems(props.portfolio.items, props.selectedSpecs);
+  const filtered = filterItems(props.portfolio.items, props.selectedSpecs || []);
   const grouped = groupItems(
     filtered,
     group.groupBy,
