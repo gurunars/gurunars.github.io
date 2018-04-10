@@ -29,7 +29,7 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
             alignItems: "center",
             justifyContent: "flex-start",
             height: "100%",
-            minWidth: 250,
+            minWidth: 300,
             color: primaryColor || "black"
           },
           style || {}
