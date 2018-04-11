@@ -1,5 +1,10 @@
 # Portfolio
 
+## development
+
+    Just push to develop branch and Travis.ci shall automatically deploy
+    ths site to gurunars.com
+
 ## frontend dev
 
     sudo npm install yarn
@@ -8,14 +13,6 @@
     yarn start
 
 [React libraries](https://github.com/brillout/awesome-react-components)
-
-## components dev
-
-### Initialize
-
-    cd components
-    yarn install
-    yarn start
 
 ### Create new component
 
