@@ -1,7 +1,10 @@
 language: nodejs
+sudo: required
+install:
+  - npm install -g yarn
 script:
-  - npm install
-  - npm run build
+  - yarn install
+  - yarn build
 branches:
   only:
   - develop
