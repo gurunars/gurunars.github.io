@@ -18,7 +18,7 @@ meta:
     - github
     - skype
     - linkedin
-    - stack-overflow
+    - stackoverflow
 
 items:
 
@@ -517,7 +517,7 @@ links:
     alias: siirto
     url: "https://play.google.com/store/apps/details?id=fi.nordea.mep.p2p"
     type: play
-  - name: Stack Overflow
-    alias: stack-overflow
+  - name: Archibald
+    alias: stackoverflow
     url: "https://stackoverflow.com/users/1478655/archibald"
-    type: stack-overflow
+    type: stackoverflow
