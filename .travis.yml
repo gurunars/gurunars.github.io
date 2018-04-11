@@ -1,0 +1,16 @@
+language: nodejs
+script:
+  - npm install
+  - npm run build
+branches:
+  only:
+  - develop
+deploy:
+  provider: pages
+  skip-cleanup: true
+  target-branch: master
+  local-dir: build
+  github-token: $GITHUB_TOKEN
+  keep-history: false
+  on:
+    branch: develop
