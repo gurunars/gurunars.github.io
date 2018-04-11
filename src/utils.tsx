@@ -13,6 +13,12 @@ export const hashCode = (str: string): number => {
   return hash;
 };
 
-export const toString = (date?: Date | null) =>
-  date == null ? null :
-    date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+const pad = (num: number) => num < 10 ? "0" + num : num;
+
+export const toString = (date?: Date | null) => {
+  //  console.log(date);
+  return date == null ? null :
+    pad(date.getUTCFullYear()) + "-" +
+    pad(date.getUTCMonth() + 1) + "-" +
+    pad(date.getUTCDate());
+};
