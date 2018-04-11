@@ -30,9 +30,9 @@ const preprocess = (initial: any): Portfolio => {
                 end: item.endDate == null ? null : new Date(item.endDate)
             },
             title: item.title,
-            achievements: item.achievements,
+            achievements: item.achievements || [],
             type: item.type,
-            tags: item.tags,
+            tags: item.tags || [],
             description: item.description,
             location: getLink(item.location),
             references: _.map(item.references, getLink),
