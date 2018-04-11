@@ -19,7 +19,7 @@ export const Url = ({ link, style }: {
   <a style={style} href={link.url}>{link.name}</a>;
 
 const CircleType = ({ type, color }: { type?: string, color: string }) => (
-  <a
+  <span
     style={{
       display: "flex",
       position: "relative",
@@ -40,7 +40,7 @@ const CircleType = ({ type, color }: { type?: string, color: string }) => (
     >
       <ReactSVG path={getIconForType(type)} style={{ fill: color }} />
     </div>
-  </a>
+  </span>
 );
 
 export const CircleUrl = ({ link, style }: {
