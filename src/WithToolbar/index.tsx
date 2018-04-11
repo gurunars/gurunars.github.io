@@ -46,20 +46,16 @@ interface OpenState {
 }
 
 const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
-  <div
-    style={{
-      position: "relative",
-      width: "100%",
-      height: "100%"
-    }}
-  >
-    {props.isToolbarOpen ? props.toolbar : props.children}
+  <FullSize style={{ overflow: "hidden" }}>
+    <FullSize style={{ overflowY: "auto", display: "initial" }}>
+      {props.isToolbarOpen ? props.toolbar : props.children}
+    </FullSize>
 
     <ActionIcon
       onClick={() => props.isToolbarOpenOnChange(!props.isToolbarOpen)}
       icon={props.isToolbarOpen ? close : menu}
     />
-  </div>
+  </FullSize>
 );
 
 const Full = (props: Props): React.ReactElement<any> => {
