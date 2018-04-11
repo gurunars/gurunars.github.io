@@ -96,8 +96,8 @@ const Main = (props: {
           meta={props.portfolio.meta}
         />
       }
-      menuTitle="FOO"
-      contentTitle="BAR"
+      menuTitle="About"
+      contentTitle="Projects"
       {...props}
     >
       <PageWithOverlay

@@ -129,6 +129,7 @@ const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
         justifyContent: "center",
         display: "flex",
         height: "calc(100% - 35px)",
+        overflowY: "auto",
         width: "100%"
       }}
     >
