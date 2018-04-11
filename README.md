@@ -1,6 +1,4 @@
-# psd-2-project
-
-PSD-2 project
+# Portfolio
 
 ## frontend dev
 
@@ -27,11 +25,3 @@ PSD-2 project
 
     yarn test
 
-## backend dev
-
-    sudo pip install virtualenv
-    mkdir ~/venvs
-    virtualenv -p python3 ~/venvs/psd-2-backend/
-    ~/venvs/psd-2-backend/bin/pip install -r requirements.txt
-    cd backend
-    ~/venvs/psd-2-backend/bin/python app.py
