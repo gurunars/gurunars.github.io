@@ -1,0 +1,495 @@
+meta:
+  name: Anton Berezin
+  self: self
+  domainName: gurunars.com
+  avatar: avatar.jpg
+  birthday: "1989-03-24"
+  languages:
+    - English
+    - Russian
+    - Swedish
+  specialization:
+    - Distributed software architecture
+    - Test, build and deployment automation
+    - Continuous integration
+    - Android development
+  media:
+    - email
+    - github
+    - skype
+    - linkedin
+
+items:
+
+  - title: Bachelor's of Software Engineering
+    achievements:
+      - Obtained Software Engineering degree with specialization in Software Design.
+      - Organized multiple trips abroad with a student union.
+      - Finished whole program and wrote the thesis in three years instead of four.
+    startDate: "2006-08-23"
+    endDate: "2010-01-29"
+    location: metropolia
+    type: education
+    references:
+      - gryazin
+      - piironen
+
+  - title: Test Engineer (trainee)
+    description: >
+      I was accountable for catching bugs in network related components (e.g. browser, email client, VPN client) of
+      S60 Nokia phones.
+    achievements:
+      - Found and reported multiple critical bugs.
+      - Automated testing using Nokia's in-house scripting language.
+    startDate: "2008-05-19"
+    endDate: "2008-12-31"
+    location: nokia
+    type: fullTimeJob
+    tags: [Test Automation]
+    references:
+      - hautamaa
+
+  - title: Software Engineer
+    description: >
+      I was responsible for an in-house distributed CI system of Maemo OS and was heavily involved into the process of
+      test automation.
+    achievements:
+      - Implemented a new web UI for the CI system in Django according to Nokia's internal design guidelines.
+      - Covered CI workflow with a variety of integration tests.
+      - Documented CI workflow using UML diagrams.
+      - Together with the team employed RabbitMQ instead of an in-house DB based event management system.
+      - Integrated the system for hardware based integration testing of Maemo apps into the UI of our CI system.
+    startDate: "2010-03-01"
+    endDate: "2011-07-15"
+    location: nokia
+    type: fullTimeJob
+    tags: [UML, Python, RabbitMQ, Django, Java Script, MySQL, REST, Debian, Scrum, CI, TDD, Test Automation]
+    references:
+      - hurmola
+      - ugandhar
+      - kanevskiy
+
+  - title: Product owner (deputy)
+    description: >
+      I was expected to orchestrate a team of experienced software developers during a transition from an in-house CI
+      tool to OpenSuse Build System.
+    achievements:
+      - Organized work of an international team of software engineers by creating JIRA tasks and scheduling regular meetings.
+      - Made several critical architectural decisions when the team could not come to a common agreement.
+      - Team managed to transition from an in-house build system to OpenSuse Build System.
+      - Team managed to integrate the internal CI workflow with OBS.
+    startDate: "2011-07-16"
+    endDate: "2011-08-31"
+    location: nokia
+    type: fullTimeJob
+    tags: [Scrum, Business Planning]
+    references:
+      - hurmola
+      - ugandhar
+      - dillon
+
+  - title: Senior Software Engineer
+    description: >
+      I was accountable for development and maintenance of Nokia's main corporate web site's backend. The backend was
+      powered by CoreMedia framework (Spring framework on steroids).
+    achievements:
+      - Team launched 9 localized versions of the site.
+      - Finished CoreMedia Java EE training and went through their Java EE certification.
+      - Initiated transition from using IBM ClearCase to GIT for a team of roughly 40 developers. The process was
+        finished after I left the company.
+    startDate: "2011-09-01"
+    endDate: "2012-01-22"
+    location: nokia
+    type: fullTimeJob
+    tags: [Scrum, Java, Java Spring MVC, Maven, Ant, CoreMedia CMS, GIT, TDD]
+    references:
+      - kuparsaari
+
+  - title: Software Engineer @ R&D site
+    description: >
+      I had to maintain a virus analytics system's backend and its REST interface. The backend was powered by sharded
+      Postgres and Cassandra databases. REST interface was implemented in Python.
+    startDate: "2012-01-23"
+    endDate: "2014-11-03"
+    location: f-secure
+    achievements:
+      - Team managed to migrate the infrastructure from a sharded Postgres database to Cassandra.
+      - Designed HTTP interface guidelines for our systems based on Roy Fielding's dissertation.
+      - Implemented and open-sourced the framework to expose HTTP interfaces in a declarative manner.
+    type: fullTimeJob
+    tags: [UML, Python, GIT, Debian, Java, Jenkins, RabbitMQ, Cassandra, PostgreSQL, Scrum, TDD, REST]
+    references:
+      - lindfors
+      - rodriguez
+
+  - title: Student Mentor
+    description: >
+      I was requested to guide a group of Master's degree students through a process of refactoring of a legacy
+      Android application - Lokki.
+    startDate: "2015-01-06"
+    endDate: "2015-03-30"
+    location: heluni
+    achievements:
+      - Mentored an international group of students from Helsinki University, MIT, Harward and Stanford.
+      - Gave multiple consultations regarding Android development, SE best practices and test automation.
+      - We all went to Facebook's HQ in Menlo Park and participated in the Open Academy 2015 event.
+      - Under my supervision students managed to improve Android app's test coverage from 0% to roughly 70%.
+    type: fullTimeJob
+    tags: [Android, Java, Test Automation, Teaching]
+    references:
+      - kyllonen
+
+  - title: Android Software Engineer
+    description: >
+      I was accountable for Android version of F-Secure's password management app. I was responsible for continuously
+      revamping its look'n'feel based on PSD specs from our graphic designer.
+    startDate: "2014-11-03"
+    endDate: "2015-06-30"
+    location: f-secure
+    achievements:
+      - Increased code coverage from 0% to 85%.
+      - Decreased codebase size by a factor of 4 by making it follow DRY approach and using Occam's razor principle.
+      - Collectively with a designer produced UI design in such a manner that they complied with Google's style
+        guidelines.
+      - Implemented a new UI for the app based on specs from a UI designer.
+    type: fullTimeJob
+    tags: [UML, Python, GIT, Java, Android, XML, State Based Testing, Android Studio]
+    references:
+      - rodriguez
+      - kiljander
+    links:
+      - key
+
+  - title: WodConnect Android
+    description: >
+      I was hired to implement a UI for a cross-fit training management app based on the specs from a designer from
+      Kisko Labs.
+    startDate: "2015-04-01"
+    endDate: "2015-07-08"
+    location: kisko
+    achievements:
+      - Split the high-level goal into subtasks so that the app could be implemented according to a 'progressive JPEG method'.
+      - Organized a gradual billing process together with my accountant.
+      - Iteratively implemented the application with a production-ready result at the end of each iteration.
+    type: freelance
+    tags: [TDD, Android, Java, Gradle, Business Planning]
+    references:
+      - akonniemi
+    links:
+      - wodconnect
+
+  - title: GymLog
+    description: >
+      I wrote an Android app that allows people not only to manage sets and reps in their workouts but also
+      control the order of their execution.
+    startDate: "2015-02-24"
+    endDate: "2015-06-29"
+    location: self
+    achievements:
+      - Designed and implemented a brand new app to manage gym workouts.
+      - Publish the app in Play store so that my friends could give it a shot and criticize it.
+      - Started to use the app on my own in a Gym.
+      - Based on users' feedback composed a list of features for the next version of the app.
+    type: freelance
+    tags: [TDD, Android, Java, Gradle, State Based Testing]
+    links:
+      - gymlog-docs
+      - gymlog
+
+  - title: Lokki
+    description: >
+      I was requested to amend the code of geoposition-sharing according to F-Secure's legal guidelines and open-source
+      it.
+    location: f-secure
+    startDate: "2015-01-12"
+    achievements:
+      - Clarified the licensing/open-source process with a team of company legal advisors.
+      - Opened the sources of the application and handed them to University of Helsinki.
+      - Answered student questions regarding code layout by consulting with people who originally wrote the app.
+    type: openSource
+    tags: [Android, Java, Licensing, Open-Sourcing]
+    links:
+      - lokki
+
+  - title: Resource API
+    description: >
+      I was accountable for designing, implementing and integrating into F-Secure's workflow a library to write
+      REST APIs in a declarative fashion instead of an imperative one.
+    location: f-secure
+    startDate: "2014-10-13"
+    achievements:
+      - Developed a framework that allowed developers to declaratively define resources and relationships between them.
+      - Opened the sources of the framework according to F-Secure's guidelines and published them to F-Secure's GitHub.
+      - Employed the framework in the implementation of F-Secure's REST interface.
+      - Wrote extensive documentation and a tutorial for the library.
+    type: openSource
+    tags: [Python, Licensing, Open-Sourcing, REST, Technical Writing]
+    links:
+      - resource-api-docs
+      - resource-api
+
+  - title: State Machine Crawler
+    description: >
+      To facilitate with writing integration tests for Android apps I wrote a library that relied on a state based
+      testing model.
+    startDate: "2014-10-21"
+    achievements:
+      - Designed the interface of the library in such a manner that it would not stand on the way of the tester.
+      - Implemented a command line utility that would simplify test execution.
+      - Wrote documentation for the library.
+      - Employed the library in F-Secure for the purpose of test automation.
+    type: openSource
+    location: self
+    tags: [Python, Test Automation, State Based Testing]
+    links:
+      - state-machine-crawler-docs
+      - state-machine-crawler
+
+  - title: Senior Software Engineer
+    description: >
+      I was accountable for quality assurance automation, deployment automation and continuous integration.
+    location: verto
+    type: fullTimeJob
+    startDate: "2015-07-01"
+    endDate: "2017-05-12"
+    achievements:
+      - Established a CI pipeline for building various package types in a sandbox environment on minimal Jenkins
+        slaves within Docker containers. Configured continuous package publication to Artifactory.
+      - Manually developed and later on automated CI environment setup and maintenance using Terraform,
+        AWS CloudFormation and AWS Lambdas
+      - Configured the toolchain for automated deployment of arbitrary software distributions using AWS CloudFormation
+        for configuration management and AWS Lambda and AWS CloudWatch as a mean to sync git based configuration repos
+        with the state of deployment environment
+      - Automated builds and publication for code documentation
+      - Introduced a variety of coding style guides and enforced those by custom pep8 and pylint configs
+        within the Docker containers
+    references:
+      - avysk
+      - matti
+      - mikko
+    tags: [Python, Java, Maven, Docker, AWS, Gerrit, Test Automation, Artifactory, GIT, Jenkins,
+           Terraform, Configuration Management]
+
+  - title: Senior Software Engineer
+    location: smartly
+    description: >
+      I am responsible for a portion of backend performing revenue optimizations for marketing campaigns via Facebook
+      ads.
+    achievements:
+      - Introduced Docker based containerization into the realm of unit testing both locally and on the CI side
+    type: fullTimeJob
+    startDate: "2017-05-15"
+    tags: [Python, GIT, Docker, CI]
+
+  - title: Technical editor for Python 2&3 introductory books
+    description: >
+      I was a shadow writer for several chapters and a technical editor for an introductory book about how to program in
+      Python. The hiring process was conducted through Upwork.
+    type: freelance
+    location: self
+    achievements:
+      - Wrote chapters about built-in types, functions, classes, and control structures (if/else/while/for).
+      - Edited the technical part of the text and validated code quality.
+    startDate: "2015-01-13"
+    endDate: "2015-02-24"
+    tags: [Python, Technical Writing]
+    references:
+      - demirov
+    links:
+      - python3
+      - python2
+
+  - title: box-ui
+    location: self
+    description: >
+      Designed and implemented a set of UI modules for Android to assist with managing data collections using easy
+      to use GUI CRUD controls.
+    startDate: "2016-02-25"
+    achievements:
+      - Used TDD & DI to design and implement the 'moving parts'.
+      - Extensively employed Android animation framework to make CRUD operations in the UI as simple as possible.
+      - Wrote sample applications and documentation for the components
+      - Extensively used gradle to make the build process robust and concise
+      - Got approval from jcenter to publish the packages in its main public repository.
+    type: openSource
+    tags: [TDD, Android, Kotlin, Gradle, Instrumentation Testing, DI,
+           JUnit, Espresso, ButterKnife, Kryo, IcePick]
+    links:
+      - box-ui-docs
+      - box-ui
+
+  - title: dict-validator
+    location: self
+    description: >
+      Designed and implemented a Python library for declarative definition of object schemas for runtime payload
+      validation.
+    startDate: "2017-01-29"
+    achievements:
+      - Employed Travis CI to orchestrate on-commit builds
+      - Employed pep8, pyflakes and pylint for style checks
+      - Achieved 100% unit test coverage with doctests
+      - Documented the API using Sphinx and published at GitHub.io
+      - Released to the official PyPi repository
+    type: openSource
+    tags: [TDD, Python2, Python3, Travis CI, Sphinx, pep8,
+           pyflakes, pylint]
+    links:
+      - dict-validator-docs
+      - dict-validator
+
+links:
+  - name: Smartly.io
+    alias: smartly
+    url: "https://www.smartly.io/"
+  - name: Mikko Kupsu
+    alias: mikko
+    url: "https://www.linkedin.com/in/mikkokupsu/"
+  - name: Matti Aksela
+    alias: matti
+    url: "https://www.linkedin.com/in/matti-aksela-4058994/"
+  - name: Alexey Vyskubov
+    alias: avysk
+    url: "https://www.linkedin.com/in/avysk/"
+  - name: Eugene Gryazin
+    alias: gryazin
+    url: "https://linkedin.com/in/eugenegryazin"
+  - name: Antti Piironen
+    alias: piironen
+    url: "https://linkedin.com/in/anttipiironen"
+  - name: Ilona Hautamaa
+    alias: hautamaa
+    url: "https://linkedin.com/in/ilona-hautamaa-50196311"
+  - name: Jussi Hurmola
+    alias: hurmola
+    url: "https://linkedin.com/in/jussihurmola"
+  - name: Reddy Ugandhar
+    alias: ugandhar
+    url: "https://linkedin.com/in/ugandharreddy"
+  - name: Alexander Kanevskiy
+    alias: kanevskiy
+    url: "https://linkedin.com/in/akanevskiy"
+  - name: Marc Dillon
+    alias: dillon
+    url: "https://linkedin.com/in/marc-dillon-70709137"
+  - name: Antti Kuparsaari
+    alias: kuparsaari
+    url: "https://linkedin.com/in/antti-kuparsaari-8b0b311"
+  - name: Ville Lindfors
+    alias: lindfors
+    url: "https://linkedin.com/in/villi"
+  - name: Miguel Rodriguez
+    alias: rodriguez
+    url: "https://linkedin.com/in/miguelangelrodriguez"
+  - name: Kati Kyllönen
+    alias: kyllonen
+    url: "https://linkedin.com/in/kati-kyllönen-23771112"
+  - name: Harri Kiljander
+    alias: kiljander
+    url: "https://linkedin.com/in/harrikiljander"
+  - name: Nokia
+    alias: nokia
+    url: "http://www.nokia.com"
+  - name: F-Secure
+    alias: f-secure
+    url: "https://www.f-secure.com"
+  - name: Verto Analytics
+    alias: verto
+    url: "http://vertoanalytics.com"
+  - name: Kisko Labs
+    alias: kisko
+    url: "https://www.kiskolabs.com"
+  - name: Helsinki Metropolia University of Applied Sciences
+    alias: metropolia
+    url: "http://www.metropolia.fi"
+  - name: University of Helsinki
+    alias: heluni
+    url: "https://www.helsinki.fi"
+  - name: My Company
+    alias: self
+    url: "http://gurunars.com"
+  - name: Antti Akonniemi
+    alias: akonniemi
+    url: "https://linkedin.com/in/anttiakonniemi"
+  - name: Ivelin Demirov
+    alias: demirov
+    url: "https://linkedin.com/in/ivelindemirov"
+  - name: Python 3 book in Amazon
+    type: amazon
+    alias: python3
+    url: "http://www.amazon.com/dp/B00YI58B9U/ref=rdr_ext_sb_pi_hist_1"
+  - name: Python 2 book in Amazon
+    type: amazon
+    alias: python2
+    url: "http://www.amazon.com/Learn-Python-Visually-Ivelin-Demirov/dp/1507727070/ref=sr_1_2?ie=UTF8&qid=1461068670&sr=8-2&keywords=python+visually"
+  - alias: state-machine-crawler-docs
+    type: docs
+    name: Documentation
+    url: "http://state-machine-crawler.readthedocs.org"
+  - alias: state-machine-crawler
+    type: github
+    name: Source code in GitHub
+    url: "https://github.com/gurunars/state_machine_crawler"
+  - alias: resource-api-docs
+    type: docs
+    name: Documentation
+    url: "http://resource-api.readthedocs.org"
+  - alias: resource-api
+    type: github
+    name: Source code in GitHub
+    url: "https://github.com/F-Secure/resource-api"
+  - alias: lokki
+    type: github
+    name: Source code in GitHub
+    url: "https://github.com/TheSoftwareFactory/lokki"
+  - alias: gymlog-docs
+    type: docs
+    name: Documentation
+    url: "http://gurunars.github.io/pages.gym-log"
+  - alias: gymlog
+    type: play
+    name: App in Play store
+    url: "https://play.google.com/store/apps/details?id=com.gurunars.gymlog.production&hl=en"
+  - alias: wodconnect
+    type: play
+    name: App in Play store
+    url: "https://play.google.com/store/apps/details?id=com.kiskolabs.wodconnect.production&hl=en"
+  - alias: key
+    type: play
+    name: App in Play store
+    url: "https://play.google.com/store/apps/details?id=com.fsecure.key&hl=en"
+  - alias: email
+    type: email
+    url: "mailto:gurunars@gmail.com"
+    name: gurunars@gmail.com
+  - alias: skype
+    type: skype
+    url: "skype:gurunars"
+    name: gurunars
+  - alias: github
+    type: github
+    url: "https://github.com/gurunars"
+    name: gurunars
+  - alias: linkedin
+    type: linkedin
+    url: "https://linkedin.com/in/gurunars"
+    name: gurunars
+  - alias: cv
+    type: cv
+    url: "http://gurunars.com/personal/cv.pdf"
+    name: CV
+  - alias: box-ui-docs
+    type: docs
+    url: "http://box-ui.gurunars.com"
+    name: javadoc
+  - alias: box-ui
+    type: github
+    url: "https://github.com/gurunars/box-ui"
+    name: Source code in GitHub
+  - name: Dict Validator
+    alias: dict-validator
+    url: "https://github.com/gurunars/dict-validator"
+    type: github
+  - name: Dict Validator Docs
+    alias: dict-validator-docs
+    url: "https://gurunars.github.io/dict-validator/"
+    type: docs

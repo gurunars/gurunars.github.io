@@ -1,0 +1,2 @@
+dict-validator==5.0.7
+pyyaml==3.12
