@@ -2,7 +2,7 @@ meta:
   name: Anton Berezin
   self: self
   domainName: gurunars.com
-  avatar: avatar.jpg
+  avatar: /avatar.jpg
   birthday: "1989-03-24"
   languages:
     - English
