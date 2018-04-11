@@ -5,7 +5,7 @@ import jsyaml from "js-yaml";
 import App from "./App";
 import preprocess from "./model";
 
-const SITE_URL = "https://gurunars.github.io/personal.portfolio/portfolio.yaml";
+const SITE_URL = "/portfolio.yaml";
 
 fetch(SITE_URL)
   .then(async item => item.text())
