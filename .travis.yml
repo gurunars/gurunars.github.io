@@ -11,6 +11,8 @@ install:
 script:
   - yarn install
   - yarn build
+  - touch touch build/.nojekyll
+  - echo "${DOMAIN_NAME}" > build/CNAME
 branches:
   only:
   - develop
