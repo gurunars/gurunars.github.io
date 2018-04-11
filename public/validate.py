@@ -37,7 +37,7 @@ class Reference:
     alias = Slug()
     url = String()
     type = Choice(
-        ["mailto", "skype", "tel", "amazon", "github", "play", "linkedin",
+        ["email", "skype", "tel", "amazon", "github", "play", "linkedin",
          "docs", "cv"],
         required=False)
 
@@ -54,7 +54,7 @@ with open("portfolio.yaml") as fil:
         print(".{} : {}".format(".".join(map(str, path)), error))
 
     valid_aliases = [reference["alias"]
-                         for reference in portfolio.get("links", [])]
+                     for reference in portfolio.get("links", [])]
 
     alias = portfolio["meta"]["self"]
     assert alias in valid_aliases, "Self {} is invalid".format(alias)

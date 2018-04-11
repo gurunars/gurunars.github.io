@@ -445,7 +445,7 @@ links:
     type: github
     name: Source code in GitHub
     url: "https://github.com/gurunars/state_machine_crawler"
-  - alias: resource-api-docs    type: play
+  - alias: resource-api-docs
     type: docs
     name: Documentation
     url: "http://resource-api.readthedocs.org"
