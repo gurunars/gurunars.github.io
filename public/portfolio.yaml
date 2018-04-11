@@ -271,15 +271,31 @@ items:
            Terraform, Configuration Management]
 
   - title: Senior Software Engineer
+    location: nordea
+    type: fullTimeJob
+    description: >
+      I became responsible for developing and maintaining Siirto P2P digital payment application for Android.
+      The app has been in development since 2016 prior to me joining the company
+    achievements:
+      - Initiated transitioning of the codebase from Java to Kotlin
+      - Automated CI related aspects using Jenkins and Gradle
+    startDate: "2018-01-15"
+    tags: [Java, Kotlin, GIT, CI, Android, RxJava]
+    links:
+      - siirto
+
+  - title: Senior Software Engineer
     location: smartly
     description: >
-      I am responsible for a portion of backend performing revenue optimizations for marketing campaigns via Facebook
+      I was responsible for a portion of backend performing revenue optimizations for marketing campaigns via Facebook
       ads.
     achievements:
       - Introduced Docker based containerization into the realm of unit testing both locally and on the CI side
+      - Rewrote multiple Angular based components using React and Redux
     type: fullTimeJob
     startDate: "2017-05-15"
-    tags: [Python, GIT, Docker, CI]
+    endDate: "2018-01-12"
+    tags: [Python, GIT, Docker, CI, JavaScript, TypeScript, React]
 
   - title: Technical editor for Python 2&3 introductory books
     description: >
@@ -429,7 +445,7 @@ links:
     type: github
     name: Source code in GitHub
     url: "https://github.com/gurunars/state_machine_crawler"
-  - alias: resource-api-docs
+  - alias: resource-api-docs    type: play
     type: docs
     name: Documentation
     url: "http://resource-api.readthedocs.org"
@@ -487,9 +503,16 @@ links:
     name: Source code in GitHub
   - name: Dict Validator
     alias: dict-validator
-    url: "https://github.com/gurunars/dict-validator"
+    url: "https://github.com/nephilim-solutions/dict-validator/"
     type: github
   - name: Dict Validator Docs
     alias: dict-validator-docs
-    url: "https://gurunars.github.io/dict-validator/"
+    url: "https://nephilim-solutions.github.io/dict-validator/"
     type: docs
+  - name: Nordea
+    alias: nordea
+    url: "https://www.nordea.com"
+  - name: Siirto
+    alias: siirto
+    url: "https://play.google.com/store/apps/details?id=fi.nordea.mep.p2p"
+    type: play
