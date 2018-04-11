@@ -13,6 +13,7 @@ const GroupedList = <T extends {}>(props: {
     <div>
       {props.items.map(item => (
         <div
+          key={item.group}
           style={{
             marginBottom: 15,
             pageBreakInside: "avoid",
@@ -22,7 +23,14 @@ const GroupedList = <T extends {}>(props: {
         >
           <h2 style={{ pageBreakAfter: "avoid" }}>{item.group}</h2>
           <div style={props.style}>
-            {item.elements.map(element => props.renderItem({ item: element }))}
+            {
+              item.elements
+                .map(element => props.renderItem({ item: element }))
+                .map((child, index) => React.cloneElement(
+                  child,
+                  { ...child.props, key: index }
+                ))
+            }
           </div>
         </div>
       ))}

@@ -104,7 +104,7 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
               textDecoration: "none",
               paddingBottom: 5
             }}
-            key={media.name}
+            key={media.url}
             link={media}
           />
         )}
