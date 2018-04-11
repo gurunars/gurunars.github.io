@@ -53,8 +53,8 @@ const Desktop = <T extends {}>(
             float: "left",
             display: "flex",
             position: "relative",
-            width: 300,
-            height: 220,
+            width: 340,
+            height: 250,
             margin: 10
           }}
         >

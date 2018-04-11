@@ -11,8 +11,7 @@ const baseStyle = {
   paddingTop: 5,
   paddingBottom: 5,
   paddingLeft: 5,
-  paddingRight: 5,
-  width: 300
+  paddingRight: 5
 };
 
 const metaInfoStyle = {
