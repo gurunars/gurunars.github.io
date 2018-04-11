@@ -11,6 +11,7 @@ install:
 script:
   - yarn install
   - yarn build
+  - cp .travis.yml build
   - touch build/.nojekyll
   - echo gurunars.com > build/CNAME
 branches:
