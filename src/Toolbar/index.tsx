@@ -94,7 +94,7 @@ export interface GroupSpecSelection {
 const GroupBy = <T extends {}>(
   props: { groupMapping: TitleToGroupSpecMapping<T> } & GroupSpecSelection
 ): React.ReactElement<any> => (
-    <NamedGroup title="Project types">
+    <NamedGroup title="Group by">
       {_.map(props.groupMapping, (value, key) => {
         const isSelected = (props.selectedGroup || _.keys(props.groupMapping)[0]) === key;
         return (
