@@ -12,7 +12,7 @@ script:
   - yarn install
   - yarn build
   - touch build/.nojekyll
-  - echo "${DOMAIN_NAME}" > build/CNAME
+  - echo gurunars.com > build/CNAME
 branches:
   only:
   - develop
