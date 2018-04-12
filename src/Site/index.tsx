@@ -90,30 +90,31 @@ const Main = (props: {
   const flattened = _.flatMap(grouped, grp => grp.elements);
   const selectedPosition = _.findIndex(flattened, item => props.selectedId === getId(item));
   return (
-    <PageWithSideMenu
-      menu={
-        <About
-          meta={props.portfolio.meta}
-        />
+    <PageWithOverlay
+      foregroundContent={
+        selectedPosition > -1 ? (
+          <Carousel
+            size={flattened.length}
+            selectedPostion={selectedPosition || 0}
+            close={() => props.selectedIdOnChange(null)}
+            goTo={pos => props.selectedIdOnChange(getId(flattened[pos]))}
+          >
+            {pos => (<Large item={flattened[pos]} />)}
+          </Carousel>
+        ) : null
       }
-      menuTitle="About"
-      contentTitle="Projects"
-      {...props}
     >
-      <PageWithOverlay
-        foregroundContent={
-          selectedPosition > -1 ? (
-            <Carousel
-              size={flattened.length}
-              selectedPostion={selectedPosition || 0}
-              close={() => props.selectedIdOnChange(null)}
-              goTo={pos => props.selectedIdOnChange(getId(flattened[pos]))}
-            >
-              {pos => (<Large item={flattened[pos]} />)}
-            </Carousel>
-          ) : null
+      <PageWithSideMenu
+        menu={
+          <About
+            meta={props.portfolio.meta}
+          />
         }
+        menuTitle="About"
+        contentTitle="Projects"
+        {...props}
       >
+
         <WithToolbar
           toolbar={<Toolbar {...props} />}
         >
@@ -130,8 +131,8 @@ const Main = (props: {
             )}
           />
         </WithToolbar>
-      </PageWithOverlay>
-    </PageWithSideMenu>
+      </PageWithSideMenu>
+    </PageWithOverlay>
   );
 };
 

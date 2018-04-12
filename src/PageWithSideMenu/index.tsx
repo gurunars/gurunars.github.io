@@ -33,7 +33,7 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
         icon={props.menuIsVisible ? minimize : maximize}
         style={{
           color: "white",
-          zIndex: 100,
+          zIndex: 2,
           width: 50,
           height: 50,
           position: "absolute",

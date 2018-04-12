@@ -18,6 +18,7 @@ const OverlayDecorator = (props: { children: React.ReactElement<any> }) => (
       style={{
         display: "flex",
         position: "absolute",
+        zIndex: 100,
         top: "5%",
         left: "5%",
         width: "90%",
