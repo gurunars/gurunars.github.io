@@ -9,13 +9,15 @@ interface State {
   selectedSpecs: string[] | null;
   selectedGroup: string | null;
   menuIsVisible: boolean;
+  isToolbarOpen: boolean;
 }
 
 const initial: State = {
   selectedId: null,
   selectedSpecs: null,
   selectedGroup: null,
-  menuIsVisible: true
+  menuIsVisible: true,
+  isToolbarOpen: true
 };
 
 const App = ({ portfolio }: { portfolio: any }) => (
@@ -34,6 +36,7 @@ const App = ({ portfolio }: { portfolio: any }) => (
         <Site
           portfolio={portfolio}
           {...data}
+          isToolbarOpenOnChange={bind("isToolbarOpen")}
           selectedIdOnChange={bind("selectedId")}
           selectedSpecsOnChange={bind("selectedSpecs")}
           selectedGroupOnChange={bind("selectedGroup")}

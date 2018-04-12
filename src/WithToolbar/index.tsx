@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { withState, compose, withProps } from "recompose";
-
 import responsive from "../Responsive";
 import ActionIcon from "../ActionIcon";
 import { FullSize } from "../Layouts";
@@ -40,7 +38,7 @@ const Desktop = (props: Props): React.ReactElement<any> => (
   </FullSize>
 );
 
-interface OpenState {
+export interface OpenState {
   isToolbarOpen: boolean;
   isToolbarOpenOnChange: (isToolbarOpen: boolean) => void;
 }
@@ -58,19 +56,7 @@ const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
   </FullSize>
 );
 
-const Full = (props: Props): React.ReactElement<any> => {
-  const View = compose(
-    withProps(props),
-    withState(
-      "isToolbarOpen",
-      "isToolbarOpenOnChange",
-      false
-    )
-  )(Mobile);
-  return <View />;
-};
-
 export default responsive({
   desktopView: Desktop,
-  mobileView: Full
+  mobileView: Mobile
 });

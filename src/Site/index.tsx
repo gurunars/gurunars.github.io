@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
 import BaseToolbar from "../Toolbar";
 import { Small, Large, Item, getId } from "../Item";
-import WithToolbar from "../WithToolbar";
+import WithToolbar, { OpenState } from "../WithToolbar";
 
 import Carousel from "../Carousel";
 import PageWithOverlay from "../PageWithOverlay";
@@ -78,7 +78,7 @@ interface IdHodler {
 
 const Main = (props: {
   portfolio: Portfolio,
-} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility) => {
+} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & OpenState) => {
   const group = Groups[props.selectedGroup || "year"];
   const filtered = filterItems(props.portfolio.items, props.selectedSpecs || []);
   const grouped = groupItems(
@@ -117,6 +117,7 @@ const Main = (props: {
 
         <WithToolbar
           toolbar={<Toolbar {...props} />}
+          {...props}
         >
           <GroupedList
             items={grouped}
