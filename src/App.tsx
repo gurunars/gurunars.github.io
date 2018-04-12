@@ -17,7 +17,7 @@ const initial: State = {
   selectedSpecs: null,
   selectedGroup: null,
   menuIsVisible: true,
-  isToolbarOpen: true
+  isToolbarOpen: false
 };
 
 const App = ({ portfolio }: { portfolio: any }) => (
