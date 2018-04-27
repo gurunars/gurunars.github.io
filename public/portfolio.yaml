@@ -179,30 +179,13 @@ items:
     links:
       - wodconnect
 
-  - title: GymLog
-    description: >
-      I wrote an Android app that allows people not only to manage sets and reps in their workouts but also
-      control the order of their execution.
-    startDate: "2015-02-24"
-    endDate: "2015-06-29"
-    location: self
-    achievements:
-      - Designed and implemented a brand new app to manage gym workouts.
-      - Publish the app in Play store so that my friends could give it a shot and criticize it.
-      - Started to use the app on my own in a Gym.
-      - Based on users' feedback composed a list of features for the next version of the app.
-    type: freelance
-    tags: [TDD, Android, Java, Gradle, State Based Testing]
-    links:
-      - gymlog-docs
-      - gymlog
-
   - title: Lokki
     description: >
       I was requested to amend the code of geoposition-sharing according to F-Secure's legal guidelines and open-source
       it.
     location: f-secure
     startDate: "2015-01-12"
+    endDate: "2015-03-30"
     achievements:
       - Clarified the licensing/open-source process with a team of company legal advisors.
       - Opened the sources of the application and handed them to University of Helsinki.
