@@ -212,23 +212,6 @@ items:
       - resource-api-docs
       - resource-api
 
-  - title: State Machine Crawler
-    description: >
-      To facilitate with writing integration tests for Android apps I wrote a library that relied on a state based
-      testing model.
-    startDate: "2014-10-21"
-    achievements:
-      - Designed the interface of the library in such a manner that it would not stand on the way of the tester.
-      - Implemented a command line utility that would simplify test execution.
-      - Wrote documentation for the library.
-      - Employed the library in F-Secure for the purpose of test automation.
-    type: openSource
-    location: self
-    tags: [Python, Test Automation, State Based Testing]
-    links:
-      - state-machine-crawler-docs
-      - state-machine-crawler
-
   - title: Senior Software Engineer
     description: >
       I was accountable for quality assurance automation, deployment automation and continuous integration.
