@@ -4,6 +4,7 @@ import { Set } from "immutable";
 
 import { merge } from "../utils";
 import { ResponsiveFlex } from "../Layouts";
+import Box from "../Box";
 
 export interface Spec {
   humanReadableName: string;
@@ -55,8 +56,7 @@ const NamedGroup = (props: Props): React.ReactElement<any> => (
 );
 
 export interface SpecSelection {
-  selectedSpecs: string[] | null;
-  selectedSpecsOnChange: (selectedSpecs: string[]) => void;
+  selectedSpecs: Box<string[] | null>;
 }
 
 const SpecFilter = (
@@ -64,7 +64,7 @@ const SpecFilter = (
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
       {_.map(props.filterMapping, (value, key) => {
-        const specs = props.selectedSpecs || [];
+        const specs = props.selectedSpecs.get() || [];
         const isSelected = specs.indexOf(key) > -1;
         return (
           <span
@@ -73,7 +73,7 @@ const SpecFilter = (
               backgroundColor: value.color,
               textDecoration: isSelected ? "line-through" : "none"
             })}
-            onClick={() => props.selectedSpecsOnChange(
+            onClick={() => props.selectedSpecs.set(
               isSelected ?
                 Set(specs).remove(key).toArray() :
                 Set(specs).add(key).toArray()
@@ -87,8 +87,7 @@ const SpecFilter = (
   );
 
 export interface GroupSpecSelection {
-  selectedGroup: string | null;
-  selectedGroupOnChange: (selectedSpecs: string) => void;
+  selectedGroup: Box<string | null>;
 }
 
 const GroupBy = <T extends {}>(
@@ -96,7 +95,7 @@ const GroupBy = <T extends {}>(
 ): React.ReactElement<any> => (
     <NamedGroup title="Group by">
       {_.map(props.groupMapping, (value, key) => {
-        const isSelected = (props.selectedGroup || _.keys(props.groupMapping)[0]) === key;
+        const isSelected = (props.selectedGroup.get() || _.keys(props.groupMapping)[0]) === key;
         return (
           <span
             key={key}
@@ -105,7 +104,7 @@ const GroupBy = <T extends {}>(
               marginBottom: 5,
               color: isSelected ? "white" : "black"
             })}
-            onClick={() => props.selectedGroupOnChange(key)}
+            onClick={() => props.selectedGroup.set(key)}
           >
             {value.humanReadableName}
           </span>

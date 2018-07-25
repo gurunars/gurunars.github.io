@@ -1,7 +1,8 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
-import { withState, compose, withProps } from "recompose";
+import { compose, withProps } from "recompose";
+import { withBoxState } from "../Box";
 
 import Main from ".";
 
@@ -85,26 +86,10 @@ const StateMain = compose(
       items: items
     }
   }),
-  withState(
-    "selectedId",
-    "selectedIdOnChange",
-    null
-  ),
-  withState(
-    "selectedSpecs",
-    "selectedSpecsOnChange",
-    []
-  ),
-  withState(
-    "selectedGroup",
-    "selectedGroupOnChange",
-    null
-  ),
-  withState(
-    "menuIsVisible",
-    "menuIsVisibleOnChange",
-    true
-  )
+  withBoxState("selectedId", null),
+  withBoxState("selectedSpecs", []),
+  withBoxState("selectedGroup", null),
+  withBoxState("menuIsVisible", true)
 )(Main);
 
 storiesOf("Site", module)

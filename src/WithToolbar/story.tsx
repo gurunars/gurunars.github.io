@@ -1,8 +1,23 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
+import { compose, withProps } from "recompose";
 
-import WithToolbar from ".";
+import RawWithToolbar from ".";
+import { withBoxState } from "../Box";
+
+const WithToolbarDesktop = compose(
+  withProps({ "toolbar": (<p>TOOLBAR</p>) }),
+  withBoxState("isToolbarOpen", false)
+)(RawWithToolbar);
+
+const WithToolbarMobile = compose(
+  withProps({
+    "type": "mobile",
+    "toolbar": (<p>TOOLBAR</p>)
+  }),
+  withBoxState("isToolbarOpen", false)
+)(RawWithToolbar);
 
 storiesOf("WithToolbar", module)
   .addDecorator(host({
@@ -11,12 +26,12 @@ storiesOf("WithToolbar", module)
     width: 800,
   }))
   .add("desktop", () => (
-    <WithToolbar toolbar={<p>TOOLBAR</p>}>
+    <WithToolbarDesktop>
       <p>CONTENT</p>
-    </WithToolbar>
+    </WithToolbarDesktop>
   ))
   .add("mobile", () => (
-    <WithToolbar type="mobile" toolbar={<p>TOOLBAR</p>}>
+    <WithToolbarMobile>
       <p>CONTENT</p>
-    </WithToolbar>
-  )); 
+    </WithToolbarMobile>
+  ));

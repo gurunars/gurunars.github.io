@@ -1,7 +1,8 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
-import { withState, withProps, compose } from "recompose";
+import { withProps, compose } from "recompose";
+import { withBoxState } from "../Box";
 
 import PlainPageWithSideMenu from ".";
 
@@ -14,11 +15,7 @@ const getWidget = (type: "mobile" | "desktop"): React.ReactElement<any> => {
       menu: <p style={{ paddingRight: 20 }}>MENU</p>,
       children: <p>CONTENT</p>
     }),
-    withState(
-      "menuIsVisible",
-      "menuIsVisibleOnChange",
-      true
-    )
+    withBoxState("menuIsVisible", true)
   )(PlainPageWithSideMenu);
   return <View />;
 };

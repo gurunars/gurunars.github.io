@@ -3,6 +3,7 @@ import * as React from "react";
 import responsive from "../Responsive";
 import ActionIcon from "../ActionIcon";
 import { FullSize } from "../Layouts";
+import Box from "../Box";
 
 const close = require("./icons/close.svg");
 const menu = require("./icons/menu.svg");
@@ -39,19 +40,18 @@ const Desktop = (props: Props): React.ReactElement<any> => (
 );
 
 export interface OpenState {
-  isToolbarOpen: boolean;
-  isToolbarOpenOnChange: (isToolbarOpen: boolean) => void;
+  isToolbarOpen: Box<boolean>;
 }
 
 const Mobile = (props: Props & OpenState): React.ReactElement<any> => (
   <FullSize style={{ overflow: "hidden" }}>
     <FullSize style={{ overflowY: "auto", display: "initial" }}>
-      {props.isToolbarOpen ? props.toolbar : props.children}
+      {props.isToolbarOpen.get() ? props.toolbar : props.children}
     </FullSize>
 
     <ActionIcon
-      onClick={() => props.isToolbarOpenOnChange(!props.isToolbarOpen)}
-      icon={props.isToolbarOpen ? close : menu}
+      onClick={() => props.isToolbarOpen.set(!props.isToolbarOpen.get())}
+      icon={props.isToolbarOpen.get() ? close : menu}
     />
   </FullSize>
 );

@@ -8,7 +8,6 @@
 ## frontend dev
 
     sudo npm install yarn
-    cd frontend
     yarn install
     yarn start
 

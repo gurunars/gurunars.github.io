@@ -1,7 +1,8 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { host } from "storybook-host";
-import { withState, compose, withProps } from "recompose";
+import { compose, withProps } from "recompose";
+import { withBoxState } from "../Box";
 
 import Toolbar from ".";
 
@@ -32,16 +33,8 @@ const StateToolbar = compose(
       }
     }
   }),
-  withState(
-    "selectedSpecs",
-    "selectedSpecsOnChange",
-    []
-  ),
-  withState(
-    "selectedGroup",
-    "selectedGroupOnChange",
-    null
-  )
+  withBoxState("selectedSpecs", []),
+  withBoxState("selectedGroup", null)
 )(Toolbar);
 
 storiesOf("Toolbar", module)

@@ -13,6 +13,7 @@ import { groupItems } from "../GroupedList/grouping";
 import { Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 import About from "../About";
+import Box from "../Box";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -72,15 +73,14 @@ const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
 );
 
 interface IdHodler {
-  selectedId: number | null;
-  selectedIdOnChange: (selectedId: number | null) => void;
+  selectedId: Box<number | null>;
 }
 
 const Main = (props: {
   portfolio: Portfolio,
 } & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & OpenState) => {
-  const group = Groups[props.selectedGroup || "year"];
-  const filtered = filterItems(props.portfolio.items, props.selectedSpecs || []);
+  const group = Groups[props.selectedGroup.get() || "year"];
+  const filtered = filterItems(props.portfolio.items, props.selectedSpecs.get() || []);
   const grouped = groupItems(
     filtered,
     group.groupBy,
@@ -88,7 +88,7 @@ const Main = (props: {
     group.reverse
   );
   const flattened = _.flatMap(grouped, grp => grp.elements);
-  const selectedPosition = _.findIndex(flattened, item => props.selectedId === getId(item));
+  const selectedPosition = _.findIndex(flattened, item => props.selectedId.get() === getId(item));
   return (
     <PageWithOverlay
       foregroundContent={
@@ -96,8 +96,8 @@ const Main = (props: {
           <Carousel
             size={flattened.length}
             selectedPostion={selectedPosition || 0}
-            close={() => props.selectedIdOnChange(null)}
-            goTo={pos => props.selectedIdOnChange(getId(flattened[pos]))}
+            close={() => props.selectedId.set(null)}
+            goTo={pos => props.selectedId.set(getId(flattened[pos]))}
           >
             {pos => (<Large item={flattened[pos]} />)}
           </Carousel>
@@ -127,7 +127,7 @@ const Main = (props: {
                   backgroundColor: TypeToSpecMapping[item.type].color
                 }}
                 item={item}
-                onClick={() => props.selectedIdOnChange(getId(item))}
+                onClick={() => props.selectedId.set(getId(item))}
               />
             )}
           />

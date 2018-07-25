@@ -4,6 +4,7 @@ import { merge } from "../utils";
 import responsive from "../Responsive";
 import ActionIcon from "../ActionIcon";
 import { FullSize } from "../Layouts";
+import Box from "../Box";
 
 const minimize = require("./icons/minimize.svg");
 const maximize = require("./icons/maximize.svg");
@@ -16,8 +17,7 @@ interface Props {
 }
 
 export interface MenuVisibility {
-  menuIsVisible: boolean;
-  menuIsVisibleOnChange: (state: boolean) => void;
+  menuIsVisible: Box<boolean>;
 }
 
 const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
@@ -29,8 +29,8 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
       }}
     >
       <ActionIcon
-        onClick={() => props.menuIsVisibleOnChange(!props.menuIsVisible)}
-        icon={props.menuIsVisible ? minimize : maximize}
+        onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
+        icon={props.menuIsVisible.get() ? minimize : maximize}
         style={{
           color: "white",
           zIndex: 2,
@@ -42,7 +42,7 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
         }}
       />
 
-      {props.menuIsVisible ? props.menu : null}
+      {props.menuIsVisible.get() ? props.menu : null}
     </div>
     <div
       style={{
@@ -107,15 +107,15 @@ const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
     >
 
       <Tab
-        isSelected={props.menuIsVisible}
-        onClick={() => props.menuIsVisibleOnChange(true)}
+        isSelected={props.menuIsVisible.get()}
+        onClick={() => props.menuIsVisible.set(true)}
       >
         {props.menuTitle}
       </Tab>
 
       <Tab
-        isSelected={!props.menuIsVisible}
-        onClick={() => props.menuIsVisibleOnChange(false)}
+        isSelected={!props.menuIsVisible.get()}
+        onClick={() => props.menuIsVisible.set(false)}
       >
         {props.contentTitle}
       </Tab>
@@ -133,7 +133,7 @@ const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
         width: "100%"
       }}
     >
-      {props.menuIsVisible ? props.menu : props.children}
+      {props.menuIsVisible.get() ? props.menu : props.children}
     </div>
   </FullSize>
 );

@@ -23,25 +23,25 @@ const initial: State = {
 const App = ({ portfolio }: { portfolio: any }) => (
   <HashStateAware initial={initial}>
     {(data: State, set: (data: State) => void) => {
-
-      const mutate = (name: string, value: any) => {
-        const payload = {};
-        payload[name] = value;
-        set(merge(data, payload) as State);
-      };
-
-      const bind = (name: string) => mutate.bind(null, name);
+      const field = (name: string) => ({
+        get: () => data[name],
+        set: (value: any) => {
+          const payload = {};
+          payload[name] = value;
+          set(merge(data, payload) as State);
+        }
+      });
 
       return (
         <Site
           portfolio={portfolio}
-          {...data}
-          isToolbarOpenOnChange={bind("isToolbarOpen")}
-          selectedIdOnChange={bind("selectedId")}
-          selectedSpecsOnChange={bind("selectedSpecs")}
-          selectedGroupOnChange={bind("selectedGroup")}
-          menuIsVisibleOnChange={bind("menuIsVisible")}
-        />);
+          selectedSpecs={field("selectedSpecs")}
+          selectedGroup={field("selectedGroup")}
+          isToolbarOpen={field("isToolbarOpen")}
+          selectedId={field("selectedId")}
+          menuIsVisible={field("menuIsVisible")}
+        />
+      );
     }}
   </HashStateAware>
 );
