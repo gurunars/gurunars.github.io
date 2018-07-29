@@ -1,8 +1,7 @@
 import * as _ from "lodash";
 import * as React from "react";
 import { getId, Item, Large, Small } from "../Item";
-import { GroupSpec, GroupSpecSelection, Spec, SpecSelection } from "../Toolbar";
-import BaseToolbar from "../Toolbar";
+import BaseToolbar, { GroupSpec, GroupSpecSelection, Spec, SpecSelection } from "../Toolbar";
 import WithToolbar, { OpenState } from "../WithToolbar";
 
 import Carousel from "../Carousel";
