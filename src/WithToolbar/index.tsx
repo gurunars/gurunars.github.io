@@ -9,8 +9,8 @@ const close = require("./icons/close.svg");
 const menu = require("./icons/menu.svg");
 
 interface Props {
-  toolbar: React.ReactElement<any>,
-  children: React.ReactElement<any>
+  toolbar: React.ReactElement<any>;
+  children: React.ReactElement<any>;
 }
 
 const Desktop = (props: Props): React.ReactElement<any> => (

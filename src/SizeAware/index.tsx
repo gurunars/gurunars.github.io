@@ -1,12 +1,12 @@
 import * as React from "react";
 
 interface Props {
-  children: (width: number, height: number) => React.ReactElement<any>
+  children: (width: number, height: number) => React.ReactElement<any>;
 }
 
 interface State {
-  width: number,
-  height: number
+  width: number;
+  height: number;
 }
 
 export default class SizeAware extends React.Component<Props, State> {

@@ -32,8 +32,8 @@ const OverlayDecorator = (props: { children: React.ReactElement<any> }) => (
 );
 
 interface Props {
-  children: React.ReactElement<any>,
-  foregroundContent?: React.ReactElement<any> | null
+  children: React.ReactElement<any>;
+  foregroundContent?: React.ReactElement<any> | null;
 }
 
 const Desktop = (props: Props) => (

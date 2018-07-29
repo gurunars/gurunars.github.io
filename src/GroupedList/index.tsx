@@ -38,8 +38,8 @@ const GroupedList = <T extends {}>(props: {
   );
 
 interface Props<T extends {}> {
-  items: Array<GroupedItems<T>>,
-  renderItem: RenderItem<T>
+  items: Array<GroupedItems<T>>;
+  renderItem: RenderItem<T>;
 }
 
 const Desktop = <T extends {}>(

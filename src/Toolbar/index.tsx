@@ -11,7 +11,7 @@ export interface Spec {
   color: string;
 }
 
-export interface TypeToSpecMapping { [key: string]: Spec }
+export interface TypeToSpecMapping { [key: string]: Spec; }
 
 export interface GroupSpec<T extends {}> {
   humanReadableName: string;
@@ -20,7 +20,7 @@ export interface GroupSpec<T extends {}> {
   reverse: boolean;
 }
 
-export interface TitleToGroupSpecMapping<T extends {}> { [key: string]: GroupSpec<T> }
+export interface TitleToGroupSpecMapping<T extends {}> { [key: string]: GroupSpec<T>; }
 
 const baseStyle = {
   cursor: "pointer",
@@ -37,8 +37,8 @@ const baseStyle = {
 };
 
 interface Props {
-  title: string,
-  children: JSX.Element[]
+  title: string;
+  children: JSX.Element[];
 }
 
 const NamedGroup = (props: Props): React.ReactElement<any> => (

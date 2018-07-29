@@ -5,7 +5,7 @@ import * as React from "react";
 import responsive from ".";
 
 interface Props {
-  title: string
+  title: string;
 }
 
 const DesktopView = (props: Props) => <p>DESKTOP {props.title}</p>;
