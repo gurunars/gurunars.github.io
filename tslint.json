@@ -16,6 +16,11 @@
             "arguments",
             "statements"
         ],
+        "no-implicit-dependencies": [
+            true,
+            "dev"
+        ],
+        "object-literal-sort-keys": false,
         "ban": false,
         "comment-format": [
             true,
