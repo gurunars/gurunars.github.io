@@ -83,7 +83,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
               textDecoration: "none",
               whiteSpace: "pre",
               color: "Black",
-              marginLift: 5,
+              marginLeft: 5,
               marginRight: 5,
               paddingTop: 3,
               paddingBottom: 3,
@@ -108,7 +108,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
       }}
     >
       {item.links.map(link => (
-        <FullUrl link={link} style={{ marginBottom: 4 }} />
+        <FullUrl key={link.name} link={link} style={{ marginBottom: 4 }} />
       ))}
     </div>
   </div>

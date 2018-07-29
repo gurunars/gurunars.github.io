@@ -59,7 +59,7 @@ const Carousel = (props: Props): React.ReactElement<any> => {
           <div
             onClick={props.close}
             style={{
-              curosor: "pointer",
+              cursor: "pointer",
               color: "black",
               width: dims * 2,
               height: dims * 2,

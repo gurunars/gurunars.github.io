@@ -31,7 +31,5 @@ const icons = {
   print: print
 };
 
-const getIconForType = (type?: string) =>
+export default (type?: string) =>
   icons[type || "link"] || fallback;
-
-export default getIconForType;

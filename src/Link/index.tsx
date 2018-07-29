@@ -52,7 +52,7 @@ export const CircleUrl = ({ link, style }: {
       style={style}
       href={link.url}
     >
-      <CircleType color={_.get(style, "color", "black")} type={link.type} />
+      <CircleType color={_.get(style, "color") || "black"} type={link.type} />
     </a>
   );
 
@@ -65,7 +65,7 @@ export const FullUrl = ({ link, style }: {
       style={merge({ alignItems: "center", display: "inline-flex" }, style || {})}
       href={link.url}
     >
-      <CircleType color={_.get(style, "color", "black")} type={link.type} />
+      <CircleType color={_.get(style, "color") || "black"} type={link.type} />
       <span
         style={{
           marginLeft: "5px"
