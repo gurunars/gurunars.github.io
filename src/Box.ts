@@ -1,8 +1,8 @@
 import {
   compose,
+  InferableComponentEnhancerWithProps,
   withProps,
-  withState,
-  InferableComponentEnhancerWithProps
+  withState
 } from "recompose";
 
 export default interface Box<T> {

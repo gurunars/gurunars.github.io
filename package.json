@@ -15,8 +15,8 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "lint": "tslint \"src/**/*.tsx\"",
-    "prettier": "tslint --project tsconfig.json --fix \"src/**/*.tsx\"",
+    "lint": "tslint \"src/**/*.ts{,x}\"",
+    "prettier": "tslint --project tsconfig.json --fix \"src/**/*.ts{,x}\"",
     "test-watch": "react-scripts-ts test --env=jsdom",
     "test": "CI=true react-scripts-ts test --env=jsdom",
     "plop": "plop",
