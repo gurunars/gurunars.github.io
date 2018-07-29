@@ -1,5 +1,5 @@
-import * as React from "react";
 import { storiesOf } from "@storybook/react";
+import * as React from "react";
 import { host } from "storybook-host";
 
 import Grouping from ".";
@@ -11,15 +11,15 @@ interface Item {
 }
 
 const items: Item[] = [
-  { "type": "two", "title": "D" },
-  { "type": "two", "title": "F" },
-  { "type": "two", "title": "E" },
-  { "type": "one", "title": "B" },
-  { "type": "one", "title": "C" },
-  { "type": "three", "title": "G" },
-  { "type": "three", "title": "I" },
-  { "type": "one", "title": "A" },
-  { "type": "three", "title": "H" }
+  { type: "two", title: "D" },
+  { type: "two", title: "F" },
+  { type: "two", title: "E" },
+  { type: "one", title: "B" },
+  { type: "one", title: "C" },
+  { type: "three", title: "G" },
+  { type: "three", title: "I" },
+  { type: "one", title: "A" },
+  { type: "three", title: "H" }
 ];
 
 storiesOf("GroupedList", module)

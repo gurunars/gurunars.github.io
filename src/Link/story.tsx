@@ -1,8 +1,8 @@
-import * as React from "react";
 import { storiesOf } from "@storybook/react";
+import * as React from "react";
 import { host } from "storybook-host";
 
-import { Url, CircleUrl, FullUrl } from ".";
+import { CircleUrl, FullUrl, Url } from ".";
 
 storiesOf("Link", module)
   .addDecorator(host({

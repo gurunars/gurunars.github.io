@@ -1,6 +1,6 @@
+import jsyaml from "js-yaml";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import jsyaml from "js-yaml";
 
 import App from "./App";
 import preprocess from "./model";

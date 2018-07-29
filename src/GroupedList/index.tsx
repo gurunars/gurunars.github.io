@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import { GroupedItems } from "./interfaces";
 import responsive from "../Responsive";
+import { GroupedItems } from "./interfaces";
 
 type RenderItem<T extends {}> = (props: { item: T }) => React.ReactElement<any>;
 
 const GroupedList = <T extends {}>(props: {
-  items: GroupedItems<T>[],
+  items: Array<GroupedItems<T>>,
   renderItem: RenderItem<T>,
   style?: React.CSSProperties
 }): React.ReactElement<any> => (
@@ -37,10 +37,10 @@ const GroupedList = <T extends {}>(props: {
     </div>
   );
 
-type Props<T extends {}> = {
-  items: GroupedItems<T>[],
+interface Props<T extends {}> {
+  items: Array<GroupedItems<T>>,
   renderItem: RenderItem<T>
-};
+}
 
 const Desktop = <T extends {}>(
   props: Props<T>

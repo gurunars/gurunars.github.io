@@ -1,20 +1,20 @@
-import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { host } from "storybook-host";
+import * as React from "react";
 import { compose, withProps } from "recompose";
+import { host } from "storybook-host";
 
 import RawWithToolbar from ".";
 import { withBoxState } from "../Box";
 
 const WithToolbarDesktop = compose(
-  withProps({ "toolbar": (<p>TOOLBAR</p>) }),
+  withProps({ toolbar: (<p>TOOLBAR</p>) }),
   withBoxState("isToolbarOpen", false)
 )(RawWithToolbar);
 
 const WithToolbarMobile = compose(
   withProps({
-    "type": "mobile",
-    "toolbar": (<p>TOOLBAR</p>)
+    type: "mobile",
+    toolbar: (<p>TOOLBAR</p>)
   }),
   withBoxState("isToolbarOpen", false)
 )(RawWithToolbar);

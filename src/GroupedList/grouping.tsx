@@ -7,10 +7,10 @@ export const groupItems = <T extends {}>(
   groupBy: ((item: T) => Object),
   sortBy: ((item: T) => Object),
   reverse?: boolean
-): GroupedItems<T>[] =>
+): Array<GroupedItems<T>> =>
   _.orderBy(
     _.map(_.groupBy(items, groupBy), (elements, group) => ({
-      group: group,
+      group,
       elements: _.orderBy(elements, sortBy, reverse ? "desc" : "asc")
     })),
     "group",

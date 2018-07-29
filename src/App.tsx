@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Site from "./Site";
 import HashStateAware from "./HashStateAware";
+import Site from "./Site";
 import { merge } from "./utils";
 
 interface State {

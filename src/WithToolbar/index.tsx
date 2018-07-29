@@ -1,17 +1,17 @@
 import * as React from "react";
 
-import responsive from "../Responsive";
 import ActionIcon from "../ActionIcon";
-import { FullSize } from "../Layouts";
 import Box from "../Box";
+import { FullSize } from "../Layouts";
+import responsive from "../Responsive";
 
 const close = require("./icons/close.svg");
 const menu = require("./icons/menu.svg");
 
-type Props = {
+interface Props {
   toolbar: React.ReactElement<any>,
   children: React.ReactElement<any>
-};
+}
 
 const Desktop = (props: Props): React.ReactElement<any> => (
   <FullSize

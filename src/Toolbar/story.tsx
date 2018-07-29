@@ -1,14 +1,14 @@
-import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { host } from "storybook-host";
+import * as React from "react";
 import { compose, withProps } from "recompose";
+import { host } from "storybook-host";
 import { withBoxState } from "../Box";
 
 import Toolbar from ".";
 
 const StateToolbar = compose(
   withProps({
-    "filterMapping": {
+    filterMapping: {
       one: {
         humanReadableName: "One",
         color: "Yellow"
@@ -18,7 +18,7 @@ const StateToolbar = compose(
         color: "LightGreen"
       }
     },
-    "groupMapping": {
+    groupMapping: {
       one: {
         humanReadableName: "One",
         groupBy: "group-by-one",

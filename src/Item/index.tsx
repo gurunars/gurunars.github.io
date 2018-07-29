@@ -1,5 +1,5 @@
-import SmallView from "./Small";
 import LargeView from "./Large";
+import SmallView from "./Small";
 export { Item, getId } from "./interface";
 
 export const Small = SmallView;

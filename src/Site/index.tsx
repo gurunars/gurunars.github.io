@@ -1,19 +1,19 @@
-import * as React from "react";
 import * as _ from "lodash";
-import { Spec, GroupSpec, SpecSelection, GroupSpecSelection } from "../Toolbar";
+import * as React from "react";
+import { getId, Item, Large, Small } from "../Item";
+import { GroupSpec, GroupSpecSelection, Spec, SpecSelection } from "../Toolbar";
 import BaseToolbar from "../Toolbar";
-import { Small, Large, Item, getId } from "../Item";
 import WithToolbar, { OpenState } from "../WithToolbar";
 
 import Carousel from "../Carousel";
-import PageWithOverlay from "../PageWithOverlay";
 import GroupedList from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";
+import PageWithOverlay from "../PageWithOverlay";
 
-import { Portfolio } from "../model";
-import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 import About from "../About";
 import Box from "../Box";
+import { Portfolio } from "../model";
+import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 
 export const TypeToSpecMapping: { [key: string]: Spec } = {
   openSource: {
@@ -35,25 +35,25 @@ export const TypeToSpecMapping: { [key: string]: Spec } = {
 };
 
 export const Groups: { [key: string]: GroupSpec<Item> } = {
-  "year": {
+  year: {
     humanReadableName: "Year",
     groupBy: (item: Item) => item.duration.start.getUTCFullYear(),
     sortBy: (item: Item) => item.duration.start,
     reverse: true
   },
-  "type": {
+  type: {
     humanReadableName: "Type",
     groupBy: (item: Item) => TypeToSpecMapping[item.type].humanReadableName,
     sortBy: (item: Item) => TypeToSpecMapping[item.type].humanReadableName,
     reverse: false
   },
-  "title": {
+  title: {
     humanReadableName: "Title",
     groupBy: (item: Item) => item.title[0].toUpperCase(),
     sortBy: (item: Item) => item.title,
     reverse: false
   },
-  "location": {
+  location: {
     humanReadableName: "Location",
     groupBy: (item: Item) => item.location.name,
     sortBy: (item: Item) => item.location.name,

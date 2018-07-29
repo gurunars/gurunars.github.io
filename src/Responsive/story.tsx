@@ -1,12 +1,12 @@
-import * as React from "react";
-import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered";
+import { storiesOf } from "@storybook/react";
+import * as React from "react";
 
 import responsive from ".";
 
-type Props = {
+interface Props {
   title: string
-};
+}
 
 const DesktopView = (props: Props) => <p>DESKTOP {props.title}</p>;
 

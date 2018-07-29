@@ -22,11 +22,11 @@ export const FullSize = (props: {
     </div >
   );
 
-type Props = {
+interface Props {
   tabletAsMobile?: boolean,
   children: React.ReactNode,
   style?: React.CSSProperties
-};
+}
 
 const isVertical = (type: "M" | "T" | "D", props: Props): boolean => {
   switch (type) {

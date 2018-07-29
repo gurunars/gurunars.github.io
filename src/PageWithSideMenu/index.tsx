@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { merge } from "../utils";
-import responsive from "../Responsive";
 import ActionIcon from "../ActionIcon";
-import { FullSize } from "../Layouts";
 import Box from "../Box";
+import { FullSize } from "../Layouts";
+import responsive from "../Responsive";
+import { merge } from "../utils";
 
 const minimize = require("./icons/minimize.svg");
 const maximize = require("./icons/maximize.svg");

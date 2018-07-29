@@ -1,9 +1,9 @@
-import * as React from "react";
 import * as _ from "lodash";
+import * as React from "react";
 
 import { FullUrl, Link } from "../Link";
-import { toString, merge } from "../utils";
 import responsive from "../Responsive";
+import { merge, toString } from "../utils";
 
 export interface Meta {
   name: string;

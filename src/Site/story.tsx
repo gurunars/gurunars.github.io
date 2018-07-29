@@ -1,7 +1,7 @@
-import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { host } from "storybook-host";
+import * as React from "react";
 import { compose, withProps } from "recompose";
+import { host } from "storybook-host";
 import { withBoxState } from "../Box";
 
 import Main from ".";
@@ -23,7 +23,7 @@ const META = {
 };
 
 const genItem = (title: string, location: string, type: string) => ({
-  title: title,
+  title,
   achievements: [
     "one",
     "two",
@@ -45,7 +45,7 @@ const genItem = (title: string, location: string, type: string) => ({
       url: "url-to-ref3"
     }
   ],
-  type: type,
+  type,
   tags: ["one", "two", "three"],
   description: "Item description",
   links: [
@@ -83,7 +83,7 @@ const StateMain = compose(
   withProps({
     portfolio: {
       meta: META,
-      items: items
+      items
     }
   }),
   withBoxState("selectedId", null),

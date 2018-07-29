@@ -16,19 +16,19 @@ const github = require("./github.svg");
 const print = require("./print.svg");
 
 const icons = {
-  skype: skype,
-  pdf: pdf,
-  phone: phone,
-  email: email,
-  docs: docs,
-  cv: cv,
-  linkedin: linkedin,
-  stackoverflow: stackoverflow,
-  amazon: amazon,
-  play: play,
-  link: link,
-  github: github,
-  print: print
+  skype,
+  pdf,
+  phone,
+  email,
+  docs,
+  cv,
+  linkedin,
+  stackoverflow,
+  amazon,
+  play,
+  link,
+  github,
+  print
 };
 
 export default (type?: string) =>

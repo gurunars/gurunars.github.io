@@ -1,5 +1,5 @@
-import * as React from "react";
 import * as _ from "lodash";
+import * as React from "react";
 
 const CursorIcon = (props: {
   icon: React.ReactElement<any>,

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { Url, FullUrl } from "../Link";
-import { Item, durationToString } from "./interface";
+import { FullUrl, Url } from "../Link";
+import { durationToString, Item } from "./interface";
 
 const Section = (props: {
   title: string,

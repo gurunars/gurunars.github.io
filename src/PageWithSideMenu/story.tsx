@@ -1,7 +1,7 @@
-import * as React from "react";
 import { storiesOf } from "@storybook/react";
+import * as React from "react";
+import { compose, withProps } from "recompose";
 import { host } from "storybook-host";
-import { withProps, compose } from "recompose";
 import { withBoxState } from "../Box";
 
 import PlainPageWithSideMenu from ".";
@@ -9,7 +9,7 @@ import PlainPageWithSideMenu from ".";
 const getWidget = (type: "mobile" | "desktop"): React.ReactElement<any> => {
   const View = compose(
     withProps({
-      type: type,
+      type,
       menuTitle: "menu",
       contentTitle: "content",
       menu: <p style={{ paddingRight: 20 }}>MENU</p>,

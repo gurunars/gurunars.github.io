@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 
-import { Item } from "./Item";
 import { Meta } from "./About";
+import { Item } from "./Item";
 
 export interface Portfolio {
     meta: Meta;

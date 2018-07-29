@@ -31,14 +31,14 @@ export default class HashAware<T extends {}> extends React.Component<Props<T>, S
     this.state = { hash: props.initial };
   }
 
-  render() {
+  public render() {
     return this.props.children(
       this.state.hash,
       data => { window.top.location.hash = serialize(data); }
     );
   }
 
-  updateHash = () => {
+  public updateHash = () => {
     this.setState({
       hash: merge(
         this.props.initial,
@@ -47,15 +47,15 @@ export default class HashAware<T extends {}> extends React.Component<Props<T>, S
     });
   }
 
-  componentWillMount() {
+  public componentWillMount() {
     this.updateHash();
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     window.top.addEventListener("hashchange", this.updateHash);
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     window.top.removeEventListener("hashchange", this.updateHash);
   }
 

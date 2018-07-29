@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { Item, durationToString } from "./interface";
-import { merge } from "../utils";
-import { Url, CircleUrl } from "../Link";
 import { FullSize } from "../Layouts";
+import { CircleUrl, Url } from "../Link";
+import { merge } from "../utils";
+import { durationToString, Item } from "./interface";
 
 const baseStyle = {
   display: "block",

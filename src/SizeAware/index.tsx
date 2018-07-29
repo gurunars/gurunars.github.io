@@ -1,13 +1,13 @@
 import * as React from "react";
 
-type Props = {
+interface Props {
   children: (width: number, height: number) => React.ReactElement<any>
-};
+}
 
-type State = {
+interface State {
   width: number,
   height: number
-};
+}
 
 export default class SizeAware extends React.Component<Props, State> {
 
@@ -19,14 +19,14 @@ export default class SizeAware extends React.Component<Props, State> {
     };
   }
 
-  render() {
+  public render() {
     return this.props.children(
       this.state.width,
       this.state.height
     );
   }
 
-  updateDimensions = () => {
+  public updateDimensions = () => {
     this.setState({
       width: window.innerWidth
         || document.documentElement.clientWidth
@@ -37,15 +37,15 @@ export default class SizeAware extends React.Component<Props, State> {
     });
   }
 
-  componentWillMount() {
+  public componentWillMount() {
     this.updateDimensions();
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
   }
 
