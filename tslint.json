@@ -1,6 +1,6 @@
 {
     "extends": [
-        "tslint-react"
+        "tslint:latest"
     ],
     "rules": {
         "no-redundant-jsdoc": true,
@@ -17,7 +17,6 @@
             "statements"
         ],
         "ban": false,
-        "class-name": true,
         "comment-format": [
             true,
             "check-space"
@@ -48,9 +47,9 @@
         "no-var-keyword": true,
         "member-ordering": [
             true,
-            "public-before-private",
-            "static-before-instance",
-            "variables-before-functions"
+            {
+                "order": "fields-first"
+            }
         ],
         "no-any": false,
         "no-arg": true,
