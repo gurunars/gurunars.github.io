@@ -139,6 +139,10 @@
             "check-separator",
             "check-type",
             "check-typecast"
+        ],
+        "ban-types": [
+            true,
+            []
         ]
     }
 }
