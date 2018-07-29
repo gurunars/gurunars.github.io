@@ -45,7 +45,6 @@
     "react-scripts-ts": "^2.16.0",
     "react-test-renderer": "^16.2.0",
     "storybook-host": "^5.0.0",
-    "svg-inline-loader": "^0.8.0",
     "ts-loader": "^4.4.2",
     "tslint-config-prettier": "^1.6.0",
     "typescript": "^2.9.2"
