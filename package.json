@@ -24,10 +24,10 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.3.10",
-    "@storybook/addon-centered": "^3.3.10",
-    "@storybook/addon-storyshots": "^3.3.10",
-    "@storybook/react": "^3.3.10",
+    "@storybook/addon-actions": "^4.0.0-alpha.14",
+    "@storybook/addon-centered": "^4.0.0-alpha.14",
+    "@storybook/addon-storyshots": "^4.0.0-alpha.14",
+    "@storybook/react": "^4.0.0-alpha.14",
     "@types/immutable": "^3.8.7",
     "@types/jest": "^23.3.1",
     "@types/lodash": "^4.14.106",
