@@ -1,5 +1,5 @@
 import os
-from scour.scour import parse_args, start
+from scour.scour import parse_args, start, getInOut
 from xml.etree.ElementTree import ElementTree
 
 # TODO: run this script on build
@@ -25,7 +25,7 @@ def cleanup(icon):
     source = icon + ".svg"
     target = source + ".tmp"
 
-    options, (input, output) = parse_args([
+    options = parse_args([
         "--enable-viewboxing",
         "--remove-metadata",
         "--enable-id-stripping",
@@ -34,13 +34,14 @@ def cleanup(icon):
         "--strip-xml-prolog",
         "-i", source, "-o", target
     ])
+    input, output = getInOut(options)
     start(options, input, output)
     os.remove(source)
     os.rename(target, source)
 
     tree = ElementTree()
     tree.parse(source)
-    svg = tree.iter().next()
+    svg = next(tree.iter())
     for attr in ["style", "verstion", "x", "y"]:
         drop(svg, attr)
     svg.attrib["width"] = "100%"
@@ -51,18 +52,14 @@ def cleanup(icon):
 imports = []
 dicts = []
 
-for icon in icons:
+for icon in sorted(icons):
     cleanup(icon)
     imports.append(
-        'const {name} = require("./{name}.svg")'.format(name=icon)
+        'import {name} from "./{name}.svg"'.format(name=icon)
     )
-    dicts.append(
-        '{name}: {name}'.format(name=icon)
-    )
+    dicts.append(icon)
 
 text = """
-const fallback = require("./link.svg");
-
 {imports};
 
 const icons = {{
@@ -70,7 +67,7 @@ const icons = {{
 }};
 
 const getIconForType = (type?: string) =>
-  icons[type || "link"] || fallback;
+  icons[type || "link"] || link;
 
 export default getIconForType;
 """.format(

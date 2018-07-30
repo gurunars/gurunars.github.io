@@ -1,35 +1,35 @@
 
-const fallback = require("./link.svg");
-
-const skype = require("./skype.svg");
-const pdf = require("./pdf.svg");
-const phone = require("./phone.svg");
-const email = require("./email.svg");
-const docs = require("./docs.svg");
-const cv = require("./cv.svg");
-const linkedin = require("./linkedin.svg");
-const stackoverflow = require("./stackoverflow.svg");
-const amazon = require("./amazon.svg");
-const play = require("./play.svg");
-const link = require("./link.svg");
-const github = require("./github.svg");
-const print = require("./print.svg");
+import amazon from "./amazon.svg";
+import cv from "./cv.svg";
+import docs from "./docs.svg";
+import email from "./email.svg";
+import github from "./github.svg";
+import link from "./link.svg";
+import linkedin from "./linkedin.svg";
+import pdf from "./pdf.svg";
+import phone from "./phone.svg";
+import play from "./play.svg";
+import print from "./print.svg";
+import skype from "./skype.svg";
+import stackoverflow from "./stackoverflow.svg";
 
 const icons = {
-  skype,
+  amazon,
+  cv,
+  docs,
+  email,
+  github,
+  link,
+  linkedin,
   pdf,
   phone,
-  email,
-  docs,
-  cv,
-  linkedin,
-  stackoverflow,
-  amazon,
   play,
-  link,
-  github,
-  print
+  print,
+  skype,
+  stackoverflow
 };
 
-export default (type?: string) =>
-  icons[type || "link"] || fallback;
+const getIconForType = (type?: string) =>
+  icons[type || "link"] || link;
+
+export default getIconForType;

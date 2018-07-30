@@ -18,6 +18,7 @@ export const Url = ({ link, style }: {
 }) =>
   <a style={style} href={link.url}>{link.name}</a>;
 
+  /* tslint:disable */
 const CircleType = ({ type, color }: { type?: string, color: string }) => (
   <span
     style={{
@@ -38,7 +39,8 @@ const CircleType = ({ type, color }: { type?: string, color: string }) => (
         height: "70%"
       }}
     >
-      <ReactSVG path={getIconForType(type)} style={{ fill: color }} />
+      <ReactSVG
+        onInjected={(svg: any) => {console.log("onInjected", getIconForType(type))}} path={getIconForType(type)} style={{ fill: color }} />
     </div>
   </span>
 );
