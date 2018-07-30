@@ -1,6 +1,6 @@
 import os
 from scour.scour import parse_args, start, getInOut
-from xml.etree.ElementTree import ElementTree
+from xml.etree.ElementTree import ElementTree, register_namespace
 
 # TODO: run this script on build
 # scour --enable-viewboxing --remove-metadata --enable-id-stripping -i stackoverflow.svg -o stackoverflow.svg.new
@@ -32,12 +32,15 @@ def cleanup(icon):
         "--enable-comment-stripping",
         "--strip-xml-space",
         "--strip-xml-prolog",
+        "--shorten-ids",
         "-i", source, "-o", target
     ])
     input, output = getInOut(options)
     start(options, input, output)
     os.remove(source)
     os.rename(target, source)
+
+    register_namespace("", "http://www.w3.org/2000/svg")
 
     tree = ElementTree()
     tree.parse(source)
