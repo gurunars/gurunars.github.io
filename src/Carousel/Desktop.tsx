@@ -8,9 +8,9 @@ import CursorIcon from "./CursorIcon";
 import { Cursor, getCursorItems } from "./Cursor";
 import Props from "./Props";
 
-const close = require("./icons/close.svg");
-const prev = require("./icons/prev.svg");
-const next = require("./icons/next.svg");
+import close from "./icons/close.svg";
+import next from "./icons/next.svg";
+import prev from "./icons/prev.svg";
 
 const Carousel = (props: Props): React.ReactElement<any> => {
   const cursor: Cursor = getCursorItems(props.size, props.selectedPostion);

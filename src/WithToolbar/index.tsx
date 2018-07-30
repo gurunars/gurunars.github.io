@@ -5,8 +5,8 @@ import Box from "../Box";
 import { FullSize } from "../Layouts";
 import responsive from "../Responsive";
 
-const close = require("./icons/close.svg");
-const menu = require("./icons/menu.svg");
+import close from "./icons/close.svg";
+import menu from "./icons/menu.svg";
 
 interface Props {
   toolbar: React.ReactElement<any>;

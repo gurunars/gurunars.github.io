@@ -6,8 +6,8 @@ import { FullSize } from "../Layouts";
 import responsive from "../Responsive";
 import { merge } from "../utils";
 
-const minimize = require("./icons/minimize.svg");
-const maximize = require("./icons/maximize.svg");
+import maximize from "./icons/maximize.svg";
+import minimize from "./icons/minimize.svg";
 
 interface Props {
   menuTitle: string;

@@ -2,10 +2,9 @@ import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { host } from "storybook-host";
+import icon from "./close.svg";
 
 import ActionIcon from ".";
-
-const icon = require("./close.svg");
 
 storiesOf("ActionIcon", module)
   .addDecorator(host({
@@ -18,4 +17,4 @@ storiesOf("ActionIcon", module)
       icon={icon}
       onClick={action("onClick")}
     />
-  )); 
+  ));
