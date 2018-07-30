@@ -15,7 +15,7 @@ const Icon = (
             decodeURIComponent(src)
               .replace(
                 "<svg",
-                "<svg fill='" + (realStyle.color || "red") + "'"
+                "<svg fill='" + (realStyle.color || "green") + "'"
               )
             + "/>"
         }
