@@ -5,22 +5,6 @@ import { FullUrl, Link } from "../Link";
 import responsive from "../Responsive";
 import { merge, toString } from "../utils";
 
-import Pdf from "./pdf.svg";
-
-const Icon = ({ icon, color }: { icon: string, color?: string }): React.ReactElement<any> => {
-  return (
-    <div style={{ width: "40px", height: "40px" }}
-      dangerouslySetInnerHTML={
-        {
-          __html: "<img src=" +
-            decodeURIComponent(icon)
-              .replace("<svg", "<svg fill=\"red\"")
-            + "/>"
-        }
-      } />
-  );
-};
-
 export interface Meta {
   name: string;
   languages: string[];
@@ -102,8 +86,6 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
           </p>
         ))}
       </div>
-
-      <Icon icon={Pdf} color="red" />
 
       <div
         style={{
