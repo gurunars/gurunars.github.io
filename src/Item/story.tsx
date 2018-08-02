@@ -67,4 +67,4 @@ storiesOf("Item", module)
     <Large
       item={item}
     />
-  )); 
+  ));

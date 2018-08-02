@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { FullUrl, Url } from "../Link";
 import { durationToString, Item } from "./interface";
+import Tag from "./Tag";
 
 const Section = (props: {
   title: string,
@@ -69,35 +70,9 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
           ))}
         />)
       }
-      <div
-        style={{
-          marginTop: 10
-        }}
-      >
-        {item.tags.map(tag => (
-          <i
-            key={tag}
-            style={{
-              backgroundColor: "Beige",
-              display: "inline-block",
-              textDecoration: "none",
-              whiteSpace: "pre",
-              color: "Black",
-              marginLeft: 5,
-              marginRight: 5,
-              paddingTop: 3,
-              paddingBottom: 3,
-              paddingLeft: 10,
-              paddingRight: 10,
-              fontSize: 12,
-              borderRadius: 5
-            }}
-          >
-            {tag}
-          </i>
-        ))}
+      <div style={{ marginTop: 10 }}>
+        {item.tags.map(tag => (<Tag key={tag} value={tag} />))}
       </div>
-
     </div>
 
     <div
