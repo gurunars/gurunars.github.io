@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { multiTypeStory } from "../Responsive/multitype";
+import multiTypeStory from "../Responsive/multitype";
 
 import About from ".";
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import responsive from ".";
-import { multiTypeStory } from "./multitype";
+import multiTypeStory from "./multitype";
 
 interface Props {
   title: string;

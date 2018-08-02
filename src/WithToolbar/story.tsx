@@ -3,7 +3,7 @@ import { compose } from "recompose";
 
 import RawWithToolbar from ".";
 import { withBoxState } from "../Box";
-import { multiTypeStory } from "../Responsive/multitype";
+import multiTypeStory from "../Responsive/multitype";
 
 const WithToolbar = compose(
   withBoxState("isToolbarOpen", false)

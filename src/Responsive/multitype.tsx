@@ -1,23 +1,40 @@
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { host } from "storybook-host";
 // tslint:disable-next-line:no-implicit-dependencies
-import { Story } from "storybook__react";
 
 import { SizeContext } from "../SizeAware";
 
-const addMultiSize = (
-  story: Story,
+const multiTypeStory = (
+  name: string,
   children: () => React.ReactElement<any>
 ) => {
-  story
+
+  const style: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    padding: 10
+  };
+
+  storiesOf(name, module)
     .add("desktop", () => (
-      <SizeContext.Provider value={{
-        width: 3000,
-        height: 100
-      }}>
-        {children()}
-      </ SizeContext.Provider >
+      <div style={style}>
+        <div style={{
+          width: "100%",
+          height: 600,
+          border: "1px dotted black"
+        }}>
+          <SizeContext.Provider value={{
+            width: 3000,
+            height: 100
+          }}>
+            {children()}
+          </SizeContext.Provider>
+        </div>
+      </div>
     ))
     /*
     // I do not have tablet specific layouts
@@ -31,27 +48,21 @@ const addMultiSize = (
     ))
     */
     .add("mobile", () => (
-      <SizeContext.Provider value={{
-        width: 500,
-        height: 100
-      }}>
-        {children()}
-      </ SizeContext.Provider >
+      <div style={style}>
+        <div style={{
+          width: 500,
+          height: 600,
+          border: "1px dotted black"
+        }}>
+          <SizeContext.Provider value={{
+            width: 500,
+            height: 100
+          }}>
+            {children()}
+          </SizeContext.Provider>
+        </div>
+      </div>
     ));
 };
 
-export const multiTypeStory = (
-  name: string,
-  children: () => React.ReactElement<any>
-) => {
-  const story = storiesOf(name, module)
-    .addDecorator(host({
-      align: "center middle",
-      height: 600,
-      width: 800,
-    }));
-
-  addMultiSize(story, children);
-};
-
-export default addMultiSize;
+export default multiTypeStory;

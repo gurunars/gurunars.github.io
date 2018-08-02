@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import * as React from "react";
 
 import Carousel from ".";
-import { multiTypeStory } from "../Responsive/multitype";
+import multiTypeStory from "../Responsive/multitype";
 
 interface Item {
   title: string;

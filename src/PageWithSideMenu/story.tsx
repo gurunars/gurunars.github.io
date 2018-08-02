@@ -3,7 +3,7 @@ import { compose, withProps } from "recompose";
 import { withBoxState } from "../Box";
 
 import PlainPageWithSideMenu from ".";
-import { multiTypeStory } from "../Responsive/multitype";
+import multiTypeStory from "../Responsive/multitype";
 
 const View = compose(
   withProps({

@@ -1,11 +1,9 @@
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { compose, withProps } from "recompose";
-import { host } from "storybook-host";
 import { withBoxState } from "../Box";
 
 import Main from ".";
-import addMultiSize from "../Responsive/multitype";
+import multiTypeStory from "../Responsive/multitype";
 
 const META = {
   name: "John Wick",
@@ -94,12 +92,6 @@ const StateMain = compose(
   withBoxState("isToolbarOpen", false)
 )(Main);
 
-const story = storiesOf("Site", module)
-  .addDecorator(host({
-    height: 600,
-    width: 1300,
-  }));
-
-addMultiSize(story, () => (
+multiTypeStory("Site", () => (
   <StateMain />
 ));
