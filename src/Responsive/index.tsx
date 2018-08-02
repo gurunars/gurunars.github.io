@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import SizeAware from "../SizeAware";
+import { SizeContext } from "../SizeAware";
 
 const isMobile = () => navigator.userAgent.match(/Android/i)
   || navigator.userAgent.match(/webOS/i)
@@ -29,17 +29,17 @@ const responsive = <Props extends {}>(
   desktopView = desktopView || tabletView || mobileView;
 
   return (props: ForcedLayout & Props) => (
-    <SizeAware>
-      {(width, height) => {
-        if (props.type === "mobile" || isMobile() || width < 770) {
+    <SizeContext.Consumer>
+      {size => {
+        if (props.type === "mobile" || isMobile() || size.width < 770) {
           return mobileView != null ? mobileView(props) : desktopView(props);
-        } else if (props.type === "tablet" || width < 1250) {
+        } else if (props.type === "tablet" || size.width < 1250) {
           return tabletView != null ? tabletView(props) : desktopView(props);
         } else {
           return desktopView(props);
         }
       }}
-    </SizeAware>
+    </SizeContext.Consumer>
   );
 };
 

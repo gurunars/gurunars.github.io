@@ -9,6 +9,15 @@ interface State {
   height: number;
 }
 
+const getSize = () => ({
+  width: window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth,
+  height: window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight
+});
+
 export default class SizeAware extends React.Component<Props, State> {
 
   constructor(props: Props) {
@@ -27,14 +36,7 @@ export default class SizeAware extends React.Component<Props, State> {
   }
 
   public updateDimensions = () => {
-    this.setState({
-      width: window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth,
-      height: window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight
-    });
+    this.setState(getSize());
   }
 
   public componentWillMount() {
@@ -50,3 +52,5 @@ export default class SizeAware extends React.Component<Props, State> {
   }
 
 }
+
+export const SizeContext = React.createContext(getSize());
