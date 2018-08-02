@@ -1,11 +1,9 @@
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { compose, withProps } from "recompose";
-import { host } from "storybook-host";
 import { withBoxState } from "../Box";
 
 import Toolbar from ".";
-import addMultiSize from "../Responsive/multitype";
+import { multiTypeStory } from "../Responsive/multitype";
 
 const StateToolbar = compose(
   withProps({
@@ -38,13 +36,4 @@ const StateToolbar = compose(
   withBoxState("selectedGroup", null)
 )(Toolbar);
 
-const story = storiesOf("Toolbar", module)
-  .addDecorator(host({
-    align: "center middle",
-    height: 600,
-    width: 800,
-  }));
-
-addMultiSize(story, () => (
-  <StateToolbar />
-));
+multiTypeStory("Toolbar", () => <StateToolbar />);

@@ -1,10 +1,8 @@
 import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { host } from "storybook-host";
 
 import Carousel from ".";
-import addMultiSize from "../Responsive/multitype";
+import { multiTypeStory } from "../Responsive/multitype";
 
 interface Item {
   title: string;
@@ -24,14 +22,7 @@ const items: Item[] = [
   }
 ];
 
-const story = storiesOf("Carousel", module)
-  .addDecorator(host({
-    align: "center middle",
-    height: 600,
-    width: 800,
-  }));
-
-addMultiSize(story, () => (
+multiTypeStory("Carousel", () => (
   <Carousel
     size={items.length}
     selectedPostion={1}

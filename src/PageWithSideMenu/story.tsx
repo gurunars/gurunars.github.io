@@ -1,12 +1,9 @@
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { compose, withProps } from "recompose";
-import { host } from "storybook-host";
 import { withBoxState } from "../Box";
 
-import addMultiSize from "../Responsive/multitype";
-
 import PlainPageWithSideMenu from ".";
+import { multiTypeStory } from "../Responsive/multitype";
 
 const View = compose(
   withProps({
@@ -18,11 +15,4 @@ const View = compose(
   withBoxState("menuIsVisible", true)
 )(PlainPageWithSideMenu);
 
-const story = storiesOf("PageWithSideMenu", module)
-  .addDecorator(host({
-    align: "center bottom",
-    height: 600,
-    width: 800,
-  }));
-
-addMultiSize(story, () => <View />);
+multiTypeStory("PageWithSideMenu", () => <View />);

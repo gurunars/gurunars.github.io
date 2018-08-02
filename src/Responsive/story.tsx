@@ -1,8 +1,7 @@
-import centered from "@storybook/addon-centered";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 import responsive from ".";
+import { multiTypeStory } from "./multitype";
 
 interface Props {
   title: string;
@@ -20,8 +19,4 @@ const ResponsiveView = responsive({
   mobileView: MobileView
 });
 
-storiesOf("Responsive", module)
-  .addDecorator(centered)
-  .add("basic", () => (
-    <ResponsiveView title="Sample" />
-  ));
+multiTypeStory("Responsive", () => <ResponsiveView title="Sample" />);
