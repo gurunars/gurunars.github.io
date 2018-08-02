@@ -90,7 +90,8 @@ const StateMain = compose(
   withBoxState("selectedId", null),
   withBoxState("selectedSpecs", []),
   withBoxState("selectedGroup", null),
-  withBoxState("menuIsVisible", true)
+  withBoxState("menuIsVisible", true),
+  withBoxState("isToolbarOpen", false)
 )(Main);
 
 const story = storiesOf("Site", module)
