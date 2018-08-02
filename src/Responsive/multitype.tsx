@@ -19,6 +19,8 @@ const addMultiSize = (
         {children()}
       </ SizeContext.Provider >
     ))
+    /*
+    // I do not have tablet specific layouts
     .add("tablet", () => (
       <SizeContext.Provider value={{
         width: 1000,
@@ -27,6 +29,7 @@ const addMultiSize = (
         {children()}
       </ SizeContext.Provider >
     ))
+    */
     .add("mobile", () => (
       <SizeContext.Provider value={{
         width: 500,
