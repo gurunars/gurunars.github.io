@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface Props {
-  children: (width: number, height: number) => React.ReactElement<any>;
+  children: React.ReactElement<any>;
 }
 
 interface State {
@@ -18,6 +18,8 @@ const getSize = () => ({
     || document.body.clientHeight
 });
 
+export const SizeContext = React.createContext(getSize());
+
 export default class SizeAware extends React.Component<Props, State> {
 
   constructor(props: Props) {
@@ -29,10 +31,12 @@ export default class SizeAware extends React.Component<Props, State> {
   }
 
   public render() {
-    return this.props.children(
-      this.state.width,
-      this.state.height
-    );
+    return <SizeContext.Provider value={{
+      width: this.state.width,
+      height: this.state.height
+    }}>
+      {this.props.children}
+    </SizeContext.Provider>;
   }
 
   public updateDimensions = () => {
@@ -52,5 +56,3 @@ export default class SizeAware extends React.Component<Props, State> {
   }
 
 }
-
-export const SizeContext = React.createContext(getSize());

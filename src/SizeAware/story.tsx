@@ -2,15 +2,17 @@ import centered from "@storybook/addon-centered";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-import SizeAware from ".";
+import SizeAware, { SizeContext } from ".";
 
 storiesOf("SizeAware", module)
   .addDecorator(centered)
   .add("basic", () => (
     <SizeAware>
-      {(width, height) => <div>
-        <p>Width: {width}</p>
-        <p>Height: {height}</p>
-      </div>}
+      <SizeContext.Consumer>
+        {size => <div>
+          <p>Width: {size.width}</p>
+          <p>Height: {size.height}</p>
+        </div>}
+      </SizeContext.Consumer>
     </SizeAware>
   ));
