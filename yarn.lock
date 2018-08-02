@@ -453,7 +453,7 @@
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@types/storybook__addon-actions/-/storybook__addon-actions-3.4.0.tgz#9a8d9b3c7478e6557a6c50a06c8216d1bdca9fe4"
 
-"@types/storybook__react@^3.0.6":
+"@types/storybook__react@^3.0.8":
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-3.0.8.tgz#58deb593361b7d5e6a6eca09bc7889b613980925"
   dependencies:

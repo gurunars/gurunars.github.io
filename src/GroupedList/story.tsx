@@ -2,6 +2,8 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { host } from "storybook-host";
 
+import addMultiSize from "../Responsive/multitype";
+
 import Grouping from ".";
 import { groupItems } from "./grouping";
 
@@ -22,21 +24,16 @@ const items: Item[] = [
   { type: "three", title: "H" }
 ];
 
-storiesOf("GroupedList", module)
+const story = storiesOf("GroupedList", module)
   .addDecorator(host({
     align: "center middle",
     height: 600,
     width: 800,
-  }))
-  .add("desktop", () => (
-    <Grouping
-      items={groupItems(items, item => item.type, item => item.title)}
-      renderItem={(props: { item: Item }) => <h1>{props.item.title}</h1>}
-    />
-  ))
-  .add("mobile", () => (
-    <Grouping
-      items={groupItems(items, item => item.type, item => item.title)}
-      renderItem={(props: { item: Item }) => <h1>{props.item.title}</h1>}
-    />
-  ));
+  }));
+
+addMultiSize(story, () => (
+  <Grouping
+    items={groupItems(items, item => item.type, item => item.title)}
+    renderItem={(props: { item: Item }) => <h1>{props.item.title}</h1>}
+  />
+));

@@ -2,6 +2,8 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { host } from "storybook-host";
 
+import addMultiSize from "../Responsive/multitype";
+
 import About from ".";
 
 const META = {
@@ -20,12 +22,11 @@ const META = {
   ]
 };
 
-storiesOf("About", module)
+const story = storiesOf("About", module)
   .addDecorator(host({
     align: "center middle",
     height: 600,
     width: 800,
-  }))
-  .add("basic", () => (
-    <About meta={META} />
-  ));
+  }));
+
+addMultiSize(story, () => <About meta={META} />);
