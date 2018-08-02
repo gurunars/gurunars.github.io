@@ -5,6 +5,7 @@ import { host } from "storybook-host";
 import { withBoxState } from "../Box";
 
 import Main from ".";
+import addMultiSize from "../Responsive/multitype";
 
 const META = {
   name: "John Wick",
@@ -92,11 +93,12 @@ const StateMain = compose(
   withBoxState("menuIsVisible", true)
 )(Main);
 
-storiesOf("Site", module)
+const story = storiesOf("Site", module)
   .addDecorator(host({
     height: 600,
     width: 1300,
-  }))
-  .add("basic", () => (
-    <StateMain />
-  ));
+  }));
+
+addMultiSize(story, () => (
+  <StateMain />
+));

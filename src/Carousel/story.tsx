@@ -4,6 +4,7 @@ import * as React from "react";
 import { host } from "storybook-host";
 
 import Carousel from ".";
+import addMultiSize from "../Responsive/multitype";
 
 interface Item {
   title: string;
@@ -23,19 +24,20 @@ const items: Item[] = [
   }
 ];
 
-storiesOf("Carousel", module)
+const story = storiesOf("Carousel", module)
   .addDecorator(host({
-    align: "center bottom",
+    align: "center middle",
     height: 600,
     width: 800,
-  }))
-  .add("Previous and next", () => (
-    <Carousel
-      size={items.length}
-      selectedPostion={1}
-      close={action("CLOSE")}
-      goTo={action("GO TO")}
-    >
-      {(pos: number) => (<div>{items[pos].title}</div>)}
-    </Carousel>
-  ));
+  }));
+
+addMultiSize(story, () => (
+  <Carousel
+    size={items.length}
+    selectedPostion={1}
+    close={action("CLOSE")}
+    goTo={action("GO TO")}
+  >
+    {(pos: number) => (<div>{items[pos].title}</div>)}
+  </Carousel>
+));

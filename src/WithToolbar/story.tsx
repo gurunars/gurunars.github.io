@@ -1,37 +1,25 @@
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { compose, withProps } from "recompose";
+import { compose } from "recompose";
 import { host } from "storybook-host";
 
 import RawWithToolbar from ".";
 import { withBoxState } from "../Box";
+import addMultiSize from "../Responsive/multitype";
 
-const WithToolbarDesktop = compose(
-  withProps({ toolbar: (<p>TOOLBAR</p>) }),
+const WithToolbar = compose(
   withBoxState("isToolbarOpen", false)
 )(RawWithToolbar);
 
-const WithToolbarMobile = compose(
-  withProps({
-    type: "mobile",
-    toolbar: (<p>TOOLBAR</p>)
-  }),
-  withBoxState("isToolbarOpen", false)
-)(RawWithToolbar);
-
-storiesOf("WithToolbar", module)
+const story = storiesOf("WithToolbar", module)
   .addDecorator(host({
     align: "center middle",
     height: 600,
     width: 800,
-  }))
-  .add("desktop", () => (
-    <WithToolbarDesktop>
-      <p>CONTENT</p>
-    </WithToolbarDesktop>
-  ))
-  .add("mobile", () => (
-    <WithToolbarMobile>
-      <p>CONTENT</p>
-    </WithToolbarMobile>
-  ));
+  }));
+
+addMultiSize(story, () => (
+  <WithToolbar>
+    <p>CONTENT</p>
+  </WithToolbar>
+));
