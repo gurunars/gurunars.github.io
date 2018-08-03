@@ -10,6 +10,7 @@ import { groupItems } from "../GroupedList/grouping";
 import PageWithOverlay from "../PageWithOverlay";
 
 import Box from "../Box";
+import { FullSize } from "../Layouts";
 import { Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 
@@ -103,23 +104,39 @@ const Main = (props: {
       }
     >
       <PageWithSideMenu
-        menu={<Toolbar {...props} />}
+        menu={
+          <div style={{
+            width: "220px",
+            borderRight: "1px dotted black",
+            height: "100%"
+          }}>
+            <Toolbar {...props} />
+          </div>
+        }
         menuTitle="About"
         contentTitle="Projects"
         {...props}
       >
-        <GroupedList
-          items={grouped}
-          renderItem={({ item }: { item: Item }) => (
-            <Small
-              style={{
-                backgroundColor: TypeToSpecMapping[item.type].color
-              }}
-              item={item}
-              onClick={() => props.selectedId.set(getId(item))}
-            />
-          )}
-        />
+        <FullSize
+          style={{
+            flexDirection: "column",
+            flex: "1 1 auto",
+            overflowY: "auto"
+          }}
+        >
+          <GroupedList
+            items={grouped}
+            renderItem={({ item }: { item: Item }) => (
+              <Small
+                style={{
+                  backgroundColor: TypeToSpecMapping[item.type].color
+                }}
+                item={item}
+                onClick={() => props.selectedId.set(getId(item))}
+              />
+            )}
+          />
+        </FullSize>
       </PageWithSideMenu>
     </PageWithOverlay>
   );
