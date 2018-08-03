@@ -2,14 +2,13 @@ import * as _ from "lodash";
 import * as React from "react";
 import { getId, Item, Large, Small } from "../Item";
 import BaseToolbar, { GroupSpec, GroupSpecSelection, Spec, SpecSelection } from "../Toolbar";
-import WithToolbar, { OpenState } from "../WithToolbar";
+import { OpenState } from "../WithToolbar";
 
 import Carousel from "../Carousel";
 import GroupedList from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";
 import PageWithOverlay from "../PageWithOverlay";
 
-import About from "../About";
 import Box from "../Box";
 import { Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
@@ -104,33 +103,23 @@ const Main = (props: {
       }
     >
       <PageWithSideMenu
-        menu={
-          <About
-            meta={props.portfolio.meta}
-          />
-        }
+        menu={<Toolbar {...props} />}
         menuTitle="About"
         contentTitle="Projects"
         {...props}
       >
-
-        <WithToolbar
-          toolbar={<Toolbar {...props} />}
-          {...props}
-        >
-          <GroupedList
-            items={grouped}
-            renderItem={({ item }: { item: Item }) => (
-              <Small
-                style={{
-                  backgroundColor: TypeToSpecMapping[item.type].color
-                }}
-                item={item}
-                onClick={() => props.selectedId.set(getId(item))}
-              />
-            )}
-          />
-        </WithToolbar>
+        <GroupedList
+          items={grouped}
+          renderItem={({ item }: { item: Item }) => (
+            <Small
+              style={{
+                backgroundColor: TypeToSpecMapping[item.type].color
+              }}
+              item={item}
+              onClick={() => props.selectedId.set(getId(item))}
+            />
+          )}
+        />
       </PageWithSideMenu>
     </PageWithOverlay>
   );

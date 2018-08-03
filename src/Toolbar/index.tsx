@@ -3,7 +3,6 @@ import * as _ from "lodash";
 import * as React from "react";
 
 import Box from "../Box";
-import { ResponsiveFlex } from "../Layouts";
 import { merge } from "../utils";
 
 export interface Spec {
@@ -42,7 +41,10 @@ interface Props {
 }
 
 const NamedGroup = (props: Props): React.ReactElement<any> => (
-  <ResponsiveFlex>
+  <div style={{
+    flexDirection: "column",
+    display: "flex"
+  }}>
     <b
       style={{
         marginRight: 10,
@@ -52,7 +54,7 @@ const NamedGroup = (props: Props): React.ReactElement<any> => (
     >{props.title}:
     </b>
     {props.children}
-  </ResponsiveFlex>
+  </div>
 );
 
 export interface SpecSelection {
@@ -117,9 +119,9 @@ const Toolbar = <T extends {}>(props: {
   filterMapping: TypeToSpecMapping,
   groupMapping: TitleToGroupSpecMapping<T>
 } & SpecSelection & GroupSpecSelection) => (
-    <ResponsiveFlex
-      tabletAsMobile={true}
+    <div
       style={{
+        flexDirection: "column",
         justifyContent: "space-between",
         width: "100%",
         padding: 5
@@ -127,7 +129,7 @@ const Toolbar = <T extends {}>(props: {
     >
       <SpecFilter {...props} />
       <GroupBy {...props} />
-    </ResponsiveFlex>
+    </div>
   );
 
 export default Toolbar;
