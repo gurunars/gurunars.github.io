@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import * as React from "react";
 
-import { FullUrl, Link } from "../Link";
+import { CircleUrl, Link } from "../Link";
 import responsive from "../Responsive";
 import { merge, toString } from "../utils";
 
@@ -70,39 +70,19 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
 
       <div
         style={{
-          display: "block",
-          width: "100%",
-          marginTop: 10,
-          paddingTop: 10,
-          paddingBottom: 10,
-          paddingLeft: 5,
-          paddingRight: 5,
-          borderTop: "1px solid grey",
-        }}
-      >
-        {meta.specialization.map(spec => (
-          <p key={spec} style={{ paddingTop: 6 }}>
-            {spec}
-          </p>
-        ))}
-      </div>
-
-      <div
-        style={{
           display: "flex",
-          borderTop: "1px solid grey",
-          flexDirection: "column",
-          justifyContent: "flex-start",
+          flexDirection: "row",
+          justifyContent: "space-between",
           width: "100%",
-          padding: 10
+          padding: 10,
         }}
       >
         {meta.media.map(media =>
-          <FullUrl
+          <CircleUrl
             style={{
               color: secondaryColor || "black",
               textDecoration: "none",
-              paddingBottom: 5
+              margin: 5
             }}
             key={media.url}
             link={media}

@@ -21,3 +21,9 @@
 
     yarn test
 
+### TODO
+
+1. My picture in the right hand corner toggles the personal info widget
+2. Side bar contains all the search controls
+3. Mobile version has the controls accessible via a button
+

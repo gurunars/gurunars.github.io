@@ -5,9 +5,9 @@ meta:
   avatar: /avatar.jpg
   birthday: "1989-03-24"
   languages:
-    - English
-    - Russian
-    - Swedish
+    - EN
+    - RU
+    - SE
   specialization:
     - Distributed software architecture
     - Test, build and deployment automation
