@@ -8,11 +8,6 @@ meta:
     - EN
     - RU
     - SE
-  specialization:
-    - Distributed software architecture
-    - Test, build and deployment automation
-    - Continuous integration
-    - Android development
   media:
     - email
     - github
