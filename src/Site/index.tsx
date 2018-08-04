@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import * as React from "react";
 import { getId, Item, Large, Small } from "../Item";
-import BaseToolbar, { GroupSpec, GroupSpecSelection, Spec, SpecSelection } from "../Toolbar";
+import BaseToolbar, { GroupSpec, GroupSpecSelection, Spec, SpecSelection, TagSelection } from "../Toolbar";
 import { OpenState } from "../WithToolbar";
 
 import Carousel from "../Carousel";
@@ -63,7 +63,7 @@ export const Groups: { [key: string]: GroupSpec<Item> } = {
 const filterItems = (items: Item[], types: string[]): Item[] =>
   _.filter(items, item => types.indexOf(item.type) !== -1);
 
-const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
+const Toolbar = (props: { allTags: string[] } & SpecSelection & GroupSpecSelection & TagSelection) => (
   <BaseToolbar
     groupMapping={Groups}
     filterMapping={TypeToSpecMapping}
@@ -77,7 +77,7 @@ interface IdHodler {
 
 const Main = (props: {
   portfolio: Portfolio,
-} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & OpenState) => {
+} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & OpenState & TagSelection) => {
   const group = Groups[props.selectedGroup.get()];
   const filtered = filterItems(props.portfolio.items, props.selectedSpecs.get());
   const grouped = groupItems(
@@ -110,7 +110,7 @@ const Main = (props: {
             borderRight: "1px dotted black",
             height: "100%"
           }}>
-            <Toolbar {...props} />
+            <Toolbar allTags={["one", "two", "three"]} {...props} />
           </div>
         }
         menuTitle="About"

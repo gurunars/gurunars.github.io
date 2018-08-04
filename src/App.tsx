@@ -11,6 +11,7 @@ interface State {
   selectedGroup: string;
   menuIsVisible: boolean;
   isToolbarOpen: boolean;
+  selectedTags: string[] | "ALL";
 }
 
 const initial: State = {
@@ -18,7 +19,8 @@ const initial: State = {
   selectedSpecs: _.keys(TypeToSpecMapping),
   selectedGroup: _.keys(Groups)[0],
   menuIsVisible: true,
-  isToolbarOpen: false
+  isToolbarOpen: false,
+  selectedTags: "ALL"
 };
 
 const App = ({ portfolio }: { portfolio: any }) => (
@@ -40,6 +42,7 @@ const App = ({ portfolio }: { portfolio: any }) => (
           selectedGroup={field("selectedGroup")}
           isToolbarOpen={field("isToolbarOpen")}
           selectedId={field("selectedId")}
+          selectedTags={field("selectedTags")}
           menuIsVisible={field("menuIsVisible")}
         />
       );

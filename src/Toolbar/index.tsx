@@ -3,6 +3,7 @@ import * as _ from "lodash";
 import * as React from "react";
 
 import Box from "../Box";
+import Tag from "../Item/Tag";
 import { merge } from "../utils";
 
 export interface Spec {
@@ -88,6 +89,24 @@ const SpecFilter = (
     </NamedGroup>
   );
 
+export interface TagSelection {
+  selectedTags: Box<string[]>;
+}
+
+const TagFilter = (
+  props: { allTags: string[] } & TagSelection
+): React.ReactElement<any> => (
+    <NamedGroup title="Skill tags">
+      {_.map(props.allTags, tag => {
+        // const selected = props.selectedTags.get();
+        // const isSelected = selected.indexOf(tag) > -1;
+        return (
+          <Tag key={tag} value={tag} />
+        );
+      })}
+    </NamedGroup>
+  );
+
 export interface GroupSpecSelection {
   selectedGroup: Box<string>;
 }
@@ -117,8 +136,9 @@ const GroupBy = <T extends {}>(
 
 const Toolbar = <T extends {}>(props: {
   filterMapping: TypeToSpecMapping,
-  groupMapping: TitleToGroupSpecMapping<T>
-} & SpecSelection & GroupSpecSelection) => (
+  groupMapping: TitleToGroupSpecMapping<T>,
+  allTags: string[]
+} & SpecSelection & GroupSpecSelection & TagSelection) => (
     <div
       style={{
         flexDirection: "column",
@@ -129,6 +149,7 @@ const Toolbar = <T extends {}>(props: {
     >
       <SpecFilter {...props} />
       <GroupBy {...props} />
+      <TagFilter {...props} />
     </div>
   );
 
