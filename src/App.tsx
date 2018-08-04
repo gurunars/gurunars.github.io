@@ -1,21 +1,22 @@
+import * as _ from "lodash";
 import * as React from "react";
 
 import HashStateAware from "./HashStateAware";
-import Site from "./Site";
+import Site, { Groups, TypeToSpecMapping } from "./Site";
 import { merge } from "./utils";
 
 interface State {
   selectedId: number | null;
-  selectedSpecs: string[] | null;
-  selectedGroup: string | null;
+  selectedSpecs: string[];
+  selectedGroup: string;
   menuIsVisible: boolean;
   isToolbarOpen: boolean;
 }
 
 const initial: State = {
   selectedId: null,
-  selectedSpecs: null,
-  selectedGroup: null,
+  selectedSpecs: _.keys(TypeToSpecMapping),
+  selectedGroup: _.keys(Groups)[0],
   menuIsVisible: true,
   isToolbarOpen: false
 };

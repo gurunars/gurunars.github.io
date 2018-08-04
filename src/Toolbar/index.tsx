@@ -58,7 +58,7 @@ const NamedGroup = (props: Props): React.ReactElement<any> => (
 );
 
 export interface SpecSelection {
-  selectedSpecs: Box<string[] | null>;
+  selectedSpecs: Box<string[]>;
 }
 
 const SpecFilter = (
@@ -66,14 +66,14 @@ const SpecFilter = (
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
       {_.map(props.filterMapping, (value, key) => {
-        const specs = props.selectedSpecs.get() || [];
+        const specs = props.selectedSpecs.get();
         const isSelected = specs.indexOf(key) > -1;
         return (
           <span
             key={key}
             style={merge(baseStyle, {
               backgroundColor: value.color,
-              textDecoration: isSelected ? "line-through" : "none"
+              textDecoration: isSelected ? "none" : "line-through"
             })}
             onClick={() => props.selectedSpecs.set(
               isSelected ?
@@ -89,7 +89,7 @@ const SpecFilter = (
   );
 
 export interface GroupSpecSelection {
-  selectedGroup: Box<string | null>;
+  selectedGroup: Box<string>;
 }
 
 const GroupBy = <T extends {}>(
@@ -97,7 +97,7 @@ const GroupBy = <T extends {}>(
 ): React.ReactElement<any> => (
     <NamedGroup title="Group by">
       {_.map(props.groupMapping, (value, key) => {
-        const isSelected = (props.selectedGroup.get() || _.keys(props.groupMapping)[0]) === key;
+        const isSelected = props.selectedGroup.get() === key;
         return (
           <span
             key={key}

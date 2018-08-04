@@ -61,7 +61,7 @@ export const Groups: { [key: string]: GroupSpec<Item> } = {
 };
 
 const filterItems = (items: Item[], types: string[]): Item[] =>
-  types.length === 0 ? items : _.filter(items, item => types.indexOf(item.type) === -1);
+  _.filter(items, item => types.indexOf(item.type) !== -1);
 
 const Toolbar = (props: SpecSelection & GroupSpecSelection) => (
   <BaseToolbar
@@ -78,8 +78,8 @@ interface IdHodler {
 const Main = (props: {
   portfolio: Portfolio,
 } & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & OpenState) => {
-  const group = Groups[props.selectedGroup.get() || "year"];
-  const filtered = filterItems(props.portfolio.items, props.selectedSpecs.get() || []);
+  const group = Groups[props.selectedGroup.get()];
+  const filtered = filterItems(props.portfolio.items, props.selectedSpecs.get());
   const grouped = groupItems(
     filtered,
     group.groupBy,
