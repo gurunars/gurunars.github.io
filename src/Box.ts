@@ -5,6 +5,7 @@ import {
   withState
 } from "recompose";
 
+// TODO: avoid comparison by reference
 export default interface Box<T> {
   set(value: T): void;
   get(): T;
