@@ -78,8 +78,6 @@ interface IdHodler {
   selectedId: Box<number | null>;
 }
 
-const getTagMap = (tags: string[]): TagSpec => _.countBy(tags);
-
 const Main = (props: {
   portfolio: Portfolio,
 } & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & TagSelection) => {
@@ -115,7 +113,7 @@ const Main = (props: {
             borderRight: "1px dotted black",
             height: "100%"
           }}>
-            <Toolbar allTags={getTagMap(_.flatMap(props.portfolio.items, (it: Item) => it.tags))} {...props} />
+            <Toolbar allTags={props.portfolio.importantSkills} {...props} />
           </div>
         }
         menuTitle="About"

@@ -2,9 +2,11 @@ import * as _ from "lodash";
 
 import { Meta } from "./About";
 import { Item } from "./Item";
+import { TagSpec } from "./Toolbar";
 
 export interface Portfolio {
     meta: Meta;
+    importantSkills: TagSpec;
     items: Item[];
 }
 
@@ -24,6 +26,12 @@ const preprocess = (initial: any): Portfolio => {
             media: _.map(meta.media, getLink),
             birthday: new Date(meta.birthday)
         },
+        importantSkills: _.pickBy(
+            _.countBy(
+                _.flatMap(initial.items, it => it.tags || [])
+            ),
+            count => count > 1
+        ),
         items: _.map(initial.items, item => ({
             duration: {
                 start: new Date(item.startDate),
