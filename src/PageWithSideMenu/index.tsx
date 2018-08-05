@@ -3,7 +3,10 @@ import * as React from "react";
 import Box from "../Box";
 import { FullSize } from "../Layouts";
 import responsive from "../Responsive";
-import { merge } from "../utils";
+
+import ActionIcon from "../ActionIcon";
+import close from "./icons/close.svg";
+import menu from "./icons/menu.svg";
 
 interface Props {
   menuTitle: string;
@@ -38,86 +41,18 @@ const Desktop = (props: Props): React.ReactElement<any> => (
   </FullSize>
 );
 
-const tabStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  borderLeft: "1px solid black",
-  borderRight: "1px solid black",
-  borderTop: "1px solid black",
-  borderBottom: "1px solid black",
-  backgroundColor: "white",
-  marginBottom: -1,
-  width: "50%",
-  marginTop: 5,
-  marginLeft: 5,
-  marginRight: 5,
-  textDecoration: "none",
-  color: "black",
-  cursor: "pointer",
-  fontWeight: "bold"
-};
-
-const activeTabStyle = {
-  borderBottom: "1px solid white",
-  backgroundColor: "white"
-};
-
-const Tab = (props: {
-  children: string,
-  isSelected: boolean,
-  onClick: () => void
-}): React.ReactElement<any> => (
-    <div
-      style={props.isSelected ? merge(tabStyle, activeTabStyle) : tabStyle}
-      onClick={props.onClick}
-    >
-      {props.children}
-    </div>
-  );
-
 const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
-  <FullSize style={{ overflowY: "hidden", flexDirection: "column" }}>
-    <div
-      style={{
-        position: "relative",
-        display: "flex",
-        width: "100%",
-        height: 35,
-        borderBottom: "1px solid black"
-      }}
-    >
-
-      <Tab
-        isSelected={props.menuIsVisible.get()}
-        onClick={() => props.menuIsVisible.set(true)}
-      >
-        {props.menuTitle}
-      </Tab>
-
-      <Tab
-        isSelected={!props.menuIsVisible.get()}
-        onClick={() => props.menuIsVisible.set(false)}
-      >
-        {props.contentTitle}
-      </Tab>
-
-    </div>
-
-    <div
-      style={{
-        position: "relative",
-        alignItems: "center",
-        justifyContent: "center",
-        display: "flex",
-        height: "calc(100% - 35px)",
-        overflowY: "auto",
-        width: "100%"
-      }}
-    >
+  <FullSize style={{ overflow: "hidden" }}>
+    <FullSize style={{ overflowY: "auto", display: "initial" }}>
       {props.menuIsVisible.get() ? props.menu : props.children}
-    </div>
+    </FullSize>
+
+    <ActionIcon
+      onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
+      icon={props.menuIsVisible.get() ? close : menu}
+    />
   </FullSize>
+
 );
 
 const PageWithSideMenu = responsive({
