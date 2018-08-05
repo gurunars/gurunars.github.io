@@ -120,7 +120,7 @@ const Main = (props: {
       <PageWithSideMenu
         menu={
           <div style={{
-            width: "220px",
+            width: "270px",
             borderRight: "1px dotted black",
             height: "100%"
           }}>
