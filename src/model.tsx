@@ -13,7 +13,11 @@ export const ALL = "All";
 
 export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
     initial => _.flatMap(initial.items, it => (it.tags || []).concat([ALL])),
-    tags => _.countBy(tags, count => count > 1)
+    _.countBy,
+    it => _.pickBy(it, count => count > 1),
+    _.toPairs,
+    it => _.sortBy(it, 1).reverse(),
+    _.fromPairs
 ]);
 
 const preprocess = (initial: any): Portfolio => {
@@ -23,7 +27,7 @@ const preprocess = (initial: any): Portfolio => {
 
     const meta = initial.meta;
 
-    return {
+    const foo = {
         meta: {
             name: meta.name,
             languages: meta.lanuages,
@@ -47,6 +51,11 @@ const preprocess = (initial: any): Portfolio => {
             links: _.map(item.links, getLink)
         }))
     };
+
+    // tslint:disable-next-line:no-console
+    console.log(getImportantSkills(foo));
+
+    return foo;
 };
 
 export default preprocess;
