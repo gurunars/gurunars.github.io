@@ -94,7 +94,7 @@ const SpecFilter = (
   );
 
 export interface TagSelection {
-  selectedTags: Box<string[]>;
+  selectedTag: Box<string>;
 }
 
 export interface TagSpec { [key: string]: number; }
@@ -105,21 +105,17 @@ const TagFilter = (
     <NamedGroup title="Skill tags">
       <div>
         {_.map(props.allTags, (count, title) => {
-          const selected = props.selectedTags.get();
-          const isSelected = selected.indexOf(title) > -1;
+          const isSelected = props.selectedTag.get() === title;
           return (
             <Tag
               key={title}
               style={{
                 marginBottom: "5px",
                 cursor: "pointer",
-                textDecoration: isSelected ? "none" : "line-through"
+                backgroundColor: isSelected ? "#1B2E3C" : "Beige",
+                color: isSelected ? "white" : "black"
               }}
-              onClick={() => props.selectedTags.set(
-                isSelected ?
-                  Set(selected).remove(title).toArray() :
-                  Set(selected).add(title).toArray()
-              )}
+              onClick={() => props.selectedTag.set(title)}
             >
               {"" + title + " (" + count + ")"}
             </Tag>

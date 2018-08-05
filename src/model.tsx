@@ -10,6 +10,8 @@ export interface Portfolio {
     items: Item[];
 }
 
+export const ALL = "All";
+
 const preprocess = (initial: any): Portfolio => {
 
     const getLink = (alias: string) =>
@@ -28,7 +30,7 @@ const preprocess = (initial: any): Portfolio => {
         },
         importantSkills: _.pickBy(
             _.countBy(
-                _.flatMap(initial.items, it => it.tags || [])
+                _.flatMap(initial.items, it => (it.tags || []).concat([ALL]))
             ),
             count => count > 1
         ),
@@ -40,7 +42,7 @@ const preprocess = (initial: any): Portfolio => {
             title: item.title,
             achievements: item.achievements || [],
             type: item.type,
-            tags: item.tags || [],
+            tags: (item.tags || []).concat([ALL]),
             description: item.description,
             location: getLink(item.location),
             references: _.map(item.references, getLink),

@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import * as React from "react";
 
 import HashStateAware from "./HashStateAware";
-import { Portfolio } from "./model";
+import { ALL, Portfolio } from "./model";
 import Site, { groups, typeToSpecMapping } from "./Site";
 import { merge } from "./utils";
 
@@ -11,17 +11,19 @@ interface State {
   selectedSpecs: string[];
   selectedGroup: string;
   menuIsVisible: boolean;
-  selectedTags: string[];
+  selectedTag: string;
 }
 
+const initial = {
+  selectedId: null,
+  selectedSpecs: _.keys(typeToSpecMapping),
+  selectedGroup: _.keys(groups)[0],
+  menuIsVisible: true,
+  selectedTag: ALL
+};
+
 const App = ({ portfolio }: { portfolio: Portfolio }) => (
-  <HashStateAware initial={{
-    selectedId: null,
-    selectedSpecs: _.keys(typeToSpecMapping),
-    selectedGroup: _.keys(groups)[0],
-    menuIsVisible: true,
-    selectedTags: _.keys(portfolio.importantSkills)
-  }}>
+  <HashStateAware initial={initial}>
     {(data: State, set: (data: State) => void) => {
       const field = (name: string) => ({
         get: () => data[name],
@@ -38,7 +40,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => (
           selectedSpecs={field("selectedSpecs")}
           selectedGroup={field("selectedGroup")}
           selectedId={field("selectedId")}
-          selectedTags={field("selectedTags")}
+          selectedTag={field("selectedTag")}
           menuIsVisible={field("menuIsVisible")}
         />
       );

@@ -66,8 +66,8 @@ export const groups: TitleToGroupSpecMapping<Item> = {
 const filterItems = (items: Item[], types: string[]): Item[] =>
   _.filter(items, item => types.indexOf(item.type) !== -1);
 
-const filterByTags = (items: Item[], tags: string[]): Item[] =>
-  _.filter(items, (item: Item) => _.intersection(tags, item.tags).length !== 0);
+const filterByTag = (items: Item[], tag: string): Item[] =>
+  _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1);
 
 const Toolbar = (props: { allTags: TagSpec } & SpecSelection & GroupSpecSelection & TagSelection) => (
   <BaseToolbar
@@ -86,12 +86,12 @@ const Main = (props: {
 } & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & TagSelection) => {
   const group = groups[props.selectedGroup.get()];
   const filtered =
-    filterByTags(
+    filterByTag(
       filterItems(
         props.portfolio.items,
         props.selectedSpecs.get()
       ),
-      props.selectedTags.get()
+      props.selectedTag.get()
     );
 
   const grouped = groupItems(
