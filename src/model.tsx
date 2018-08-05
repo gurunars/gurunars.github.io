@@ -31,10 +31,10 @@ const preprocess = (initial: any): Portfolio => {
 
     const meta = initial.meta;
 
-    const foo = {
+    return {
         meta: {
             name: meta.name,
-            languages: meta.lanuages,
+            languages: meta.languages,
             specialization: meta.specialization,
             avatar: meta.avatar,
             media: _.map(meta.media, getLink),
@@ -55,11 +55,6 @@ const preprocess = (initial: any): Portfolio => {
             links: _.map(item.links, getLink)
         }))
     };
-
-    // tslint:disable-next-line:no-console
-    console.log(getImportantSkills(foo));
-
-    return foo;
 };
 
 export default preprocess;
