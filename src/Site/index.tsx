@@ -17,6 +17,7 @@ import Box from "../Box";
 import { FullSize } from "../Layouts";
 import { getImportantSkills, Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
+import responsive from "../Responsive";
 
 export const typeToSpecMapping: TypeToSpecMapping = {
   openSource: {
@@ -82,6 +83,22 @@ interface IdHodler {
   selectedId: Box<number | null>;
 }
 
+const DesktopToolbarWrapper = ({ children }: { children: React.ReactChild }) => <div style={{
+  width: "270px",
+  borderRight: "1px dotted black",
+  height: "100%"
+}}>{children}</div>;
+
+const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => <div style={{
+  width: "100%",
+  height: "100%"
+}}>{children}</div>;
+
+const ToolbarWrapper = responsive({
+  desktopView: DesktopToolbarWrapper,
+  mobileView: MobileToolbarWrapper
+});
+
 const Main = (props: {
   portfolio: Portfolio,
 } & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & TagSelection) => {
@@ -120,17 +137,13 @@ const Main = (props: {
     >
       <PageWithSideMenu
         menu={
-          <div style={{
-            width: "270px",
-            borderRight: "1px dotted black",
-            height: "100%"
-          }}>
+          <ToolbarWrapper>
             <Toolbar
               meta={props.portfolio.meta}
               allTags={getImportantSkills(props.portfolio)}
               {...props}
             />
-          </div>
+          </ToolbarWrapper>
         }
         menuTitle="About"
         contentTitle="Projects"

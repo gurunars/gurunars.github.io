@@ -23,7 +23,7 @@ const ActionIcon = (props: {
             alignItems: "center",
             zIndex: 30,
             bottom: 20,
-            left: 20,
+            right: 20,
             cursor: "pointer",
             justifyContent: "center",
             color: "white"
