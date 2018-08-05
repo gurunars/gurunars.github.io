@@ -10,19 +10,21 @@ const GroupedList = <T extends {}>(props: {
   renderItem: RenderItem<T>,
   style?: React.CSSProperties
 }): React.ReactElement<any> => (
-    <div>
+    <div style={props.style}>
       {props.items.map(item => (
         <div
           key={item.group}
           style={{
             marginBottom: 15,
             pageBreakInside: "avoid",
-            overflowY: "auto",
-            padding: 5
+            overflowY: "auto"
           }}
         >
-          <h2 style={{ pageBreakAfter: "avoid" }}>{item.group}</h2>
-          <div style={props.style}>
+          <h2 style={{
+            pageBreakAfter: "avoid",
+            marginBottom: 10
+          }}>{item.group}</h2>
+          <div>
             {
               item.elements
                 .map(element => props.renderItem({ item: element }))
@@ -47,6 +49,9 @@ const Desktop = <T extends {}>(
 ): React.ReactElement<any> => (
     <GroupedList
       items={props.items}
+      style={{
+        padding: 10
+      }}
       renderItem={item => (
         <div
           style={{
@@ -55,7 +60,8 @@ const Desktop = <T extends {}>(
             position: "relative",
             width: 340,
             height: 250,
-            margin: 10
+            marginRight: 10,
+            marginBottom: 10
           }}
         >
           {props.renderItem(item)}
