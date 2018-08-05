@@ -2,6 +2,8 @@ import * as _ from "lodash";
 import * as React from "react";
 
 import HashStateAware from "./HashStateAware";
+import { Item } from "./Item";
+import { Portfolio } from "./model";
 import Site, { Groups, TypeToSpecMapping } from "./Site";
 import { merge } from "./utils";
 
@@ -11,7 +13,7 @@ interface State {
   selectedGroup: string;
   menuIsVisible: boolean;
   isToolbarOpen: boolean;
-  selectedTags: string[] | "ALL";
+  selectedTags: string[];
 }
 
 const initial: State = {
@@ -20,11 +22,13 @@ const initial: State = {
   selectedGroup: _.keys(Groups)[0],
   menuIsVisible: true,
   isToolbarOpen: false,
-  selectedTags: "ALL"
+  selectedTags: []
 };
 
-const App = ({ portfolio }: { portfolio: any }) => (
-  <HashStateAware initial={initial}>
+const App = ({ portfolio }: { portfolio: Portfolio }) => (
+  <HashStateAware initial={merge(initial, {
+    selectedTags: _.flatMap(portfolio.items, (it: Item) => it.tags)
+  })}>
     {(data: State, set: (data: State) => void) => {
       const field = (name: string) => ({
         get: () => data[name],

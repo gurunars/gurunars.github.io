@@ -93,15 +93,17 @@ export interface TagSelection {
   selectedTags: Box<string[]>;
 }
 
+export interface TagSpec { [key: string]: number; }
+
 const TagFilter = (
-  props: { allTags: string[] } & TagSelection
+  props: { allTags: TagSpec } & TagSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Skill tags">
-      {_.map(props.allTags, tag => {
+      {_.map(props.allTags, (count, title) => {
         // const selected = props.selectedTags.get();
         // const isSelected = selected.indexOf(tag) > -1;
         return (
-          <Tag key={tag} value={tag} />
+          <Tag key={title} value={"" + title + " (" + count + ")"} />
         );
       })}
     </NamedGroup>
@@ -137,7 +139,7 @@ const GroupBy = <T extends {}>(
 const Toolbar = <T extends {}>(props: {
   filterMapping: TypeToSpecMapping,
   groupMapping: TitleToGroupSpecMapping<T>,
-  allTags: string[]
+  allTags: TagSpec
 } & SpecSelection & GroupSpecSelection & TagSelection) => (
     <div
       style={{

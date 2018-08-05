@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import * as React from "react";
 import { getId, Item, Large, Small } from "../Item";
-import BaseToolbar, { GroupSpec, GroupSpecSelection, Spec, SpecSelection, TagSelection } from "../Toolbar";
+import BaseToolbar, { GroupSpec, GroupSpecSelection, Spec, SpecSelection, TagSelection, TagSpec } from "../Toolbar";
 import { OpenState } from "../WithToolbar";
 
 import Carousel from "../Carousel";
@@ -63,7 +63,7 @@ export const Groups: { [key: string]: GroupSpec<Item> } = {
 const filterItems = (items: Item[], types: string[]): Item[] =>
   _.filter(items, item => types.indexOf(item.type) !== -1);
 
-const Toolbar = (props: { allTags: string[] } & SpecSelection & GroupSpecSelection & TagSelection) => (
+const Toolbar = (props: { allTags: TagSpec } & SpecSelection & GroupSpecSelection & TagSelection) => (
   <BaseToolbar
     groupMapping={Groups}
     filterMapping={TypeToSpecMapping}
@@ -110,7 +110,11 @@ const Main = (props: {
             borderRight: "1px dotted black",
             height: "100%"
           }}>
-            <Toolbar allTags={["one", "two", "three"]} {...props} />
+            <Toolbar allTags={{
+              one: 1,
+              two: 2,
+              three: 3
+            }} {...props} />
           </div>
         }
         menuTitle="About"
