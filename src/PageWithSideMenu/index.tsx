@@ -1,13 +1,9 @@
 import * as React from "react";
 
-import ActionIcon from "../ActionIcon";
 import Box from "../Box";
 import { FullSize } from "../Layouts";
 import responsive from "../Responsive";
 import { merge } from "../utils";
-
-import maximize from "./icons/maximize.svg";
-import minimize from "./icons/minimize.svg";
 
 interface Props {
   menuTitle: string;
@@ -20,7 +16,7 @@ export interface MenuVisibility {
   menuIsVisible: Box<boolean>;
 }
 
-const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
+const Desktop = (props: Props): React.ReactElement<any> => (
   <FullSize style={{ flexDirection: "row" }}>
     <div
       style={{
@@ -28,21 +24,7 @@ const Desktop = (props: Props & MenuVisibility): React.ReactElement<any> => (
         height: "100%"
       }}
     >
-      <ActionIcon
-        onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
-        icon={props.menuIsVisible.get() ? minimize : maximize}
-        style={{
-          color: "white",
-          zIndex: 2,
-          width: 50,
-          height: 50,
-          position: "absolute",
-          bottom: 5,
-          left: 5
-        }}
-      />
-
-      {props.menuIsVisible.get() ? props.menu : null}
+      {props.menu}
     </div>
     <div
       style={{

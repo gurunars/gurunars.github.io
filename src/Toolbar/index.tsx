@@ -26,13 +26,9 @@ export interface TitleToGroupSpecMapping<T extends {}> { [key: string]: GroupSpe
 const baseStyle = {
   cursor: "pointer",
   color: "Black",
-  marginLift: 10,
-  marginRight: 10,
   marginBottom: 5,
   borderRadius: 5,
   textAlign: "center",
-  paddingLeft: 10,
-  paddingRight: 10,
   paddingTop: 5,
   paddingBottom: 5
 };
@@ -44,11 +40,10 @@ const NamedGroup = (props: {
     <div style={{
       flexDirection: "column",
       display: "flex",
-      marginBottom: 8
+      margin: 8
     }}>
       <b
         style={{
-          marginRight: 10,
           marginBottom: 8,
           whiteSpace: "nowrap"
         }}
@@ -104,7 +99,7 @@ export interface TagSpec { [key: string]: number; }
 const TagFilter = (
   props: { allTags: TagSpec } & TagSelection
 ): React.ReactElement<any> => (
-    <NamedGroup title="Skill tags">
+    <NamedGroup title="Skills">
       <div>
         {_.map(props.allTags, (count, title) => {
           const isSelected = props.selectedTag.get() === title;
@@ -170,14 +165,15 @@ const Toolbar = <T extends {}>(props: {
       style={{
         flexDirection: "column",
         justifyContent: "space-between",
-        width: "100%",
-        padding: 5
+        width: "100%"
       }}
     >
       <About {...props} />
-      <hr style={{ marginBottom: 12 }} />
+      <hr />
       <SpecFilter {...props} />
+      <hr />
       <GroupBy {...props} />
+      <hr />
       <TagFilter {...props} />
     </div>
   );

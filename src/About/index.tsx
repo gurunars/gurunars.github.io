@@ -23,6 +23,7 @@ const About = ({ meta }: {
         alignItems: "center",
         justifyContent: "flex-start",
         height: "100%",
+        backgroundColor: "silver",
         minWidth: "100%",
         color: "black"
       }}
