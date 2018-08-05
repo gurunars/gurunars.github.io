@@ -71,7 +71,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         />)
       }
       <div style={{ marginTop: 10 }}>
-        {item.tags.map(tag => (<Tag key={tag} value={tag} />))}
+        {item.tags.map(tag => (<Tag key={tag}>{tag}</Tag>))}
       </div>
     </div>
 

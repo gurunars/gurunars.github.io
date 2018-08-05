@@ -36,27 +36,25 @@ const baseStyle = {
   paddingBottom: 5
 };
 
-interface Props {
+const NamedGroup = (props: {
   title: string;
-  children: JSX.Element[];
-}
-
-const NamedGroup = (props: Props): React.ReactElement<any> => (
-  <div style={{
-    flexDirection: "column",
-    display: "flex"
-  }}>
-    <b
-      style={{
-        marginRight: 10,
-        marginBottom: 8,
-        whiteSpace: "nowrap"
-      }}
-    >{props.title}:
+  children: JSX.Element;
+}): React.ReactElement<any> => (
+    <div style={{
+      flexDirection: "column",
+      display: "flex"
+    }}>
+      <b
+        style={{
+          marginRight: 10,
+          marginBottom: 8,
+          whiteSpace: "nowrap"
+        }}
+      >{props.title}:
     </b>
-    {props.children}
-  </div>
-);
+      {props.children}
+    </div>
+  );
 
 export interface SpecSelection {
   selectedSpecs: Box<string[]>;
@@ -66,26 +64,32 @@ const SpecFilter = (
   props: { filterMapping: TypeToSpecMapping } & SpecSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Project types">
-      {_.map(props.filterMapping, (value, key) => {
-        const specs = props.selectedSpecs.get();
-        const isSelected = specs.indexOf(key) > -1;
-        return (
-          <span
-            key={key}
-            style={merge(baseStyle, {
-              backgroundColor: value.color,
-              textDecoration: isSelected ? "none" : "line-through"
-            })}
-            onClick={() => props.selectedSpecs.set(
-              isSelected ?
-                Set(specs).remove(key).toArray() :
-                Set(specs).add(key).toArray()
-            )}
-          >
-            {value.humanReadableName}
-          </span>
-        );
-      })}
+      <div style={{
+        width: "100%",
+        flexDirection: "column",
+        display: "flex"
+      }}>
+        {_.map(props.filterMapping, (value, key) => {
+          const specs = props.selectedSpecs.get();
+          const isSelected = specs.indexOf(key) > -1;
+          return (
+            <span
+              key={key}
+              style={merge(baseStyle, {
+                backgroundColor: value.color,
+                textDecoration: isSelected ? "none" : "line-through"
+              })}
+              onClick={() => props.selectedSpecs.set(
+                isSelected ?
+                  Set(specs).remove(key).toArray() :
+                  Set(specs).add(key).toArray()
+              )}
+            >
+              {value.humanReadableName}
+            </span>
+          );
+        })}
+      </div>
     </NamedGroup>
   );
 
@@ -99,13 +103,28 @@ const TagFilter = (
   props: { allTags: TagSpec } & TagSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Skill tags">
-      {_.map(props.allTags, (count, title) => {
-        // const selected = props.selectedTags.get();
-        // const isSelected = selected.indexOf(tag) > -1;
-        return (
-          <Tag key={title} value={"" + title + " (" + count + ")"} />
-        );
-      })}
+      <div>
+        {_.map(props.allTags, (count, title) => {
+          const selected = props.selectedTags.get();
+          const isSelected = selected.indexOf(title) > -1;
+          return (
+            <Tag
+              key={title}
+              style={{
+                cursor: "pointer",
+                textDecoration: isSelected ? "none" : "line-through"
+              }}
+              onClick={() => props.selectedTags.set(
+                isSelected ?
+                  Set(selected).remove(title).toArray() :
+                  Set(selected).add(title).toArray()
+              )}
+            >
+              {"" + title + " (" + count + ")"}
+            </Tag>
+          );
+        })}
+      </div>
     </NamedGroup>
   );
 
@@ -117,22 +136,28 @@ const GroupBy = <T extends {}>(
   props: { groupMapping: TitleToGroupSpecMapping<T> } & GroupSpecSelection
 ): React.ReactElement<any> => (
     <NamedGroup title="Group by">
-      {_.map(props.groupMapping, (value, key) => {
-        const isSelected = props.selectedGroup.get() === key;
-        return (
-          <span
-            key={key}
-            style={merge(baseStyle, {
-              backgroundColor: isSelected ? "#1B2E3C" : "Beige",
-              marginBottom: 5,
-              color: isSelected ? "white" : "black"
-            })}
-            onClick={() => props.selectedGroup.set(key)}
-          >
-            {value.humanReadableName}
-          </span>
-        );
-      })}
+      <div style={{
+        width: "100%",
+        flexDirection: "column",
+        display: "flex"
+      }}>
+        {_.map(props.groupMapping, (value, key) => {
+          const isSelected = props.selectedGroup.get() === key;
+          return (
+            <span
+              key={key}
+              style={merge(baseStyle, {
+                backgroundColor: isSelected ? "#1B2E3C" : "Beige",
+                marginBottom: 5,
+                color: isSelected ? "white" : "black"
+              })}
+              onClick={() => props.selectedGroup.set(key)}
+            >
+              {value.humanReadableName}
+            </span>
+          );
+        })}
+      </div>
     </NamedGroup>
   );
 
