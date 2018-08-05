@@ -3,23 +3,8 @@ import { compose, withProps } from "recompose";
 import { withBoxState } from "../Box";
 
 import Main from ".";
+import { META } from "../About/story";
 import multiTypeStory from "../Responsive/multitype";
-
-const META = {
-  name: "John Wick",
-  languages: ["EN", "RU"],
-  birthday: new Date("1959.03.24"),
-  specialization: ["Shoot", "Steal", "Blackmail"],
-  avatar: "https://img-www.tf-cdn.com/movie/2/john-wick-chapter-two-2017" +
-    ".jpeg?_v=20170202222435&fit=crop&crop=faces%20top&w=400&h=400",
-  media: [
-    {
-      type: "amazon",
-      url: "wherever",
-      name: "Ama Zone"
-    }
-  ]
-};
 
 const genItem = (title: string, location: string, type: string) => ({
   title,
@@ -87,9 +72,9 @@ const StateMain = compose(
   }),
   withBoxState("selectedId", null),
   withBoxState("selectedSpecs", []),
-  withBoxState("selectedGroup", null),
+  withBoxState("selectedGroup", "year"),
   withBoxState("menuIsVisible", true),
-  withBoxState("isToolbarOpen", false)
+  withBoxState("selectedTag", "All")
 )(Main);
 
 multiTypeStory("Site", () => (

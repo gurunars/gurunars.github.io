@@ -4,7 +4,7 @@ import multiTypeStory from "../Responsive/multitype";
 
 import About from ".";
 
-const META = {
+export const META = {
   name: "John Wick",
   languages: ["EN", "RU"],
   birthday: new Date("1959.03.24"),
