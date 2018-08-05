@@ -42,7 +42,8 @@ const NamedGroup = (props: {
 }): React.ReactElement<any> => (
     <div style={{
       flexDirection: "column",
-      display: "flex"
+      display: "flex",
+      marginBottom: 8
     }}>
       <b
         style={{

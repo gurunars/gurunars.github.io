@@ -6,11 +6,15 @@ import { TagSpec } from "./Toolbar";
 
 export interface Portfolio {
     meta: Meta;
-    importantSkills: TagSpec;
     items: Item[];
 }
 
 export const ALL = "All";
+
+export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
+    initial => _.flatMap(initial.items, it => (it.tags || []).concat([ALL])),
+    tags => _.countBy(tags, count => count > 1)
+]);
 
 const preprocess = (initial: any): Portfolio => {
 
@@ -28,12 +32,6 @@ const preprocess = (initial: any): Portfolio => {
             media: _.map(meta.media, getLink),
             birthday: new Date(meta.birthday)
         },
-        importantSkills: _.pickBy(
-            _.countBy(
-                _.flatMap(initial.items, it => (it.tags || []).concat([ALL]))
-            ),
-            count => count > 1
-        ),
         items: _.map(initial.items, item => ({
             duration: {
                 start: new Date(item.startDate),

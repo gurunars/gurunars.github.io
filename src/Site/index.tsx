@@ -14,7 +14,7 @@ import PageWithOverlay from "../PageWithOverlay";
 
 import Box from "../Box";
 import { FullSize } from "../Layouts";
-import { Portfolio } from "../model";
+import { getImportantSkills, Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 
 export const typeToSpecMapping: TypeToSpecMapping = {
@@ -124,7 +124,7 @@ const Main = (props: {
             borderRight: "1px dotted black",
             height: "100%"
           }}>
-            <Toolbar allTags={props.portfolio.importantSkills} {...props} />
+            <Toolbar allTags={getImportantSkills(props.portfolio)} {...props} />
           </div>
         }
         menuTitle="About"
