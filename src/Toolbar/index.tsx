@@ -111,6 +111,7 @@ const TagFilter = (
             <Tag
               key={title}
               style={{
+                marginBottom: "5px",
                 cursor: "pointer",
                 textDecoration: isSelected ? "none" : "line-through"
               }}

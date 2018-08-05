@@ -4,7 +4,7 @@ import * as React from "react";
 import HashStateAware from "./HashStateAware";
 import { Item } from "./Item";
 import { Portfolio } from "./model";
-import Site, { Groups, TypeToSpecMapping } from "./Site";
+import Site, { groups, typeToSpecMapping } from "./Site";
 import { merge } from "./utils";
 
 interface State {
@@ -12,16 +12,14 @@ interface State {
   selectedSpecs: string[];
   selectedGroup: string;
   menuIsVisible: boolean;
-  isToolbarOpen: boolean;
   selectedTags: string[];
 }
 
 const initial: State = {
   selectedId: null,
-  selectedSpecs: _.keys(TypeToSpecMapping),
-  selectedGroup: _.keys(Groups)[0],
+  selectedSpecs: _.keys(typeToSpecMapping),
+  selectedGroup: _.keys(groups)[0],
   menuIsVisible: true,
-  isToolbarOpen: false,
   selectedTags: []
 };
 
@@ -44,7 +42,6 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => (
           portfolio={portfolio}
           selectedSpecs={field("selectedSpecs")}
           selectedGroup={field("selectedGroup")}
-          isToolbarOpen={field("isToolbarOpen")}
           selectedId={field("selectedId")}
           selectedTags={field("selectedTags")}
           menuIsVisible={field("menuIsVisible")}

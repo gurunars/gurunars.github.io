@@ -1,8 +1,11 @@
 import * as _ from "lodash";
 import * as React from "react";
 import { getId, Item, Large, Small } from "../Item";
-import BaseToolbar, { GroupSpec, GroupSpecSelection, Spec, SpecSelection, TagSelection, TagSpec } from "../Toolbar";
-import { OpenState } from "../WithToolbar";
+import BaseToolbar, {
+  GroupSpecSelection,
+  SpecSelection, TagSelection, TagSpec,
+  TitleToGroupSpecMapping, TypeToSpecMapping
+} from "../Toolbar";
 
 import Carousel from "../Carousel";
 import GroupedList from "../GroupedList";
@@ -14,7 +17,7 @@ import { FullSize } from "../Layouts";
 import { Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 
-export const TypeToSpecMapping: { [key: string]: Spec } = {
+export const typeToSpecMapping: TypeToSpecMapping = {
   openSource: {
     humanReadableName: "Open Source",
     color: "PaleGreen"
@@ -33,7 +36,7 @@ export const TypeToSpecMapping: { [key: string]: Spec } = {
   }
 };
 
-export const Groups: { [key: string]: GroupSpec<Item> } = {
+export const groups: TitleToGroupSpecMapping<Item> = {
   year: {
     humanReadableName: "Year",
     groupBy: (item: Item) => item.duration.start.getUTCFullYear(),
@@ -42,8 +45,8 @@ export const Groups: { [key: string]: GroupSpec<Item> } = {
   },
   type: {
     humanReadableName: "Type",
-    groupBy: (item: Item) => TypeToSpecMapping[item.type].humanReadableName,
-    sortBy: (item: Item) => TypeToSpecMapping[item.type].humanReadableName,
+    groupBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
+    sortBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
     reverse: false
   },
   title: {
@@ -65,8 +68,8 @@ const filterItems = (items: Item[], types: string[]): Item[] =>
 
 const Toolbar = (props: { allTags: TagSpec } & SpecSelection & GroupSpecSelection & TagSelection) => (
   <BaseToolbar
-    groupMapping={Groups}
-    filterMapping={TypeToSpecMapping}
+    groupMapping={groups}
+    filterMapping={typeToSpecMapping}
     {...props}
   />
 );
@@ -75,10 +78,12 @@ interface IdHodler {
   selectedId: Box<number | null>;
 }
 
+const getTagMap = (tags: string[]): TagSpec => _.countBy(tags);
+
 const Main = (props: {
   portfolio: Portfolio,
-} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & OpenState & TagSelection) => {
-  const group = Groups[props.selectedGroup.get()];
+} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & TagSelection) => {
+  const group = groups[props.selectedGroup.get()];
   const filtered = filterItems(props.portfolio.items, props.selectedSpecs.get());
   const grouped = groupItems(
     filtered,
@@ -110,11 +115,7 @@ const Main = (props: {
             borderRight: "1px dotted black",
             height: "100%"
           }}>
-            <Toolbar allTags={{
-              one: 1,
-              two: 2,
-              three: 3
-            }} {...props} />
+            <Toolbar allTags={getTagMap(_.flatMap(props.portfolio.items, (it: Item) => it.tags))} {...props} />
           </div>
         }
         menuTitle="About"
@@ -133,7 +134,7 @@ const Main = (props: {
             renderItem={({ item }: { item: Item }) => (
               <Small
                 style={{
-                  backgroundColor: TypeToSpecMapping[item.type].color
+                  backgroundColor: typeToSpecMapping[item.type].color
                 }}
                 item={item}
                 onClick={() => props.selectedId.set(getId(item))}
