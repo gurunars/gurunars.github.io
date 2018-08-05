@@ -12,6 +12,7 @@ import GroupedList from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";
 import PageWithOverlay from "../PageWithOverlay";
 
+import { Meta } from "../About";
 import Box from "../Box";
 import { FullSize } from "../Layouts";
 import { getImportantSkills, Portfolio } from "../model";
@@ -69,7 +70,7 @@ const filterItems = (items: Item[], types: string[]): Item[] =>
 const filterByTag = (items: Item[], tag: string): Item[] =>
   _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1);
 
-const Toolbar = (props: { allTags: TagSpec } & SpecSelection & GroupSpecSelection & TagSelection) => (
+const Toolbar = (props: { meta: Meta, allTags: TagSpec } & SpecSelection & GroupSpecSelection & TagSelection) => (
   <BaseToolbar
     groupMapping={groups}
     filterMapping={typeToSpecMapping}
@@ -124,7 +125,11 @@ const Main = (props: {
             borderRight: "1px dotted black",
             height: "100%"
           }}>
-            <Toolbar allTags={getImportantSkills(props.portfolio)} {...props} />
+            <Toolbar
+              meta={props.portfolio.meta}
+              allTags={getImportantSkills(props.portfolio)}
+              {...props}
+            />
           </div>
         }
         menuTitle="About"

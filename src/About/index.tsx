@@ -2,8 +2,7 @@ import * as _ from "lodash";
 import * as React from "react";
 
 import { CircleUrl, Link } from "../Link";
-import responsive from "../Responsive";
-import { merge, toString } from "../utils";
+import { toString } from "../utils";
 
 export interface Meta {
   name: string;
@@ -14,26 +13,19 @@ export interface Meta {
   media: Link[];
 }
 
-const About = ({ meta, primaryColor, secondaryColor, style }: {
-  meta: Meta,
-  primaryColor: string,
-  secondaryColor: string,
-  style?: React.CSSProperties
+const About = ({ meta }: {
+  meta: Meta
 }): React.ReactElement<any> => (
     <div
-      style={
-        merge(
-          {
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            height: "100%",
-            minWidth: 300,
-            color: primaryColor || "black"
-          },
-          style || {}
-        )}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        height: "100%",
+        minWidth: "100%",
+        color: "black"
+      }}
     >
       <div
         style={{
@@ -80,7 +72,7 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
         {meta.media.map(media =>
           <CircleUrl
             style={{
-              color: secondaryColor || "black",
+              color: "black",
               textDecoration: "none",
               margin: 5
             }}
@@ -93,23 +85,4 @@ const About = ({ meta, primaryColor, secondaryColor, style }: {
     </div>
   );
 
-export default responsive({
-  mobileView: ({ meta }: { meta: Meta }) => (
-    <About
-      meta={meta}
-      secondaryColor="black"
-      primaryColor="black"
-    />
-  ),
-  desktopView: ({ meta }: { meta: Meta }) => (
-    <About
-      meta={meta}
-      secondaryColor="PaleTurquoise"
-      primaryColor="white"
-      style={{
-        backgroundColor: "#1B2E3C",
-        padding: 5
-      }}
-    />
-  )
-});
+export default About;
