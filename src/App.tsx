@@ -18,7 +18,7 @@ const initial = {
   selectedId: null,
   selectedSpecs: _.keys(typeToSpecMapping),
   selectedGroup: _.keys(groups)[0],
-  menuIsVisible: true,
+  menuIsVisible: false,
   selectedTag: ALL
 };
 
