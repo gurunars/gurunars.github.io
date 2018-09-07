@@ -116,7 +116,6 @@ items:
     tags: [UML, Python, GIT, Debian, Java, Jenkins, RabbitMQ, Cassandra, PostgreSQL, Scrum, TDD, REST]
     references:
       - lindfors
-      - rodriguez
 
   - title: Student Mentor
     description: >
@@ -151,7 +150,6 @@ items:
     type: fullTimeJob
     tags: [UML, Python, GIT, Java, Android, XML, State Based Testing, Android Studio]
     references:
-      - rodriguez
       - kiljander
     links:
       - key
