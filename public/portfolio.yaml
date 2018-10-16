@@ -240,7 +240,7 @@ items:
       - Initiated transitioning of the codebase from Java to Kotlin
       - Automated CI related aspects using Jenkins and Gradle
     startDate: "2018-01-15"
-    tags: [Java, Kotlin, GIT, CI, Android, RxJava, Dagger, Retrofit, Firebase, Jenkinks]
+    tags: [Java, Kotlin, GIT, CI, Android, RxJava, Dagger, Retrofit, Firebase, Jenkins]
     links:
       - siirto
 
