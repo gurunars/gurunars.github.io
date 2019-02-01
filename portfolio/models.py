@@ -50,10 +50,6 @@ class Item(models.Model):
     pass
 
 
-class Reference(models.Model):
-    name = models.
-
-
 class Portfolio(models.Model):
     pass
 
