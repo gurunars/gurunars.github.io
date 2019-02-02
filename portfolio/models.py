@@ -42,6 +42,7 @@ class Portfolio:
     links = List(Dict(Reference))
 """
 
+
 class Person(models.Model):
     pass
 
@@ -51,5 +52,5 @@ class Item(models.Model):
 
 
 class Portfolio(models.Model):
-    pass
-
+    owner = models.OneToOneField(Person)
+    items = models.ManyToManyField(Item)
