@@ -23,6 +23,23 @@ items:
       - linkedin
       - stackoverflow
 
+  - title: Stanford Algorithms Specialization
+    description: >
+      Certification that followed a set of lectures by a renowned
+      algorithms scholar Tim Roughgarden from Stanford University.
+    achievements:
+      - Divide and Conquer, Sorting and Searching, and Randomized Algorithms
+      - Graph Search, Shortest Paths, and Data Structures
+      - Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
+      - Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
+    tags: [Algorithm design, Algorithm optimization]
+    type: certifications
+    startDate: "2018-09-10"
+    endDate: "2019-01-17"
+    location: coursera
+    links:
+      - stanford-algorithms-certificate
+
   - title: Bachelor's of Software Engineering
     achievements:
       - Obtained Software Engineering degree with specialization in Software Design.
@@ -563,3 +580,8 @@ links:
     alias: stackoverflow
     url: "https://stackoverflow.com/users/1478655/archibald"
     type: stackoverflow
+  - name: Stanford Algorithms Certificate
+    type: coursera
+    alias: stanford-algorithms-certificate
+    url:
+      "https://www.coursera.org/account/accomplishments/specialization/UHXRM7J32ACG"
