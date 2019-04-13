@@ -44,9 +44,26 @@ export const typeToSpecMapping: TypeToSpecMapping = {
   }
 };
 
+// This function must be a part of preprocessing
+// E.g.: today should be presented as NOW
+const getEndTuple = (end?: Date | null): [any, Date] => {
+  if (end == null) {
+    end = new Date();
+    return ["NOW", end];
+  } else {
+    return [end.getUTCFullYear(), end];
+  }
+};
+
 export const groups: TitleToGroupSpecMapping<Item> = {
-  year: {
-    humanReadableName: "Year",
+  endYear: {
+    humanReadableName: "End Year",
+    groupBy: (item: Item) => getEndTuple(item.duration.end)[0],
+    sortBy: (item: Item) => getEndTuple(item.duration.end)[1],
+    reverse: true
+  },
+  startYear: {
+    humanReadableName: "Start Year",
     groupBy: (item: Item) => item.duration.start.getUTCFullYear(),
     sortBy: (item: Item) => item.duration.start,
     reverse: true
