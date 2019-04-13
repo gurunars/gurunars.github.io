@@ -20,6 +20,7 @@ import { FullSize } from "../Layouts";
 import { getImportantSkills, Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 import responsive from "../Responsive";
+import { yearToString } from "../utils";
 
 export const typeToSpecMapping: TypeToSpecMapping = {
   contactCard: {
@@ -44,27 +45,16 @@ export const typeToSpecMapping: TypeToSpecMapping = {
   }
 };
 
-// This function must be a part of preprocessing
-// E.g.: today should be presented as NOW
-const getEndTuple = (end?: Date | null): [any, Date] => {
-  if (end == null) {
-    end = new Date();
-    return ["NOW", end];
-  } else {
-    return [end.getUTCFullYear(), end];
-  }
-};
-
 export const groups: TitleToGroupSpecMapping<Item> = {
   endYear: {
     humanReadableName: "End Year",
-    groupBy: (item: Item) => getEndTuple(item.duration.end)[0],
-    sortBy: (item: Item) => getEndTuple(item.duration.end)[1],
+    groupBy: (item: Item) => yearToString(item.duration.end),
+    sortBy: (item: Item) => item.duration.end,
     reverse: true
   },
   startYear: {
     humanReadableName: "Start Year",
-    groupBy: (item: Item) => item.duration.start.getUTCFullYear(),
+    groupBy: (item: Item) => yearToString(item.duration.start),
     sortBy: (item: Item) => item.duration.start,
     reverse: true
   },

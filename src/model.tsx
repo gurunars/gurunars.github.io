@@ -30,7 +30,7 @@ const preprocess = (initial: any): Portfolio => {
     items: _.map(initial.items, item => ({
       duration: {
         start: new Date(item.startDate),
-        end: item.endDate == null ? null : new Date(item.endDate)
+        end: item.endDate == null ? new Date() : new Date(item.endDate)
       },
       title: item.title,
       achievements: item.achievements || [],

@@ -3,7 +3,7 @@ import { hashCode, toString } from "../utils";
 
 export interface Duration {
   start: Date;
-  end?: Date | null;
+  end: Date;
 }
 
 export interface Item {
@@ -19,6 +19,7 @@ export interface Item {
 }
 
 export const durationToString = (duration: Duration) =>
-  toString(duration.start) + " - " + (toString(duration.end) || "NOW");
+  toString(duration.start) + " - " + toString(duration.end);
 
-export const getId = (item: Item) => hashCode(item.location.name + ":" + item.title);
+export const getId = (item: Item) =>
+  hashCode(item.location.name + ":" + item.title);
