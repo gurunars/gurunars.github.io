@@ -122,7 +122,7 @@ const ItemView = ({
       }}
     >
       {item.links.map(link => (
-        <CircleUrl style={{ marginRight: 5 }} key={link.name} link={link} />
+        <CircleUrl style={{ marginRight: 5 }} key={link.url} link={link} />
       ))}
 
       <span

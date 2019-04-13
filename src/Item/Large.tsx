@@ -87,7 +87,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
           <Section
             title="References"
             data={item.references.map(reference => (
-              <li key={reference.name}>
+              <li key={reference.url}>
                 <Url link={reference} />
               </li>
             ))}
@@ -108,7 +108,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
       }}
     >
       {item.links.map(link => (
-        <FullUrl key={link.name} link={link} style={{ marginBottom: 4 }} />
+        <FullUrl key={link.url} link={link} style={{ marginBottom: 4 }} />
       ))}
     </div>
   </div>
