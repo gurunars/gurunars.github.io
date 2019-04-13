@@ -23,7 +23,8 @@
 
 ### TODO
 
-1. My picture in the right hand corner toggles the personal info widget
-2. Side bar contains all the search controls
-3. Mobile version has the controls accessible via a button
-
+1. Side bar contains all the search controls
+1. PDF generator
+1. "Story" field
+1. "Certifications" type
+1. "Publications" type
