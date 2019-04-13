@@ -3,16 +3,11 @@ import { compose, withProps } from "recompose";
 import { withBoxState } from "../Box";
 
 import Main from ".";
-import { META } from "../About/story";
 import multiTypeStory from "../Responsive/multitype";
 
 const genItem = (title: string, location: string, type: string) => ({
   title,
-  achievements: [
-    "one",
-    "two",
-    "three"
-  ],
+  achievements: ["one", "two", "three"],
   location: {
     name: location,
     url: "url-to-loc"
@@ -21,10 +16,12 @@ const genItem = (title: string, location: string, type: string) => ({
     {
       name: "Name of the ref1",
       url: "url-to-ref1"
-    }, {
+    },
+    {
       name: "Name of the ref2",
       url: "url-to-ref2"
-    }, {
+    },
+    {
       name: "Name of the ref3",
       url: "url-to-ref3"
     }
@@ -37,11 +34,13 @@ const genItem = (title: string, location: string, type: string) => ({
       name: "Name of the lnk1",
       url: "url-to-lnk1",
       type: "amazon"
-    }, {
+    },
+    {
       name: "Name of the lnk2",
       url: "url-to-lnk2",
       type: "github"
-    }, {
+    },
+    {
       name: "Name of the lnk3",
       url: "url-to-lnk3",
       type: "email"
@@ -66,7 +65,6 @@ const items = [
 const StateMain = compose(
   withProps({
     portfolio: {
-      meta: META,
       items
     }
   }),
@@ -77,6 +75,4 @@ const StateMain = compose(
   withBoxState("selectedTag", "All")
 )(Main);
 
-multiTypeStory("Site", () => (
-  <StateMain />
-));
+multiTypeStory("Site", () => <StateMain />);

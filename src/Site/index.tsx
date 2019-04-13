@@ -15,7 +15,6 @@ import GroupedList from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";
 import PageWithOverlay from "../PageWithOverlay";
 
-import { Meta } from "../About";
 import Box from "../Box";
 import { FullSize } from "../Layouts";
 import { getImportantSkills, Portfolio } from "../model";
@@ -79,7 +78,7 @@ const filterByTag = (items: Item[], tag: string): Item[] =>
   _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1);
 
 const Toolbar = (
-  props: { meta: Meta; allTags: TagSpec } & SpecSelection &
+  props: { allTags: TagSpec } & SpecSelection &
     GroupSpecSelection &
     TagSelection
 ) => (
@@ -170,14 +169,10 @@ const Main = (
       <PageWithSideMenu
         menu={
           <ToolbarWrapper>
-            <Toolbar
-              meta={props.portfolio.meta}
-              allTags={getImportantSkills(props.portfolio)}
-              {...props}
-            />
+            <Toolbar allTags={getImportantSkills(props.portfolio)} {...props} />
           </ToolbarWrapper>
         }
-        menuTitle="About"
+        menuTitle="Menu"
         contentTitle="Projects"
         {...props}
       >

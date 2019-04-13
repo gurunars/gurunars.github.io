@@ -3,12 +3,10 @@ import { compose, withProps } from "recompose";
 import { withBoxState } from "../Box";
 
 import Toolbar from ".";
-import { META } from "../About/story";
 import multiTypeStory from "../Responsive/multitype";
 
 const StateToolbar = compose(
   withProps({
-    meta: META,
     filterMapping: {
       one: {
         humanReadableName: "One",

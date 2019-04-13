@@ -2,7 +2,6 @@ import { Set } from "immutable";
 import * as _ from "lodash";
 import * as React from "react";
 
-import { Meta } from "../About";
 import Box from "../Box";
 import Tag from "../Item/Tag";
 import { merge } from "../utils";
@@ -176,7 +175,6 @@ const GroupBy = <T extends {}>(
 
 const Toolbar = <T extends {}>(
   props: {
-    meta: Meta;
     filterMapping: TypeToSpecMapping;
     groupMapping: TitleToGroupSpecMapping<T>;
     allTags: TagSpec;
