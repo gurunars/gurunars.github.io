@@ -2,7 +2,7 @@ import { Set } from "immutable";
 import * as _ from "lodash";
 import * as React from "react";
 
-import About, { Meta } from "../About";
+import { Meta } from "../About";
 import Box from "../Box";
 import Tag from "../Item/Tag";
 import { merge } from "../utils";
@@ -67,7 +67,7 @@ export interface SpecSelection {
 const SpecFilter = (
   props: { filterMapping: TypeToSpecMapping } & SpecSelection
 ): React.ReactElement<any> => (
-  <NamedGroup title="Project types">
+  <NamedGroup title="Data types">
     <div
       style={{
         width: "100%",
@@ -191,8 +191,6 @@ const Toolbar = <T extends {}>(
       width: "100%"
     }}
   >
-    <About {...props} />
-    <hr />
     <SpecFilter {...props} />
     <hr />
     <GroupBy {...props} />

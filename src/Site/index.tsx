@@ -3,8 +3,11 @@ import * as React from "react";
 import { getId, Item, Large, Small } from "../Item";
 import BaseToolbar, {
   GroupSpecSelection,
-  SpecSelection, TagSelection, TagSpec,
-  TitleToGroupSpecMapping, TypeToSpecMapping
+  SpecSelection,
+  TagSelection,
+  TagSpec,
+  TitleToGroupSpecMapping,
+  TypeToSpecMapping
 } from "../Toolbar";
 
 import Carousel from "../Carousel";
@@ -20,6 +23,10 @@ import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 import responsive from "../Responsive";
 
 export const typeToSpecMapping: TypeToSpecMapping = {
+  contactCard: {
+    humanReadableName: "Contact Card",
+    color: "DarkOliveGreen"
+  },
   openSource: {
     humanReadableName: "Open Source",
     color: "PaleGreen"
@@ -71,7 +78,11 @@ const filterItems = (items: Item[], types: string[]): Item[] =>
 const filterByTag = (items: Item[], tag: string): Item[] =>
   _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1);
 
-const Toolbar = (props: { meta: Meta, allTags: TagSpec } & SpecSelection & GroupSpecSelection & TagSelection) => (
+const Toolbar = (
+  props: { meta: Meta; allTags: TagSpec } & SpecSelection &
+    GroupSpecSelection &
+    TagSelection
+) => (
   <BaseToolbar
     groupMapping={groups}
     filterMapping={typeToSpecMapping}
@@ -83,34 +94,52 @@ interface IdHodler {
   selectedId: Box<number | null>;
 }
 
-const DesktopToolbarWrapper = ({ children }: { children: React.ReactChild }) => <div style={{
-  width: "270px",
-  borderRight: "1px dotted black",
-  height: "100%"
-}}>{children}</div>;
+const DesktopToolbarWrapper = ({
+  children
+}: {
+  children: React.ReactChild;
+}) => (
+  <div
+    style={{
+      width: "270px",
+      borderRight: "1px dotted black",
+      height: "100%"
+    }}
+  >
+    {children}
+  </div>
+);
 
-const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => <div style={{
-  width: "100%",
-  height: "100%"
-}}>{children}</div>;
+const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => (
+  <div
+    style={{
+      width: "100%",
+      height: "100%"
+    }}
+  >
+    {children}
+  </div>
+);
 
 const ToolbarWrapper = responsive({
   desktopView: DesktopToolbarWrapper,
   mobileView: MobileToolbarWrapper
 });
 
-const Main = (props: {
-  portfolio: Portfolio,
-} & IdHodler & SpecSelection & GroupSpecSelection & MenuVisibility & TagSelection) => {
+const Main = (
+  props: {
+    portfolio: Portfolio;
+  } & IdHodler &
+    SpecSelection &
+    GroupSpecSelection &
+    MenuVisibility &
+    TagSelection
+) => {
   const group = groups[props.selectedGroup.get()];
-  const filtered =
-    filterByTag(
-      filterItems(
-        props.portfolio.items,
-        props.selectedSpecs.get()
-      ),
-      props.selectedTag.get()
-    );
+  const filtered = filterByTag(
+    filterItems(props.portfolio.items, props.selectedSpecs.get()),
+    props.selectedTag.get()
+  );
 
   const grouped = groupItems(
     filtered,
@@ -119,7 +148,10 @@ const Main = (props: {
     group.reverse
   );
   const flattened = _.flatMap(grouped, grp => grp.elements);
-  const selectedPosition = _.findIndex(flattened, item => props.selectedId.get() === getId(item));
+  const selectedPosition = _.findIndex(
+    flattened,
+    item => props.selectedId.get() === getId(item)
+  );
   return (
     <PageWithOverlay
       foregroundContent={
@@ -130,7 +162,7 @@ const Main = (props: {
             close={() => props.selectedId.set(null)}
             goTo={pos => props.selectedId.set(getId(flattened[pos]))}
           >
-            {pos => (<Large item={flattened[pos]} />)}
+            {pos => <Large item={flattened[pos]} />}
           </Carousel>
         ) : null
       }

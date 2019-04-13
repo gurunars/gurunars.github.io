@@ -16,6 +16,16 @@ meta:
     - stackoverflow
 
 items:
+  - title: Anton Berezin
+    type: contactCard
+    startDate: "1989-03-24"
+    location: self
+    links:
+      - email
+      - github
+      - skype
+      - linkedin
+      - stackoverflow
 
   - title: Bachelor's of Software Engineering
     achievements:
@@ -59,7 +69,21 @@ items:
     endDate: "2011-07-15"
     location: nokia
     type: fullTimeJob
-    tags: [UML, Python, RabbitMQ, Django, Java Script, MySQL, REST, Debian, Scrum, CI, TDD, Test Automation]
+    tags:
+      [
+        UML,
+        Python,
+        RabbitMQ,
+        Django,
+        Java Script,
+        MySQL,
+        REST,
+        Debian,
+        Scrum,
+        CI,
+        TDD,
+        Test Automation,
+      ]
     references:
       - hurmola
       - ugandhar
@@ -113,7 +137,21 @@ items:
       - Designed HTTP interface guidelines for our systems based on Roy Fielding's dissertation.
       - Implemented and open-sourced the framework to expose HTTP interfaces in a declarative manner.
     type: fullTimeJob
-    tags: [UML, Python, GIT, Debian, Java, Jenkins, RabbitMQ, Cassandra, PostgreSQL, Scrum, TDD, REST]
+    tags:
+      [
+        UML,
+        Python,
+        GIT,
+        Debian,
+        Java,
+        Jenkins,
+        RabbitMQ,
+        Cassandra,
+        PostgreSQL,
+        Scrum,
+        TDD,
+        REST,
+      ]
     references:
       - lindfors
 
@@ -148,7 +186,17 @@ items:
         guidelines.
       - Implemented a new UI for the app based on specs from a UI designer.
     type: fullTimeJob
-    tags: [UML, Python, GIT, Java, Android, XML, State Based Testing, Android Studio]
+    tags:
+      [
+        UML,
+        Python,
+        GIT,
+        Java,
+        Android,
+        XML,
+        State Based Testing,
+        Android Studio,
+      ]
     references:
       - kiljander
     links:
@@ -227,8 +275,21 @@ items:
       - avysk
       - matti
       - mikko
-    tags: [Python, Java, Maven, Docker, AWS, Gerrit, Test Automation, Artifactory, GIT, Jenkins,
-           Terraform, Configuration Management]
+    tags:
+      [
+        Python,
+        Java,
+        Maven,
+        Docker,
+        AWS,
+        Gerrit,
+        Test Automation,
+        Artifactory,
+        GIT,
+        Jenkins,
+        Terraform,
+        Configuration Management,
+      ]
 
   - title: Senior Software Engineer
     location: nordea
@@ -240,7 +301,19 @@ items:
       - Initiated transitioning of the codebase from Java to Kotlin
       - Automated CI related aspects using Jenkins and Gradle
     startDate: "2018-01-15"
-    tags: [Java, Kotlin, GIT, CI, Android, RxJava, Dagger, Retrofit, Firebase, Jenkins]
+    tags:
+      [
+        Java,
+        Kotlin,
+        GIT,
+        CI,
+        Android,
+        RxJava,
+        Dagger,
+        Retrofit,
+        Firebase,
+        Jenkins,
+      ]
     links:
       - siirto
 
@@ -288,8 +361,20 @@ items:
       - Extensively used gradle to make the build process robust and concise
       - Got approval from jcenter to publish the packages in its main public repository.
     type: openSource
-    tags: [TDD, Android, Kotlin, Gradle, Instrumentation Testing, DI,
-           JUnit, Espresso, ButterKnife, Kryo, IcePick]
+    tags:
+      [
+        TDD,
+        Android,
+        Kotlin,
+        Gradle,
+        Instrumentation Testing,
+        DI,
+        JUnit,
+        Espresso,
+        ButterKnife,
+        Kryo,
+        IcePick,
+      ]
     links:
       - box-ui-docs
       - box-ui
@@ -307,8 +392,7 @@ items:
       - Documented the API using Sphinx and published at GitHub.io
       - Released to the official PyPi repository
     type: openSource
-    tags: [TDD, Python2, Python3, Travis CI, Sphinx, pep8,
-           pyflakes, pylint]
+    tags: [TDD, Python2, Python3, Travis CI, Sphinx, pep8, pyflakes, pylint]
     links:
       - dict-validator-docs
       - dict-validator
@@ -396,7 +480,8 @@ links:
   - name: Python 2 book in Amazon
     type: amazon
     alias: python2
-    url: "http://www.amazon.com/Learn-Python-Visually-Ivelin-Demirov/dp/1507727070/ref=sr_1_2?ie=UTF8&qid=1461068670&sr=8-2&keywords=python+visually"
+    url:
+      "http://www.amazon.com/Learn-Python-Visually-Ivelin-Demirov/dp/1507727070/ref=sr_1_2?ie=UTF8&qid=1461068670&sr=8-2&keywords=python+visually"
   - alias: state-machine-crawler-docs
     type: docs
     name: Documentation
@@ -424,11 +509,13 @@ links:
   - alias: gymlog
     type: play
     name: App in Play store
-    url: "https://play.google.com/store/apps/details?id=com.gurunars.gymlog.production&hl=en"
+    url:
+      "https://play.google.com/store/apps/details?id=com.gurunars.gymlog.production&hl=en"
   - alias: wodconnect
     type: play
     name: App in Play store
-    url: "https://play.google.com/store/apps/details?id=com.kiskolabs.wodconnect.production&hl=en"
+    url:
+      "https://play.google.com/store/apps/details?id=com.kiskolabs.wodconnect.production&hl=en"
   - alias: key
     type: play
     name: App in Play store
