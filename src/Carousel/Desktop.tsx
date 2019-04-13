@@ -1,6 +1,7 @@
 import * as React from "react";
 import ReactSVG from "react-svg";
 
+import KeyBoardListener from "../KeyBoardListener";
 import { FullSize } from "../Layouts";
 
 import CursorIcon from "./CursorIcon";
@@ -58,21 +59,23 @@ const Carousel = (props: Props): React.ReactElement<any> => {
         />
       </div>
 
-      <div
-        onClick={props.close}
-        style={{
-          position: "absolute",
-          display: "flex",
-          color: "black",
-          cursor: "pointer",
-          top: 10,
-          right: 10,
-          width: dims * 2,
-          height: dims * 2
-        }}
-      >
-        <ReactSVG path={close} />
-      </div>
+      <KeyBoardListener keyBoardKey="Escape" onPress={props.close}>
+        <div
+          onClick={props.close}
+          style={{
+            position: "absolute",
+            display: "flex",
+            color: "black",
+            cursor: "pointer",
+            top: 10,
+            right: 10,
+            width: dims * 2,
+            height: dims * 2
+          }}
+        >
+          <ReactSVG path={close} />
+        </div>
+      </KeyBoardListener>
     </FullSize>
   );
 };
