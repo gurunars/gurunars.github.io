@@ -1,5 +1,5 @@
-
 import amazon from "./amazon.svg";
+import coursera from "./coursera.svg";
 import cv from "./cv.svg";
 import docs from "./docs.svg";
 import email from "./email.svg";
@@ -15,6 +15,7 @@ import stackoverflow from "./stackoverflow.svg";
 
 const icons = {
   amazon,
+  coursera,
   cv,
   docs,
   email,
@@ -29,7 +30,6 @@ const icons = {
   stackoverflow
 };
 
-const getIconForType = (type?: string) =>
-  icons[type || "link"] || link;
+const getIconForType = (type?: string) => icons[type || "link"] || link;
 
 export default getIconForType;

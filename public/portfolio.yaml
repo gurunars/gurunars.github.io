@@ -33,7 +33,7 @@ items:
       - Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
       - Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
     tags: [Algorithm design, Algorithm optimization]
-    type: certifications
+    type: certificates
     startDate: "2018-09-10"
     endDate: "2019-01-17"
     location: coursera
@@ -585,3 +585,6 @@ links:
     alias: stanford-algorithms-certificate
     url:
       "https://www.coursera.org/account/accomplishments/specialization/UHXRM7J32ACG"
+  - name: Coursera
+    alias: coursera
+    url: "https://www.coursera.org"

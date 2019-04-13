@@ -25,7 +25,7 @@ import { yearToString } from "../utils";
 export const typeToSpecMapping: TypeToSpecMapping = {
   contactCard: {
     // NOTE: contact card is first anyways - we are all good
-    humanReadableName: "Contact Card",
+    humanReadableName: "@ Contact Card",
     color: "PaleTurquoise"
   },
   openSource: {
@@ -44,8 +44,8 @@ export const typeToSpecMapping: TypeToSpecMapping = {
     humanReadableName: "Education",
     color: "Thistle"
   },
-  certifications: {
-    humanReadableName: "Certifications",
+  certificates: {
+    humanReadableName: "Certificates",
     color: "Khaki"
   }
 };

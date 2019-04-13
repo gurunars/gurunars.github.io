@@ -26,5 +26,4 @@
 1. Side bar contains all the search controls
 1. PDF generator
 1. "Story" field
-1. "Certifications" type
 1. "Publications" type

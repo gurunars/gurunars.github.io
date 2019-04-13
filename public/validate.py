@@ -18,7 +18,7 @@ class Item:
         "fullTimeJob",
         "freelance",
         "openSource",
-        "certifications",
+        "certificates",
         "contactCard"
     ])
     tags = List(String(), required=False)
@@ -35,7 +35,7 @@ class Link:
     url = String()
     type = Choice(
         ["email", "skype", "tel", "amazon", "github", "play", "linkedin",
-         "docs", "cv", "stackoverflow"],
+         "docs", "cv", "stackoverflow", "coursera"],
         required=False)
 
 
