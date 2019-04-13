@@ -7,6 +7,7 @@ export interface Duration {
 }
 
 export interface Item {
+  logo?: string;
   title: string;
   achievements: string[];
   location: Link;

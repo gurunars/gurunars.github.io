@@ -33,6 +33,7 @@ const preprocess = (initial: any): Portfolio => {
         end: item.endDate == null ? new Date() : new Date(item.endDate)
       },
       title: item.title,
+      logo: item.logo,
       achievements: item.achievements || [],
       type: item.type,
       tags: (item.tags || []).concat([ALL]),

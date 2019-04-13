@@ -1,5 +1,6 @@
 items:
-  - title: Anton Berezin
+  - logo: /avatar.jpg
+    title: Anton Berezin
     type: contactCard
     startDate: "1989-03-24"
     location: self

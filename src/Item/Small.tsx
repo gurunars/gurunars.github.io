@@ -52,13 +52,27 @@ const ItemView = ({
         <span
           style={merge(baseStyle, {
             paddingBottom: 0,
+            display: "flex",
             fontWeight: "bold",
+            alignItems: "center",
             textDecoration: "underline",
             color: "blue",
             cursor: "pointer"
           })}
           onClick={onClick}
         >
+          {item.logo && (
+            <img
+              src={item.logo}
+              style={{
+                width: 45,
+                height: 45,
+                marginRight: 10,
+                borderRadius: "50%",
+                border: "2px solid black"
+              }}
+            />
+          )}
           {item.title}
         </span>
         <span style={merge(baseStyle, { fontSize: "0.8em", marginTop: 10 })}>
