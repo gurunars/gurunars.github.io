@@ -28,4 +28,3 @@
 1. "Story" field
 1. "Certifications" type
 1. "Publications" type
-1. "Achievements" count in small item description

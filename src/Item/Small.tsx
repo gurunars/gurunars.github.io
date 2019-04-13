@@ -77,7 +77,13 @@ const ItemView = ({
           )}
           {item.title}
         </span>
-        <span style={merge(baseStyle, { fontSize: "0.8em", marginTop: 10 })}>
+        <span
+          style={merge(baseStyle, {
+            fontSize: "0.8em",
+            marginTop: 10,
+            marginBottom: 10
+          })}
+        >
           {item.description}
         </span>
       </div>
@@ -100,6 +106,7 @@ const ItemView = ({
     </div>
     <div
       style={{
+        position: "relative",
         backgroundColor: "rgba(0, 0, 0, 0.3)",
         height: 40,
         flex: "0 1 40px",
@@ -110,13 +117,30 @@ const ItemView = ({
         marginTop: 5,
         display: "flex",
         flexDirection: "row",
-        alignItems: "flex-start",
+        alignItems: "center",
         justifyContent: "flex-start"
       }}
     >
       {item.links.map(link => (
         <CircleUrl style={{ marginRight: 5 }} key={link.name} link={link} />
       ))}
+
+      <span
+        onClick={onClick}
+        style={{
+          position: "absolute",
+          right: 0,
+          display: "block",
+          textAlign: "right",
+          textDecoration: "underline",
+          color: "blue",
+          cursor: "pointer",
+          padding: 5,
+          fontSize: "0.8em"
+        }}
+      >
+        Achievements: <b>{item.achievements.length}</b>
+      </span>
     </div>
   </FullSize>
 );
