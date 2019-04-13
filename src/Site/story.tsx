@@ -59,7 +59,11 @@ const items = [
   genItem("Five", "Foo Bar", "fullTimeJob"),
   genItem("Six", "Foo Bar", "fullTimeJob"),
   genItem("Seven", "Foo Bar", "education"),
-  genItem("Eight", "Foo Bar", "education")
+  genItem("Eight", "Foo Bar", "education"),
+  genItem("Nine", "Foo Bar", "certificates"),
+  genItem("Ten", "Foo Bar", "certificates"),
+  genItem("Eleven", "Foo Bar", "contactCard"),
+  genItem("Twelve", "Foo Bar", "contactCard")
 ];
 
 const StateMain = compose(
@@ -69,8 +73,15 @@ const StateMain = compose(
     }
   }),
   withBoxState("selectedId", null),
-  withBoxState("selectedSpecs", []),
-  withBoxState("selectedGroup", "year"),
+  withBoxState("selectedSpecs", [
+    "freelance",
+    "openSource",
+    "fullTimeJob",
+    "education",
+    "certificates",
+    "contactCard"
+  ]),
+  withBoxState("selectedGroup", "startYear"),
   withBoxState("menuIsVisible", true),
   withBoxState("selectedTag", "All")
 )(Main);
