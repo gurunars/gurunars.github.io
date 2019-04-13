@@ -139,6 +139,7 @@ const ToolbarWrapper = responsive({
 
 const Main = (
   props: {
+    children?: React.ReactElement<any>;
     portfolio: Portfolio;
   } & IdHodler &
     SpecSelection &

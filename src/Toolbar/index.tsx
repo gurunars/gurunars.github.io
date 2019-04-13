@@ -175,6 +175,7 @@ const GroupBy = <T extends {}>(
 
 const Toolbar = <T extends {}>(
   props: {
+    children?: React.ReactElement<any>;
     filterMapping: TypeToSpecMapping;
     groupMapping: TitleToGroupSpecMapping<T>;
     allTags: TagSpec;
