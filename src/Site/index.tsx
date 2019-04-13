@@ -26,7 +26,7 @@ export const typeToSpecMapping: TypeToSpecMapping = {
   contactCard: {
     // NOTE: contact card is first anyways - we are all good
     humanReadableName: "Contact Card",
-    color: "DarkOliveGreen"
+    color: "PaleTurquoise"
   },
   openSource: {
     humanReadableName: "Open Source",
@@ -42,7 +42,7 @@ export const typeToSpecMapping: TypeToSpecMapping = {
   },
   education: {
     humanReadableName: "Education",
-    color: "Silver"
+    color: "Thistle"
   }
 };
 
