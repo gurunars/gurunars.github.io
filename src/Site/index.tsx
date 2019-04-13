@@ -43,6 +43,10 @@ export const typeToSpecMapping: TypeToSpecMapping = {
   education: {
     humanReadableName: "Education",
     color: "Thistle"
+  },
+  certifications: {
+    humanReadableName: "Certifications",
+    color: "Khaki"
   }
 };
 
