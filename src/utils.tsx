@@ -24,13 +24,8 @@ const sameDays = (one: Date, two: Date) =>
 
 const isToday = (date: Date) => sameDays(new Date(), date);
 
-const formatDate = (date: Date, fmt: string) => {
-  if (isToday(date)) {
-    return "NOW";
-  } else {
-    return format(date, fmt);
-  }
-};
+const formatDate = (date: Date, fmt: string) =>
+  isToday(date) ? "TBD" : format(date, fmt);
 
 export const yearToString = (date: Date) => formatDate(date, "YYYY");
 
