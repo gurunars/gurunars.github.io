@@ -2,15 +2,26 @@ import * as _ from "lodash";
 import * as React from "react";
 
 const CursorIcon = (props: {
-  icon: React.ReactElement<any>,
-  targetPosition: number | null,
-  goTo: (targetPosition: number) => void
+  icon: React.ReactElement<any>;
+  keyboardButton?: string;
+  targetPosition: number | null;
+  goTo: (targetPosition: number) => void;
 }) => {
   const dims = 30;
   const isEmpty = _.isNil(props.targetPosition);
+
+  const goTo = () => (isEmpty ? null : props.goTo(props.targetPosition || 0));
+
   return (
     <div
-      onClick={() => isEmpty ? null : props.goTo(props.targetPosition || 0)}
+      onClick={goTo}
+      tabIndex={0}
+      onKeyPress={event => {
+        console.log(event);
+        if (event.key === props.keyboardButton) {
+          goTo();
+        }
+      }}
       style={{
         position: "relative",
         color: isEmpty ? "gray" : "black",
@@ -18,7 +29,8 @@ const CursorIcon = (props: {
         width: dims,
         height: dims
       }}
-    >{props.icon}
+    >
+      {props.icon}
     </div>
   );
 };

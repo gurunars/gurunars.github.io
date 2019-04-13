@@ -38,17 +38,24 @@ const Carousel = (props: Props): React.ReactElement<any> => {
 
   return (
     <FullSize>
-
       <div style={controlsStyle}>
-        <CursorIcon icon={<ReactSVG path={prev} />} targetPosition={cursor.previous} goTo={props.goTo} />
+        <CursorIcon
+          keyboardButton="ArrowLeft"
+          icon={<ReactSVG path={prev} />}
+          targetPosition={cursor.previous}
+          goTo={props.goTo}
+        />
       </div>
 
-      <div style={mainAreaStyle}>
-        {props.children(cursor.current || 0)}
-      </div>
+      <div style={mainAreaStyle}>{props.children(cursor.current || 0)}</div>
 
       <div style={controlsStyle}>
-        <CursorIcon icon={<ReactSVG path={next} />} targetPosition={cursor.next} goTo={props.goTo} />
+        <CursorIcon
+          keyboardButton="ArrowRight"
+          icon={<ReactSVG path={next} />}
+          targetPosition={cursor.next}
+          goTo={props.goTo}
+        />
       </div>
 
       <div
@@ -63,9 +70,9 @@ const Carousel = (props: Props): React.ReactElement<any> => {
           width: dims * 2,
           height: dims * 2
         }}
-      ><ReactSVG path={close} />
+      >
+        <ReactSVG path={close} />
       </div>
-
     </FullSize>
   );
 };
