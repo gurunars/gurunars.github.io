@@ -1,9 +1,11 @@
 import * as _ from "lodash";
 
 import { Item } from "./Item";
+import { Link } from "./Link";
 import { TagSpec } from "./Toolbar";
 
 export interface Portfolio {
+  links: Link[];
   items: Item[];
 }
 
@@ -27,6 +29,7 @@ const preprocess = (initial: any): Portfolio => {
     _.find(initial.links, link => link.alias === alias);
 
   return {
+    links: initial.links,
     items: _.map(initial.items, item => ({
       duration: {
         start: new Date(item.startDate),

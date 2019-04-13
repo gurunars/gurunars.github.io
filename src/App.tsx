@@ -5,6 +5,7 @@ import HashStateAware from "./HashStateAware";
 import { ALL, Portfolio } from "./model";
 import Site, { groups, typeToSpecMapping } from "./Site";
 import { merge } from "./utils";
+import Shortener from "./Shortener";
 
 interface State {
   selectedId: number | null;
@@ -23,29 +24,31 @@ const initial = {
 };
 
 const App = ({ portfolio }: { portfolio: Portfolio }) => (
-  <HashStateAware initial={initial}>
-    {(data: State, set: (data: State) => void) => {
-      const field = (name: string) => ({
-        get: () => data[name],
-        set: (value: any) => {
-          const payload = {};
-          payload[name] = value;
-          set(merge(data, payload) as State);
-        }
-      });
+  <Shortener links={portfolio.links}>
+    <HashStateAware initial={initial}>
+      {(data: State, set: (data: State) => void) => {
+        const field = (name: string) => ({
+          get: () => data[name],
+          set: (value: any) => {
+            const payload = {};
+            payload[name] = value;
+            set(merge(data, payload) as State);
+          }
+        });
 
-      return (
-        <Site
-          portfolio={portfolio}
-          selectedSpecs={field("selectedSpecs")}
-          selectedGroup={field("selectedGroup")}
-          selectedId={field("selectedId")}
-          selectedTag={field("selectedTag")}
-          menuIsVisible={field("menuIsVisible")}
-        />
-      );
-    }}
-  </HashStateAware>
+        return (
+          <Site
+            portfolio={portfolio}
+            selectedSpecs={field("selectedSpecs")}
+            selectedGroup={field("selectedGroup")}
+            selectedId={field("selectedId")}
+            selectedTag={field("selectedTag")}
+            menuIsVisible={field("menuIsVisible")}
+          />
+        );
+      }}
+    </HashStateAware>
+  </Shortener>
 );
 
 export default App;

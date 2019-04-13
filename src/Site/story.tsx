@@ -9,19 +9,23 @@ const genItem = (title: string, location: string, type: string) => ({
   title,
   achievements: ["one", "two", "three"],
   location: {
+    alias: "loc",
     name: location,
     url: "url-to-loc"
   },
   references: [
     {
+      alias: "ref1",
       name: "Name of the ref1",
       url: "url-to-ref1"
     },
     {
+      alias: "ref2",
       name: "Name of the ref2",
       url: "url-to-ref2"
     },
     {
+      alias: "ref3",
       name: "Name of the ref3",
       url: "url-to-ref3"
     }
@@ -31,16 +35,19 @@ const genItem = (title: string, location: string, type: string) => ({
   description: "Item description",
   links: [
     {
+      alias: "lnk1",
       name: "Name of the lnk1",
       url: "url-to-lnk1",
       type: "amazon"
     },
     {
+      alias: "lnk2",
       name: "Name of the lnk2",
       url: "url-to-lnk2",
       type: "github"
     },
     {
+      alias: "lnk3",
       name: "Name of the lnk3",
       url: "url-to-lnk3",
       type: "email"

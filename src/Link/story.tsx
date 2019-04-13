@@ -5,14 +5,17 @@ import { host } from "storybook-host";
 import { CircleUrl, FullUrl, Url } from ".";
 
 storiesOf("Link", module)
-  .addDecorator(host({
-    align: "center middle",
-    height: 200,
-    width: 200,
-  }))
+  .addDecorator(
+    host({
+      align: "center middle",
+      height: 200,
+      width: 200
+    })
+  )
   .add("Url", () => (
     <Url
       link={{
+        alias: "bar",
         name: "FOO",
         url: "bar"
       }}
@@ -24,6 +27,7 @@ storiesOf("Link", module)
         color: "red"
       }}
       link={{
+        alias: "bar",
         name: "FOO",
         url: "bar",
         type: "amazon"
@@ -33,6 +37,7 @@ storiesOf("Link", module)
   .add("CircleUrl with type", () => (
     <CircleUrl
       link={{
+        alias: "bar",
         name: "FOO",
         url: "bar",
         type: "amazon"
@@ -42,8 +47,9 @@ storiesOf("Link", module)
   .add("CircleUrl without type", () => (
     <CircleUrl
       link={{
+        alias: "bar",
         name: "FOO",
         url: "bar"
       }}
     />
-  )); 
+  ));
