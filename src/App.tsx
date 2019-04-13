@@ -3,9 +3,9 @@ import * as React from "react";
 
 import HashStateAware from "./HashStateAware";
 import { ALL, Portfolio } from "./model";
+import Shortener from "./Shortener";
 import Site, { groups, typeToSpecMapping } from "./Site";
 import { merge } from "./utils";
-import Shortener from "./Shortener";
 
 interface State {
   selectedId: number | null;

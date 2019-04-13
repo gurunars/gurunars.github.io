@@ -14,7 +14,7 @@ interface Props {
 export const PREFIX = "sh";
 
 export default class Shortener extends React.Component<Props> {
-  mapping: MappingSpec;
+  private mapping: MappingSpec;
 
   constructor(props: Props) {
     super(props);
