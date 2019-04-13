@@ -1,27 +1,22 @@
 import * as React from "react";
 
 import { FullUrl, Url } from "../Link";
-import { durationToString, Item } from "./interface";
+import { durationToRangeString, Item } from "./interface";
 import Tag from "./Tag";
 
-const Section = (props: {
-  title: string,
-  data: any
-}) => (
-    <div>
-      <h4
-        style={{
-          paddingTop: 10,
-          paddingBottom: 10
-        }}
-      >
-        {props.title}
-      </h4>
-      <div>
-        {props.data}
-      </div>
-    </div>
-  );
+const Section = (props: { title: string; data: any }) => (
+  <div>
+    <h4
+      style={{
+        paddingTop: 10,
+        paddingBottom: 10
+      }}
+    >
+      {props.title}
+    </h4>
+    <div>{props.data}</div>
+  </div>
+);
 
 const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
   <div
@@ -38,7 +33,9 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
       </p>
     )}
     <p style={{ fontSize: 13 }}>
-      <i>{item.type} | {durationToString(item.duration)} </i>
+      <i>
+        {item.type} | {durationToRangeString(item.duration)}{" "}
+      </i>
     </p>
 
     <div
@@ -51,27 +48,30 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
       }}
     >
       {item.description && (
-        <Section
-          title="Description"
-          data={item.description}
-        />)
-      }
+        <Section title="Description" data={item.description} />
+      )}
       {item.achievements && (
         <Section
           title="Achievements"
-          data={item.achievements.map(value => <li key={value}>{value}</li>)}
-        />)
-      }
+          data={item.achievements.map(value => (
+            <li key={value}>{value}</li>
+          ))}
+        />
+      )}
       {item.achievements && (
         <Section
           title="References"
           data={item.references.map(reference => (
-            <li key={reference.name}><Url link={reference} /></li>
+            <li key={reference.name}>
+              <Url link={reference} />
+            </li>
           ))}
-        />)
-      }
+        />
+      )}
       <div style={{ marginTop: 10 }}>
-        {item.tags.map(tag => (<Tag key={tag}>{tag}</Tag>))}
+        {item.tags.map(tag => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
       </div>
     </div>
 

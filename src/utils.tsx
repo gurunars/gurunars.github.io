@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import * as moment from "moment";
 
 export const merge = (...sources: Object[]): Object =>
   Object.assign({}, ...sources);
@@ -20,12 +20,12 @@ export const hashCode = (str: string): number => {
 const YEAR_FMT = "YYYY-MM-DD";
 
 const sameDays = (one: Date, two: Date) =>
-  format(one, YEAR_FMT) === format(two, YEAR_FMT);
+  moment(one).format(YEAR_FMT) === moment(two).format(YEAR_FMT);
 
 const isToday = (date: Date) => sameDays(new Date(), date);
 
 const formatDate = (date: Date, fmt: string) =>
-  isToday(date) ? "TBD" : format(date, fmt);
+  isToday(date) ? "TBD" : moment(date).format(fmt);
 
 export const yearToString = (date: Date) => formatDate(date, "YYYY");
 

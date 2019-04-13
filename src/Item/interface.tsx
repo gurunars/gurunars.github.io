@@ -18,7 +18,7 @@ export interface Item {
   duration: Duration;
 }
 
-export const durationToString = (duration: Duration) =>
+export const durationToRangeString = (duration: Duration) =>
   dayToString(duration.start) + " - " + dayToString(duration.end);
 
 export const getId = (item: Item) =>
