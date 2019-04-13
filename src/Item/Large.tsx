@@ -25,18 +25,40 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
       position: "relative"
     }}
   >
-    <h3 style={{ marginBottom: 5 }}>{item.title}</h3>
-    {item.location && (
-      <p style={{ fontSize: 14 }}>
-        <b style={{ color: "grey" }}>[at]:</b>
-        <Url link={item.location} />
-      </p>
-    )}
-    <p style={{ fontSize: 13 }}>
-      <i>
-        {item.type} | {durationToRangeString(item.duration)}{" "}
-      </i>
-    </p>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center"
+      }}
+    >
+      {item.logo && (
+        <img
+          src={item.logo}
+          style={{
+            width: 95,
+            height: 95,
+            marginRight: 10,
+            borderRadius: "50%",
+            border: "2px solid black"
+          }}
+        />
+      )}
+      <div>
+        <h3 style={{ marginBottom: 5 }}>{item.title}</h3>
+        {item.location && (
+          <p style={{ fontSize: 14 }}>
+            <b style={{ color: "grey" }}>[at]:</b>
+            <Url link={item.location} />
+          </p>
+        )}
+        <p style={{ fontSize: 13 }}>
+          <i>
+            {item.type} | {durationToRangeString(item.duration)}{" "}
+          </i>
+        </p>
+      </div>
+    </div>
 
     <div
       style={{
