@@ -83,7 +83,7 @@ const StateMain = compose(
   ]),
   withBoxState("selectedGroup", "startYear"),
   withBoxState("menuIsVisible", true),
-  withBoxState("selectedTag", "All")
+  withBoxState("selectedTag", "one")
 )(Main);
 
 multiTypeStory("Site", () => <StateMain />);

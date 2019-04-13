@@ -147,6 +147,7 @@ const Main = (
     TagSelection
 ) => {
   const group = groups[props.selectedGroup.get()];
+
   const filtered = filterByTag(
     filterItems(props.portfolio.items, props.selectedSpecs.get()),
     props.selectedTag.get()

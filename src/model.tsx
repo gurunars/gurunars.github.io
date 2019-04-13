@@ -11,7 +11,7 @@ export const ALL = "All";
 
 export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
   // we want ALL tag to be applied to each item
-  initial => _.flatMap(initial.items, it => (it.tags || []).concat([ALL])),
+  initial => _.flatMap(initial.items, it => it.tags || []),
   // create a {tag: count} map
   _.countBy,
   // we are interested only in the skills that are quite frequently used
