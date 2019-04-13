@@ -24,6 +24,7 @@ import { yearToString } from "../utils";
 
 export const typeToSpecMapping: TypeToSpecMapping = {
   contactCard: {
+    // NOTE: contact card is first anyways - we are all good
     humanReadableName: "Contact Card",
     color: "DarkOliveGreen"
   },
@@ -46,6 +47,12 @@ export const typeToSpecMapping: TypeToSpecMapping = {
 };
 
 export const groups: TitleToGroupSpecMapping<Item> = {
+  type: {
+    humanReadableName: "Type",
+    groupBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
+    sortBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
+    reverse: false
+  },
   endYear: {
     humanReadableName: "End Year",
     groupBy: (item: Item) => yearToString(item.duration.end),
@@ -57,12 +64,6 @@ export const groups: TitleToGroupSpecMapping<Item> = {
     groupBy: (item: Item) => yearToString(item.duration.start),
     sortBy: (item: Item) => item.duration.start,
     reverse: true
-  },
-  type: {
-    humanReadableName: "Type",
-    groupBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
-    sortBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
-    reverse: false
   },
   title: {
     humanReadableName: "Title",
