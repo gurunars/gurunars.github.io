@@ -189,9 +189,9 @@ const Toolbar = <T extends {}>(
       width: "100%"
     }}
   >
-    <SpecFilter {...props} />
-    <hr />
     <GroupBy {...props} />
+    <hr />
+    <SpecFilter {...props} />
     <hr />
     <TagFilter {...props} />
   </div>
