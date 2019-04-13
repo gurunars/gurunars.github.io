@@ -30,10 +30,15 @@ const StateToolbar = compose(
         sortBy: "sort-by-two",
         reverse: false
       }
+    },
+    allTags: {
+      one: 1,
+      two: 2
     }
   }),
-  withBoxState("selectedSpecs", []),
-  withBoxState("selectedGroup", null)
+  withBoxState("selectedSpecs", ["one"]),
+  withBoxState("selectedGroup", "one"),
+  withBoxState("selectedTag", "one")
 )(Toolbar);
 
 multiTypeStory("Toolbar", () => <StateToolbar />);
