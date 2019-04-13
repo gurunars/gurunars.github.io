@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export const merge = (...sources: Object[]): Object =>
   Object.assign({}, ...sources);
 
@@ -15,34 +17,21 @@ export const hashCode = (str: string): number => {
   return hash;
 };
 
-const pad = (num: number) => (num < 10 ? "0" + num : num);
+const YEAR_FMT = "YYYY-MM-DD";
 
 const sameDays = (one: Date, two: Date) =>
-  one.getUTCFullYear() === two.getUTCFullYear() &&
-  one.getUTCMonth() === two.getUTCMonth() &&
-  one.getUTCDate() === two.getUTCDate();
+  format(one, YEAR_FMT) === format(two, YEAR_FMT);
 
 const isToday = (date: Date) => sameDays(new Date(), date);
 
-export const yearToString = (date: Date) => {
+const formatDate = (date: Date, fmt: string) => {
   if (isToday(date)) {
     return "NOW";
   } else {
-    return pad(date.getUTCFullYear());
+    return format(date, fmt);
   }
 };
 
-export const toString = (date: Date) => {
-  //  console.log(date);
-  if (isToday(date)) {
-    return "NOW";
-  } else {
-    return (
-      pad(date.getUTCFullYear()) +
-      "-" +
-      pad(date.getUTCMonth() + 1) +
-      "-" +
-      pad(date.getUTCDate())
-    );
-  }
-};
+export const yearToString = (date: Date) => formatDate(date, "YYYY");
+
+export const dayToString = (date: Date) => formatDate(date, YEAR_FMT);

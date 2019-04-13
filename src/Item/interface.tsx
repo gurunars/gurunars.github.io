@@ -1,5 +1,5 @@
 import { Link } from "../Link";
-import { hashCode, toString } from "../utils";
+import { dayToString, hashCode } from "../utils";
 
 export interface Duration {
   start: Date;
@@ -19,7 +19,7 @@ export interface Item {
 }
 
 export const durationToString = (duration: Duration) =>
-  toString(duration.start) + " - " + toString(duration.end);
+  dayToString(duration.start) + " - " + dayToString(duration.end);
 
 export const getId = (item: Item) =>
   hashCode(item.location.name + ":" + item.title);
