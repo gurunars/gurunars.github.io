@@ -47,27 +47,30 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         paddingBottom: 10
       }}
     >
-      {item.description && (
-        <Section title="Description" data={item.description} />
-      )}
-      {item.achievements && (
-        <Section
-          title="Achievements"
-          data={item.achievements.map(value => (
-            <li key={value}>{value}</li>
-          ))}
-        />
-      )}
-      {item.achievements && (
-        <Section
-          title="References"
-          data={item.references.map(reference => (
-            <li key={reference.name}>
-              <Url link={reference} />
-            </li>
-          ))}
-        />
-      )}
+      {item.description &&
+        item.description.length > 0 && (
+          <Section title="Description" data={item.description} />
+        )}
+      {item.achievements &&
+        item.achievements.length > 0 && (
+          <Section
+            title="Achievements"
+            data={item.achievements.map(value => (
+              <li key={value}>{value}</li>
+            ))}
+          />
+        )}
+      {item.references &&
+        item.references.length > 0 && (
+          <Section
+            title="References"
+            data={item.references.map(reference => (
+              <li key={reference.name}>
+                <Url link={reference} />
+              </li>
+            ))}
+          />
+        )}
       <div style={{ marginTop: 10 }}>
         {item.tags.map(tag => (
           <Tag key={tag}>{tag}</Tag>

@@ -1,6 +1,18 @@
 items:
   - logo: /avatar.jpg
     title: Anton Berezin
+    description: >
+      Battle-Tested™ Software Engineer.
+      Automating the routine.
+      Leading by example.
+      Valuing customer experience.
+      Getting things done.
+    achievements:
+      - 10+ years of solid industry experience
+      - Multilingual and multiplatform expertise
+      - Excellence with legacy system maintenance
+      - Solid track as a techincal documentation writer
+    tags: [English, Russian, Swedish]
     type: contactCard
     startDate: "1989-03-24"
     location: self

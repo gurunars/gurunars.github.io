@@ -29,6 +29,8 @@ const flexMax: React.CSSProperties = {
   flex: "1 1 auto"
 };
 
+// TODO: show number of achievements in the small box
+
 const ItemView = ({
   item,
   onClick,
