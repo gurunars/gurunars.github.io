@@ -7,23 +7,20 @@ from dict_validator.fields import(
 from dict_validator import List, Dict, validate
 
 
-class Meta:
-    self = Slug()
-    name = Name()
-    domainName = String(regexp=r"^([a-z0-0]+\.)+[a-z]{2,7}$")
-    languages = List(String(regexp=r"^[A-Z]{1}[a-z]+$"))
-    birthday = Timestamp(Timestamp.Date)
-    specialization = List(String())
-    avatar = String()
-    media = List(Slug())
-
-
 class Item:
     title = String()
+    logo = String(required=False)
     achievements = List(String())
     location = String()
     references = List(Slug(), required=False)
-    type = Choice(["education", "fullTimeJob", "freelance", "openSource"])
+    type = Choice([
+        "education",
+        "fullTimeJob",
+        "freelance",
+        "openSource",
+        "certifications",
+        "contactCard"
+    ])
     tags = List(String(), required=False)
     description = String(required=False)
     links = List(Slug(), required=False)
@@ -32,20 +29,19 @@ class Item:
     date = Timestamp(Timestamp.Date, required=False)
 
 
-class Reference:
+class Link:
     name = String(regexp=r"^[\w\+@\.+-]+( [\w@\.+-]+)*$")
     alias = Slug()
     url = String()
     type = Choice(
         ["email", "skype", "tel", "amazon", "github", "play", "linkedin",
-         "docs", "cv"],
+         "docs", "cv", "stackoverflow"],
         required=False)
 
 
 class Portfolio:
-    meta = Dict(Meta)
     items = List(Dict(Item))
-    links = List(Dict(Reference))
+    links = List(Dict(Link))
 
 
 with open("portfolio.yaml") as fil:
@@ -55,12 +51,6 @@ with open("portfolio.yaml") as fil:
 
     valid_aliases = [reference["alias"]
                      for reference in portfolio.get("links", [])]
-
-    alias = portfolio["meta"]["self"]
-    assert alias in valid_aliases, "Self {} is invalid".format(alias)
-
-    for alias in portfolio["meta"].get("media", []):
-        assert alias in valid_aliases, "Media {} is invalid".format(alias)
 
     for item in portfolio.get("items", []):
         if "location" in item:
