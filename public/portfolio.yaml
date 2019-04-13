@@ -312,8 +312,12 @@ items:
       I became responsible for developing and maintaining Siirto P2P digital payment application for Android.
       The app has been in development since 2016 prior to me joining the company
     achievements:
-      - Initiated transitioning of the codebase from Java to Kotlin
+      - Transitioned a large Android app codebase from Java to Kotlin
+      - Employed Architecture Components as a mean of organizing the app
+      - Designed and implemented Nordea's QR code generator in React
       - Automated CI related aspects using Jenkins and Gradle
+      - Integrated Firebase Cloud Messanging with Siirto
+      - Added Crashlytics error reporting to the app
     startDate: "2018-01-15"
     tags:
       [
@@ -327,9 +331,13 @@ items:
         Retrofit,
         Firebase,
         Jenkins,
+        React,
+        Firebase,
+        Crashlytics,
       ]
     links:
       - siirto
+      - qr-generator
 
   - title: Senior Software Engineer
     location: smartly
@@ -589,3 +597,6 @@ links:
   - name: Coursera
     alias: coursera
     url: "https://www.coursera.org"
+  - name: QR code generator
+    alias: qr-generator
+    url: https://siirto.nordea.fi/qr/index.html
