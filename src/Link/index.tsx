@@ -107,7 +107,18 @@ export const FullUrl = ({
   </DirectLinkContext.Consumer>
 );
 
-export const LinkPreview = ({ link }: { link: Link }) => {
+export interface MappingSpec {
+  [key: string]: Link;
+}
+
+export const LinkPreview = ({
+  links,
+  alias
+}: {
+  links: MappingSpec;
+  alias: string;
+}) => {
+  const link = links[alias];
   return (
     <div
       style={{

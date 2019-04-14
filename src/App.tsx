@@ -3,7 +3,7 @@ import * as React from "react";
 import { HashRouter as Router, Redirect, Route } from "react-router-dom";
 
 import HashStateAware from "./HashStateAware";
-import { DirectLinkContext } from "./Link";
+import { DirectLinkContext, LinkPreview } from "./Link";
 import { ALL, Portfolio } from "./model";
 import Site, { groups, typeToSpecMapping } from "./Site";
 import { merge } from "./utils";
@@ -25,9 +25,14 @@ const initial = {
 };
 
 const App = ({ portfolio }: { portfolio: Portfolio }) => {
+  const mapping = {};
+
+  portfolio.links.forEach(it => {
+    mapping[it.alias] = it;
+  });
+
   const Shortener = ({ match }: any) => {
-    const alias = match.params.alias;
-    return <p>SHORTNER {alias}</p>;
+    return <LinkPreview links={mapping} alias={match.params.alias} />;
   };
 
   const Index = () => (
