@@ -31,9 +31,15 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     mapping[it.alias] = it;
   });
 
-  const Shortener = ({ match }: any) => {
-    return <LinkPreview links={mapping} alias={match.params.alias} />;
-  };
+  const Shortener = ({ match }: any) => (
+    <LinkPreview links={mapping} alias={match.params.alias} />
+  );
+
+  const Cv = () => (
+    <DirectLinkContext.Provider value={false}>
+      <div>CV</div>
+    </DirectLinkContext.Provider>
+  );
 
   const Index = () => (
     <HashStateAware prefix="/portfolio" initial={initial}>
@@ -61,13 +67,12 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     </HashStateAware>
   );
   return (
-    <DirectLinkContext.Provider value={false}>
-      <Router>
-        <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
-        <Route path="/sh/:alias" exact strict component={Shortener} />
-        <Route path="/portfolio" component={Index} />
-      </Router>
-    </DirectLinkContext.Provider>
+    <Router>
+      <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
+      <Route path="/sh/:alias" exact strict component={Shortener} />
+      <Route path="/portfolio" component={Index} />
+      <Route path="/cv" component={Cv} />
+    </Router>
   );
 };
 

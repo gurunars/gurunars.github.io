@@ -23,6 +23,7 @@ items:
       - skype
       - linkedin
       - stackoverflow
+      - cv
 
   - title: Stanford Algorithms Specialization
     description: >
@@ -560,7 +561,7 @@ links:
     name: gurunars
   - alias: cv
     type: cv
-    url: "http://gurunars.com/personal/cv.pdf"
+    url: "#/cv"
     name: CV
   - alias: box-ui-docs
     type: docs
