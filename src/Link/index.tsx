@@ -4,7 +4,6 @@ import ReactSVG from "react-svg";
 
 import close from "../Carousel/icons/close.svg";
 import KeyBoardListener from "../KeyBoardListener";
-import { shorten } from "../Shortener";
 import { merge } from "../utils";
 
 import getIconForType from "./icons";
@@ -23,7 +22,7 @@ export const Url = ({
   link: Link;
   style?: React.CSSProperties;
 }) => (
-  <a style={style} href={shorten(link)}>
+  <a style={style} href={link.url}>
     {link.name}
   </a>
 );
@@ -67,7 +66,7 @@ export const CircleUrl = ({
   link: Link;
   style?: React.CSSProperties;
 }) => (
-  <a title={link.name} style={style} href={shorten(link)}>
+  <a title={link.name} style={style} href={link.url}>
     <CircleType color={_.get(style, "color") || "black"} type={link.type} />
   </a>
 );
@@ -82,7 +81,7 @@ export const FullUrl = ({
   <a
     title={link.name}
     style={merge({ alignItems: "center", display: "inline-flex" }, style || {})}
-    href={shorten(link)}
+    href={link.url}
   >
     <CircleType color={_.get(style, "color") || "black"} type={link.type} />
     <span
