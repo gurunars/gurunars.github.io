@@ -2,7 +2,7 @@ import * as React from "react";
 
 import responsive from "../Responsive";
 
-const OverlayDecorator = (props: { children: React.ReactElement<any> }) => (
+const OverlayDecorator = (props: { children: React.ReactNode }) => (
   <div
     style={{
       position: "absolute",
@@ -32,27 +32,27 @@ const OverlayDecorator = (props: { children: React.ReactElement<any> }) => (
 );
 
 interface Props {
-  children: React.ReactElement<any>;
-  foregroundContent?: React.ReactElement<any> | null;
+  children: React.ReactNode;
+  foregroundContent?: React.ReactNode | null;
 }
 
-const Desktop = (props: Props) => (
-  props.foregroundContent ?
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%"
-        }}
-      >
-        {props.children}
-        <OverlayDecorator>{props.foregroundContent}</OverlayDecorator>
-      </div>
-    ) : props.children
-);
+const Desktop = (props: Props) =>
+  props.foregroundContent ? (
+    <div
+      style={{
+        width: "100%",
+        height: "100%"
+      }}
+    >
+      {props.children}
+      <OverlayDecorator>{props.foregroundContent}</OverlayDecorator>
+    </div>
+  ) : (
+    props.children
+  );
 
-const Mobile = (props: Props) => props.foregroundContent ?
-  props.foregroundContent : props.children;
+const Mobile = (props: Props) =>
+  props.foregroundContent ? props.foregroundContent : props.children;
 
 export default responsive({
   desktopView: Desktop,

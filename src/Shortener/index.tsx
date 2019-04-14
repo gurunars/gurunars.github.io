@@ -1,9 +1,11 @@
 import * as React from "react";
 
-import { Link } from "../Link";
+import { FullSize } from "../Layouts";
+import { Link, LinkPreview } from "../Link";
+import PageWithOverlay from "../PageWithOverlay";
 
-export interface MappingSpec {
-  [key: string]: string;
+interface MappingSpec {
+  [key: string]: Link;
 }
 
 interface Props {
@@ -11,17 +13,31 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const PREFIX = "sh";
+// TODO: add some beautification to the links to show them
+// as previews with extra meta data
+interface State {
+  link?: Link | null;
+  oldUrl?: string | null;
+}
 
-export default class Shortener extends React.Component<Props> {
+const PREFIX = "#sh/";
+
+export const shorten = (link: Link) => PREFIX + link.alias;
+
+export default class Shortener extends React.Component<Props, State> {
+  public state: State;
+
   private mapping: MappingSpec;
 
   constructor(props: Props) {
     super(props);
     this.openUrl = this.openUrl.bind(this);
+    this.onClose = this.onClose.bind(this);
+    this.clear = this.clear.bind(this);
     this.mapping = {};
+    this.state = {};
     props.links.forEach(it => {
-      this.mapping[it.alias] = it.url;
+      this.mapping[it.alias] = it;
     });
   }
   public componentDidMount() {
@@ -31,18 +47,50 @@ export default class Shortener extends React.Component<Props> {
     window.top.removeEventListener("hashchange", this.openUrl);
   }
   public render() {
-    return this.props.children;
-  }
-  private openUrl() {
-    const hash = window.top.location.hash;
-    const prefix = "#" + PREFIX + "/";
+    console.log(this.state);
 
-    if (!hash.startsWith(prefix)) {
+    return (
+      <PageWithOverlay
+        foregroundContent={
+          this.state.link && (
+            <LinkPreview
+              link={this.state.link as Link}
+              onClose={this.onClose}
+            />
+          )
+        }
+      >
+        <FullSize>{this.props.children}</FullSize>
+      </PageWithOverlay>
+    );
+  }
+
+  private clear() {
+    this.setState({
+      link: null,
+      oldUrl: null
+    });
+  }
+
+  private openUrl(event: HashChangeEvent) {
+    const newUrl = new URL(event.newURL).hash;
+    const oldUrl = new URL(event.oldURL).hash;
+
+    if (!newUrl.startsWith(PREFIX)) {
+      this.clear();
       return;
     }
 
-    const slug = hash.replace(new RegExp("^" + prefix), "");
-    const url = this.mapping[slug];
-    window.open(url);
+    const slug = newUrl.replace(new RegExp("^" + PREFIX), "");
+
+    this.setState({
+      link: this.mapping[slug],
+      oldUrl: oldUrl.startsWith(PREFIX) ? null : oldUrl
+    });
+  }
+
+  private onClose() {
+    this.clear();
+    window.top.location.hash = this.state.oldUrl || "";
   }
 }

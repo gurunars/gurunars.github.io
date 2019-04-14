@@ -2,6 +2,9 @@ import * as _ from "lodash";
 import * as React from "react";
 import ReactSVG from "react-svg";
 
+import close from "../Carousel/icons/close.svg";
+import KeyBoardListener from "../KeyBoardListener";
+import { shorten } from "../Shortener";
 import { merge } from "../utils";
 
 import getIconForType from "./icons";
@@ -20,7 +23,7 @@ export const Url = ({
   link: Link;
   style?: React.CSSProperties;
 }) => (
-  <a style={style} href={link.url}>
+  <a style={style} href={shorten(link)}>
     {link.name}
   </a>
 );
@@ -64,7 +67,7 @@ export const CircleUrl = ({
   link: Link;
   style?: React.CSSProperties;
 }) => (
-  <a title={link.name} style={style} href={link.url}>
+  <a title={link.name} style={style} href={shorten(link)}>
     <CircleType color={_.get(style, "color") || "black"} type={link.type} />
   </a>
 );
@@ -79,7 +82,7 @@ export const FullUrl = ({
   <a
     title={link.name}
     style={merge({ alignItems: "center", display: "inline-flex" }, style || {})}
-    href={link.url}
+    href={shorten(link)}
   >
     <CircleType color={_.get(style, "color") || "black"} type={link.type} />
     <span
@@ -91,3 +94,53 @@ export const FullUrl = ({
     </span>
   </a>
 );
+
+export const LinkPreview = ({
+  link,
+  onClose
+}: {
+  link: Link;
+  onClose: () => void;
+}) => {
+  const dims = 15;
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyItems: "center",
+        alignItems: "center",
+        justifyContent: "center",
+        alignContent: "center"
+      }}
+    >
+      <KeyBoardListener keyBoardKey="Escape" onPress={onClose}>
+        <div
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            display: "flex",
+            color: "black",
+            cursor: "pointer",
+            top: 10,
+            right: 10,
+            width: dims * 2,
+            height: dims * 2
+          }}
+        >
+          <ReactSVG path={close} />
+        </div>
+      </KeyBoardListener>
+
+      <div>
+        <CircleType color="black" type={link.type} />
+        <p>{link.name}</p>
+        <p>{link.alias}</p>
+        <p>
+          <a href={link.url}>{link.url}</a>
+        </p>
+      </div>
+    </div>
+  );
+};
