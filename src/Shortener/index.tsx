@@ -47,8 +47,6 @@ export default class Shortener extends React.Component<Props, State> {
     window.top.removeEventListener("hashchange", this.openUrl);
   }
   public render() {
-    console.log(this.state);
-
     return (
       <PageWithOverlay
         foregroundContent={
