@@ -131,13 +131,46 @@ export const LinkPreview = ({
         alignContent: "center"
       }}
     >
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignContent: "center",
+          alignItems: "center",
+          border: "1px dotted black",
+          padding: 10
+        }}
+      >
         <CircleType color="black" type={link.type} />
-        <p>{link.name}</p>
-        <p>{link.alias}</p>
-        <p>
-          <a href={link.url}>{link.url}</a>
-        </p>
+        <div
+          style={{
+            marginLeft: 10
+          }}
+        >
+          <p
+            style={{
+              fontSize: 21
+            }}
+          >
+            {link.name}
+          </p>
+          <p
+            style={{
+              color: "gray",
+              fontSize: 12,
+              marginTop: 6
+            }}
+          >
+            <i>{link.alias}</i>
+          </p>
+          <p
+            style={{
+              marginTop: 10
+            }}
+          >
+            <a href={link.url}>{link.url}</a>
+          </p>
+        </div>
       </div>
     </div>
   );
