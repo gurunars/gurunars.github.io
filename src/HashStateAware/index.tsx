@@ -6,6 +6,7 @@ import { merge } from "../utils";
 
 interface Props<T extends {}> {
   initial: T;
+  prefix: string;
   children: (data: T, set: (data: T) => void) => React.ReactElement<any>;
 }
 
@@ -13,15 +14,16 @@ interface State<T extends {}> {
   hash: T;
 }
 
-const deserialize = (location: string): Object => {
+const deserialize = (prefix: string, location: string): Object => {
   try {
-    return jsonpack.unpack(location.replace("#/", ""));
+    return jsonpack.unpack(location.replace("#" + prefix + "?", ""));
   } catch {
     return {};
   }
 };
 
-const serialize = (params: Object): string => "#" + jsonpack.pack(params);
+const serialize = (prefix: string, params: Object): string =>
+  "#" + prefix + "?" + jsonpack.pack(params);
 
 export default class HashAware<T extends {}> extends React.Component<
   Props<T>,
@@ -35,7 +37,7 @@ export default class HashAware<T extends {}> extends React.Component<
 
   public render() {
     return this.props.children(this.state.hash, data => {
-      window.top.location.hash = serialize(data);
+      window.top.location.hash = serialize(this.props.prefix, data);
     });
   }
 
@@ -43,7 +45,7 @@ export default class HashAware<T extends {}> extends React.Component<
     this.setState({
       hash: merge(
         this.props.initial,
-        deserialize(window.top.location.hash)
+        deserialize(this.props.prefix, window.top.location.hash)
       ) as T
     });
   }

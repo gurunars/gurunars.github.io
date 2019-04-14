@@ -11,13 +11,16 @@ interface Field {
 storiesOf("HashAware", module)
   .addDecorator(centered)
   .add("basic", () => (
-    <HashAware initial={{ field: 1 }}>
-      {(data: Field, set: (data: Field) => void) => <div>
-        <p
-          style={{ cursor: "pointer" }}
-          onClick={() => set({ field: data.field + 1 })}
-        >Data: {data.field}
-        </p>
-      </div>}
+    <HashAware prefix="" initial={{ field: 1 }}>
+      {(data: Field, set: (data: Field) => void) => (
+        <div>
+          <p
+            style={{ cursor: "pointer" }}
+            onClick={() => set({ field: data.field + 1 })}
+          >
+            Data: {data.field}
+          </p>
+        </div>
+      )}
     </HashAware>
   ));

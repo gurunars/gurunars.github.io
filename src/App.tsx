@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import * as React from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Redirect, Route } from "react-router-dom";
 
 import HashStateAware from "./HashStateAware";
 import { DirectLinkContext } from "./Link";
@@ -31,7 +31,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   };
 
   const Index = () => (
-    <HashStateAware initial={initial}>
+    <HashStateAware prefix="/portfolio" initial={initial}>
       {(data: State, set: (data: State) => void) => {
         const field = (name: string) => ({
           get: () => data[name],
@@ -56,10 +56,11 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     </HashStateAware>
   );
   return (
-    <DirectLinkContext.Provider value={true}>
+    <DirectLinkContext.Provider value={false}>
       <Router>
-        <Route path="/sh/:alias" exact component={Shortener} />
-        <Route path="" exact component={Index} />
+        <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
+        <Route path="/sh/:alias" exact strict component={Shortener} />
+        <Route path="/portfolio" component={Index} />
       </Router>
     </DirectLinkContext.Provider>
   );

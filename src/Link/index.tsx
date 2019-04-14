@@ -24,7 +24,7 @@ export const Url = ({
 }) => (
   <DirectLinkContext.Consumer>
     {(isDirect: boolean) => (
-      <a style={style} href={isDirect ? link.url : "#/sh" + link.alias}>
+      <a style={style} href={isDirect ? link.url : "#/sh/" + link.alias}>
         {link.name}
       </a>
     )}
@@ -69,7 +69,7 @@ export const CircleUrl = ({
       <a
         title={link.name}
         style={style}
-        href={isDirect ? link.url : "#/sh" + link.alias}
+        href={isDirect ? link.url : "#/sh/" + link.alias}
       >
         <CircleType color={_.get(style, "color") || "black"} type={link.type} />
       </a>
@@ -92,7 +92,7 @@ export const FullUrl = ({
           { alignItems: "center", display: "inline-flex" },
           style || {}
         )}
-        href={isDirect ? link.url : "#/sh" + link.alias}
+        href={isDirect ? link.url : "#/sh/" + link.alias}
       >
         <CircleType color={_.get(style, "color") || "black"} type={link.type} />
         <span
