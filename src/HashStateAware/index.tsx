@@ -15,30 +15,31 @@ interface State<T extends {}> {
 
 const deserialize = (location: string): Object => {
   try {
-    return jsonpack.unpack(location.replace("#", ""));
+    return jsonpack.unpack(location.replace("#/", ""));
   } catch {
     return {};
   }
 };
 
-const serialize = (params: Object): string =>
-  "#" + jsonpack.pack(params);
+const serialize = (params: Object): string => "#" + jsonpack.pack(params);
 
-export default class HashAware<T extends {}> extends React.Component<Props<T>, State<T>> {
-
+export default class HashAware<T extends {}> extends React.Component<
+  Props<T>,
+  State<T>
+> {
   constructor(props: Props<T>) {
     super(props);
+    this.updateHash = this.updateHash.bind(this);
     this.state = { hash: props.initial };
   }
 
   public render() {
-    return this.props.children(
-      this.state.hash,
-      data => { window.top.location.hash = serialize(data); }
-    );
+    return this.props.children(this.state.hash, data => {
+      window.top.location.hash = serialize(data);
+    });
   }
 
-  public updateHash = () => {
+  public updateHash() {
     this.setState({
       hash: merge(
         this.props.initial,
@@ -58,5 +59,4 @@ export default class HashAware<T extends {}> extends React.Component<Props<T>, S
   public componentWillUnmount() {
     window.top.removeEventListener("hashchange", this.updateHash);
   }
-
 }

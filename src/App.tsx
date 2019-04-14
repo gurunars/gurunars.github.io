@@ -1,7 +1,9 @@
 import * as _ from "lodash";
 import * as React from "react";
+import { HashRouter as Router, Route } from "react-router-dom";
 
 import HashStateAware from "./HashStateAware";
+import { DirectLinkContext } from "./Link";
 import { ALL, Portfolio } from "./model";
 import Site, { groups, typeToSpecMapping } from "./Site";
 import { merge } from "./utils";
@@ -22,30 +24,45 @@ const initial = {
   selectedTag: ALL
 };
 
-const App = ({ portfolio }: { portfolio: Portfolio }) => (
-  <HashStateAware initial={initial}>
-    {(data: State, set: (data: State) => void) => {
-      const field = (name: string) => ({
-        get: () => data[name],
-        set: (value: any) => {
-          const payload = {};
-          payload[name] = value;
-          set(merge(data, payload) as State);
-        }
-      });
+const App = ({ portfolio }: { portfolio: Portfolio }) => {
+  const Shortener = ({ match }: any) => {
+    const alias = match.params.alias;
+    return <p>SHORTNER {alias}</p>;
+  };
 
-      return (
-        <Site
-          portfolio={portfolio}
-          selectedSpecs={field("selectedSpecs")}
-          selectedGroup={field("selectedGroup")}
-          selectedId={field("selectedId")}
-          selectedTag={field("selectedTag")}
-          menuIsVisible={field("menuIsVisible")}
-        />
-      );
-    }}
-  </HashStateAware>
-);
+  const Index = () => (
+    <HashStateAware initial={initial}>
+      {(data: State, set: (data: State) => void) => {
+        const field = (name: string) => ({
+          get: () => data[name],
+          set: (value: any) => {
+            const payload = {};
+            payload[name] = value;
+            set(merge(data, payload) as State);
+          }
+        });
+
+        return (
+          <Site
+            portfolio={portfolio}
+            selectedSpecs={field("selectedSpecs")}
+            selectedGroup={field("selectedGroup")}
+            selectedId={field("selectedId")}
+            selectedTag={field("selectedTag")}
+            menuIsVisible={field("menuIsVisible")}
+          />
+        );
+      }}
+    </HashStateAware>
+  );
+  return (
+    <DirectLinkContext.Provider value={true}>
+      <Router>
+        <Route path="/sh/:alias" exact component={Shortener} />
+        <Route path="" exact component={Index} />
+      </Router>
+    </DirectLinkContext.Provider>
+  );
+};
 
 export default App;
