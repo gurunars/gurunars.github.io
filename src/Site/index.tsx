@@ -54,7 +54,7 @@ export const groups: TitleToGroupSpecMapping<Item> = {
   type: {
     humanReadableName: "Type",
     groupBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
-    sortBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
+    sortBy: (item: Item) => -item.duration.start.getTime(),
     reverse: false
   },
   endYear: {
