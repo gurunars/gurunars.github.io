@@ -200,6 +200,7 @@ items:
       - Collectively with a designer produced UI design in such a manner that they complied with Google's style
         guidelines.
       - Implemented a new UI for the app based on specs from a UI designer.
+      - Added a QR code reader for the master password
     type: fullTimeJob
     tags:
       [
@@ -319,6 +320,8 @@ items:
       - Automated CI related aspects using Jenkins and Gradle
       - Integrated Firebase Cloud Messanging with Siirto
       - Added Crashlytics error reporting to the app
+      - Implemented QR code reader and deep link parser
+      - Integrated personal accounts from the server with the ones obtained from phone's contact book
     startDate: "2018-01-15"
     tags:
       [
