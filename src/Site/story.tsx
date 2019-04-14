@@ -2,8 +2,10 @@ import * as React from "react";
 import { compose, withProps } from "recompose";
 import { withBoxState } from "../Box";
 
-import Main from ".";
+import { Portfolio } from "../model";
 import multiTypeStory from "../Responsive/multitype";
+
+import Main from ".";
 
 const genItem = (title: string, location: string, type: string) => ({
   title,
@@ -54,7 +56,8 @@ const genItem = (title: string, location: string, type: string) => ({
     }
   ],
   duration: {
-    start: new Date(2017, 11, 11, 11, 11, 11, 11)
+    start: new Date(2017, 11, 11, 11, 11, 11, 11),
+    end: new Date(2018, 11, 11, 11, 11, 11, 11)
   }
 });
 
@@ -73,12 +76,13 @@ const items = [
   genItem("Twelve", "Foo Bar", "contactCard")
 ];
 
+export const PORTFOLIO: Portfolio = {
+  items,
+  links: []
+};
+
 const StateMain = compose(
-  withProps({
-    portfolio: {
-      items
-    }
-  }),
+  withProps(PORTFOLIO),
   withBoxState("selectedId", null),
   withBoxState("selectedSpecs", [
     "freelance",

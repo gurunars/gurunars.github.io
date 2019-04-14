@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import * as React from "react";
 import { HashRouter as Router, Redirect, Route } from "react-router-dom";
 
+import Cv from "./Cv";
 import HashStateAware from "./HashStateAware";
 import { DirectLinkContext, LinkPreview } from "./Link";
 import { ALL, Portfolio } from "./model";
@@ -35,9 +36,9 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     <LinkPreview links={mapping} alias={match.params.alias} />
   );
 
-  const Cv = () => (
+  const CvView = () => (
     <DirectLinkContext.Provider value={false}>
-      <div>CV</div>
+      <Cv portfolio={portfolio} />
     </DirectLinkContext.Provider>
   );
 
@@ -71,7 +72,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
       <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
       <Route path="/sh/:alias" exact strict component={Shortener} />
       <Route path="/portfolio" component={Index} />
-      <Route path="/cv" component={Cv} />
+      <Route path="/cv" component={CvView} />
     </Router>
   );
 };
