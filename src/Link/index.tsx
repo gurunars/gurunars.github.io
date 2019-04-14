@@ -59,11 +59,7 @@ export const Url = ({
   style?: React.CSSProperties;
 }) => (
   <DecoratedLink style={style} link={link}>
-    <DirectLinkContext.Consumer>
-      {(isDirect: boolean) => (
-        <a href={isDirect ? link.url : asUrl(link)}>{link.name}</a>
-      )}
-    </DirectLinkContext.Consumer>
+    <a href={link.url}>{link.name}</a>
   </DecoratedLink>
 );
 
@@ -101,16 +97,9 @@ export const CircleUrl = ({
   style?: React.CSSProperties;
 }) => (
   <DecoratedLink style={style} link={link}>
-    <DirectLinkContext.Consumer>
-      {(isDirect: boolean) => (
-        <a title={link.name} href={isDirect ? link.url : asUrl(link)}>
-          <CircleType
-            color={_.get(style, "color") || "black"}
-            type={link.type}
-          />
-        </a>
-      )}
-    </DirectLinkContext.Consumer>
+    <a title={link.name} href={link.url}>
+      <CircleType color={_.get(style, "color") || "black"} type={link.type} />
+    </a>
   </DecoratedLink>
 );
 
@@ -122,27 +111,20 @@ export const FullUrl = ({
   style?: React.CSSProperties;
 }) => (
   <DecoratedLink style={style} link={link}>
-    <DirectLinkContext.Consumer>
-      {(isDirect: boolean) => (
-        <a
-          title={link.name}
-          style={{ alignItems: "center", display: "inline-flex" }}
-          href={isDirect ? link.url : asUrl(link)}
-        >
-          <CircleType
-            color={_.get(style, "color") || "black"}
-            type={link.type}
-          />
-          <span
-            style={{
-              marginLeft: "5px"
-            }}
-          >
-            {link.name}
-          </span>
-        </a>
-      )}
-    </DirectLinkContext.Consumer>
+    <a
+      title={link.name}
+      style={{ alignItems: "center", display: "inline-flex" }}
+      href={link.url}
+    >
+      <CircleType color={_.get(style, "color") || "black"} type={link.type} />
+      <span
+        style={{
+          marginLeft: "5px"
+        }}
+      >
+        {link.name}
+      </span>
+    </a>
   </DecoratedLink>
 );
 
