@@ -16,7 +16,9 @@ export interface Link {
 }
 
 const asUrl = (link: Link) =>
-  "http://" + window.location.hostname + "#/sh/" + link.alias;
+  window.location.href.replace(/#.*$/, "").replace(/\/$/, "") +
+  "#/sh/" +
+  link.alias;
 
 const DecoratedLink = (props: {
   link: Link;
