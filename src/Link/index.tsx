@@ -15,6 +15,40 @@ export interface Link {
   type?: string;
 }
 
+const asUrl = (link: Link) =>
+  "http://" + window.location.hostname + "#/sh/" + link.alias;
+
+const DecoratedLink = (props: {
+  link: Link;
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}) => (
+  <DirectLinkContext.Consumer>
+    {(isDirect: boolean) => (
+      <span
+        style={merge(
+          {
+            display: "inline-flex",
+            alignItems: "center"
+          },
+          props.style || {}
+        )}
+      >
+        {props.children}
+        {!isDirect && (
+          <span
+            style={{
+              marginLeft: 5
+            }}
+          >
+            [ {asUrl(props.link)} ]
+          </span>
+        )}
+      </span>
+    )}
+  </DirectLinkContext.Consumer>
+);
+
 export const Url = ({
   link,
   style
@@ -22,13 +56,13 @@ export const Url = ({
   link: Link;
   style?: React.CSSProperties;
 }) => (
-  <DirectLinkContext.Consumer>
-    {(isDirect: boolean) => (
-      <a style={style} href={isDirect ? link.url : "#/sh/" + link.alias}>
-        {link.name}
-      </a>
-    )}
-  </DirectLinkContext.Consumer>
+  <DecoratedLink style={style} link={link}>
+    <DirectLinkContext.Consumer>
+      {(isDirect: boolean) => (
+        <a href={isDirect ? link.url : asUrl(link)}>{link.name}</a>
+      )}
+    </DirectLinkContext.Consumer>
+  </DecoratedLink>
 );
 
 /* tslint:disable */
@@ -64,17 +98,18 @@ export const CircleUrl = ({
   link: Link;
   style?: React.CSSProperties;
 }) => (
-  <DirectLinkContext.Consumer>
-    {(isDirect: boolean) => (
-      <a
-        title={link.name}
-        style={style}
-        href={isDirect ? link.url : "#/sh/" + link.alias}
-      >
-        <CircleType color={_.get(style, "color") || "black"} type={link.type} />
-      </a>
-    )}
-  </DirectLinkContext.Consumer>
+  <DecoratedLink style={style} link={link}>
+    <DirectLinkContext.Consumer>
+      {(isDirect: boolean) => (
+        <a title={link.name} href={isDirect ? link.url : asUrl(link)}>
+          <CircleType
+            color={_.get(style, "color") || "black"}
+            type={link.type}
+          />
+        </a>
+      )}
+    </DirectLinkContext.Consumer>
+  </DecoratedLink>
 );
 
 export const FullUrl = ({
@@ -84,27 +119,29 @@ export const FullUrl = ({
   link: Link;
   style?: React.CSSProperties;
 }) => (
-  <DirectLinkContext.Consumer>
-    {(isDirect: boolean) => (
-      <a
-        title={link.name}
-        style={merge(
-          { alignItems: "center", display: "inline-flex" },
-          style || {}
-        )}
-        href={isDirect ? link.url : "#/sh/" + link.alias}
-      >
-        <CircleType color={_.get(style, "color") || "black"} type={link.type} />
-        <span
-          style={{
-            marginLeft: "5px"
-          }}
+  <DecoratedLink style={style} link={link}>
+    <DirectLinkContext.Consumer>
+      {(isDirect: boolean) => (
+        <a
+          title={link.name}
+          style={{ alignItems: "center", display: "inline-flex" }}
+          href={isDirect ? link.url : asUrl(link)}
         >
-          {link.name}
-        </span>
-      </a>
-    )}
-  </DirectLinkContext.Consumer>
+          <CircleType
+            color={_.get(style, "color") || "black"}
+            type={link.type}
+          />
+          <span
+            style={{
+              marginLeft: "5px"
+            }}
+          >
+            {link.name}
+          </span>
+        </a>
+      )}
+    </DirectLinkContext.Consumer>
+  </DecoratedLink>
 );
 
 export interface MappingSpec {
