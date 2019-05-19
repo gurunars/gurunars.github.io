@@ -82,6 +82,7 @@ items:
       - "Implemented #REST interface for the in-house package registry using #Python"
       - "Authored a variety of #Debian package to automate software delivery"
       - "Condacted several product demos in the context of #Scrum process"
+      - "Ingegrated #{GIT}, #{Bugzilla} and #CI system into a seamless toolchain"
     startDate: "2010-03-01"
     endDate: "2011-07-15"
     location: nokia
@@ -93,18 +94,17 @@ items:
 
   - title: Product owner (deputy)
     description: >
-      I was expected to orchestrate a team of experienced software developers during a transition from an in-house CI
+      I was expected to orchestrate a team of experienced software developers during a transition from an in-house #CI
       tool to OpenSuse Build System.
     achievements:
-      - Organized work of an international team of software engineers by creating JIRA tasks and scheduling regular meetings.
-      - Made several critical architectural decisions when the team could not come to a common agreement.
+      - "Organized work of an international team of software engineers by creating #JIRA tasks and scheduling regular meetings."
+      - "During #Scrum #{business planning} sessions made several critical architectural decisions when the team could not come to a common agreement."
       - Team managed to transition from an in-house build system to OpenSuse Build System.
-      - Team managed to integrate the internal CI workflow with OBS.
+      - "Team managed to integrate the internal #CI workflow with OBS."
     startDate: "2011-07-16"
     endDate: "2011-08-31"
     location: nokia
     type: fullTimeJob
-    tags: [Scrum, Business Planning]
     references:
       - hurmola
       - ugandhar
@@ -113,17 +113,18 @@ items:
   - title: Senior Software Engineer
     description: >
       I was accountable for development and maintenance of Nokia's main corporate web site's backend. The backend was
-      powered by CoreMedia framework (Spring framework on steroids).
+      powered by #{CoreMedia CMS} (#Spring framework on steroids).
     achievements:
       - Team launched 9 localized versions of the site.
-      - Finished CoreMedia Java EE training and went through their Java EE certification.
-      - Initiated transition from using IBM ClearCase to GIT for a team of roughly 40 developers. The process was
-        finished after I left the company.
+      - "Finished #{CoreMedia CMS} #{Java EE} training and went through their #{Java EE} certification."
+      - "Initiated transition from using IBM ClearCase to #GIT for a team of roughly 40 developers. The process was finished after I left the company."
+      - "Implemented several UI components in #Java and packaged those using #Ant and later on #Maven"
+      - "Actively contributed during #Scrum planning sessions by taking minutes"
+      - "Continuously practiced #TDD as a mean to design the interfaces for the new code"
     startDate: "2011-09-01"
     endDate: "2012-01-22"
     location: nokia
     type: fullTimeJob
-    tags: [Scrum, Java, Java Spring MVC, Maven, Ant, CoreMedia CMS, GIT, TDD]
     references:
       - kuparsaari
 
