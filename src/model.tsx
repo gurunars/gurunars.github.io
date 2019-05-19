@@ -26,9 +26,12 @@ export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
 
 const isWhitespace = (char: string) => /^\s+$/.test(char);
 
-const formatTag = (tag: string) => "#{" + tag + "}";
+const formatSimpleTag = (tag: string) => "#{" + tag + "}";
 
-export const extractTags = (text: string): [string, string[]] => {
+export const extractTags = (
+  text: string,
+  formatTag: ((tag: string) => string) = formatSimpleTag
+): [string, string[]] => {
   type State = "IDLE" | "HASH" | "FLEX" | "IFLEX";
   let state: State = "IDLE";
 
