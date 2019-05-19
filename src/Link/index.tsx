@@ -73,7 +73,9 @@ const CircleType = ({ type, color }: { type?: string; color: string }) => (
       justifyContent: "center",
       cursor: "pointer",
       width: 30,
+      minWidth: 30,
       height: 30,
+      minHeight: 30,
       borderRadius: "50%",
       border: "2px solid " + color
     }}

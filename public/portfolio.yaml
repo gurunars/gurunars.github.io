@@ -30,9 +30,9 @@ items:
       followed a set of lectures by a renowned algorithms scholar Tim Roughgarden
       from Stanford University.
     achievements:
-      - Divide and Conquer, Sorting and Searching, and Randomized Algorithms
-      - Graph Search, Shortest Paths, and Data Structures
-      - Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
+      - Divide and Conquer, Sorting and Searching and Randomized Algorithms
+      - Graph Search, Shortest Paths and Data Structures
+      - Greedy Algorithms, Minimum Spanning Trees and Dynamic Programming
       - Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
     type: certificates
     startDate: "2018-09-10"
@@ -131,7 +131,7 @@ items:
   - title: Software Engineer @ R&D site
     description: >
       I had to maintain a virus analytics system's backend and its #REST interface. The backend was powered by sharded
-      #Postgres and #Cassandra databases. #REST interface was implemented in #Python.
+      #Postgres and #Cassandra databases. #REST interface was implemented in #{Python}.
     startDate: "2012-01-23"
     endDate: "2014-11-03"
     location: f-secure
@@ -197,7 +197,7 @@ items:
     endDate: "2015-07-08"
     location: kisko
     achievements:
-      - "Split the high-level goal into subtasks so that the app could be implemented according to a 'progressive JPEG' #{buisness planning} model."
+      - "Split the high-level goal into subtasks so that the app could be implemented according to a 'progressive JPEG' #{business planning} model."
       - Organized a gradual billing process together with my accountant.
       - Iteratively implemented the application with a production-ready result at the end of each iteration.
       - "Implemented integration layer between #{Java Script} based payment subsystem and standard #Java codebase"
@@ -259,7 +259,7 @@ items:
         within the #Docker containers"
       - "Integrated #Gerrit as a tool for code reviews with #Stash used as a master #GIT storage"
       - "Authored a set of libraries in #{Java}, #{Python} and #{Shell} for managing secrets encrypted using #AWS KMS.
-        Packaged the libraries using #{Maven}, #{pip} and ${debhelper} respectively."
+        Packaged the libraries using #{Maven}, #{pip} and #{debhelper} respectively."
       - "Introduced a large scale #{test automation} toolkit by crafting a set of base #{Docker} images to guarantee local
         build reproducibility"
     references:
@@ -308,7 +308,7 @@ items:
   - title: Technical editor for Python 2&3 introductory books
     description: >
       I was a shadow writer for several chapters and a technical editor for an introductory book about how to program in
-      #Python. The hiring process was conducted through Upwork.
+      #{Python}. The hiring process was conducted through Upwork.
     type: freelance
     location: self
     achievements:
