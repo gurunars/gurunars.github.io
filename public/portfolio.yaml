@@ -561,3 +561,4 @@ links:
   - name: Portfolio source code
     alias: portfolio-source
     url: https://github.com/gurunars/gurunars.github.io
+    type: github
