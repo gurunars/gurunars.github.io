@@ -154,6 +154,16 @@ export interface GroupSpecSelection {
   selectedGroup: Box<string>;
 }
 
+const Sep = () => (
+  <div
+    style={{
+      width: "100%",
+      backgroundColor: "black",
+      height: 1
+    }}
+  />
+);
+
 const GroupBy = <T extends {}>(
   props: { groupMapping: TitleToGroupSpecMapping<T> } & GroupSpecSelection
 ): React.ReactElement<any> => (
@@ -203,9 +213,9 @@ const Toolbar = <T extends {}>(
     }}
   >
     <GroupBy {...props} />
-    <hr />
+    <Sep />
     <SpecFilter {...props} />
-    <hr />
+    <Sep />
     <TagFilter {...props} />
   </div>
 );

@@ -113,7 +113,7 @@ const DesktopToolbarWrapper = ({
   <div
     style={{
       width: "270px",
-      borderRight: "1px dotted black",
+      borderRight: "1px solid black",
       height: "100%"
     }}
   >
