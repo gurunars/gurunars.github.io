@@ -12,8 +12,7 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^5.0.0",
     "react-svg": "^5.0.9",
-    "recompose": "^0.27.1",
-    "voca": "^1.4.0"
+    "recompose": "^0.27.1"
   },
   "scripts": {
     "update": "ncu -u && yarn install",
@@ -42,7 +41,6 @@
     "@types/recompose": "^0.26.2",
     "@types/storybook__addon-actions": "^3.0.1",
     "@types/storybook__react": "^3.0.8",
-    "@types/voca": "^1.4.0",
     "file-loader": "^1.1.11",
     "node": "^10.7.0",
     "npm-check-updates": "^2.14.2",

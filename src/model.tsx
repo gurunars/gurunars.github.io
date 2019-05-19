@@ -1,5 +1,4 @@
 import * as _ from "lodash";
-import { titleCase } from "voca";
 
 import { Item } from "./Item";
 import { Link } from "./Link";
@@ -123,7 +122,7 @@ const preprocess = (initial: any): Portfolio => {
         title: item.title,
         logo: item.logo,
         type: item.type,
-        tags: _.uniq(tags.map((it, i) => titleCase(it))),
+        tags: _.uniq(tags.map((it, i) => _.startCase(it))),
         description: desc[0],
         location: getLink(item.location),
         references: _.map(item.references, getLink),

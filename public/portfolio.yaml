@@ -73,7 +73,7 @@ items:
       I was responsible for an in-house distributed #CI system of Maemo OS and was heavily involved into the process of
       test automation.
     achievements:
-      - "Implemented a new web UI leveraging #{Java Script} and #{AJAX} for the #CI system in #Django according to Nokia's internal design guidelines."
+      - "Implemented a new web UI leveraging #{JavaScript} and #{AJAX} for the #CI system in #Django according to Nokia's internal design guidelines."
       - "Introduced #{integration testing} for #CI workflow"
       - "Documented #CI workflow using #UML diagrams"
       - "Together with the team employed #RabbitMQ instead of an in-house DB based event management system. Integrated #RabbitMQ with our #Python components."
@@ -200,7 +200,7 @@ items:
       - "Split the high-level goal into subtasks so that the app could be implemented according to a 'progressive JPEG' #{business planning} model."
       - Organized a gradual billing process together with my accountant.
       - Iteratively implemented the application with a production-ready result at the end of each iteration.
-      - "Implemented integration layer between #{Java Script} based payment subsystem and standard #Java codebase"
+      - "Implemented integration layer between #{JavaScript} based payment subsystem and standard #Java codebase"
       - "Upon completion of the project extracted common reusable bits of code into a reusable #Gradle library module outside of the main #GIT repo"
     type: freelance
     references:
