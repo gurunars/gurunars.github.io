@@ -82,7 +82,7 @@ export const PORTFOLIO: Portfolio = {
 };
 
 const StateMain = compose(
-  withProps(PORTFOLIO),
+  withProps({ portfolio: PORTFOLIO }),
   withBoxState("selectedId", null),
   withBoxState("selectedSpecs", [
     "freelance",
