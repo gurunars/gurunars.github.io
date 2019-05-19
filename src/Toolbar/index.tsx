@@ -63,6 +63,13 @@ export interface SpecSelection {
   selectedSpecs: Box<string[]>;
 }
 
+const ACTION_STYLE = {
+  color: "blue",
+  cursor: "pointer",
+  fontSize: 12,
+  paddingTop: 10
+};
+
 const SpecFilter = (
   props: { filterMapping: TypeToSpecMapping } & SpecSelection
 ): React.ReactElement<any> => (
@@ -101,17 +108,24 @@ const SpecFilter = (
         );
       })}
 
-      <span
-        onClick={() => props.selectedSpecs.set([])}
+      <div
         style={{
-          color: "blue",
-          cursor: "pointer",
-          fontSize: 12,
-          paddingTop: 10
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between"
         }}
       >
-        Hide All
-      </span>
+        <span onClick={() => props.selectedSpecs.set([])} style={ACTION_STYLE}>
+          Hide All
+        </span>
+
+        <span
+          onClick={() => props.selectedSpecs.set(_.keys(props.filterMapping))}
+          style={ACTION_STYLE}
+        >
+          Show All
+        </span>
+      </div>
     </div>
   </NamedGroup>
 );
