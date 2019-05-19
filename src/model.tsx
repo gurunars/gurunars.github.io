@@ -24,6 +24,9 @@ export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
   _.fromPairs
 ]);
 
+export const extractTags = (text: string): string[] =>
+  text.match(/#\{[^\}]*\}/giu) || [];
+
 const preprocess = (initial: any): Portfolio => {
   const getLink = (alias: string) =>
     _.find(initial.links, link => link.alias === alias);
@@ -39,7 +42,9 @@ const preprocess = (initial: any): Portfolio => {
       logo: item.logo,
       achievements: item.achievements || [],
       type: item.type,
-      tags: (item.tags || []).concat([ALL]),
+      tags: _.uniq(
+        _.flatMap(item.achievements.concat(item.description), extractTags)
+      ).concat([ALL]),
       description: item.description,
       location: getLink(item.location),
       references: _.map(item.references, getLink),
