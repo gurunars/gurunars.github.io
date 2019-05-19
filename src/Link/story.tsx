@@ -2,7 +2,15 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { host } from "storybook-host";
 
-import { CircleUrl, FullUrl, Url } from ".";
+import { CircleUrl, FullUrl, Url, LinkPreview, MappingSpec } from ".";
+
+const MAP: MappingSpec = {
+  sample: {
+    alias: "alias",
+    name: "name",
+    url: "foobar-zoo-loo"
+  }
+};
 
 storiesOf("Link", module)
   .addDecorator(
@@ -52,4 +60,5 @@ storiesOf("Link", module)
         url: "bar"
       }}
     />
-  ));
+  ))
+  .add("Link preview", () => <LinkPreview links={MAP} alias="sample" />);

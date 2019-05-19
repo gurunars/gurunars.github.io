@@ -189,7 +189,9 @@ export const LinkPreview = ({
               marginTop: 10
             }}
           >
-            <a href={link.url}>{link.url}</a>
+            <a href={link.url} style={{ wordBreak: "break-all" }}>
+              {link.url}
+            </a>
           </p>
         </div>
       </div>

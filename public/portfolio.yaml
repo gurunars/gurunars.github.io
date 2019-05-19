@@ -438,12 +438,11 @@ links:
   - name: Python 3 book in Amazon
     type: amazon
     alias: python3
-    url: "http://www.amazon.com/dp/B00YI58B9U/ref=rdr_ext_sb_pi_hist_1"
+    url: "http://www.amazon.com/dp/B00YI58B9U"
   - name: Python 2 book in Amazon
     type: amazon
     alias: python2
-    url:
-      "http://www.amazon.com/Learn-Python-Visually-Ivelin-Demirov/dp/1507727070/ref=sr_1_2?ie=UTF8&qid=1461068670&sr=8-2&keywords=python+visually"
+    url: "http://www.amazon.com/dp/1507727070"
   - alias: state-machine-crawler-docs
     type: docs
     name: Documentation
