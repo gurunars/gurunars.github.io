@@ -21,7 +21,6 @@ class Item:
         "certificates",
         "contactCard"
     ])
-    tags = List(String(), required=False)
     description = String(required=False)
     links = List(Slug(), required=False)
     startDate = Timestamp(Timestamp.Date, required=False)

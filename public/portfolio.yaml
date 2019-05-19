@@ -359,6 +359,25 @@ items:
       - dict-validator-docs
       - dict-validator
 
+  - title: Portfolio
+    location: self
+    description: >
+      Designed and implemented personal online portfolio
+    startDate: "2009-01-10"
+    achievements:
+      - "Implemented a literally serverless URL shortener"
+      - "Transitioned the whole site from #Angular and #JavaScript to #React and #TypeScript"
+      - "Employed #{Travis CI} to automate deployment to Github Pages"
+      - "Used #Storybook for smooth component development"
+      - "Added a mobile version of the site"
+      - "Implemented a CV generator"
+      - "Used a plain YAML file to store the whole content of portfolio"
+      - "Crafted a tag extractor using a state machine based #parser"
+    type: openSource
+    links:
+      - portfolio-source
+      - self
+
 links:
   - name: Smartly.io
     alias: smartly
@@ -539,3 +558,6 @@ links:
   - name: QR code generator
     alias: qr-generator
     url: https://siirto.nordea.fi/qr/index.html
+  - name: Portfolio source code
+    alias: portfolio-source
+    url: https://github.com/gurunars/gurunars.github.io
