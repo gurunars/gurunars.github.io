@@ -136,9 +136,9 @@ items:
     endDate: "2014-11-03"
     location: f-secure
     achievements:
-      - "Team managed to migrate the infrastructure from a sharded #Postgres database to #Cassandra".
-      - "Designed #HTTP interface guidelines for our systems based on Roy Fielding's dissertation."
-      - "Implemented and #{open-source}d the framework to expose #HTTP interfaces in a declarative manner."
+      - "Team managed to migrate the infrastructure from a sharded #Postgres database to #Cassandra"
+      - "Designed #HTTP interface guidelines for our systems based on Roy Fielding's dissertation"
+      - "Implemented and #{open-source}d the framework to expose #HTTP interfaces in a declarative manner"
       - "Continuously practiced #TDD and #{pair programming} to maximize knowledge exchange"
       - "Configured #Debian package building toolchain out sources stored in #GIT using #Jenkins"
       - "Designed an async event flow using #RabbitMQ"
