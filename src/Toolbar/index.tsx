@@ -100,6 +100,18 @@ const SpecFilter = (
           </span>
         );
       })}
+
+      <span
+        onClick={() => props.selectedSpecs.set([])}
+        style={{
+          color: "blue",
+          cursor: "pointer",
+          fontSize: 12,
+          paddingTop: 10
+        }}
+      >
+        Hide All
+      </span>
     </div>
   </NamedGroup>
 );
