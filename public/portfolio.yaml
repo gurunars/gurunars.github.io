@@ -74,14 +74,14 @@ items:
       test automation.
     achievements:
       - "Implemented a new web UI leveraging #{Java Script} and #{AJAX} for the #CI system in #Django according to Nokia's internal design guidelines."
-      - "Introduced #{integration testing} for #CI workflow with a variety of integration tests."
-      - "Documented CI workflow using #UML diagrams."
+      - "Introduced #{integration testing} for #CI workflow"
+      - "Documented #CI workflow using #UML diagrams"
       - "Together with the team employed #RabbitMQ instead of an in-house DB based event management system. Integrated #RabbitMQ with our #Python components."
-      - "Contributed #{test automation} via integrating the system for hardware based #{integration testing} of Maemo apps into the UI of our CI system."
+      - "Leveraged #{test automation} via integrating the system for hardware based #{integration testing} of Maemo apps into the UI of our #CI system."
       - "Designed #MySQL database structure for the in-house package registry"
       - "Implemented #REST interface for the in-house package registry using #Python"
-      - "Authored a variety of #Debian package to automate software delivery"
-      - "Condacted several product demos in the context of #Scrum process"
+      - "Authored a variety of #Debian packages to automate software delivery"
+      - "Conducted several product demos in the context of #Scrum process"
       - "Ingegrated #{GIT}, #{Bugzilla} and #CI system into a seamless toolchain"
     startDate: "2010-03-01"
     endDate: "2011-07-15"
@@ -95,12 +95,12 @@ items:
   - title: Product owner (deputy)
     description: >
       I was expected to orchestrate a team of experienced software developers during a transition from an in-house #CI
-      tool to OpenSuse Build System.
+      tool to OpenSuse Build System (OBS).
     achievements:
-      - "Organized work of an international team of software engineers by creating #JIRA tasks and scheduling regular meetings."
-      - "During #Scrum #{business planning} sessions made several critical architectural decisions when the team could not come to a common agreement."
+      - "Organized work of an international team of software engineers by creating #JIRA tasks and scheduling regular meetings"
+      - "During #Scrum #{business planning} sessions made several critical architectural decisions when the team could not come to a common agreement"
       - Team managed to transition from an in-house build system to OpenSuse Build System.
-      - "Team managed to integrate the internal #CI workflow with OBS."
+      - "Team managed to integrate the internal #CI workflow with OBS"
     startDate: "2011-07-16"
     endDate: "2011-08-31"
     location: nokia
@@ -116,9 +116,9 @@ items:
       powered by #{CoreMedia CMS} (#Spring framework on steroids).
     achievements:
       - Team launched 9 localized versions of the site.
-      - "Finished #{CoreMedia CMS} #{Java EE} training and went through their #{Java EE} certification."
+      - "Finished #{CoreMedia CMS} training and went through their #{Java EE} certification."
       - "Initiated transition from using IBM ClearCase to #GIT for a team of roughly 40 developers. The process was finished after I left the company."
-      - "Implemented several UI components in #Java and packaged those using #Ant and later on #Maven"
+      - "Implemented several UI components in #Java and packaged those using #Ant and later via #Maven"
       - "Actively contributed during #Scrum planning sessions by taking minutes"
       - "Continuously practiced #TDD as a mean to design the interfaces for the new code"
     startDate: "2011-09-01"
@@ -143,7 +143,7 @@ items:
       - "Configured #Debian package building toolchain out sources stored in #GIT using #Jenkins"
       - "Designed an async event flow using #RabbitMQ"
       - "Documented system architecture using various #UML diagrams"
-      - "Actively colaborated with other teams by participating in their #Scrum dailies"
+      - "Actively colaborated with other teams by participating in their #Scrum daily meetings"
     type: fullTimeJob
     references:
       - lindfors
@@ -160,7 +160,7 @@ items:
       - "Gave multiple consultations regarding #Android development, SE best practices and #{test automation}."
       - "We all went to Facebook's HQ in Menlo Park and participated in the Open Academy 2015 event. I was exclusively #teaching there."
       - "Under my supervision students managed to improve #Android app's test coverage from 0% to roughly 70%."
-      - "Actively provided feed back in the form of #GIT merge requests' reviews"
+      - "Actively provided feedback in the form of #GIT merge requests' reviews"
     type: fullTimeJob
     references:
       - kyllonen
@@ -247,35 +247,25 @@ items:
     startDate: "2015-07-01"
     endDate: "2017-05-12"
     achievements:
-      - Established a CI pipeline for building various package types in a sandbox environment on minimal Jenkins
-        slaves within Docker containers. Configured continuous package publication to Artifactory.
-      - Manually developed and later on automated CI environment setup and maintenance using Terraform,
-        AWS CloudFormation and AWS Lambdas
-      - Configured the toolchain for automated deployment of arbitrary software distributions using AWS CloudFormation
-        for configuration management and AWS Lambda and AWS CloudWatch as a mean to sync git based configuration repos
-        with the state of deployment environment
+      - "Established a #CI pipeline for building various package types in a sandbox environment on minimal #Jenkins
+        slaves within #Docker containers. Configured continuous package publication to #Artifactory."
+      - "Manually developed and later on automated #CI environment setup and maintenance using #Terraform,
+        #AWS CloudFormation and #AWS Lambdas"
+      - "Configured a toolchain for automated deployment of arbitrary software distributions using #AWS CloudFormation
+        for #{configuration management} and #AWS Lambda and #AWS CloudWatch as a mean to sync git based configuration repos
+        with the state of deployment environment"
       - Automated builds and publication for code documentation
-      - Introduced a variety of coding style guides and enforced those by custom pep8 and pylint configs
-        within the Docker containers
+      - "Introduced a variety of coding style guides and enforced those by custom pep8 and pylint configs
+        within the #Docker containers"
+      - "Integrated #Gerrit as a tool for code reviews with #Stash used as a master #GIT storage"
+      - "Authored a set of libraries in #{Java}, #{Python} and #{Shell} for managing secrets encrypted using #AWS KMS.
+        Packaged the libraries using #{Maven}, #{pip} and ${debhelper} respectively."
+      - "Introduced a large scale #{test automation} toolkit by crafting a set of base #{Docker} images to guarantee local
+        build reproducibility"
     references:
       - avysk
       - matti
       - mikko
-    tags:
-      [
-        Python,
-        Java,
-        Maven,
-        Docker,
-        AWS,
-        Gerrit,
-        Test Automation,
-        Artifactory,
-        GIT,
-        Jenkins,
-        Terraform,
-        Configuration Management,
-      ]
 
   - title: Senior Software Engineer
     location: nordea
@@ -284,31 +274,18 @@ items:
       I became responsible for developing and maintaining Siirto P2P digital payment application for Android.
       The app has been in development since 2016 prior to me joining the company
     achievements:
-      - Transitioned a large Android app codebase from Java to Kotlin
-      - Employed Architecture Components as a mean of organizing the app
-      - Designed and implemented Nordea's QR code generator in React
-      - Automated CI related aspects using Jenkins and Gradle
-      - Integrated Firebase Cloud Messanging with Siirto
-      - Added Crashlytics error reporting to the app
-      - Implemented QR code reader and deep link parser
-      - Integrated personal accounts from the server with the ones obtained from phone's contact book
+      - "Transitioned a large #Android app codebase from #Java to #Kotlin"
+      - "Employed #{Architecture Components} as a mean of organizing the app"
+      - "Designed and implemented Nordea's QR code generator in #React"
+      - "Automated #CI related aspects using #Jenkins and #Gradle"
+      - "Integrated #Firebase #{Cloud Messanging} with Siirto"
+      - "Added #Crashlytics error reporting to the app"
+      - "Implemented QR code reader and deep link parser"
+      - "Integrated account registry from the server with the phone's contact book"
+      - "Developed a gradle plugin to generate #Dagger injector based on #Android manifest definitions"
+      - "Transitioned #Retrofit async #HTTP stack from #RxJava to #coroutines"
+      - "Introduced mandatory cross-team #GIT merge request reviews to boost colaboration"
     startDate: "2018-01-15"
-    tags:
-      [
-        Java,
-        Kotlin,
-        GIT,
-        CI,
-        Android,
-        RxJava,
-        Dagger,
-        Retrofit,
-        Firebase,
-        Jenkins,
-        React,
-        Firebase,
-        Crashlytics,
-      ]
     links:
       - siirto
       - qr-generator
@@ -319,25 +296,27 @@ items:
       I was responsible for a portion of backend performing revenue optimizations for marketing campaigns via Facebook
       ads.
     achievements:
-      - Introduced Docker based containerization into the realm of unit testing both locally and on the CI side
-      - Rewrote multiple Angular based components using React and Redux
+      - "Introduced #Docker based containerization into the realm of unit testing both locally and on the #CI side"
+      - "Rewrote multiple #Angular based components using #{React}, #{Redux} and #{TypeScript}"
+      - "Annotated a bunch of existing #JavaScript code with types"
+      - "Rewrote one of the internal tools written in #Python used for data processing. The main achievement was 100% unit test coverage."
+      - "Moved mutliple build configurations from #Jenkins UI into #{Jenkins Pipelines}"
     type: fullTimeJob
     startDate: "2017-05-15"
     endDate: "2018-01-12"
-    tags: [Python, GIT, Docker, CI, JavaScript, TypeScript, React]
 
   - title: Technical editor for Python 2&3 introductory books
     description: >
       I was a shadow writer for several chapters and a technical editor for an introductory book about how to program in
-      Python. The hiring process was conducted through Upwork.
+      #Python. The hiring process was conducted through Upwork.
     type: freelance
     location: self
     achievements:
-      - Wrote chapters about built-in types, functions, classes, and control structures (if/else/while/for).
-      - Edited the technical part of the text and validated code quality.
+      - Wrote chapters about built-in types, functions, classes, and control structures (if/else/while/for)
+      - "Assisted with the #{technical writing} aspects to the original author by arranging content as a directed acyclic graph"
+      - Edited the technical part of the text and validated code quality
     startDate: "2015-01-13"
     endDate: "2015-02-24"
-    tags: [Python, Technical Writing]
     references:
       - demirov
     links:
@@ -347,30 +326,18 @@ items:
   - title: box-ui
     location: self
     description: >
-      Designed and implemented a set of UI modules for Android to assist with managing data collections using easy
+      Designed and implemented a set of UI modules for #Android to assist with managing data collections using easy
       to use GUI CRUD controls.
     startDate: "2016-02-25"
     achievements:
-      - Used TDD & DI to design and implement the 'moving parts'.
-      - Extensively employed Android animation framework to make CRUD operations in the UI as simple as possible.
+      - "Used #TDD & #DI to design and implement the 'moving parts'"
+      - "Extensively employed #Android animation framework to make CRUD operations in the UI as simple as possible"
       - Wrote sample applications and documentation for the components
-      - Extensively used gradle to make the build process robust and concise
-      - Got approval from jcenter to publish the packages in its main public repository.
+      - Automated testing using #{instrumentation testing}
+      - "Extensively used #gradle to make the build process robust and concise"
+      - Got approval from JCenter to publish the packages in its main public repository
+      - "Gradually rewrote the components in #Kotlin"
     type: openSource
-    tags:
-      [
-        TDD,
-        Android,
-        Kotlin,
-        Gradle,
-        Instrumentation Testing,
-        DI,
-        JUnit,
-        Espresso,
-        ButterKnife,
-        Kryo,
-        IcePick,
-      ]
     links:
       - box-ui-docs
       - box-ui
@@ -378,17 +345,16 @@ items:
   - title: dict-validator
     location: self
     description: >
-      Designed and implemented a Python library for declarative definition of object schemas for runtime payload
+      Designed and implemented a #Python library for declarative definition of object schemas for runtime payload
       validation.
     startDate: "2017-01-29"
     achievements:
-      - Employed Travis CI to orchestrate on-commit builds
+      - "Employed #{Travis CI} to orchestrate on-commit builds"
       - Employed pep8, pyflakes and pylint for style checks
-      - Achieved 100% unit test coverage with doctests
+      - "Achieved 100% unit test coverage with doctests by following #TDD"
       - Documented the API using Sphinx and published at GitHub.io
       - Released to the official PyPi repository
     type: openSource
-    tags: [TDD, Python2, Python3, Travis CI, Sphinx, pep8, pyflakes, pylint]
     links:
       - dict-validator-docs
       - dict-validator
