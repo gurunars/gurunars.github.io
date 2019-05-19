@@ -130,54 +130,44 @@ items:
 
   - title: Software Engineer @ R&D site
     description: >
-      I had to maintain a virus analytics system's backend and its REST interface. The backend was powered by sharded
-      Postgres and Cassandra databases. REST interface was implemented in Python.
+      I had to maintain a virus analytics system's backend and its #REST interface. The backend was powered by sharded
+      #Postgres and #Cassandra databases. #REST interface was implemented in #Python.
     startDate: "2012-01-23"
     endDate: "2014-11-03"
     location: f-secure
     achievements:
-      - Team managed to migrate the infrastructure from a sharded Postgres database to Cassandra.
-      - Designed HTTP interface guidelines for our systems based on Roy Fielding's dissertation.
-      - Implemented and open-sourced the framework to expose HTTP interfaces in a declarative manner.
+      - "Team managed to migrate the infrastructure from a sharded #Postgres database to #Cassandra".
+      - "Designed #HTTP interface guidelines for our systems based on Roy Fielding's dissertation."
+      - "Implemented and #{open-source}d the framework to expose #HTTP interfaces in a declarative manner."
+      - "Continuously practiced #TDD and #{pair programming} to maximize knowledge exchange"
+      - "Configured #Debian package building toolchain out sources stored in #GIT using #Jenkins"
+      - "Designed an async event flow using #RabbitMQ"
+      - "Documented system architecture using various #UML diagrams"
+      - "Actively colaborated with other teams by participating in their #Scrum dailies"
     type: fullTimeJob
-    tags:
-      [
-        UML,
-        Python,
-        GIT,
-        Debian,
-        Java,
-        Jenkins,
-        RabbitMQ,
-        Cassandra,
-        PostgreSQL,
-        Scrum,
-        TDD,
-        REST,
-      ]
     references:
       - lindfors
 
   - title: Student Mentor
     description: >
       I was requested to guide a group of Master's degree students through a process of refactoring of a legacy
-      Android application - Lokki.
+      #Android application written in #Java - Lokki.
     startDate: "2015-01-06"
     endDate: "2015-03-30"
     location: heluni
     achievements:
       - Mentored an international group of students from Helsinki University, MIT, Harward and Stanford.
-      - Gave multiple consultations regarding Android development, SE best practices and test automation.
-      - We all went to Facebook's HQ in Menlo Park and participated in the Open Academy 2015 event.
-      - Under my supervision students managed to improve Android app's test coverage from 0% to roughly 70%.
+      - "Gave multiple consultations regarding #Android development, SE best practices and #{test automation}."
+      - "We all went to Facebook's HQ in Menlo Park and participated in the Open Academy 2015 event. I was exclusively #teaching there."
+      - "Under my supervision students managed to improve #Android app's test coverage from 0% to roughly 70%."
+      - "Actively provided feed back in the form of #GIT merge requests' reviews"
     type: fullTimeJob
-    tags: [Android, Java, Test Automation, Teaching]
     references:
       - kyllonen
 
   - title: Android Software Engineer
     description: >
-      I was accountable for Android version of F-Secure's password management app. I was responsible for continuously
+      I was accountable for #Android version of F-Secure's password management app. I was responsible for continuously
       revamping its look'n'feel based on PSD specs from our graphic designer.
     startDate: "2014-11-03"
     endDate: "2015-06-30"
@@ -189,18 +179,11 @@ items:
         guidelines.
       - Implemented a new UI for the app based on specs from a UI designer.
       - Added a QR code reader for the master password
+      - "Introduced a #{state based testing} into the process by implementing a toolkit in #Python"
+      - "Documented application workflow using #UML diagrams"
+      - "Integrated an in-house encrypted storage into the app by writing #Java adapters"
+      - "Colaborated with the team by conducting #GIT merge requests' reviews"
     type: fullTimeJob
-    tags:
-      [
-        UML,
-        Python,
-        GIT,
-        Java,
-        Android,
-        XML,
-        State Based Testing,
-        Android Studio,
-      ]
     references:
       - kiljander
     links:
@@ -208,17 +191,18 @@ items:
 
   - title: WodConnect Android
     description: >
-      I was hired to implement a UI for a cross-fit training management app based on the specs from a designer from
+      I was hired to implement an #Android UI for a cross-fit training management app based on the specs from a designer from
       Kisko Labs.
     startDate: "2015-04-01"
     endDate: "2015-07-08"
     location: kisko
     achievements:
-      - Split the high-level goal into subtasks so that the app could be implemented according to a 'progressive JPEG method'.
+      - "Split the high-level goal into subtasks so that the app could be implemented according to a 'progressive JPEG' #{buisness planning} model."
       - Organized a gradual billing process together with my accountant.
       - Iteratively implemented the application with a production-ready result at the end of each iteration.
+      - "Implemented integration layer between #{Java Script} based payment subsystem and standard #Java codebase"
+      - "Upon completion of the project extracted common reusable bits of code into a reusable #Gradle library module outside of the main #GIT repo"
     type: freelance
-    tags: [TDD, Android, Java, Gradle, Business Planning]
     references:
       - akonniemi
     links:
@@ -232,27 +216,25 @@ items:
     startDate: "2015-01-12"
     endDate: "2015-03-30"
     achievements:
-      - Clarified the licensing/open-source process with a team of company legal advisors.
+      - "Clarified the #{licensing}/#{open-source} process with a team of company legal advisors."
       - Opened the sources of the application and handed them to University of Helsinki.
-      - Answered student questions regarding code layout by consulting with people who originally wrote the app.
+      - "Answered student questions regarding #Android code layout and employed #Java design patterns via bridge consultations with people who originally wrote the app."
     type: openSource
-    tags: [Android, Java, Licensing, Open-Sourcing]
     links:
       - lokki
 
   - title: Resource API
     description: >
       I was accountable for designing, implementing and integrating into F-Secure's workflow a library to write
-      REST APIs in a declarative fashion instead of an imperative one.
+      #REST APIs in a declarative fashion instead of an imperative one.
     location: f-secure
     startDate: "2014-10-13"
     achievements:
-      - Developed a framework that allowed developers to declaratively define resources and relationships between them.
-      - Opened the sources of the framework according to F-Secure's guidelines and published them to F-Secure's GitHub.
-      - Employed the framework in the implementation of F-Secure's REST interface.
-      - Wrote extensive documentation and a tutorial for the library.
+      - "Developed a #Python framework that allowed developers to declaratively define resources and relationships between them."
+      - "Made the framework #{open-source} according to F-Secure's guidelines and published them to F-Secure's GitHub."
+      - "Employed the framework in the implementation of F-Secure's #REST interface."
+      - "Wrote extensive #{techincal documentation} and a tutorial for the library."
     type: openSource
-    tags: [Python, Licensing, Open-Sourcing, REST, Technical Writing]
     links:
       - resource-api-docs
       - resource-api
