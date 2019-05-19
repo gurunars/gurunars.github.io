@@ -32,12 +32,13 @@ export const extractTags = (
   text: string,
   formatTag: ((tag: string) => string) = formatSimpleTag
 ): [string, string[]] => {
+  const output: string[] = [];
+  const tags: string[] = [];
+
   type State = "IDLE" | "HASH" | "FLEX" | "IFLEX";
   let state: State = "IDLE";
 
   let buffer: string[] = [];
-  let output: string[] = [];
-  let tags: string[] = [];
 
   const procBuffer = () => {
     const tag = _.join(buffer, "");
@@ -47,25 +48,25 @@ export const extractTags = (
   };
 
   for (const c of text) {
-    if (state == "HASH") {
+    if (state === "HASH") {
       if (isWhitespace(c)) {
         output.push("#");
         output.push(c);
         state = "IDLE";
-      } else if (c == "{") {
+      } else if (c === "{") {
         state = "FLEX";
       } else {
         state = "IFLEX";
         buffer.push(c);
       }
-    } else if (state == "FLEX") {
-      if (c == "}") {
+    } else if (state === "FLEX") {
+      if (c === "}") {
         state = "IDLE";
         procBuffer();
       } else {
         buffer.push(c);
       }
-    } else if (state == "IFLEX") {
+    } else if (state === "IFLEX") {
       if (isWhitespace(c)) {
         state = "IDLE";
         procBuffer();
@@ -75,7 +76,7 @@ export const extractTags = (
       }
     } else {
       // IDLE
-      if (c == "#") {
+      if (c === "#") {
         state = "HASH";
       } else {
         output.push(c);
@@ -99,16 +100,16 @@ const preprocess = (initial: any): Portfolio => {
     items: _.map(initial.items, item => {
       const tags = [ALL];
 
-      const desc = extractTags(item.description);
-      for (const tag in desc[1]) {
+      const desc = extractTags(item.description || "");
+      for (const tag of desc[1]) {
         tags.push(tag);
       }
 
       const achievements = [];
-      for (var achievement in item.achievements || []) {
+      for (const achievement of item.achievements || []) {
         const ack = extractTags(achievement);
         achievements.push(ack[0]);
-        for (const tag in ack[1]) {
+        for (const tag of ack[1]) {
           tags.push(tag);
         }
       }
@@ -120,13 +121,13 @@ const preprocess = (initial: any): Portfolio => {
         },
         title: item.title,
         logo: item.logo,
-        achievements: achievements,
         type: item.type,
         tags: _.uniq(tags),
         description: desc[0],
         location: getLink(item.location),
         references: _.map(item.references, getLink),
-        links: _.map(item.links, getLink)
+        links: _.map(item.links, getLink),
+        achievements
       };
     })
   };
