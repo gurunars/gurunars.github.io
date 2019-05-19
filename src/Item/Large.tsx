@@ -22,7 +22,8 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
   <div
     style={{
       padding: 10,
-      position: "relative"
+      position: "relative",
+      pageBreakInside: "avoid"
     }}
   >
     <div
