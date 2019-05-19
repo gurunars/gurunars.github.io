@@ -26,7 +26,7 @@ export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
 
 const isWhitespace = (char: string) => /^\s+$/.test(char);
 
-const formatSimpleTag = (tag: string) => "#{" + tag + "}";
+const formatSimpleTag = (tag: string) => tag;
 
 export const extractTags = (
   text: string,
