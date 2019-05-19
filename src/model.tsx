@@ -24,8 +24,68 @@ export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
   _.fromPairs
 ]);
 
-export const extractTags = (text: string): string[] =>
-  text.match(/#\{[^\}]*\}/giu) || [];
+const isWhitespace = (char: string) => /^\s+$/.test(char);
+
+const formatTag = (tag: string) => "#{" + tag + "}";
+
+export const extractTags = (text: string): [string, string[]] => {
+  type State = "IDLE" | "HASH" | "FLEX" | "IFLEX";
+  let state: State = "IDLE";
+
+  let buffer: string[] = [];
+  let output: string[] = [];
+  let tags: string[] = [];
+
+  const procBuffer = () => {
+    const tag = _.join(buffer, "");
+    tags.push(tag);
+    output.push(formatTag(tag));
+    buffer = [];
+  };
+
+  for (const c of text) {
+    if (state == "HASH") {
+      if (isWhitespace(c)) {
+        output.push("#");
+        output.push(c);
+        state = "IDLE";
+      } else if (c == "{") {
+        state = "FLEX";
+      } else {
+        state = "IFLEX";
+        buffer.push(c);
+      }
+    } else if (state == "FLEX") {
+      if (c == "}") {
+        state = "IDLE";
+        procBuffer();
+      } else {
+        buffer.push(c);
+      }
+    } else if (state == "IFLEX") {
+      if (isWhitespace(c)) {
+        state = "IDLE";
+        procBuffer();
+        output.push(c);
+      } else {
+        buffer.push(c);
+      }
+    } else {
+      // IDLE
+      if (c == "#") {
+        state = "HASH";
+      } else {
+        output.push(c);
+      }
+    }
+  }
+
+  if (buffer.length > 0) {
+    procBuffer();
+  }
+
+  return [_.join(output, ""), tags];
+};
 
 const preprocess = (initial: any): Portfolio => {
   const getLink = (alias: string) =>
@@ -33,23 +93,39 @@ const preprocess = (initial: any): Portfolio => {
 
   return {
     links: initial.links,
-    items: _.map(initial.items, item => ({
-      duration: {
-        start: new Date(item.startDate),
-        end: item.endDate == null ? new Date() : new Date(item.endDate)
-      },
-      title: item.title,
-      logo: item.logo,
-      achievements: item.achievements || [],
-      type: item.type,
-      tags: _.uniq(
-        _.flatMap(item.achievements.concat(item.description), extractTags)
-      ).concat([ALL]),
-      description: item.description,
-      location: getLink(item.location),
-      references: _.map(item.references, getLink),
-      links: _.map(item.links, getLink)
-    }))
+    items: _.map(initial.items, item => {
+      const tags = [ALL];
+
+      const desc = extractTags(item.description);
+      for (const tag in desc[1]) {
+        tags.push(tag);
+      }
+
+      const achievements = [];
+      for (var achievement in item.achievements || []) {
+        const ack = extractTags(achievement);
+        achievements.push(ack[0]);
+        for (const tag in ack[1]) {
+          tags.push(tag);
+        }
+      }
+
+      return {
+        duration: {
+          start: new Date(item.startDate),
+          end: item.endDate == null ? new Date() : new Date(item.endDate)
+        },
+        title: item.title,
+        logo: item.logo,
+        achievements: achievements,
+        type: item.type,
+        tags: _.uniq(tags),
+        description: desc[0],
+        location: getLink(item.location),
+        references: _.map(item.references, getLink),
+        links: _.map(item.links, getLink)
+      };
+    })
   };
 };
 
