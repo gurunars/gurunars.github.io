@@ -20,8 +20,7 @@
     "build": "react-scripts-ts build",
     "lint": "tslint --project tsconfig.json \"src/**/*.ts{,x}\"",
     "prettier": "tslint --project tsconfig.json --fix \"src/**/*.ts{,x}\"",
-    "test-watch": "react-scripts-ts test --env=jsdom",
-    "test": "CI=true react-scripts-ts test --env=jsdom",
+    "test": "jest",
     "plop": "plop",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
