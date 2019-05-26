@@ -10,6 +10,7 @@ install:
   - npm install -g yarn --cache-min 999999999
 script:
   - yarn install
+  - yarn test
   - yarn build
   - cp .travis.yml build
   - touch build/.nojekyll
