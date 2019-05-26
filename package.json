@@ -26,10 +26,6 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^4.0.0-alpha.14",
-    "@storybook/addon-centered": "^4.0.0-alpha.14",
-    "@storybook/addon-storyshots": "^4.0.0-alpha.14",
-    "@storybook/react": "^4.0.0-alpha.14",
     "@types/immutable": "^3.8.7",
     "@types/jest": "^24.0.13",
     "@types/lodash": "^4.14.106",
@@ -39,8 +35,6 @@
     "@types/react-dom": "^16.0.3",
     "@types/react-router-dom": "^4.3.2",
     "@types/recompose": "^0.26.2",
-    "@types/storybook__addon-actions": "^3.0.1",
-    "@types/storybook__react": "^3.0.8",
     "file-loader": "^1.1.11",
     "node": "^10.7.0",
     "npm-check-updates": "^2.14.2",
@@ -48,7 +42,6 @@
     "prettier": "1.14.0",
     "react-scripts-ts": "^2.16.0",
     "react-test-renderer": "^16.2.0",
-    "storybook-host": "^5.0.0",
     "ts-loader": "^4.4.2",
     "tslint-config-prettier": "^1.6.0",
     "typescript": "^2.9.2"
