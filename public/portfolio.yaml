@@ -24,6 +24,24 @@ items:
       - stackoverflow
       - cv
 
+  - title: UC San Diego Discrete Mathematics for CS
+    description: >
+      Certification in #{discrete mathemetics} that
+      followed a set of lectures by UC San Diego and by
+      Russian Higer School of Economics
+    achievements:
+      - Mathematical Thinking in Computer Science
+      - Combinatorics and Probability
+      - Introduction to Graph Theory
+      - Number Theory and Cryptography
+      - Delivery Problem
+    type: certificates
+    startDate: "2019-02-10"
+    endDate: "2019-06-08"
+    location: coursera
+    links:
+      - uc-san-diego-maths-certificate
+
   - title: Stanford Algorithms Specialization
     description: >
       Certification in #{algorithm design} and #{algorithm optimization} that
@@ -562,3 +580,8 @@ links:
     alias: portfolio-source
     url: https://github.com/gurunars/gurunars.github.io
     type: github
+  - name: UC San Diego Discrete Mathematics for CS Certificate
+    alias: uc-san-diego-maths-certificate
+    url:
+      https://www.coursera.org/account/accomplishments/specialization/P9AKWCGSWC72
+    type: coursera
