@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { FullSize } from "../Layouts";
 import { CircleUrl, Url } from "../Link";
@@ -28,8 +28,6 @@ const flexMax: React.CSSProperties = {
   width: "100%",
   flex: "1 1 auto"
 };
-
-// TODO: show number of achievements in the small box
 
 const ItemView = ({
   item,
@@ -65,6 +63,7 @@ const ItemView = ({
         >
           {item.logo && (
             <img
+              alt="logo"
               src={item.logo}
               style={{
                 width: 45,

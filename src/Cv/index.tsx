@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { RawGroupedList } from "../GroupedList";
 import { groupItems } from "../GroupedList/grouping";

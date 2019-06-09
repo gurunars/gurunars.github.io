@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import _ from "lodash";
 
 import { Item } from "./Item";
 import { Link } from "./Link";
@@ -11,7 +11,7 @@ export interface Portfolio {
 
 export const ALL = "All";
 
-export const getImportantSkills: ((portfolio: Portfolio) => TagSpec) = _.flow([
+export const getImportantSkills: (portfolio: Portfolio) => TagSpec = _.flow([
   // we want ALL tag to be applied to each item
   initial => _.flatMap(initial.items, it => it.tags || []),
   // create a {tag: count} map
@@ -30,7 +30,7 @@ const formatSimpleTag = (tag: string) => tag;
 
 export const extractTags = (
   text: string,
-  formatTag: ((tag: string) => string) = formatSimpleTag
+  formatTag: (tag: string) => string = formatSimpleTag
 ): [string, string[]] => {
   const output: string[] = [];
   const tags: string[] = [];

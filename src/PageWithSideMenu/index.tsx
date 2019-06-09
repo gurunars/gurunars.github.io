@@ -1,25 +1,26 @@
-import * as React from "react";
+import React from "react";
 
 import Box from "../Box";
 import { FullSize } from "../Layouts";
 import responsive from "../Responsive";
 
 import ActionIcon from "../ActionIcon";
-import close from "./icons/close.svg";
-import menu from "./icons/menu.svg";
+
+import { ReactComponent as Close } from "./icons/close.svg";
+import { ReactComponent as Menu } from "./icons/menu.svg";
 
 interface Props {
   menuTitle: string;
   contentTitle: string;
-  menu: React.ReactElement<any>;
-  children: React.ReactElement<any>;
+  menu: JSX.Element;
+  children: JSX.Element;
 }
 
 export interface MenuVisibility {
   menuIsVisible: Box<boolean>;
 }
 
-const Desktop = (props: Props): React.ReactElement<any> => (
+const Desktop = (props: Props): JSX.Element => (
   <FullSize style={{ flexDirection: "row" }}>
     <div
       style={{
@@ -41,7 +42,7 @@ const Desktop = (props: Props): React.ReactElement<any> => (
   </FullSize>
 );
 
-const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
+const Mobile = (props: Props & MenuVisibility): JSX.Element => (
   <FullSize style={{ overflow: "hidden" }}>
     <FullSize style={{ overflowY: "auto", display: "initial" }}>
       {props.menuIsVisible.get() ? props.menu : props.children}
@@ -49,10 +50,9 @@ const Mobile = (props: Props & MenuVisibility): React.ReactElement<any> => (
 
     <ActionIcon
       onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
-      icon={props.menuIsVisible.get() ? close : menu}
+      icon={props.menuIsVisible.get() ? <Close /> : <Menu />}
     />
   </FullSize>
-
 );
 
 const PageWithSideMenu = responsive({

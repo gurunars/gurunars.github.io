@@ -18,8 +18,9 @@ class Item:
         "fullTimeJob",
         "freelance",
         "openSource",
-        "certificates",
-        "contactCard"
+        "certificate",
+        "contactCard",
+        "publication"
     ])
     description = String(required=False)
     links = List(Slug(), required=False)

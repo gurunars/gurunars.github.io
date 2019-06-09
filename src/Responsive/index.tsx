@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { SizeContext } from "../SizeAware";
 
@@ -11,9 +11,9 @@ const isMobile = () =>
   navigator.userAgent.match(/BlackBerry/i) ||
   navigator.userAgent.match(/Windows Phone/i);
 
-type ElementSupplier<Props> = (props?: Props) => React.ReactNode;
+type ElementSupplier<Props> = (props: Props) => JSX.Element;
 
-const responsive = <Props extends {}>({
+const responsive = <Props extends any>({
   desktopView,
   mobileView,
   tabletView

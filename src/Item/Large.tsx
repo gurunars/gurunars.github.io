@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { FullUrl, Url } from "../Link";
 import { durationToRangeString, Item } from "./interface";
@@ -35,6 +35,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
     >
       {item.logo && (
         <img
+          alt="logo"
           src={item.logo}
           style={{
             width: 95,
@@ -70,30 +71,27 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         paddingBottom: 10
       }}
     >
-      {item.description &&
-        item.description.length > 0 && (
-          <Section title="Description" data={item.description} />
-        )}
-      {item.achievements &&
-        item.achievements.length > 0 && (
-          <Section
-            title="Achievements"
-            data={item.achievements.map(value => (
-              <li key={value}>{value}</li>
-            ))}
-          />
-        )}
-      {item.references &&
-        item.references.length > 0 && (
-          <Section
-            title="References"
-            data={item.references.map(reference => (
-              <li key={reference.url}>
-                <Url link={reference} />
-              </li>
-            ))}
-          />
-        )}
+      {item.description && item.description.length > 0 && (
+        <Section title="Description" data={item.description} />
+      )}
+      {item.achievements && item.achievements.length > 0 && (
+        <Section
+          title="Achievements"
+          data={item.achievements.map(value => (
+            <li key={value}>{value}</li>
+          ))}
+        />
+      )}
+      {item.references && item.references.length > 0 && (
+        <Section
+          title="References"
+          data={item.references.map(reference => (
+            <li key={reference.url}>
+              <Url link={reference} />
+            </li>
+          ))}
+        />
+      )}
       <div style={{ marginTop: 10 }}>
         {item.tags.map(tag => (
           <Tag key={tag}>{tag}</Tag>

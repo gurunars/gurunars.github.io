@@ -35,7 +35,7 @@ items:
       - Introduction to Graph Theory
       - Number Theory and Cryptography
       - Delivery Problem
-    type: certificates
+    type: certificate
     startDate: "2019-02-10"
     endDate: "2019-06-08"
     location: coursera
@@ -52,7 +52,7 @@ items:
       - Graph Search, Shortest Paths and Data Structures
       - Greedy Algorithms, Minimum Spanning Trees and Dynamic Programming
       - Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
-    type: certificates
+    type: certificate
     startDate: "2018-09-10"
     endDate: "2019-01-17"
     location: coursera
@@ -327,7 +327,7 @@ items:
     description: >
       I was a shadow writer for several chapters and a technical editor for an introductory book about how to program in
       #{Python}. The hiring process was conducted through Upwork.
-    type: freelance
+    type: publication
     location: self
     achievements:
       - Wrote chapters about built-in types, functions, classes, and control structures (if/else/while/for)
@@ -507,13 +507,11 @@ links:
   - alias: gymlog
     type: play
     name: App in Play store
-    url:
-      "https://play.google.com/store/apps/details?id=com.gurunars.gymlog.production&hl=en"
+    url: "https://play.google.com/store/apps/details?id=com.gurunars.gymlog.production&hl=en"
   - alias: wodconnect
     type: play
     name: App in Play store
-    url:
-      "https://play.google.com/store/apps/details?id=com.kiskolabs.wodconnect.production&hl=en"
+    url: "https://play.google.com/store/apps/details?id=com.kiskolabs.wodconnect.production&hl=en"
   - alias: key
     type: play
     name: App in Play store
@@ -568,8 +566,7 @@ links:
   - name: Stanford Algorithms Certificate
     type: coursera
     alias: stanford-algorithms-certificate
-    url:
-      "https://www.coursera.org/account/accomplishments/specialization/UHXRM7J32ACG"
+    url: "https://www.coursera.org/account/accomplishments/specialization/UHXRM7J32ACG"
   - name: Coursera
     alias: coursera
     url: "https://www.coursera.org"
@@ -582,6 +579,5 @@ links:
     type: github
   - name: UC San Diego Discrete Mathematics for CS Certificate
     alias: uc-san-diego-maths-certificate
-    url:
-      https://www.coursera.org/account/accomplishments/specialization/P9AKWCGSWC72
+    url: https://www.coursera.org/account/accomplishments/specialization/P9AKWCGSWC72
     type: coursera

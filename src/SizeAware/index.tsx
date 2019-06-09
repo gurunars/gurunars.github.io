@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 interface Props {
   children: React.ReactElement<any>;
@@ -10,18 +10,19 @@ interface State {
 }
 
 const getSize = () => ({
-  width: window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth,
-  height: window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight
+  width:
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth,
+  height:
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight
 });
 
 export const SizeContext = React.createContext(getSize());
 
 export default class SizeAware extends React.Component<Props, State> {
-
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -31,17 +32,21 @@ export default class SizeAware extends React.Component<Props, State> {
   }
 
   public render() {
-    return <SizeContext.Provider value={{
-      width: this.state.width,
-      height: this.state.height
-    }}>
-      {this.props.children}
-    </SizeContext.Provider>;
+    return (
+      <SizeContext.Provider
+        value={{
+          width: this.state.width,
+          height: this.state.height
+        }}
+      >
+        {this.props.children}
+      </SizeContext.Provider>
+    );
   }
 
   public updateDimensions = () => {
     this.setState(getSize());
-  }
+  };
 
   public componentWillMount() {
     this.updateDimensions();
@@ -54,5 +59,4 @@ export default class SizeAware extends React.Component<Props, State> {
   public componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
   }
-
 }

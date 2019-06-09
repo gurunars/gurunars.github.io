@@ -1,17 +1,18 @@
-import amazon from "./amazon.svg";
-import coursera from "./coursera.svg";
-import cv from "./cv.svg";
-import docs from "./docs.svg";
-import email from "./email.svg";
-import github from "./github.svg";
-import link from "./link.svg";
-import linkedin from "./linkedin.svg";
-import pdf from "./pdf.svg";
-import phone from "./phone.svg";
-import play from "./play.svg";
-import print from "./print.svg";
-import skype from "./skype.svg";
-import stackoverflow from "./stackoverflow.svg";
+
+import { ReactComponent as amazon } from "./amazon.svg";
+import { ReactComponent as coursera } from "./coursera.svg";
+import { ReactComponent as cv } from "./cv.svg";
+import { ReactComponent as docs } from "./docs.svg";
+import { ReactComponent as email } from "./email.svg";
+import { ReactComponent as github } from "./github.svg";
+import { ReactComponent as link } from "./link.svg";
+import { ReactComponent as linkedin } from "./linkedin.svg";
+import { ReactComponent as pdf } from "./pdf.svg";
+import { ReactComponent as phone } from "./phone.svg";
+import { ReactComponent as play } from "./play.svg";
+import { ReactComponent as print } from "./print.svg";
+import { ReactComponent as skype } from "./skype.svg";
+import { ReactComponent as stackoverflow } from "./stackoverflow.svg";
 
 const icons = {
   amazon,
@@ -30,6 +31,7 @@ const icons = {
   stackoverflow
 };
 
-const getIconForType = (type?: string) => icons[type || "link"] || link;
+const getIconForType = (type?: string) =>
+  icons[type || "link"] || link;
 
 export default getIconForType;

@@ -13,9 +13,9 @@ const getIndex = (size: number, index: number): number | null => {
 };
 
 export const getCursorItems = (size: number, index: number): Cursor => {
-  return ({
+  return {
     current: getIndex(size, index),
     next: getIndex(size, index + 1),
     previous: getIndex(size, index - 1)
-  });
+  };
 };

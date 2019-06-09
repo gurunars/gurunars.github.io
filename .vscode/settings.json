@@ -9,5 +9,6 @@
   },
   "editor.tabSize": 2,
   "tslint.autoFixOnSave": true,
-  "typescript.tsdk": "frontend/node_modules/typescript/lib"
+  "typescript.tsdk": "frontend/node_modules/typescript/lib",
+  "python.formatting.provider": "black"
 }

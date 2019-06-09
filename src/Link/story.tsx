@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import * as React from "react";
+import React from "react";
 import { host } from "storybook-host";
 
 import { CircleUrl, FullUrl, LinkPreview, MappingSpec, Url } from ".";

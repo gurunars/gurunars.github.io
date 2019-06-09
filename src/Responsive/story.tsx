@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import responsive from ".";
 import multiTypeStory from "./multitype";

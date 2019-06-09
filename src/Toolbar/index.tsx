@@ -1,6 +1,6 @@
 import { Set } from "immutable";
-import * as _ from "lodash";
-import * as React from "react";
+import _ from "lodash";
+import React from "react";
 
 import Box from "../Box";
 import Tag from "../Item/Tag";

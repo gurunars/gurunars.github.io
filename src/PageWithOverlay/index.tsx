@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import responsive from "../Responsive";
 
@@ -32,8 +32,8 @@ const OverlayDecorator = (props: { children: React.ReactNode }) => (
 );
 
 interface Props {
-  children: React.ReactNode;
-  foregroundContent?: React.ReactNode | null;
+  children: JSX.Element;
+  foregroundContent?: JSX.Element | null;
 }
 
 const Desktop = (props: Props) =>

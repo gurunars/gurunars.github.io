@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import * as React from "react";
+import React from "react";
 
 import Carousel from ".";
 import multiTypeStory from "../Responsive/multitype";
@@ -29,6 +29,6 @@ multiTypeStory("Carousel", () => (
     close={action("CLOSE")}
     goTo={action("GO TO")}
   >
-    {(pos: number) => (<div>{items[pos].title}</div>)}
+    {(pos: number) => <div>{items[pos].title}</div>}
   </Carousel>
 ));

@@ -1,5 +1,4 @@
-import * as React from "react";
-import ReactSVG from "react-svg";
+import React from "react";
 
 import KeyBoardListener from "../KeyBoardListener";
 import { FullSize } from "../Layouts";
@@ -9,9 +8,9 @@ import CursorIcon from "./CursorIcon";
 import { Cursor, getCursorItems } from "./Cursor";
 import Props from "./Props";
 
-import close from "./icons/close.svg";
-import next from "./icons/next.svg";
-import prev from "./icons/prev.svg";
+import { ReactComponent as Close } from "./icons/close.svg";
+import { ReactComponent as Next } from "./icons/next.svg";
+import { ReactComponent as Prev } from "./icons/prev.svg";
 
 const Carousel = (props: Props): React.ReactElement<any> => {
   const cursor: Cursor = getCursorItems(props.size, props.selectedPostion);
@@ -42,7 +41,7 @@ const Carousel = (props: Props): React.ReactElement<any> => {
       <div style={controlsStyle}>
         <CursorIcon
           keyboardButton="ArrowLeft"
-          icon={<ReactSVG path={prev} />}
+          icon={<Prev />}
           targetPosition={cursor.previous}
           goTo={props.goTo}
         />
@@ -53,7 +52,7 @@ const Carousel = (props: Props): React.ReactElement<any> => {
       <div style={controlsStyle}>
         <CursorIcon
           keyboardButton="ArrowRight"
-          icon={<ReactSVG path={next} />}
+          icon={<Next />}
           targetPosition={cursor.next}
           goTo={props.goTo}
         />
@@ -73,7 +72,7 @@ const Carousel = (props: Props): React.ReactElement<any> => {
             height: dims * 2
           }}
         >
-          <ReactSVG path={close} />
+          <Close />
         </div>
       </KeyBoardListener>
     </FullSize>

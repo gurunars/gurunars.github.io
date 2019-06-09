@@ -1,6 +1,5 @@
-import * as _ from "lodash";
-import * as React from "react";
-import ReactSVG from "react-svg";
+import _ from "lodash";
+import React from "react";
 
 import { merge } from "../utils";
 
@@ -64,32 +63,35 @@ export const Url = ({
 );
 
 /* tslint:disable */
-const CircleType = ({ type, color }: { type?: string; color: string }) => (
-  <span
-    style={{
-      display: "flex",
-      position: "relative",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      width: 30,
-      minWidth: 30,
-      height: 30,
-      minHeight: 30,
-      borderRadius: "50%",
-      border: "2px solid " + color
-    }}
-  >
-    <div
+const CircleType = ({ type, color }: { type?: string; color: string }) => {
+  const SvgIcon = getIconForType(type);
+  return (
+    <span
       style={{
-        width: "70%",
-        height: "70%"
+        display: "flex",
+        position: "relative",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        width: 30,
+        minWidth: 30,
+        height: 30,
+        minHeight: 30,
+        borderRadius: "50%",
+        border: "2px solid " + color
       }}
     >
-      <ReactSVG path={getIconForType(type)} style={{ fill: color }} />
-    </div>
-  </span>
-);
+      <div
+        style={{
+          width: "70%",
+          height: "70%"
+        }}
+      >
+        <SvgIcon style={{ fill: color }} />
+      </div>
+    </span>
+  );
+};
 
 export const CircleUrl = ({
   link,

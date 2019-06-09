@@ -15,7 +15,7 @@ dicts = []
 
 for icon in sorted(icons):
     imports.append(
-        'import {name} from "./{name}.svg"'.format(name=icon)
+        'import {{ ReactComponent as {name} }} from "./{name}.svg"'.format(name=icon)
     )
     dicts.append(icon)
 

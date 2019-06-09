@@ -1,24 +1,24 @@
 import { storiesOf } from "@storybook/react";
-import * as React from "react";
+import React from "react";
 import { host } from "storybook-host";
 
 import PageWithOverlay from ".";
 
 storiesOf("PageWithOverlay", module)
-  .addDecorator(host({
-    align: "center bottom",
-    height: 600,
-    width: 800,
-  }))
+  .addDecorator(
+    host({
+      align: "center bottom",
+      height: 600,
+      width: 800
+    })
+  )
   .add("With overlay", () => (
-    <PageWithOverlay
-      foregroundContent={<p>Foreground content</p>}
-    > 
+    <PageWithOverlay foregroundContent={<p>Foreground content</p>}>
       <p>Background content</p>
     </PageWithOverlay>
   ))
   .add("Without overlay", () => (
-    <PageWithOverlay> 
+    <PageWithOverlay>
       <p>Background content</p>
     </PageWithOverlay>
-  )); 
+  ));

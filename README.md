@@ -11,8 +11,6 @@
     yarn install
     yarn start
 
-[React libraries](https://github.com/brillout/awesome-react-components)
-
 ### Create new component
 
     yarn plop MyComponentName
@@ -24,6 +22,3 @@
 ### TODO
 
 1. Side bar contains all the search controls
-1. PDF generator
-1. "Story" field
-1. "Publications" type

@@ -1,5 +1,5 @@
-import * as _ from "lodash";
-import * as React from "react";
+import _ from "lodash";
+import React from "react";
 import { getId, Item, Large, Small } from "../Item";
 import BaseToolbar, {
   GroupSpecSelection,
@@ -40,12 +40,16 @@ export const typeToSpecMapping: TypeToSpecMapping = {
     humanReadableName: "Full Time Job",
     color: "Lavender"
   },
+  publication: {
+    humanReadableName: "Publication",
+    color: "Gainsboro"
+  },
   education: {
     humanReadableName: "Education",
     color: "Thistle"
   },
-  certificates: {
-    humanReadableName: "Certificates",
+  certificate: {
+    humanReadableName: "Certificate",
     color: "Khaki"
   }
 };
@@ -139,7 +143,7 @@ const ToolbarWrapper = responsive({
 
 const Main = (
   props: {
-    children?: React.ReactElement<any>;
+    children?: JSX.Element;
     portfolio: Portfolio;
   } & IdHodler &
     SpecSelection &

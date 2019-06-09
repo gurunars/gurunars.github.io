@@ -1,6 +1,5 @@
-import * as React from "react";
-import { compose, withProps } from "recompose";
-import { withBoxState } from "../Box";
+import React from "react";
+import { useBoxState } from "../Box";
 
 import { Portfolio } from "../model";
 import multiTypeStory from "../Responsive/multitype";
@@ -73,7 +72,9 @@ const items = [
   genItem("Nine", "Foo Bar", "certificates"),
   genItem("Ten", "Foo Bar", "certificates"),
   genItem("Eleven", "Foo Bar", "contactCard"),
-  genItem("Twelve", "Foo Bar", "contactCard")
+  genItem("Twelve", "Foo Bar", "contactCard"),
+  genItem("Thirteen", "Foo Bar", "publication"),
+  genItem("Fourteen", "Foo Bar", "publication")
 ];
 
 export const PORTFOLIO: Portfolio = {
@@ -81,20 +82,25 @@ export const PORTFOLIO: Portfolio = {
   links: []
 };
 
-const StateMain = compose(
-  withProps({ portfolio: PORTFOLIO }),
-  withBoxState("selectedId", null),
-  withBoxState("selectedSpecs", [
-    "freelance",
-    "openSource",
-    "fullTimeJob",
-    "education",
-    "certificates",
-    "contactCard"
-  ]),
-  withBoxState("selectedGroup", "startYear"),
-  withBoxState("menuIsVisible", true),
-  withBoxState("selectedTag", "one")
-)(Main);
+function StateMain() {
+  return (
+    <Main
+      portfolio={PORTFOLIO}
+      selectedId={useBoxState(null)}
+      selectedSpecs={useBoxState([
+        "freelance",
+        "openSource",
+        "fullTimeJob",
+        "publication",
+        "education",
+        "certificates",
+        "contactCard"
+      ])}
+      selectedGroup={useBoxState("startYear")}
+      menuIsVisible={useBoxState(true)}
+      selectedTag={useBoxState("one")}
+    />
+  );
+}
 
 multiTypeStory("Site", () => <StateMain />);

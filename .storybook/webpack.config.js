@@ -1,19 +1,13 @@
 const path = require("path");
 
 module.exports = ({ config }) => {
-  config.module.rules = config.module.rules.filter(
-    it => String(it.test).indexOf("svg") == -1
-  );
-
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     include: path.resolve(__dirname, "../src"),
-    loader: require.resolve("ts-loader")
-  });
-
-  config.module.rules.push({
-    test: /\.svg$/,
-    loader: "file-loader"
+    loader: require.resolve("babel-loader"),
+    options: {
+      presets: [["react-app", { flow: false, typescript: true }]]
+    }
   });
 
   config.resolve.extensions.push(".ts", ".tsx");
