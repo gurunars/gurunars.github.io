@@ -2,8 +2,8 @@
 
 ## development
 
-    Just push to develop branch and Travis.ci shall automatically deploy
-    ths site to gurunars.com
+Just push to develop branch and Travis.ci shall automatically deploy
+ths site to gurunars.com
 
 ## frontend dev
 
