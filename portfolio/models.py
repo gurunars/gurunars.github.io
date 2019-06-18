@@ -12,19 +12,24 @@ class Person(models.Model):
     user = ForeignKey(User)
 
 
-class Type(models.Model):
+class WithOwner(models.Model):
+    owner = ForeignKey(Person)
+
+    class Meta:
+        abstract = True
+
+
+class Type(WithOwner):
     """
     ["email", "skype", "tel", "amazon", "github", "play", "linkedin", "docs", "cv"]
     """
-    owner = ForeignKey(Person)
     title = models.CharField(max_length=70)
     icon = models.ImageField()
 
 
-class Link(models.Model):
-    owner = ForeignKey(Person)
+class Link(WithOwner):
+    title = models.CharField(max_length=140)
     type = ForeignKey(Type)
-    title = models.CharField(max_length=100)
     slug = models.SlugField()
     url = models.URLField()
 
@@ -32,19 +37,21 @@ class Link(models.Model):
 """
 
 class Item:
-    title = String()
     achievements = List(String())
-    location = String()
-    references = List(Slug(), required=False)
-    type = Choice(["education", "fullTimeJob", "freelance", "openSource"])
-    tags = List(String(), required=False)
-    description = String(required=False)
-    links = List(Slug(), required=False)
-    startDate = Timestamp(Timestamp.Date, required=False)
-    endDate = Timestamp(Timestamp.Date, required=False)
-    date = Timestamp(Timestamp.Date, required=False)
 """
 
 
-class Item(models.Model):
-    owner = ForeignKey(Person)
+class ItemType(WithOwner):
+    title = models.CharField(max_length=70)
+    color = models.CharField(max_length=10)  # TODO: color field
+
+
+class Item(WithOwner):
+    title = models.CharField(max_length=140)
+    type = ForeignKey(ItemType)
+    startDate = models.DateField()
+    endDate = models.DateField(blank=True)
+
+    location = ForeignKey(Link)
+    artifacts = models.ManyToManyField(Link)
+    references = models.ManyToManyField(Link)
