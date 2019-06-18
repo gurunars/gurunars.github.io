@@ -11,10 +11,8 @@ class PortfolioConfig(AppConfig):
     name = __package__
 
 
-def create_testuser(sender, **kwargs):
-    from django.contrib.auth import models as auth_models
-
-    User = auth_models.User
+def create_testuser(**kwargs):
+    from django.contrib.auth.models import User
     manager = User.objects
     try:
         manager.get(username=USERNAME)
