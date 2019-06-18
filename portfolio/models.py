@@ -19,7 +19,7 @@ class WithOwner(models.Model):
         abstract = True
 
 
-class Type(WithOwner):
+class LinkType(WithOwner):
     """
     ["email", "skype", "tel", "amazon", "github", "play", "linkedin", "docs", "cv"]
     """
@@ -29,7 +29,7 @@ class Type(WithOwner):
 
 class Link(WithOwner):
     title = models.CharField(max_length=140)
-    type = ForeignKey(Type)
+    type = ForeignKey(LinkType)
     slug = models.SlugField()
     url = models.URLField()
 
