@@ -45,9 +45,9 @@ class Item(WithOwner):
     startDate = models.DateField()
     endDate = models.DateField(blank=True)
 
-    location = ForeignKey(Link)
-    artifacts = models.ManyToManyField(Link)
-    references = models.ManyToManyField(Link)
+    location = ForeignKey(Link, related_name="location_item")
+    artifacts = models.ManyToManyField(Link, related_name="artifact_item")
+    references = models.ManyToManyField(Link, related_name="reference_item")
 
 
 class Achievement(WithOwner):
