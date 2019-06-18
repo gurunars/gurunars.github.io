@@ -2,22 +2,28 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class ForeignKey(models.ForeignKey):
+
+    def __init__(self, to, on_delete=models.CASCADE, *args, **kwargs):
+        super(ForeignKey, self).__init__(to, on_delete, *args, **kwargs)
+
+
 class Person(models.Model):
-    user = models.ForeignKey(User)
+    user = ForeignKey(User)
 
 
 class Type(models.Model):
     """
     ["email", "skype", "tel", "amazon", "github", "play", "linkedin", "docs", "cv"]
     """
-    owner = models.ForeignKey(Person)
+    owner = ForeignKey(Person)
     title = models.CharField(max_length=70)
     icon = models.ImageField()
 
 
 class Link(models.Model):
-    owner = models.ForeignKey(Person)
-    type = models.ForeignKey(Type)
+    owner = ForeignKey(Person)
+    type = ForeignKey(Type)
     title = models.CharField(max_length=100)
     slug = models.SlugField()
     url = models.URLField()
@@ -41,4 +47,4 @@ class Item:
 
 
 class Item(models.Model):
-    owner = models.ForeignKey(Person)
+    owner = ForeignKey(Person)
