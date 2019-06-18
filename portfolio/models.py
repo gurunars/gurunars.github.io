@@ -2,14 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Person(models.Model):
+    user = models.ForeignKey(User)
+
+
 class Type(models.Model):
-    owner = models.ForeignKey(User)
+    """
+    ["email", "skype", "tel", "amazon", "github", "play", "linkedin", "docs", "cv"]
+    """
+    owner = models.ForeignKey(Person)
     title = models.CharField(max_length=70)
     icon = models.ImageField()
 
 
 class Link(models.Model):
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(Person)
     type = models.ForeignKey(Type)
     title = models.CharField(max_length=100)
     slug = models.SlugField()
@@ -17,16 +24,6 @@ class Link(models.Model):
 
 
 """
-class Meta:
-    self = Slug()
-    name = Name()
-    domainName = String(regexp=r"^([a-z0-0]+\.)+[a-z]{2,7}$")
-    languages = List(String(regexp=r"^[A-Z]{1}[a-z]+$"))
-    birthday = Timestamp(Timestamp.Date)
-    specialization = List(String())
-    avatar = String()
-    media = List(Slug())
-
 
 class Item:
     title = String()
@@ -40,33 +37,8 @@ class Item:
     startDate = Timestamp(Timestamp.Date, required=False)
     endDate = Timestamp(Timestamp.Date, required=False)
     date = Timestamp(Timestamp.Date, required=False)
-
-
-class Reference:
-    name = String(regexp=r"^[\w\+@\.+-]+( [\w@\.+-]+)*$")
-    alias = Slug()
-    url = String()
-    type = Choice(
-        ["email", "skype", "tel", "amazon", "github", "play", "linkedin",
-         "docs", "cv"],
-        required=False)
-
-
-class Portfolio:
-    meta = Dict(Meta)
-    items = List(Dict(Item))
-    links = List(Dict(Reference))
 """
 
 
-class Person(models.Model):
-    pass
-
-
 class Item(models.Model):
-    pass
-
-
-class Portfolio(models.Model):
-    owner = models.OneToOneField(Person)
-    items = models.ManyToManyField(Item)
+    owner = models.ForeignKey(Person)
