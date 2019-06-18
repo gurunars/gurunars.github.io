@@ -34,13 +34,6 @@ class Link(WithOwner):
     url = models.URLField()
 
 
-"""
-
-class Item:
-    achievements = List(String())
-"""
-
-
 class ItemType(WithOwner):
     title = models.CharField(max_length=70)
     color = models.CharField(max_length=10)  # TODO: color field
@@ -55,3 +48,8 @@ class Item(WithOwner):
     location = ForeignKey(Link)
     artifacts = models.ManyToManyField(Link)
     references = models.ManyToManyField(Link)
+
+
+class Achievement(WithOwner):
+    content = models.TextField()
+    item = ForeignKey(Item)
