@@ -69,8 +69,8 @@ const items = [
   genItem("Six", "Foo Bar", "fullTimeJob"),
   genItem("Seven", "Foo Bar", "education"),
   genItem("Eight", "Foo Bar", "education"),
-  genItem("Nine", "Foo Bar", "certificates"),
-  genItem("Ten", "Foo Bar", "certificates"),
+  genItem("Nine", "Foo Bar", "certificate"),
+  genItem("Ten", "Foo Bar", "certificate"),
   genItem("Eleven", "Foo Bar", "contactCard"),
   genItem("Twelve", "Foo Bar", "contactCard"),
   genItem("Thirteen", "Foo Bar", "publication"),
@@ -93,7 +93,7 @@ function StateMain() {
         "fullTimeJob",
         "publication",
         "education",
-        "certificates",
+        "certificate",
         "contactCard"
       ])}
       selectedGroup={useBoxState("startYear")}
