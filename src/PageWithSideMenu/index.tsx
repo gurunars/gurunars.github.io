@@ -42,26 +42,23 @@ const Desktop = (props: Props): JSX.Element => (
   </FullSize>
 );
 
+const KeyTransition = ({ from, to }: { from: number; to: number }) => ({
+  type: "keyframes",
+  values: [from, Math.abs(from - to) / 2, to],
+  times: [0, 0.5, 1],
+  duration: 400
+});
+
 const Rotatable = posed.div({
   open: {
-    rotate: 360 + 45,
+    rotate: 360,
     scale: 1,
-    transition: ({ from, to }: { from: number; to: number }) => ({
-      type: "keyframes",
-      values: [from, Math.abs(from - to) / 2, to],
-      times: [0, 0.5, 1],
-      duration: 400
-    })
+    transition: KeyTransition
   },
   closed: {
     rotate: 0,
     scale: 1,
-    transition: ({ from, to }: { from: number; to: number }) => ({
-      type: "keyframes",
-      values: [from, Math.abs(from - to) / 2, to],
-      times: [0, 0.5, 1],
-      duration: 400
-    })
+    transition: KeyTransition
   }
 });
 
