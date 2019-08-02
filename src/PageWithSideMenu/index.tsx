@@ -1,5 +1,4 @@
 import React from "react";
-import posed from "react-pose";
 
 import Box from "../Box";
 import { FullSize } from "../Layouts";
@@ -43,40 +42,61 @@ const Desktop = (props: Props): JSX.Element => (
   </FullSize>
 );
 
-const KeyTransition = ({ from, to }: { from: number; to: number }) => ({
-  type: "keyframes",
-  values: [from, Math.abs(from - to) / 2, to],
-  times: [0, 0.5, 1],
-  duration: 500
-});
+type TProps = Props & MenuVisibility;
 
-const Rotatable = posed.div({
-  open: {
-    rotate: 360,
-    scale: 1,
-    transition: KeyTransition
-  },
-  closed: {
-    rotate: 0,
-    scale: 1,
-    transition: KeyTransition
-  }
-});
+const DURATION = 500;
+const FPS = 60;
+const CHUNKS = Math.ceil((DURATION / 1000) * FPS);
+const DELAY = DURATION / CHUNKS;
+const STEP = 1 / CHUNKS;
 
-class MobileClass extends React.Component<Props & MenuVisibility> {
-  state: {
-    actualIsOpen: boolean;
-  };
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-  constructor(props: Props & MenuVisibility) {
+interface State {
+  value: number;
+}
+
+class MobileClass extends React.Component<TProps, State> {
+  constructor(props: TProps) {
     super(props);
     this.state = {
-      actualIsOpen: props.menuIsVisible.get()
+      value: props.menuIsVisible.get() ? 1 : 0
     };
   }
 
-  get desiredIsOpen() {
-    return this.props.menuIsVisible.get();
+  componentDidUpdate(prevProps: TProps) {
+    const wasVisible = prevProps.menuIsVisible.get();
+    const isVisible = this.props.menuIsVisible.get();
+
+    if (wasVisible && !isVisible) {
+      this.close();
+    } else if (!wasVisible && isVisible) {
+      this.open();
+    } else {
+      // Do nothing
+    }
+  }
+
+  private get icon() {
+    return this.state.value > 0.5 ? <Close /> : <Menu />;
+  }
+
+  private get shouldShowMenu() {
+    return this.state.value > 0;
+  }
+
+  async close() {
+    for (var i = this.state.value; (i -= STEP); i >= 0) {
+      this.setState({ value: Math.max(0, i) });
+      await sleep(DELAY);
+    }
+  }
+
+  async open() {
+    for (var i = this.state.value; (i += STEP); i >= 1) {
+      this.setState({ value: Math.min(1, i) });
+      await sleep(DELAY);
+    }
   }
 
   render(): JSX.Element {
@@ -84,32 +104,38 @@ class MobileClass extends React.Component<Props & MenuVisibility> {
 
     return (
       <FullSize style={{ overflow: "hidden" }}>
-        <FullSize style={{ overflowY: "auto", display: "initial" }}>
-          {this.state.actualIsOpen ? props.menu : props.children}
-        </FullSize>
+        <div
+          style={{
+            overflowY: "auto",
+            position: "absolute",
+            width: "100%",
+            height: "100%"
+          }}
+        >
+          {props.children}
+        </div>
+        {this.shouldShowMenu && (
+          <div
+            style={{
+              overflowY: "auto",
+              position: "absolute",
+              width: "100%",
+              height: "100%"
+            }}
+          >
+            {props.menu}
+          </div>
+        )}
 
-        <Rotatable
+        <ActionIcon
           style={{
             position: "absolute",
             bottom: 20,
             right: 20
           }}
-          onClick={() => props.menuIsVisible.set(!this.desiredIsOpen)}
-          pose={this.desiredIsOpen ? "open" : "closed"}
-          onValueChange={{
-            scale: it => {
-              const isInvisible = it.toFixed(2) == 0.0;
-              if (isInvisible) {
-                this.setState({ actualIsOpen: this.desiredIsOpen });
-              }
-            }
-          }}
-        >
-          <ActionIcon
-            onClick={() => {}}
-            icon={this.state.actualIsOpen ? <Close /> : <Menu />}
-          />
-        </Rotatable>
+          onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
+          icon={this.icon}
+        />
       </FullSize>
     );
   }
