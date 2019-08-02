@@ -132,6 +132,7 @@ class MobileClass extends React.Component<TProps, State> {
         {this.shouldShowMenu && (
           <div
             style={{
+              opacity: this.state.value,
               overflowY: "auto",
               position: "absolute",
               width: "100%",
