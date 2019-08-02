@@ -45,15 +45,21 @@ const Desktop = (props: Props): JSX.Element => (
 const Rotatable = posed.div({
   open: {
     rotate: 360 + 45,
-    transition: {
+    transition: ({ from, to }: { from: number; to: number }) => ({
+      type: "keyframes",
+      values: [from, Math.abs(from - to) / 2, to],
+      times: [0, 0.5, 1],
       duration: 400
-    }
+    })
   },
   closed: {
     rotate: 0,
-    transition: {
+    transition: ({ from, to }: { from: number; to: number }) => ({
+      type: "keyframes",
+      values: [from, Math.abs(from - to) / 2, to],
+      times: [0, 0.5, 1],
       duration: 400
-    }
+    })
   }
 });
 
