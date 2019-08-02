@@ -85,7 +85,7 @@ class MobileClass extends React.Component<Props & MenuVisibility> {
     return (
       <FullSize style={{ overflow: "hidden" }}>
         <FullSize style={{ overflowY: "auto", display: "initial" }}>
-          {this.desiredIsOpen ? props.menu : props.children}
+          {this.state.actualIsOpen ? props.menu : props.children}
         </FullSize>
 
         <Rotatable
