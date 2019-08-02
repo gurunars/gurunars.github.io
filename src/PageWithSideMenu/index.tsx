@@ -45,6 +45,7 @@ const Desktop = (props: Props): JSX.Element => (
 const Rotatable = posed.div({
   open: {
     rotate: 360 + 45,
+    scale: 1,
     transition: ({ from, to }: { from: number; to: number }) => ({
       type: "keyframes",
       values: [from, Math.abs(from - to) / 2, to],
@@ -54,6 +55,7 @@ const Rotatable = posed.div({
   },
   closed: {
     rotate: 0,
+    scale: 1,
     transition: ({ from, to }: { from: number; to: number }) => ({
       type: "keyframes",
       values: [from, Math.abs(from - to) / 2, to],
