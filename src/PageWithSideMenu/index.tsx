@@ -85,6 +85,14 @@ class MobileClass extends React.Component<TProps, State> {
     return this.state.value > 0;
   }
 
+  private get scale() {
+    return Math.abs(0.5 - this.state.value) * 2;
+  }
+
+  private get rotation() {
+    return this.state.value * 360;
+  }
+
   async animate(
     step: number,
     limit: number,
@@ -138,9 +146,10 @@ class MobileClass extends React.Component<TProps, State> {
           style={{
             position: "absolute",
             bottom: 20,
-            right: 20,
-            transform: "rotate(" + this.state.value * 360 + "deg)"
+            right: 20
           }}
+          rotation={this.rotation}
+          scale={this.scale}
           onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
           icon={this.icon}
         />

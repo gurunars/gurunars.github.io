@@ -15,5 +15,10 @@ storiesOf("ActionIcon", module)
     })
   )
   .add("basic", () => (
-    <ActionIcon icon={<Close />} onClick={action("onClick")} />
+    <ActionIcon
+      rotation={0}
+      scale={1}
+      icon={<Close />}
+      onClick={action("onClick")}
+    />
   ));
