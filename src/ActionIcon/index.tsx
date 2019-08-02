@@ -16,12 +16,9 @@ const ActionIcon = (props: {
         width: 40,
         borderRadius: "50%",
         backgroundColor: "#1B2E3C",
-        position: "absolute",
         display: "flex",
         alignItems: "center",
         zIndex: 30,
-        bottom: 20,
-        right: 20,
         cursor: "pointer",
         justifyContent: "center",
         color: "white"

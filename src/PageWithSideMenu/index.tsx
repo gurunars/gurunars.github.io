@@ -1,4 +1,5 @@
 import React from "react";
+import posed from "react-pose";
 
 import Box from "../Box";
 import { FullSize } from "../Layouts";
@@ -6,7 +7,6 @@ import responsive from "../Responsive";
 
 import ActionIcon from "../ActionIcon";
 
-import { ReactComponent as Close } from "./icons/close.svg";
 import { ReactComponent as Menu } from "./icons/menu.svg";
 
 interface Props {
@@ -42,16 +42,38 @@ const Desktop = (props: Props): JSX.Element => (
   </FullSize>
 );
 
+const Rotatable = posed.div({
+  open: {
+    rotate: 360 + 45,
+    transition: {
+      duration: 400
+    }
+  },
+  closed: {
+    rotate: 0,
+    transition: {
+      duration: 400
+    }
+  }
+});
+
 const Mobile = (props: Props & MenuVisibility): JSX.Element => (
   <FullSize style={{ overflow: "hidden" }}>
     <FullSize style={{ overflowY: "auto", display: "initial" }}>
       {props.menuIsVisible.get() ? props.menu : props.children}
     </FullSize>
 
-    <ActionIcon
+    <Rotatable
+      style={{
+        position: "absolute",
+        bottom: 20,
+        right: 20
+      }}
       onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
-      icon={props.menuIsVisible.get() ? <Close /> : <Menu />}
-    />
+      pose={props.menuIsVisible.get() ? "open" : "closed"}
+    >
+      <ActionIcon onClick={() => {}} icon={<Menu />} />
+    </Rotatable>
   </FullSize>
 );
 
