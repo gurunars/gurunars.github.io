@@ -44,8 +44,8 @@ const Desktop = (props: Props): JSX.Element => (
 
 type TProps = Props & MenuVisibility;
 
-const DURATION = 500;
-const FPS = 60;
+const DURATION = 250;
+const FPS = 240;
 const CHUNKS = Math.ceil((DURATION / 1000) * FPS);
 const DELAY = DURATION / CHUNKS;
 const STEP = 1 / CHUNKS;
@@ -86,17 +86,21 @@ class MobileClass extends React.Component<TProps, State> {
   }
 
   async close() {
-    for (var i = this.state.value; (i -= STEP); i >= 0) {
+    for (var i = this.state.value; i >= 0; i -= STEP) {
       this.setState({ value: Math.max(0, i) });
       await sleep(DELAY);
     }
+    await sleep(DELAY);
+    this.setState({ value: 0 });
   }
 
   async open() {
-    for (var i = this.state.value; (i += STEP); i >= 1) {
+    for (var i = this.state.value; i <= 1; i += STEP) {
       this.setState({ value: Math.min(1, i) });
       await sleep(DELAY);
     }
+    await sleep(DELAY);
+    this.setState({ value: 1 });
   }
 
   render(): JSX.Element {
@@ -131,7 +135,8 @@ class MobileClass extends React.Component<TProps, State> {
           style={{
             position: "absolute",
             bottom: 20,
-            right: 20
+            right: 20,
+            transform: "rotate(" + this.state.value * 360 + "deg)"
           }}
           onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
           icon={this.icon}
