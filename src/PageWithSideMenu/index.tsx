@@ -85,22 +85,25 @@ class MobileClass extends React.Component<TProps, State> {
     return this.state.value > 0;
   }
 
-  async close() {
-    for (var i = this.state.value; i >= 0; i -= STEP) {
-      this.setState({ value: Math.max(0, i) });
+  async animate(
+    step: number,
+    limit: number,
+    checkBoundary: (it: number, limit: number) => boolean
+  ) {
+    for (var i = this.state.value; checkBoundary(i, limit); i += step) {
+      this.setState({ value: i });
       await sleep(DELAY);
     }
     await sleep(DELAY);
-    this.setState({ value: 0 });
+    this.setState({ value: limit });
+  }
+
+  async close() {
+    await this.animate(-STEP, 0, (it: number, limit: number) => it >= limit);
   }
 
   async open() {
-    for (var i = this.state.value; i <= 1; i += STEP) {
-      this.setState({ value: Math.min(1, i) });
-      await sleep(DELAY);
-    }
-    await sleep(DELAY);
-    this.setState({ value: 1 });
+    await this.animate(STEP, 1, (it: number, limit: number) => it <= limit);
   }
 
   render(): JSX.Element {
