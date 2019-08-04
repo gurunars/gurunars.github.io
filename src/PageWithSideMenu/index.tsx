@@ -11,8 +11,6 @@ import { ReactComponent as Close } from "./icons/close.svg";
 import { ReactComponent as Menu } from "./icons/menu.svg";
 
 interface Props {
-  menuTitle: string;
-  contentTitle: string;
   menu: JSX.Element;
   children: JSX.Element;
 }
@@ -35,7 +33,8 @@ const Desktop = (props: Props): JSX.Element => (
       style={{
         position: "relative",
         height: "100%",
-        flex: "1 1 auto"
+        flex: "1 1 auto",
+        overflowY: "auto"
       }}
     >
       {props.children}
@@ -60,7 +59,8 @@ interface State {
 const BaseStyle: React.CSSProperties = {
   position: "absolute",
   width: "100%",
-  height: "100%"
+  height: "100%",
+  overflowY: "auto"
 };
 
 class MobileClass extends React.Component<TProps, State> {

@@ -7,8 +7,6 @@ import multiTypeStory from "../Responsive/multitype";
 function View() {
   return (
     <PlainPageWithSideMenu
-      menuTitle="menu"
-      contentTitle="content"
       menu={
         <p
           style={{

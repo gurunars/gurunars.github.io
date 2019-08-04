@@ -16,7 +16,6 @@ import { groupItems } from "../GroupedList/grouping";
 import PageWithOverlay from "../PageWithOverlay";
 
 import Box from "../Box";
-import { FullSize } from "../Layouts";
 import { getImportantSkills, Portfolio } from "../model";
 import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
 import responsive from "../Responsive";
@@ -129,10 +128,7 @@ const DesktopToolbarWrapper = ({
 const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => (
   <div
     style={{
-      backgroundColor: "white",
-      overflowY: "auto",
-      width: "100%",
-      height: "100%"
+      backgroundColor: "white"
     }}
   >
     {children}
@@ -193,30 +189,20 @@ const Main = (
             <Toolbar allTags={getImportantSkills(props.portfolio)} {...props} />
           </ToolbarWrapper>
         }
-        menuTitle="Menu"
-        contentTitle="Projects"
         {...props}
       >
-        <FullSize
-          style={{
-            flexDirection: "column",
-            flex: "1 1 auto",
-            overflowY: "auto"
-          }}
-        >
-          <GroupedList
-            items={grouped}
-            renderItem={({ item }: { item: Item }) => (
-              <Small
-                style={{
-                  backgroundColor: typeToSpecMapping[item.type].color
-                }}
-                item={item}
-                onClick={() => props.selectedId.set(getId(item))}
-              />
-            )}
-          />
-        </FullSize>
+        <GroupedList
+          items={grouped}
+          renderItem={({ item }: { item: Item }) => (
+            <Small
+              style={{
+                backgroundColor: typeToSpecMapping[item.type].color
+              }}
+              item={item}
+              onClick={() => props.selectedId.set(getId(item))}
+            />
+          )}
+        />
       </PageWithSideMenu>
     </PageWithOverlay>
   );
