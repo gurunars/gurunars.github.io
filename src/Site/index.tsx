@@ -117,6 +117,7 @@ const DesktopToolbarWrapper = ({
   <div
     style={{
       width: "270px",
+      overflowY: "auto",
       borderRight: "1px solid black",
       height: "100%"
     }}
@@ -129,6 +130,7 @@ const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => (
   <div
     style={{
       backgroundColor: "white",
+      overflowY: "auto",
       width: "100%",
       height: "100%"
     }}
