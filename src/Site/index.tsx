@@ -128,7 +128,8 @@ const DesktopToolbarWrapper = ({
 const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => (
   <div
     style={{
-      backgroundColor: "white"
+      backgroundColor: "white",
+      minHeight: "100%"
     }}
   >
     {children}
