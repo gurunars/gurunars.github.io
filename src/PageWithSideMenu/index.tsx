@@ -1,4 +1,5 @@
 import React from "react";
+import { merge } from "immutable";
 
 import Box from "../Box";
 import { FullSize } from "../Layouts";
@@ -55,6 +56,12 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 interface State {
   value: number;
 }
+
+const BaseStyle: React.CSSProperties = {
+  position: "absolute",
+  width: "100%",
+  height: "100%"
+};
 
 class MobileClass extends React.Component<TProps, State> {
   constructor(props: TProps) {
@@ -119,23 +126,12 @@ class MobileClass extends React.Component<TProps, State> {
 
     return (
       <FullSize style={{ overflow: "hidden" }}>
-        <div
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%"
-          }}
-        >
-          {props.children}
-        </div>
+        <div style={BaseStyle}>{props.children}</div>
         {this.shouldShowMenu && (
           <div
-            style={{
-              opacity: this.state.value,
-              position: "absolute",
-              width: "100%",
-              height: "100%"
-            }}
+            style={merge(BaseStyle, {
+              opacity: this.state.value
+            })}
           >
             {props.menu}
           </div>
