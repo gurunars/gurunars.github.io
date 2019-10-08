@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Configure node
+        uses: actions/setup-node@master
+        with:
+          node-version: "10.x"
+
+      - name: Install
+        run: yarn install
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: |
+          yarn build
+          touch build/.nojekyll
+          echo gurunars.com > build/CNAME
+
+      - name: Configure GIT
+        run: |
+          git config --global user.email "gurunars@gmail.com"
+          git config --global user.name "Anton Berezin"
+
+      - name: Deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mv ./build /
+          cd /build
+
+          git init
+          git add .
+          git commit -am init
+          git push --force https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/gurunars/gurunars.github.io.git master
