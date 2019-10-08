@@ -15,7 +15,7 @@
   "scripts": {
     "update": "ncu -u && yarn install",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && echo gurunars.com > build/CNAME",
     "lint": "tslint --project tsconfig.json \"src/**/*.ts{,x}\"",
     "prettier": "tslint --project tsconfig.json --fix \"src/**/*.ts{,x}\"",
     "test": "CI=true react-scripts test",
