@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - develop
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -16,11 +14,19 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: "10.x"
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@master
+      - name: Install dependencies
+        run: yarn install
+      - name: Test
+        run: yarn test
+      - name: Build
+        run: yarn build
+      - name: Predeploy
+        run: |
+          touch build/.nojekyll
+          echo gurunars.com > build/CNAME
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2.5.0
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: master
-          FOLDER: build
-          BUILD_SCRIPT: yarn install && yarn test && yarn build
-          CNAME: gurunars.com
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
+          PUBLISH_BRANCH: master
+          PUBLISH_DIR: ./build

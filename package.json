@@ -15,7 +15,7 @@
   "scripts": {
     "update": "ncu -u && yarn install",
     "start": "react-scripts start",
-    "build": "react-scripts build && echo gurunars.com > build/CNAME",
+    "build": "react-scripts build",
     "lint": "tslint --project tsconfig.json \"src/**/*.ts{,x}\"",
     "prettier": "tslint --project tsconfig.json --fix \"src/**/*.ts{,x}\"",
     "test": "CI=true react-scripts test",
@@ -42,6 +42,7 @@
     "@types/storybook__addon-actions": "^3.4.3",
     "@types/storybook__react": "^4.0.2",
     "awesome-typescript-loader": "^5.2.1",
+    "gh-pages": "^2.1.1",
     "node": "^12.7.0",
     "npm-check-updates": "^3.1.20",
     "plop": "^2.4.0",
