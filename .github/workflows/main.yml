@@ -25,10 +25,7 @@ jobs:
         run: yarn test
 
       - name: Build
-        run: |
-          yarn build
-          touch build/.nojekyll
-          echo gurunars.com > build/CNAME
+        run: yarn build
 
       - name: Configure GIT
         run: |
