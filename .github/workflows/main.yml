@@ -39,8 +39,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mv ./build /
-          cd /build
+          mv ./build /tmp
+          cd /tmp/build
 
           git init
           git add .
