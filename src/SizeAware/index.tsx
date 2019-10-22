@@ -1,12 +1,9 @@
 import React from "react";
 
+import { useState, useEffect } from "react";
+
 interface Props {
   children: React.ReactElement<any>;
-}
-
-interface State {
-  width: number;
-  height: number;
 }
 
 const getSize = () => ({
@@ -22,41 +19,30 @@ const getSize = () => ({
 
 export const SizeContext = React.createContext(getSize());
 
-export default class SizeAware extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      width: 0,
-      height: 0
-    };
-  }
+const SizeAware = ({ children }: Props) => {
+  const [size, setSize] = useState(getSize());
 
-  public render() {
-    return (
-      <SizeContext.Provider
-        value={{
-          width: this.state.width,
-          height: this.state.height
-        }}
-      >
-        {this.props.children}
-      </SizeContext.Provider>
-    );
-  }
+  const updateDimensions = () =>
+    setSize(getSize());
 
-  public updateDimensions = () => {
-    this.setState(getSize());
-  };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+    }
+  }, []);
 
-  public componentWillMount() {
-    this.updateDimensions();
-  }
+  return (
+    <SizeContext.Provider
+      value={{
+        width: size.width,
+        height: size.height
+      }}
+    >
+      {children}
+    </SizeContext.Provider>
+  );
 
-  public componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions);
-  }
-
-  public componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
 }
+
+export default SizeAware
