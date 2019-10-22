@@ -13,7 +13,7 @@
     "react-router-dom": "^5.1.2"
   },
   "scripts": {
-    "update": "upgrade-interactive --latest",
+    "update": "yarn upgrade-interactive --latest",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "tslint --project tsconfig.json \"src/**/*.ts{,x}\"",
