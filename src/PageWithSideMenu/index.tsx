@@ -1,5 +1,6 @@
 import React from "react";
 import { merge } from "immutable";
+import { useState, useEffect } from "react";
 
 import Box from "../Box";
 import { FullSize } from "../Layouts";
@@ -52,10 +53,6 @@ const STEP = 1 / CHUNKS;
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-interface State {
-  value: number;
-}
-
 const BaseStyle: React.CSSProperties = {
   position: "absolute",
   width: "100%",
@@ -63,94 +60,74 @@ const BaseStyle: React.CSSProperties = {
   overflowY: "auto"
 };
 
-class MobileClass extends React.Component<TProps, State> {
-  constructor(props: TProps) {
-    super(props);
-    this.state = {
-      value: props.menuIsVisible.get() ? 1 : 0
-    };
-  }
 
-  componentDidUpdate(prevProps: TProps) {
-    const wasVisible = prevProps.menuIsVisible.get();
-    const isVisible = this.props.menuIsVisible.get();
+const MobileClass = (props: TProps) => {
+  const [value, setValue] = useState(props.menuIsVisible.get() ? 1 : 0);
+  const [wasVisible, setWasVisible] = useState(false);
 
-    if (wasVisible && !isVisible) {
-      this.close();
-    } else if (!wasVisible && isVisible) {
-      this.open();
-    } else {
-      // Do nothing
-    }
-  }
+  const icon = value > 0.5 ? <Close /> : <Menu />;
+  const shouldShowMenu = value > 0;
+  const scale = Math.abs(0.5 - value) * 2;
+  const rotation = value * 360;
 
-  private get icon() {
-    return this.state.value > 0.5 ? <Close /> : <Menu />;
-  }
-
-  private get shouldShowMenu() {
-    return this.state.value > 0;
-  }
-
-  private get scale() {
-    return Math.abs(0.5 - this.state.value) * 2;
-  }
-
-  private get rotation() {
-    return this.state.value * 360;
-  }
-
-  async animate(
+  async function animate(
     step: number,
     limit: number,
     checkBoundary: (it: number, limit: number) => boolean
   ) {
-    for (var i = this.state.value; checkBoundary(i, limit); i += step) {
-      this.setState({ value: i });
+    for (var i = value; checkBoundary(i, limit); i += step) {
+      setValue(i);
       await sleep(DELAY);
     }
     await sleep(DELAY);
-    this.setState({ value: limit });
+    setValue(limit);
   }
 
-  async close() {
-    await this.animate(-STEP, 0, (it: number, limit: number) => it >= limit);
+  async function close() {
+    await animate(-STEP, 0, (it: number, limit: number) => it >= limit);
   }
 
-  async open() {
-    await this.animate(STEP, 1, (it: number, limit: number) => it <= limit);
+  async function open() {
+    await animate(STEP, 1, (it: number, limit: number) => it <= limit);
   }
 
-  render(): JSX.Element {
-    const props = this.props;
+  useEffect(() => {
+    const isVisible = props.menuIsVisible.get();
+    setWasVisible(isVisible);
 
-    return (
-      <FullSize style={{ overflow: "hidden" }}>
-        <div style={BaseStyle}>{props.children}</div>
-        {this.shouldShowMenu && (
-          <div
-            style={merge(BaseStyle, {
-              opacity: this.state.value
-            })}
-          >
-            {props.menu}
-          </div>
-        )}
+    if (wasVisible && !isVisible) {
+      close();
+    } else if (!wasVisible && isVisible) {
+      open();
+    } else {
+      // Do nothing
+    }
+  });
 
-        <ActionIcon
-          style={{
-            position: "absolute",
-            bottom: 20,
-            right: 20
-          }}
-          rotation={this.rotation}
-          scale={this.scale}
-          onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
-          icon={this.icon}
-        />
-      </FullSize>
-    );
-  }
+  return (
+    <FullSize style={{ overflow: "hidden" }}>
+      <div style={BaseStyle}>{props.children}</div>
+      {shouldShowMenu && (
+        <div
+          style={merge(BaseStyle, { opacity: value })}
+        >
+          {props.menu}
+        </div>
+      )}
+
+      <ActionIcon
+        style={{
+          position: "absolute",
+          bottom: 20,
+          right: 20
+        }}
+        rotation={rotation}
+        scale={scale}
+        onClick={() => props.menuIsVisible.set(!props.menuIsVisible.get())}
+        icon={icon}
+      />
+    </FullSize>
+  );
 }
 
 const Mobile = (props: Props & MenuVisibility) => <MobileClass {...props} />;
