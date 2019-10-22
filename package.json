@@ -41,6 +41,7 @@
     "@types/recompose": "^0.30.7",
     "@types/storybook__react": "^4.0.2",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "gh-pages": "^2.1.1",
     "node": "^12.12.0",
     "plop": "^2.5.2",
@@ -49,7 +50,8 @@
     "react-test-renderer": "^16.10.2",
     "storybook-host": "^5.1.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2"
   },
   "eslintConfig": {
     "extends": "react-app"
