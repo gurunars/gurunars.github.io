@@ -3,15 +3,12 @@ import React from "react";
 import jsonpack from "jsonpack";
 
 import { merge } from "../utils";
+import { useState, useEffect } from "react";
 
 interface Props<T extends {}> {
   initial: T;
   prefix: string;
   children: (data: T, set: (data: T) => void) => React.ReactElement<any>;
-}
-
-interface State<T extends {}> {
-  hash: T;
 }
 
 const deserialize = (prefix: string, location: string): Object => {
@@ -25,40 +22,26 @@ const deserialize = (prefix: string, location: string): Object => {
 const serialize = (prefix: string, params: Object): string =>
   "#" + prefix + "?" + jsonpack.pack(params);
 
-export default class HashAware<T extends {}> extends React.Component<
-  Props<T>,
-  State<T>
-> {
-  constructor(props: Props<T>) {
-    super(props);
-    this.updateHash = this.updateHash.bind(this);
-    this.state = { hash: props.initial };
-  }
+const HashAware = <T extends {}>({ initial, prefix, children }: Props<T>) => {
+  const [hash, setHash] = useState(initial);
 
-  public render() {
-    return this.props.children(this.state.hash, data => {
-      window.top.location.hash = serialize(this.props.prefix, data);
-    });
-  }
+  const updateHash = () =>
+    setHash(merge(
+      initial,
+      deserialize(prefix, window.top.location.hash)
+    ) as T)
 
-  public updateHash() {
-    this.setState({
-      hash: merge(
-        this.props.initial,
-        deserialize(this.props.prefix, window.top.location.hash)
-      ) as T
-    });
-  }
+  useEffect(() => {
+    window.top.addEventListener("hashchange", updateHash);
+    return () => {
+      window.top.removeEventListener("hashchange", updateHash);
+    }
+  }, []);
 
-  public componentWillMount() {
-    this.updateHash();
-  }
+  return children(hash, data => {
+    window.top.location.hash = serialize(prefix, data);
+  });
 
-  public componentDidMount() {
-    window.top.addEventListener("hashchange", this.updateHash);
-  }
-
-  public componentWillUnmount() {
-    window.top.removeEventListener("hashchange", this.updateHash);
-  }
 }
+
+export default HashAware
