@@ -12,8 +12,8 @@ function View() {
           style={{
             width: "100%",
             height: "100%",
-            backgroundColor: "white",
-            paddingRight: 20
+            backgroundColor: "red",
+            paddingRight: 20,
           }}
         >
           MENU
@@ -25,13 +25,13 @@ function View() {
           style={{
             width: "100%",
             height: "100%",
-            paddingRight: 20
+            paddingRight: 20,
           }}
         >
           CONTENT
         </p>
       }
-      menuIsVisible={useBoxState(true)}
+      menuIsVisible={useBoxState(false)}
     />
   );
 }
