@@ -102,7 +102,10 @@ const MobileClass = (props: TProps) => {
     } else {
       // Do nothing
     }
-  });
+  },
+    // eslint-disable-next-line
+    [props.menuIsVisible, wasVisible, value]
+  );
 
   return (
     <FullSize style={{ overflow: "hidden" }}>

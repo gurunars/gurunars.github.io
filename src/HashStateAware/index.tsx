@@ -36,7 +36,7 @@ const HashAware = <T extends {}>({ initial, prefix, children }: Props<T>) => {
     return () => {
       window.top.removeEventListener("hashchange", updateHash);
     }
-  }, []);
+  });
 
   return children(hash, data => {
     window.top.location.hash = serialize(prefix, data);
