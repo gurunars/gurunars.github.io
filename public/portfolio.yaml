@@ -257,6 +257,18 @@ items:
       - resource-api-docs
       - resource-api
 
+  - title: Software Engineer
+    type: fullTimeJob
+    location: amazon-aws
+    startDate: "2019-11-18"
+    description: >
+      I became accountable for an inhouse stack of apps responsible for network hazards' mitigation
+      and remidiation.
+    achievements:
+      - "Made several contributions to a distributed network management app written in #{Python}"
+      - "Containerized internal components using #{Docker} to simplify the dev process"
+      - "Have collected various analytics using #{GIT} to construct coprenhensive diffs between various states"
+
   - title: Senior Software Engineer
     description: >
       I was accountable for quality assurance automation, deployment automation and continuous integration.
@@ -289,8 +301,8 @@ items:
     location: nordea
     type: fullTimeJob
     description: >
-      I became responsible for developing and maintaining Siirto P2P digital payment application for Android.
-      The app has been in development since 2016 prior to me joining the company
+      I was responsible for developing and maintaining Siirto P2P digital payment application for Android.
+      The app is used by roughly 200k people in the Nordics.
     achievements:
       - "Transitioned a large #Android app codebase from #Java to #Kotlin"
       - "Employed #{Architecture Components} as a mean of organizing the app"
@@ -304,9 +316,13 @@ items:
       - "Transitioned #Retrofit async #HTTP stack from #RxJava to #coroutines"
       - "Introduced mandatory cross-team #GIT merge request reviews to boost colaboration"
     startDate: "2018-01-15"
+    endDate: "2019-11-15"
     links:
       - siirto
       - qr-generator
+    references:
+      - avysk
+      - teppo
 
   - title: Senior Software Engineer
     location: smartly
@@ -397,6 +413,9 @@ items:
       - self
 
 links:
+  - name: Amazon AWS
+    alias: amazon-aws
+    url: "https://aws.amazon.com/"
   - name: Smartly.io
     alias: smartly
     url: "https://www.smartly.io/"
@@ -409,6 +428,9 @@ links:
   - name: Alexey Vyskubov
     alias: avysk
     url: "https://www.linkedin.com/in/avysk/"
+  - name: Teppo Jansson
+    alias: teppo
+    url: "https://www.linkedin.com/in/teppojansson/"
   - name: Eugene Gryazin
     alias: gryazin
     url: "https://linkedin.com/in/eugenegryazin"
