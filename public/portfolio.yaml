@@ -261,6 +261,7 @@ items:
     type: fullTimeJob
     location: amazon-aws
     startDate: "2019-11-18"
+    endDate: "2020-05-31"
     description: >
       I became accountable for an inhouse stack of apps responsible for network hazards' mitigation
       and remidiation.
@@ -268,6 +269,9 @@ items:
       - "Made several contributions to a distributed network management app written in #{Python}"
       - "Containerized internal components using #{Docker} to simplify the dev process"
       - "Have collected various analytics using #{GIT} to construct coprenhensive diffs between various states"
+      - "Implemented #{code coverage} for #{Jinja} templates"
+      - "Created a toolkit for #{snapshot based testing} of a network remediation #{workflow engine}"
+      - "Crafted an automated #{test generation} toolchain"
 
   - title: Senior Software Engineer
     description: >
