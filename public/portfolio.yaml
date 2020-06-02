@@ -257,6 +257,14 @@ items:
       - resource-api-docs
       - resource-api
 
+  - title: Senior Software Engineer
+    type: fullTimeJob
+    location: homegate
+    startDate: "2020-06-01"
+    description: >
+      I joined a team responsible for #TypeScript and #Vue based frontend/backend stack within
+      the largest Swiss real estate portal.
+
   - title: Software Engineer
     type: fullTimeJob
     location: amazon-aws
@@ -417,6 +425,9 @@ items:
       - self
 
 links:
+  - name: Homegate
+    alias: homegate
+    url: "https://homegate.ch/"
   - name: Amazon AWS
     alias: amazon-aws
     url: "https://aws.amazon.com/"
