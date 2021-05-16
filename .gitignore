@@ -3,4 +3,4 @@ package-lock.json
 .idea
 *.log
 node_modules
-
+coverage
