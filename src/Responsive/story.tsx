@@ -1,5 +1,3 @@
-import React from "react";
-
 import responsive from ".";
 import multiTypeStory from "./multitype";
 

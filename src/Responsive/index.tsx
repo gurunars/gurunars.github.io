@@ -1,5 +1,3 @@
-import React from "react";
-
 import { SizeContext } from "../SizeAware";
 
 const isMobile = () =>

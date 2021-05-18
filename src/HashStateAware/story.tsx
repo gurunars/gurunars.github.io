@@ -1,6 +1,5 @@
 import centered from "@storybook/addon-centered";
 import { storiesOf } from "@storybook/react";
-import React from "react";
 
 import HashAware from ".";
 

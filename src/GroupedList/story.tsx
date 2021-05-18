@@ -1,5 +1,3 @@
-import React from "react";
-
 import multiTypeStory from "../Responsive/multitype";
 
 import Grouping from ".";

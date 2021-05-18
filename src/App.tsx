@@ -1,5 +1,4 @@
 import _ from "lodash";
-import React from "react";
 import { HashRouter as Router, Redirect, Route } from "react-router-dom";
 
 import Cv from "./Cv";

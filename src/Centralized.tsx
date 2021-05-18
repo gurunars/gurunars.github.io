@@ -1,5 +1,3 @@
-import React from "react";
-
 const Centralized = ({ children }: { children: any }) => (
   <div
     style={{

@@ -1,4 +1,3 @@
-import React from "react";
 import { useBoxState } from "../Box";
 
 import PlainPageWithSideMenu from ".";
