@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 30 30" width="100%">
+ <circle cx="15" cy="15" fill="transparent" r="13" stroke="currentColor" stroke-width="2" />
+ <line stroke="currentColor" stroke-width="2" x1="8" x2="22" y1="8" y2="22" />
+ <line stroke="currentColor" stroke-width="2" x1="8" x2="22" y1="22" y2="8" />
+</svg>
