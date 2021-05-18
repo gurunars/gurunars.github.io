@@ -1,11 +1,11 @@
-import responsive from "../Responsive";
-import Desktop from "./Desktop";
-import Mobile from "./Mobile";
-import Props from "./Props";
+import responsive from '../Responsive'
+import Desktop from './Desktop'
+import Mobile from './Mobile'
+import Props from './Props'
 
 const Carousel: (props: Props) => JSX.Element = responsive({
   desktopView: Desktop,
-  mobileView: Mobile
-});
+  mobileView: Mobile,
+})
 
-export default Carousel;
+export default Carousel

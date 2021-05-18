@@ -1,38 +1,38 @@
-import React from "react";
+import React from 'react'
 
-import { FullSize } from "../Layouts";
-import { CircleUrl, Url } from "../Link";
-import { merge } from "../utils";
-import { durationToRangeString, Item } from "./interface";
+import { FullSize } from '../Layouts'
+import { CircleUrl, Url } from '../Link'
+import { merge } from '../utils'
+import { durationToRangeString, Item } from './interface'
 
 const baseStyle = {
-  display: "block",
-  position: "relative",
+  display: 'block',
+  position: 'relative',
   paddingTop: 5,
   paddingBottom: 5,
   paddingLeft: 5,
-  paddingRight: 5
-};
+  paddingRight: 5,
+}
 
 const metaInfoStyle = {
   bottom: 0,
   padding: 5,
-  fontStyle: "italic",
-  fontSize: "0.8em"
-};
+  fontStyle: 'italic',
+  fontSize: '0.8em',
+}
 
 const flexMax: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  position: "relative",
-  width: "100%",
-  flex: "1 1 auto"
-};
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative',
+  width: '100%',
+  flex: '1 1 auto',
+}
 
 const ItemView = ({
   item,
   onClick,
-  style
+  style,
 }: {
   item: Item;
   onClick: () => void;
@@ -41,10 +41,10 @@ const ItemView = ({
   <FullSize
     style={merge(
       {
-        flexDirection: "column",
-        marginBottom: 10
+        flexDirection: 'column',
+        marginBottom: 10,
       },
-      style || {}
+      style || {},
     )}
   >
     <div style={flexMax}>
@@ -52,12 +52,12 @@ const ItemView = ({
         <span
           style={merge(baseStyle, {
             paddingBottom: 0,
-            display: "flex",
-            fontWeight: "bold",
-            alignItems: "center",
-            textDecoration: "underline",
-            color: "blue",
-            cursor: "pointer"
+            display: 'flex',
+            fontWeight: 'bold',
+            alignItems: 'center',
+            textDecoration: 'underline',
+            color: 'blue',
+            cursor: 'pointer',
           })}
           onClick={onClick}
         >
@@ -69,8 +69,8 @@ const ItemView = ({
                 width: 45,
                 height: 45,
                 marginRight: 10,
-                borderRadius: "50%",
-                border: "2px solid black"
+                borderRadius: '50%',
+                border: '2px solid black',
               }}
             />
           )}
@@ -78,9 +78,9 @@ const ItemView = ({
         </span>
         <span
           style={merge(baseStyle, {
-            fontSize: "0.8em",
+            fontSize: '0.8em',
             marginTop: 10,
-            marginBottom: 10
+            marginBottom: 10,
           })}
         >
           {item.description}
@@ -88,10 +88,10 @@ const ItemView = ({
       </div>
       <div
         style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between"
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
         }}
       >
         <Url
@@ -105,19 +105,19 @@ const ItemView = ({
     </div>
     <div
       style={{
-        position: "relative",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        position: 'relative',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         height: 40,
-        flex: "0 1 40px",
-        width: "100%",
+        flex: '0 1 40px',
+        width: '100%',
         bottom: 0,
         left: 0,
         padding: 5,
         marginTop: 5,
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "flex-start"
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
       }}
     >
       {item.links.map(link => (
@@ -127,21 +127,21 @@ const ItemView = ({
       <span
         onClick={onClick}
         style={{
-          position: "absolute",
+          position: 'absolute',
           right: 0,
-          display: "block",
-          textAlign: "right",
-          textDecoration: "underline",
-          color: "blue",
-          cursor: "pointer",
+          display: 'block',
+          textAlign: 'right',
+          textDecoration: 'underline',
+          color: 'blue',
+          cursor: 'pointer',
           padding: 5,
-          fontSize: "0.8em"
+          fontSize: '0.8em',
         }}
       >
         Achievements: <b>{item.achievements.length}</b>
       </span>
     </div>
   </FullSize>
-);
+)
 
-export default ItemView;
+export default ItemView

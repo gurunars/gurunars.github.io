@@ -1,36 +1,36 @@
-import React from "react";
+import React from 'react'
 
-import { FullUrl, Url } from "../Link";
-import { durationToRangeString, Item } from "./interface";
-import Tag from "./Tag";
+import { FullUrl, Url } from '../Link'
+import { durationToRangeString, Item } from './interface'
+import Tag from './Tag'
 
 const Section = (props: { title: string; data: any }) => (
   <div>
     <h4
       style={{
         paddingTop: 10,
-        paddingBottom: 10
+        paddingBottom: 10,
       }}
     >
       {props.title}
     </h4>
     <div>{props.data}</div>
   </div>
-);
+)
 
 const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
   <div
     style={{
       padding: 10,
-      position: "relative",
-      pageBreakInside: "avoid"
+      position: 'relative',
+      pageBreakInside: 'avoid',
     }}
   >
     <div
       style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center"
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
       }}
     >
       {item.logo && (
@@ -41,8 +41,8 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
             width: 95,
             height: 95,
             marginRight: 10,
-            borderRadius: "50%",
-            border: "2px solid black"
+            borderRadius: '50%',
+            border: '2px solid black',
           }}
         />
       )}
@@ -50,13 +50,13 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         <h3 style={{ marginBottom: 5 }}>{item.title}</h3>
         {item.location && (
           <p style={{ fontSize: 14 }}>
-            <b style={{ color: "grey" }}>[at]:</b>
+            <b style={{ color: 'grey' }}>[at]:</b>
             <Url link={item.location} />
           </p>
         )}
         <p style={{ fontSize: 13 }}>
           <i>
-            {item.type} | {durationToRangeString(item.duration)}{" "}
+            {item.type} | {durationToRangeString(item.duration)}{' '}
           </i>
         </p>
       </div>
@@ -67,8 +67,8 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         marginLeft: 5,
         marginTop: 8,
         paddingLeft: 10,
-        borderLeft: "3px solid grey",
-        paddingBottom: 10
+        borderLeft: '3px solid grey',
+        paddingBottom: 10,
       }}
     >
       {item.description && item.description.length > 0 && (
@@ -101,9 +101,9 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
 
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        marginTop: 10
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: 10,
       }}
     >
       {item.links.map(link => (
@@ -111,6 +111,6 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
       ))}
     </div>
   </div>
-);
+)
 
-export default ItemView;
+export default ItemView

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 // TODO: avoid comparison by reference
 export default interface Box<T> {
@@ -6,10 +6,10 @@ export default interface Box<T> {
   get(): T;
 }
 
-export function useBoxState<T>(initial: T): Box<T> {
-  const [value, setValue] = useState(initial);
+export const useBoxState = <T>(initial: T): Box<T> => {
+  const [value, setValue] = useState(initial)
   return {
     get: () => value,
-    set: (it: T) => setValue(it)
-  };
+    set: (it: T) => setValue(it),
+  }
 }

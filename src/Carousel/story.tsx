@@ -1,33 +1,33 @@
-import { action } from "@storybook/addon-actions";
+import { action } from '@storybook/addon-actions'
 
-import Carousel from ".";
-import multiTypeStory from "../Responsive/multitype";
+import Carousel from '.'
+import multiTypeStory from '../Responsive/multitype'
 
 interface Item {
   title: string;
 }
 
 const item: Item = {
-  title: "Item one"
-};
+  title: 'Item one',
+}
 
 const items: Item[] = [
   {
-    title: "Item zero"
+    title: 'Item zero',
   },
   item,
   {
-    title: "Item two"
-  }
-];
+    title: 'Item two',
+  },
+]
 
-multiTypeStory("Carousel", () => (
+multiTypeStory('Carousel', () => (
   <Carousel
     size={items.length}
     selectedPostion={1}
-    close={action("CLOSE")}
-    goTo={action("GO TO")}
+    close={action('CLOSE')}
+    goTo={action('GO TO')}
   >
     {(pos: number) => <div>{items[pos].title}</div>}
   </Carousel>
-));
+))

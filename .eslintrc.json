@@ -1,0 +1,90 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
+  "ignorePatterns": [
+    "dist",
+    "node_modules"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "unused-imports"
+  ],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "rules": {
+    "max-statements": "off",
+    "max-depth": "error",
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-console": "off",
+    "camelcase": "error",
+    "no-shadow": "error",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "eol-last": "error",
+    "max-len": [
+      "error",
+      120
+    ],
+    "keyword-spacing": "error",
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "func-style": [
+      "error",
+      "expression"
+    ],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports-ts": "error",
+    "unused-imports/no-unused-vars-ts": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.json"
+      ],
+      "rules": {
+        "quotes": [
+          "error",
+          "double"
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.spec.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": 0
+      },
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

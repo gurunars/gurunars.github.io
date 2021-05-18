@@ -1,23 +1,23 @@
-import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
-import { host } from "storybook-host";
-import { ReactComponent as Close } from "./close.svg";
+import { action } from '@storybook/addon-actions'
+import { storiesOf } from '@storybook/react'
+import { host } from 'storybook-host'
+import { ReactComponent as Close } from './close.svg'
 
-import ActionIcon from ".";
+import ActionIcon from '.'
 
-storiesOf("ActionIcon", module)
+storiesOf('ActionIcon', module)
   .addDecorator(
     host({
-      align: "center middle",
+      align: 'center middle',
       height: 60,
-      width: 60
-    })
+      width: 60,
+    }),
   )
-  .add("basic", () => (
+  .add('basic', () => (
     <ActionIcon
       rotation={0}
       scale={1}
       icon={<Close />}
-      onClick={action("onClick")}
+      onClick={action('onClick')}
     />
-  ));
+  ))

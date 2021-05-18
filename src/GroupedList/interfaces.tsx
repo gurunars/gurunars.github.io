@@ -1,4 +1,4 @@
-export interface GroupedItems<T extends {}> {
+export interface GroupedItems<T> {
   group: string;
   elements: T[];
 }

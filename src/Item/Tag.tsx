@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { merge } from "../utils";
+import { merge } from '../utils'
 
 const Tag = (props: {
   children: React.ReactChild;
@@ -11,24 +11,24 @@ const Tag = (props: {
     onClick={props.onClick}
     style={merge(
       {
-        backgroundColor: "Beige",
-        display: "inline-block",
-        textDecoration: "none",
-        whiteSpace: "pre",
-        color: "Black",
+        backgroundColor: 'Beige',
+        display: 'inline-block',
+        textDecoration: 'none',
+        whiteSpace: 'pre',
+        color: 'Black',
         marginRight: 5,
         paddingTop: 3,
         paddingBottom: 3,
         paddingLeft: 10,
         paddingRight: 10,
         fontSize: 12,
-        borderRadius: 5
+        borderRadius: 5,
       },
-      props.style || {}
+      props.style || {},
     )}
   >
     {props.children}
   </i>
-);
+)
 
-export default Tag;
+export default Tag

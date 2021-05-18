@@ -7,8 +7,32 @@
   "[handlebars]": {
     "editor.formatOnSave": false
   },
-  "editor.tabSize": 2,
-  "tslint.autoFixOnSave": true,
-  "typescript.tsdk": "frontend/node_modules/typescript/lib",
-  "python.formatting.provider": "black"
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "vue",
+    "html"
+  ],
+  "eslint.options": {
+    "configFile": ".eslintrc.json",
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "editor.rulers": [
+    120
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "editor.renderWhitespace": "all",
+  "files.insertFinalNewline": true,
 }

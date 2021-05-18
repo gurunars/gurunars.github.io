@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { merge } from "./utils";
+import { merge } from './utils'
 
 export const FullSize = (props: {
   children: React.ReactNode;
@@ -9,15 +9,15 @@ export const FullSize = (props: {
   <div
     style={merge(
       {
-        display: "flex",
-        position: "relative",
-        width: "100%",
-        height: "100%"
+        display: 'flex',
+        position: 'relative',
+        width: '100%',
+        height: '100%',
       },
-      props.style || {}
+      props.style || {},
     )}
   >
-    {" "}
+    {' '}
     {props.children}
   </div>
-);
+)

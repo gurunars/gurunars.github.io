@@ -1,7 +1,7 @@
-import _ from "lodash";
-import React from "react";
+import _ from 'lodash'
+import React from 'react'
 
-import { merge } from "../utils";
+import { merge } from '../utils'
 
 const ActionIcon = (props: {
   icon: JSX.Element;
@@ -16,36 +16,36 @@ const ActionIcon = (props: {
       {
         height: 40,
         width: 40,
-        borderRadius: "50%",
-        backgroundColor: "#1B2E3C",
-        display: "flex",
-        alignItems: "center",
+        borderRadius: '50%',
+        backgroundColor: '#1B2E3C',
+        display: 'flex',
+        alignItems: 'center',
         zIndex: 30,
-        cursor: "pointer",
-        justifyContent: "center",
-        color: "white"
+        cursor: 'pointer',
+        justifyContent: 'center',
+        color: 'white',
       },
-      props.style || {}
+      props.style || {},
     )}
   >
     <div
       style={{
-        width: "60%",
-        height: "60%",
+        width: '60%',
+        height: '60%',
         transform:
-          "rotate(" +
+          'rotate(' +
           props.rotation +
-          "deg)" +
-          " " +
-          "scale(" +
+          'deg)' +
+          ' ' +
+          'scale(' +
           props.scale +
-          ")",
-        fill: _.get(props.style, "color", "black")
+          ')',
+        fill: _.get(props.style, 'color', 'black'),
       }}
     >
       {props.icon}
     </div>
   </div>
-);
+)
 
-export default ActionIcon;
+export default ActionIcon

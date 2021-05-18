@@ -1,11 +1,11 @@
-import jsyaml from "js-yaml";
-import ReactDOM from "react-dom";
+import jsyaml from 'js-yaml'
+import ReactDOM from 'react-dom'
 
-import App from "./App";
-import preprocess from "./model";
-import SizeAware from "./SizeAware";
+import App from './App'
+import preprocess from './model'
+import SizeAware from './SizeAware'
 
-const SITE_URL = "/portfolio.yaml";
+const SITE_URL = '/portfolio.yaml'
 
 fetch(SITE_URL)
   .then(async item => item.text())
@@ -14,6 +14,6 @@ fetch(SITE_URL)
       <SizeAware>
         <App portfolio={preprocess(jsyaml.load(text))} />
       </SizeAware>,
-      document.getElementById("root") as HTMLElement
-    )
-  );
+      document.getElementById('root') as HTMLElement,
+    ),
+  )

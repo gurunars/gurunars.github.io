@@ -1,46 +1,46 @@
-import React from "react";
+import React from 'react'
 
-import jsonpack from "jsonpack";
+import jsonpack from 'jsonpack'
 
-import { merge } from "../utils";
-import { useState, useEffect } from "react";
+import { merge } from '../utils'
+import { useState, useEffect } from 'react'
 
 interface Props<T extends {}> {
   initial: T;
   prefix: string;
-  children: (data: T, set: (data: T) => void) => React.ReactElement<any>;
+  children: (data: T, set: (innerData: T) => void) => React.ReactElement<any>;
 }
 
 const deserialize = (prefix: string, location: string): Object => {
   try {
-    return jsonpack.unpack(location.replace("#" + prefix + "?", ""));
+    return jsonpack.unpack(location.replace('#' + prefix + '?', ''))
   } catch {
-    return {};
+    return {}
   }
-};
+}
 
 const serialize = (prefix: string, params: Object): string =>
-  "#" + prefix + "?" + jsonpack.pack(params);
+  '#' + prefix + '?' + jsonpack.pack(params)
 
 const HashAware = <T extends {}>({ initial, prefix, children }: Props<T>) => {
-  const [hash, setHash] = useState(initial);
+  const [hash, setHash] = useState(initial)
 
   const updateHash = () =>
     setHash(merge(
       initial,
-      deserialize(prefix, window.top.location.hash)
+      deserialize(prefix, window.top.location.hash),
     ) as T)
 
   useEffect(() => {
-    window.top.addEventListener("hashchange", updateHash);
+    window.top.addEventListener('hashchange', updateHash)
     return () => {
-      window.top.removeEventListener("hashchange", updateHash);
+      window.top.removeEventListener('hashchange', updateHash)
     }
-  });
+  })
 
   return children(hash, data => {
-    window.top.location.hash = serialize(prefix, data);
-  });
+    window.top.location.hash = serialize(prefix, data)
+  })
 
 }
 

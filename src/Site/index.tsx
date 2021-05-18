@@ -1,145 +1,145 @@
-import _ from "lodash";
-import React from "react";
-import { getId, Item, Large, Small } from "../Item";
+import _ from 'lodash'
+import React from 'react'
+import { getId, Item, Large, Small } from '../Item'
 import BaseToolbar, {
   GroupSpecSelection,
   SpecSelection,
   TagSelection,
   TagSpec,
   TitleToGroupSpecMapping,
-  TypeToSpecMapping
-} from "../Toolbar";
+  TypeToSpecMapping,
+} from '../Toolbar'
 
-import Carousel from "../Carousel";
-import GroupedList from "../GroupedList";
-import { groupItems } from "../GroupedList/grouping";
-import PageWithOverlay from "../PageWithOverlay";
+import Carousel from '../Carousel'
+import GroupedList from '../GroupedList'
+import { groupItems } from '../GroupedList/grouping'
+import PageWithOverlay from '../PageWithOverlay'
 
-import Box from "../Box";
-import { getImportantSkills, Portfolio } from "../model";
-import PageWithSideMenu, { MenuVisibility } from "../PageWithSideMenu";
-import responsive from "../Responsive";
-import { yearToString } from "../utils";
+import Box from '../Box'
+import { getImportantSkills, Portfolio } from '../model'
+import PageWithSideMenu, { MenuVisibility } from '../PageWithSideMenu'
+import responsive from '../Responsive'
+import { yearToString } from '../utils'
 
 export const typeToSpecMapping: TypeToSpecMapping = {
   contactCard: {
     // NOTE: contact card is first anyways - we are all good
-    humanReadableName: "@ Contact Card",
-    color: "PaleTurquoise"
+    humanReadableName: '@ Contact Card',
+    color: 'PaleTurquoise',
   },
   openSource: {
-    humanReadableName: "Open Source",
-    color: "PaleGreen"
+    humanReadableName: 'Open Source',
+    color: 'PaleGreen',
   },
   freelance: {
-    humanReadableName: "Freelance",
-    color: "MistyRose"
+    humanReadableName: 'Freelance',
+    color: 'MistyRose',
   },
   fullTimeJob: {
-    humanReadableName: "Full Time Job",
-    color: "Lavender"
+    humanReadableName: 'Full Time Job',
+    color: 'Lavender',
   },
   publication: {
-    humanReadableName: "Publication",
-    color: "Gainsboro"
+    humanReadableName: 'Publication',
+    color: 'Gainsboro',
   },
   education: {
-    humanReadableName: "Education",
-    color: "Thistle"
+    humanReadableName: 'Education',
+    color: 'Thistle',
   },
   certificate: {
-    humanReadableName: "Certificate",
-    color: "Khaki"
-  }
-};
+    humanReadableName: 'Certificate',
+    color: 'Khaki',
+  },
+}
 
 export const groups: TitleToGroupSpecMapping<Item> = {
   type: {
-    humanReadableName: "Type",
+    humanReadableName: 'Type',
     groupBy: (item: Item) => typeToSpecMapping[item.type].humanReadableName,
     sortBy: (item: Item) => -item.duration.start.getTime(),
-    reverse: false
+    reverse: false,
   },
   endYear: {
-    humanReadableName: "End Year",
+    humanReadableName: 'End Year',
     groupBy: (item: Item) => yearToString(item.duration.end),
     sortBy: (item: Item) => item.duration.end,
-    reverse: true
+    reverse: true,
   },
   startYear: {
-    humanReadableName: "Start Year",
+    humanReadableName: 'Start Year',
     groupBy: (item: Item) => yearToString(item.duration.start),
     sortBy: (item: Item) => item.duration.start,
-    reverse: true
+    reverse: true,
   },
   title: {
-    humanReadableName: "Title",
+    humanReadableName: 'Title',
     groupBy: (item: Item) => item.title[0].toUpperCase(),
     sortBy: (item: Item) => item.title,
-    reverse: false
+    reverse: false,
   },
   location: {
-    humanReadableName: "Location",
+    humanReadableName: 'Location',
     groupBy: (item: Item) => item.location.name,
     sortBy: (item: Item) => item.location.name,
-    reverse: false
-  }
-};
+    reverse: false,
+  },
+}
 
 const filterItems = (items: Item[], types: string[]): Item[] =>
-  _.filter(items, item => types.indexOf(item.type) !== -1);
+  _.filter(items, item => types.indexOf(item.type) !== -1)
 
 const filterByTag = (items: Item[], tag: string): Item[] =>
-  _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1);
+  _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1)
 
 const Toolbar = (
   props: { allTags: TagSpec } & SpecSelection &
     GroupSpecSelection &
-    TagSelection
+    TagSelection,
 ) => (
   <BaseToolbar
     groupMapping={groups}
     filterMapping={typeToSpecMapping}
     {...props}
   />
-);
+)
 
 interface IdHodler {
   selectedId: Box<number | null>;
 }
 
 const DesktopToolbarWrapper = ({
-  children
+  children,
 }: {
   children: React.ReactChild;
 }) => (
   <div
     style={{
-      width: "270px",
-      overflowY: "auto",
-      borderRight: "1px solid black",
-      height: "100%"
+      width: '270px',
+      overflowY: 'auto',
+      borderRight: '1px solid black',
+      height: '100%',
     }}
   >
     {children}
   </div>
-);
+)
 
 const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => (
   <div
     style={{
-      backgroundColor: "white",
-      minHeight: "100%"
+      backgroundColor: 'white',
+      minHeight: '100%',
     }}
   >
     {children}
   </div>
-);
+)
 
 const ToolbarWrapper = responsive({
   desktopView: DesktopToolbarWrapper,
-  mobileView: MobileToolbarWrapper
-});
+  mobileView: MobileToolbarWrapper,
+})
 
 const Main = (
   props: {
@@ -149,26 +149,26 @@ const Main = (
     SpecSelection &
     GroupSpecSelection &
     MenuVisibility &
-    TagSelection
+    TagSelection,
 ) => {
-  const group = groups[props.selectedGroup.get()];
+  const group = groups[props.selectedGroup.get()]
 
   const filtered = filterByTag(
     filterItems(props.portfolio.items, props.selectedSpecs.get()),
-    props.selectedTag.get()
-  );
+    props.selectedTag.get(),
+  )
 
   const grouped = groupItems(
     filtered,
     group.groupBy,
     group.sortBy,
-    group.reverse
-  );
-  const flattened = _.flatMap(grouped, grp => grp.elements);
+    group.reverse,
+  )
+  const flattened = _.flatMap(grouped, grp => grp.elements)
   const selectedPosition = _.findIndex(
     flattened,
-    item => props.selectedId.get() === getId(item)
-  );
+    item => props.selectedId.get() === getId(item),
+  )
   return (
     <PageWithOverlay
       foregroundContent={
@@ -197,7 +197,7 @@ const Main = (
           renderItem={({ item }: { item: Item }) => (
             <Small
               style={{
-                backgroundColor: typeToSpecMapping[item.type].color
+                backgroundColor: typeToSpecMapping[item.type].color,
               }}
               item={item}
               onClick={() => props.selectedId.set(getId(item))}
@@ -206,7 +206,7 @@ const Main = (
         />
       </PageWithSideMenu>
     </PageWithOverlay>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

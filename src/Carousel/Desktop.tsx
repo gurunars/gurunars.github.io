@@ -1,40 +1,40 @@
-import React from "react";
+import React from 'react'
 
-import KeyBoardListener from "../KeyBoardListener";
-import { FullSize } from "../Layouts";
+import KeyBoardListener from '../KeyBoardListener'
+import { FullSize } from '../Layouts'
 
-import CursorIcon from "./CursorIcon";
+import CursorIcon from './CursorIcon'
 
-import { Cursor, getCursorItems } from "./Cursor";
-import Props from "./Props";
+import { Cursor, getCursorItems } from './Cursor'
+import Props from './Props'
 
-import { ReactComponent as Close } from "./icons/close.svg";
-import { ReactComponent as Next } from "./icons/next.svg";
-import { ReactComponent as Prev } from "./icons/prev.svg";
+import { ReactComponent as Close } from './icons/close.svg'
+import { ReactComponent as Next } from './icons/next.svg'
+import { ReactComponent as Prev } from './icons/prev.svg'
 
 const Carousel = (props: Props): React.ReactElement<any> => {
-  const cursor: Cursor = getCursorItems(props.size, props.selectedPostion);
+  const cursor: Cursor = getCursorItems(props.size, props.selectedPostion)
 
-  const dims = 15;
-  const controlsWidth = 50;
+  const dims = 15
+  const controlsWidth = 50
 
   const controlsStyle: React.CSSProperties = {
-    float: "left",
+    float: 'left',
     width: controlsWidth,
-    height: "100%",
-    overflow: "hidden",
+    height: '100%',
+    overflow: 'hidden',
     padding: 10,
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column"
-  };
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  }
 
   const mainAreaStyle: React.CSSProperties = {
-    float: "left",
-    width: "calc(100% - " + controlsWidth * 2 + "px)",
-    height: "100%",
-    overflow: "auto"
-  };
+    float: 'left',
+    width: 'calc(100% - ' + controlsWidth * 2 + 'px)',
+    height: '100%',
+    overflow: 'auto',
+  }
 
   return (
     <FullSize>
@@ -62,21 +62,21 @@ const Carousel = (props: Props): React.ReactElement<any> => {
         <div
           onClick={props.close}
           style={{
-            position: "absolute",
-            display: "flex",
-            color: "black",
-            cursor: "pointer",
+            position: 'absolute',
+            display: 'flex',
+            color: 'black',
+            cursor: 'pointer',
             top: 10,
             right: 10,
             width: dims * 2,
-            height: dims * 2
+            height: dims * 2,
           }}
         >
           <Close />
         </div>
       </KeyBoardListener>
     </FullSize>
-  );
-};
+  )
+}
 
-export default Carousel;
+export default Carousel

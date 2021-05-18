@@ -1,16 +1,16 @@
-import { storiesOf } from "@storybook/react";
-import { host } from "storybook-host";
+import { storiesOf } from '@storybook/react'
+import { host } from 'storybook-host'
 
-import { PORTFOLIO } from "../Site/story";
+import { PORTFOLIO } from '../Site/story'
 
-import Cv from ".";
+import Cv from '.'
 
-storiesOf("Cv", module)
+storiesOf('Cv', module)
   .addDecorator(
     host({
-      align: "center middle",
+      align: 'center middle',
       height: 600,
-      width: 800
-    })
+      width: 800,
+    }),
   )
-  .add("basic", () => <Cv portfolio={PORTFOLIO} />);
+  .add('basic', () => <Cv portfolio={PORTFOLIO} />)

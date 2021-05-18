@@ -1,63 +1,63 @@
-import { storiesOf } from "@storybook/react";
-import { host } from "storybook-host";
+import { storiesOf } from '@storybook/react'
+import { host } from 'storybook-host'
 
-import { CircleUrl, FullUrl, LinkPreview, MappingSpec, Url } from ".";
+import { CircleUrl, FullUrl, LinkPreview, MappingSpec, Url } from '.'
 
 const MAP: MappingSpec = {
   sample: {
-    alias: "alias",
-    name: "name",
-    url: "foobar-zoo-loo"
-  }
-};
+    alias: 'alias',
+    name: 'name',
+    url: 'foobar-zoo-loo',
+  },
+}
 
-storiesOf("Link", module)
+storiesOf('Link', module)
   .addDecorator(
     host({
-      align: "center middle",
+      align: 'center middle',
       height: 200,
-      width: 200
-    })
+      width: 200,
+    }),
   )
-  .add("Url", () => (
+  .add('Url', () => (
     <Url
       link={{
-        alias: "bar",
-        name: "FOO",
-        url: "bar"
+        alias: 'bar',
+        name: 'FOO',
+        url: 'bar',
       }}
     />
   ))
-  .add("FullUrl with type", () => (
+  .add('FullUrl with type', () => (
     <FullUrl
       style={{
-        color: "red"
+        color: 'red',
       }}
       link={{
-        alias: "bar",
-        name: "FOO",
-        url: "bar",
-        type: "amazon"
+        alias: 'bar',
+        name: 'FOO',
+        url: 'bar',
+        type: 'amazon',
       }}
     />
   ))
-  .add("CircleUrl with type", () => (
+  .add('CircleUrl with type', () => (
     <CircleUrl
       link={{
-        alias: "bar",
-        name: "FOO",
-        url: "bar",
-        type: "amazon"
+        alias: 'bar',
+        name: 'FOO',
+        url: 'bar',
+        type: 'amazon',
       }}
     />
   ))
-  .add("CircleUrl without type", () => (
+  .add('CircleUrl without type', () => (
     <CircleUrl
       link={{
-        alias: "bar",
-        name: "FOO",
-        url: "bar"
+        alias: 'bar',
+        name: 'FOO',
+        url: 'bar',
       }}
     />
   ))
-  .add("Link preview", () => <LinkPreview links={MAP} alias="sample" />);
+  .add('Link preview', () => <LinkPreview links={MAP} alias="sample" />)

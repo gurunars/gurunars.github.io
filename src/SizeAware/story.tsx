@@ -1,11 +1,11 @@
-import centered from "@storybook/addon-centered";
-import { storiesOf } from "@storybook/react";
+import centered from '@storybook/addon-centered'
+import { storiesOf } from '@storybook/react'
 
-import SizeAware, { SizeContext } from ".";
+import SizeAware, { SizeContext } from '.'
 
-storiesOf("SizeAware", module)
+storiesOf('SizeAware', module)
   .addDecorator(centered)
-  .add("basic", () => (
+  .add('basic', () => (
     <SizeAware>
       <SizeContext.Consumer>
         {size => (
@@ -16,4 +16,4 @@ storiesOf("SizeAware", module)
         )}
       </SizeContext.Consumer>
     </SizeAware>
-  ));
+  ))
