@@ -283,6 +283,15 @@ items:
     description: >
       I joined a team responsible for #TypeScript and #Vue based frontend/backend stack within
       the largest Swiss real estate portal.
+    achievements:
+      - "Implemented backend integration in #{Typescript} of Homegate portal with a mortgate calculation API by UBS"
+      - "Transitioned critical bits of internal #{infrastructure as code} from #{Serverless} to #{CDK}"
+      - "Authored #{CDK} component library for #{infrastructure as code} know-how reuse"
+      - "Packaged company-wide coding style guidelines, QA standards and CI pipelines into a standalone package"
+      - "Implemented an anti-crawling solution via a combination of #{Cloudflare} bot management system and #{AWS} tooling"
+      - "Crafted a set of microservices in #{TypeScript} for fraud report management and mortgage calculations"
+      - "Initiated a transition to 'design by contract' approach across multiple teams"
+      - "Implemented multiple complex #{SQL} queries for portal's usage pattern analytics"
 
   - title: Software Engineer
     type: fullTimeJob
