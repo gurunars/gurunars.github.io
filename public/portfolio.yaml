@@ -42,6 +42,25 @@ items:
     links:
       - uc-san-diego-maths-certificate
 
+  - title: UC San Diego Data Structures and Algorithms Specialization
+    description: >
+      Certification in #{algrithm design} and #{algorithm optimization}
+      coupled with #{bioinformatics} introduction by UC San Diego
+      University
+    achievements:
+      - Advanced Algorithms and Complexity
+      - Algorithms on Strings
+      - Genome Assembly Programming Challenge
+      - Algorithmic Toolbox
+      - Algorithms on Graphs
+      - Data Structures
+    type: certificate
+    startDate: "2021-04-24"
+    endDate: "2021-01-01"
+    location: coursera
+    links:
+      - uc-san-diego-data-structures-and-algorithms-certificate
+
   - title: Stanford Algorithms Specialization
     description: >
       Certification in #{algorithm design} and #{algorithm optimization} that
@@ -617,4 +636,8 @@ links:
   - name: UC San Diego Discrete Mathematics for CS Certificate
     alias: uc-san-diego-maths-certificate
     url: https://www.coursera.org/account/accomplishments/specialization/P9AKWCGSWC72
+    type: coursera
+  - name: US San Diego Data Structures and Algorithms Specialization Certificate
+    alias: uc-san-diego-data-structures-and-algorithms-certificate
+    url: https://www.coursera.org/account/accomplishments/specialization/WCPEQUF8MBZS
     type: coursera
