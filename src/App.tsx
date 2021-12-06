@@ -1,5 +1,6 @@
 import _ from 'lodash'
-import { HashRouter as Router, Redirect, Route } from 'react-router-dom'
+import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+
 
 import Cv from './Cv'
 import HashStateAware from './HashStateAware'
@@ -68,10 +69,12 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   )
   return (
     <Router>
-      <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
-      <Route path="/sh/:alias" exact strict component={Shortener} />
-      <Route path="/portfolio" component={Index} />
-      <Route path="/cv" component={CvView} />
+      <Switch>
+        <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
+        <Route path="/sh/:alias" exact strict component={Shortener} />
+        <Route path="/portfolio" component={Index} />
+        <Route path="/cv" component={CvView} />
+      </Switch>
     </Router>
   )
 }
