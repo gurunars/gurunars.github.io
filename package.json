@@ -51,7 +51,7 @@
     "node": "^17.2.0",
     "plop": "^3.0.2",
     "prettier": "2.5.1",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "react-test-renderer": "^17.0.2",
     "storybook-host": "^5.2.0",
     "ts-loader": "^9.4.4",
