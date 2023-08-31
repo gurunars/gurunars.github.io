@@ -43,7 +43,6 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.2",
     "@types/recompose": "^0.30.9",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-preset-react-app": "^10.0.0",
     "eslint": "^8.4.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
@@ -55,8 +54,9 @@
     "react-scripts": "^4.0.3",
     "react-test-renderer": "^17.0.2",
     "storybook-host": "^5.2.0",
+    "ts-loader": "^9.4.4",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^4.5.2"
+    "typescript": "^5.2.2"
   },
   "browserslist": {
     "production": [
