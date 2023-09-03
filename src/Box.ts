@@ -21,7 +21,7 @@ const set = <K extends string, T extends Record<K, unknown>>(bigger: T, key: K, 
 }
 
 
-const createField = <K extends string, T extends Record<K, unknown>>(bigger: T) => (key: keyof T): Box<T[typeof key]> => {
+const createField = <T extends Record<string, unknown>>(bigger: T) => <K extends keyof T>(key: K): Box<T[K]> => {
   return undefined as T[K]
 }
 
