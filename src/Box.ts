@@ -16,10 +16,16 @@ export const useBoxState = <T>(initial: T): Box<T> => {
   }
 }
 
-export const createFieldBox = <T extends Record<string, unknown>>(
-  data: T,
-  set: (bigger: T) => void
-) => <K extends keyof T>(key: K): Box<T[K]> => ({
-  get: () => data[key],
-  set: (value: any) => set(merge(data, { [key]: value }) as T),
+export const box = <T extends Record<string, unknown>>(
+  value: T,
+  set: (value: T) => void
+) => ({
+  get: () => value,
+  set: (newValue: T) => set(newValue)
 })
+
+export const fieldBox = <T extends Record<string, unknown>>(box: Box<T>) =>
+  <K extends keyof T>(key: K): Box<T[K]> => ({
+    get: () => box.get()[key],
+    set: (value: any) => box.set(merge(box.get(), { [key]: value }) as T),
+  })

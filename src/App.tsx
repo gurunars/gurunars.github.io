@@ -7,7 +7,8 @@ import HashStateAware from './HashStateAware'
 import { DirectLinkContext, LinkPreview, Link } from './Link'
 import { ALL, Portfolio } from './model'
 import Site, { groups, typeToSpecMapping } from './Site'
-import { getChildBox } from './Box'
+import { merge } from './utils'
+import Box, { box, fieldBox, getChildBox } from './Box'
 
 type State = {
   selectedId: number | null;
@@ -45,8 +46,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   const Index = () => (
     <HashStateAware prefix="/portfolio" initial={initial}>
       {(data: State, set: (innerData: State) => void) => {
-        const field = getChildBox(data, set)
-        const foo = field('selectedSpecs')
+        const field = fieldBox(box(data, set))
         return (
           <Site
             portfolio={portfolio}
