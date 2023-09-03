@@ -22,24 +22,35 @@ const deserialize = (prefix: string, location: string): Object => {
 const serialize = (prefix: string, params: Object): string =>
   '#' + prefix + '?' + jsonpack.pack(params)
 
+
+const getWindowTop = (): WindowProxy => {
+  const top = window.top;
+  if (top == null) {
+    throw "window.top is null"
+  }
+  return top
+}
+
 const HashAware = <T extends {}>({ initial, prefix, children }: Props<T>) => {
   const [hash, setHash] = useState(initial)
+
+  const top = getWindowTop()
 
   const updateHash = () =>
     setHash(merge(
       initial,
-      deserialize(prefix, window.top.location.hash),
+      deserialize(prefix, top.location.hash),
     ) as T)
 
   useEffect(() => {
-    window.top.addEventListener('hashchange', updateHash)
+    top.addEventListener('hashchange', updateHash)
     return () => {
-      window.top.removeEventListener('hashchange', updateHash)
+      top.removeEventListener('hashchange', updateHash)
     }
   })
 
   return children(hash, data => {
-    window.top.location.hash = serialize(prefix, data)
+    top.location.hash = serialize(prefix, data)
   })
 
 }
