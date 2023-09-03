@@ -1,10 +1,10 @@
 import _ from 'lodash'
-import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, redirect, Route, Routes } from 'react-router-dom'
 
 
 import Cv from './Cv'
 import HashStateAware from './HashStateAware'
-import { DirectLinkContext, LinkPreview } from './Link'
+import { DirectLinkContext, LinkPreview, Link } from './Link'
 import { ALL, Portfolio } from './model'
 import Site, { groups, typeToSpecMapping } from './Site'
 import { merge } from './utils'
@@ -26,7 +26,7 @@ const initial = {
 }
 
 const App = ({ portfolio }: { portfolio: Portfolio }) => {
-  const mapping = {}
+  const mapping: { [key: string]: Link } = {}
 
   portfolio.links.forEach(it => {
     mapping[it.alias] = it
@@ -69,12 +69,12 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   )
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
-        <Route path="/sh/:alias" exact strict component={Shortener} />
-        <Route path="/portfolio" component={Index} />
-        <Route path="/cv" component={CvView} />
-      </Switch>
+      <Routes>
+        <Route path="/" action={() => redirect("/portfolio")} />
+        <Route path="/sh/:alias" Component={Shortener} />
+        <Route path="/portfolio" Component={Index} />
+        <Route path="/cv" Component={CvView} />
+      </Routes>
     </Router>
   )
 }
