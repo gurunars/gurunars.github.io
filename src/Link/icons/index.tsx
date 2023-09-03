@@ -14,7 +14,7 @@ import { ReactComponent as print } from './print.svg'
 import { ReactComponent as skype } from './skype.svg'
 import { ReactComponent as stackoverflow } from './stackoverflow.svg'
 
-const icons = {
+const icons: { [key: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>> } = {
   amazon,
   coursera,
   cv,
