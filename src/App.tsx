@@ -7,8 +7,7 @@ import HashStateAware from './HashStateAware'
 import { DirectLinkContext, LinkPreview, Link } from './Link'
 import { ALL, Portfolio } from './model'
 import Site, { groups, typeToSpecMapping } from './Site'
-import { merge } from './utils'
-import Box, { box, fieldBox, getChildBox } from './Box'
+import { box, fieldBox } from './Box'
 
 type State = {
   selectedId: number | null;
