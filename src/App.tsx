@@ -8,8 +8,9 @@ import { DirectLinkContext, LinkPreview, Link } from './Link'
 import { ALL, Portfolio } from './model'
 import Site, { groups, typeToSpecMapping } from './Site'
 import { merge } from './utils'
+import Box, { getChildBox } from './Box'
 
-interface State {
+type State = {
   selectedId: number | null;
   selectedSpecs: string[];
   selectedGroup: string;
@@ -17,7 +18,7 @@ interface State {
   selectedTag: string;
 }
 
-const initial = {
+const initial: State = {
   selectedId: null,
   selectedSpecs: _.keys(typeToSpecMapping),
   selectedGroup: _.keys(groups)[0],
@@ -45,15 +46,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   const Index = () => (
     <HashStateAware prefix="/portfolio" initial={initial}>
       {(data: State, set: (innerData: State) => void) => {
-        const field = (name: string) => ({
-          get: () => data[name],
-          set: (value: any) => {
-            const payload = {}
-            payload[name] = value
-            set(merge(data, payload) as State)
-          },
-        })
-
+        const field = getChildBox(data, set)
         return (
           <Site
             portfolio={portfolio}
