@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { HashRouter as Router, redirect, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 
 
 import Cv from './Cv'
@@ -62,7 +62,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   return (
     <Router>
       <Routes>
-        <Route path="/" action={() => redirect('/portfolio')} />
+        <Route path="/" index element={<Navigate to='/portfolio' />} />
         <Route path="/sh/:alias" Component={Shortener} />
         <Route path="/portfolio" Component={Index} />
         <Route path="/cv" Component={CvView} />
