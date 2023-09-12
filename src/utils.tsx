@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export const merge = (...sources: Object[]): Object =>
+export const merge = (...sources: NonNullable<unknown>[]): NonNullable<unknown> =>
   Object.assign({}, ...sources)
 
 export const hashCode = (str: string): number => {
