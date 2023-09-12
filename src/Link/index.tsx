@@ -136,7 +136,7 @@ export interface MappingSpec {
 }
 
 export const LinkPreview = ({
-  link
+  link,
 }: {
   link: Link
 }) => (
