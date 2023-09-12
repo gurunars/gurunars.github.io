@@ -4,8 +4,9 @@
     "node": true
   },
   "extends": [
-    "react-app",
-    "react-app/jest"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "ignorePatterns": [
     "dist",
@@ -52,6 +53,7 @@
       "never"
     ],
     "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
     "unused-imports/no-unused-imports-ts": "error",
     "unused-imports/no-unused-vars-ts": [
       "warn",

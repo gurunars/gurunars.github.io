@@ -15,14 +15,14 @@ export interface TypeToSpecMapping {
   [key: string]: Spec;
 }
 
-export interface GroupSpec<T extends {}> {
+export interface GroupSpec<T extends Record<string, never>> {
   humanReadableName: string;
-  groupBy: (item: T) => Object;
-  sortBy: (item: T) => Object;
+  groupBy: (item: T) => NonNullable<unknown>;
+  sortBy: (item: T) => NonNullable<unknown>;
   reverse: boolean;
 }
 
-export interface TitleToGroupSpecMapping<T extends {}> {
+export interface TitleToGroupSpecMapping<T extends Record<string, never>> {
   [key: string]: GroupSpec<T>;
 }
 
@@ -178,38 +178,38 @@ const Sep = () => (
   />
 )
 
-const GroupBy = <T extends {}>(
+const GroupBy = <T extends Record<string, never>>(
   props: { groupMapping: TitleToGroupSpecMapping<T> } & GroupSpecSelection,
 ): React.ReactElement<any> => (
-    <NamedGroup title="Group by">
-      <div
-        style={{
-          width: '100%',
-          flexDirection: 'column',
-          display: 'flex',
-        }}
-      >
-        {_.map(props.groupMapping, (value, key) => {
-          const isSelected = props.selectedGroup.get() === key
-          return (
-            <span
-              key={key}
-              style={merge(baseStyle, {
-                backgroundColor: isSelected ? '#1B2E3C' : 'Beige',
-                marginBottom: 5,
-                color: isSelected ? 'white' : 'black',
-              })}
-              onClick={() => props.selectedGroup.set(key)}
-            >
-              {value.humanReadableName}
-            </span>
-          )
-        })}
-      </div>
-    </NamedGroup>
-  )
+  <NamedGroup title="Group by">
+    <div
+      style={{
+        width: '100%',
+        flexDirection: 'column',
+        display: 'flex',
+      }}
+    >
+      {_.map(props.groupMapping, (value, key) => {
+        const isSelected = props.selectedGroup.get() === key
+        return (
+          <span
+            key={key}
+            style={merge(baseStyle, {
+              backgroundColor: isSelected ? '#1B2E3C' : 'Beige',
+              marginBottom: 5,
+              color: isSelected ? 'white' : 'black',
+            })}
+            onClick={() => props.selectedGroup.set(key)}
+          >
+            {value.humanReadableName}
+          </span>
+        )
+      })}
+    </div>
+  </NamedGroup>
+)
 
-const Toolbar = <T extends {}>(
+const Toolbar = <T extends Record<string, never>>(
   props: {
     children?: React.ReactElement<any>;
     filterMapping: TypeToSpecMapping;
@@ -219,19 +219,19 @@ const Toolbar = <T extends {}>(
     GroupSpecSelection &
     TagSelection,
 ) => (
-    <div
-      style={{
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: '100%',
-      }}
-    >
-      <GroupBy {...props} />
-      <Sep />
-      <SpecFilter {...props} />
-      <Sep />
-      <TagFilter {...props} />
-    </div>
-  )
+  <div
+    style={{
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      width: '100%',
+    }}
+  >
+    <GroupBy {...props} />
+    <Sep />
+    <SpecFilter {...props} />
+    <Sep />
+    <TagFilter {...props} />
+  </div>
+)
 
 export default Toolbar
