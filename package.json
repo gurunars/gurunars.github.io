@@ -29,9 +29,6 @@
     "strip-ansi": "^6.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/helper-builder-react-jsx-experimental": "^7.12.11",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@storybook/addon-actions": "^7.4.0",
     "@storybook/addon-centered": "^5.3.21",
     "@storybook/addon-essentials": "^7.4.0",
@@ -48,7 +45,6 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.2",
     "@types/recompose": "^0.30.9",
-    "babel-preset-react-app": "^10.0.1",
     "eslint": "^8.49.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
     "eslint-plugin-unused-imports": "^3.0.0",
