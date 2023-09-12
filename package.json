@@ -24,6 +24,9 @@
     "docs": "start-storybook -p 6006 -s public",
     "build-docs": "build-storybook -s public"
   },
+  "resolutions": {
+    "strip-ansi": "^6.0.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/helper-builder-react-jsx-experimental": "^7.12.11",
@@ -44,7 +47,6 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.2",
     "@types/recompose": "^0.30.9",
-    "babel-preset-react-app": "^10.0.0",
     "eslint": "^8.49.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
     "eslint-plugin-unused-imports": "^3.0.0",
