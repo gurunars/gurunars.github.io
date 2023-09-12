@@ -57,7 +57,7 @@
     "storybook-host": "^5.2.0",
     "ts-loader": "^9.4.4",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "5.2.0"
+    "typescript": "5.1.6"
   },
   "browserslist": {
     "production": [
