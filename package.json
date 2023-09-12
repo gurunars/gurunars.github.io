@@ -16,7 +16,7 @@
   },
   "scripts": {
     "update": "yarn upgrade-interactive --latest",
-    "start": "vite start",
+    "start": "vite",
     "build": "vite build",
     "test": "CI=true vitest",
     "plop": "plop",
