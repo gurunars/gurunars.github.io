@@ -1,15 +1,15 @@
 import _ from 'lodash'
-import { HashRouter as Router, Route, Routes, Navigate, useParams } from 'react-router-dom'
-
+import { HashRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import Cv from './Cv'
 import HashStateAware from './HashStateAware'
-import { DirectLinkContext, LinkPreview, Link } from './Link'
+import { DirectLinkContext, LinkPreview } from './Link'
 import { ALL, Portfolio } from './model'
 import Site, { groups, typeToSpecMapping } from './Site'
-import { box, fieldBox } from './Box'
+import { fieldBox, box } from './Box'
+import { Link } from './Link'
 
-type State = {
+interface State {
   selectedId: number | null;
   selectedSpecs: string[];
   selectedGroup: string;
@@ -17,7 +17,7 @@ type State = {
   selectedTag: string;
 }
 
-const initial: State = {
+const initial = {
   selectedId: null,
   selectedSpecs: _.keys(typeToSpecMapping),
   selectedGroup: _.keys(groups)[0],
@@ -26,14 +26,14 @@ const initial: State = {
 }
 
 const App = ({ portfolio }: { portfolio: Portfolio }) => {
-  const mapping: { [key: string]: Link } = {}
+  const mapping: Record<string, Link> = {}
 
   portfolio.links.forEach(it => {
     mapping[it.alias] = it
   })
 
-  const Shortener = () => (
-    <LinkPreview link={(useParams() as any).link as Link} />
+  const Shortener = ({ match }: { match: { params: { alias: string } } }) => (
+    <LinkPreview link={mapping[match.params.alias]} />
   )
 
   const CvView = () => (
@@ -61,12 +61,10 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   )
   return (
     <Router>
-      <Routes>
-        <Route path="/" index element={<Navigate to='/portfolio' />} />
-        <Route path="/sh/:alias" loader={({ params }: any) => mapping[params.alias]} element={<Shortener />} />
-        <Route path="/portfolio" Component={Index} />
-        <Route path="/cv" Component={CvView} />
-      </Routes>
+      <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
+      <Route path="/sh/:alias" exact strict component={Shortener} />
+      <Route path="/portfolio" component={Index} />
+      <Route path="/cv" component={CvView} />
     </Router>
   )
 }
