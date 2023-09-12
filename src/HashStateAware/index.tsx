@@ -5,13 +5,13 @@ import jsonpack from 'jsonpack'
 import { merge } from '../utils'
 import { useState, useEffect } from 'react'
 
-interface Props<T extends {}> {
+interface Props<T extends Record<string, never>> {
   initial: T;
   prefix: string;
   children: (data: T, set: (innerData: T) => void) => React.ReactElement<any>;
 }
 
-const deserialize = (prefix: string, location: string): Object => {
+const deserialize = (prefix: string, location: string): NonNullable<unknown> => {
   try {
     return jsonpack.unpack(location.replace('#' + prefix + '?', ''))
   } catch {
@@ -19,7 +19,7 @@ const deserialize = (prefix: string, location: string): Object => {
   }
 }
 
-const serialize = (prefix: string, params: Object): string =>
+const serialize = (prefix: string, params: unknown): string =>
   '#' + prefix + '?' + jsonpack.pack(params)
 
 
@@ -31,7 +31,7 @@ const getWindowTop = (): WindowProxy => {
   return top
 }
 
-const HashAware = <T extends {}>({ initial, prefix, children }: Props<T>) => {
+const HashAware = <T extends Record<string, never>>({ initial, prefix, children }: Props<T>) => {
   const [hash, setHash] = useState(initial)
 
   const top = getWindowTop()
