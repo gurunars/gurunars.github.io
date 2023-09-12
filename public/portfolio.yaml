@@ -276,12 +276,20 @@ items:
       - resource-api-docs
       - resource-api
 
+  - title: Software Engineer
+    type: fullTimeJob
+    location: google
+    startDate: "2022-04-04"
+    description: >
+      I joined Google Assistant team as Android developer.
+
   - title: Senior Software Engineer
     type: fullTimeJob
     location: homegate
     startDate: "2020-06-01"
+    endDate: "2022-04-03"
     description: >
-      I joined a team responsible for #TypeScript and #Vue based frontend/backend stack within
+      I was responsible for #TypeScript and #Vue based frontend/backend stack within
       the largest Swiss real estate portal.
     achievements:
       - "Implemented backend integration in #{Typescript} of Homegate portal with a mortgate calculation API by UBS"
@@ -651,3 +659,6 @@ links:
     alias: uc-san-diego-data-structures-and-algorithms-certificate
     url: https://www.coursera.org/account/accomplishments/specialization/WCPEQUF8MBZS
     type: coursera
+  - name: Google
+    alias: google
+    url: https://google.com
