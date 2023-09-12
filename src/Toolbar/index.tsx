@@ -17,8 +17,8 @@ export interface TypeToSpecMapping {
 
 export interface GroupSpec<T extends Record<string, never>> {
   humanReadableName: string;
-  groupBy: (item: T) => Object;
-  sortBy: (item: T) => Object;
+  groupBy: (item: T) => NonNullable<unknown>;
+  sortBy: (item: T) => NonNullable<unknown>;
   reverse: boolean;
 }
 
