@@ -24,9 +24,9 @@ const serialize = (prefix: string, params: Object): string =>
 
 
 const getWindowTop = (): WindowProxy => {
-  const top = window.top;
+  const top = window.top
   if (top == null) {
-    throw "window.top is null"
+    throw 'window.top is null'
   }
   return top
 }

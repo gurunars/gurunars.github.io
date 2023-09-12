@@ -62,7 +62,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   return (
     <Router>
       <Routes>
-        <Route path="/" action={() => redirect("/portfolio")} />
+        <Route path="/" action={() => redirect('/portfolio')} />
         <Route path="/sh/:alias" Component={Shortener} />
         <Route path="/portfolio" Component={Index} />
         <Route path="/cv" Component={CvView} />

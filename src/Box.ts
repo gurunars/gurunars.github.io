@@ -18,14 +18,14 @@ export const useBoxState = <T>(initial: T): Box<T> => {
 
 export const box = <T extends Record<string, unknown>>(
   value: T,
-  set: (value: T) => void
+  set: (newValue: T) => void,
 ) => ({
   get: () => value,
-  set: (newValue: T) => set(newValue)
+  set: (newValue: T) => set(newValue),
 })
 
-export const fieldBox = <T extends Record<string, unknown>>(box: Box<T>) =>
+export const fieldBox = <T extends Record<string, unknown>>(instance: Box<T>) =>
   <K extends keyof T>(key: K): Box<T[K]> => ({
-    get: () => box.get()[key],
-    set: (value: any) => box.set(merge(box.get(), { [key]: value }) as T),
+    get: () => instance.get()[key],
+    set: (value: any) => instance.set(merge(instance.get(), { [key]: value }) as T),
   })
