@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes, Navigate, useParams } from 'react-router-dom'
 
 
 import Cv from './Cv'
@@ -32,8 +32,8 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     mapping[it.alias] = it
   })
 
-  const Shortener = ({ match }: any) => (
-    <LinkPreview links={mapping} alias={match.params.alias} />
+  const Shortener = () => (
+    <LinkPreview link={(useParams() as any).link as Link} />
   )
 
   const CvView = () => (
@@ -63,7 +63,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     <Router>
       <Routes>
         <Route path="/" index element={<Navigate to='/portfolio' />} />
-        <Route path="/sh/:alias" Component={Shortener} />
+        <Route path="/sh/:alias" loader={({ params }: any) => mapping[params.alias]} element={<Shortener />} />
         <Route path="/portfolio" Component={Index} />
         <Route path="/cv" Component={CvView} />
       </Routes>

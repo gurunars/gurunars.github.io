@@ -136,68 +136,64 @@ export interface MappingSpec {
 }
 
 export const LinkPreview = ({
-  links,
-  alias,
+  link
 }: {
-  links: MappingSpec;
-  alias: string;
-}) => {
-  const link = links[alias]
-  return (
+  link: Link
+}) => (
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      justifyItems: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignContent: 'center',
+    }}
+  >
     <div
       style={{
-        width: '100%',
-        height: '100%',
         display: 'flex',
-        justifyItems: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flexDirection: 'row',
         alignContent: 'center',
+        alignItems: 'center',
+        border: '1px dotted black',
+        padding: 10,
       }}
     >
+      <CircleType color="black" type={link.type} />
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignContent: 'center',
-          alignItems: 'center',
-          border: '1px dotted black',
-          padding: 10,
+          marginLeft: 10,
         }}
       >
-        <CircleType color="black" type={link.type} />
-        <div
+        <p
           style={{
-            marginLeft: 10,
+            fontSize: 21,
           }}
         >
-          <p
-            style={{
-              fontSize: 21,
-            }}
-          >
-            {link.name}
-          </p>
-          <p
-            style={{
-              color: 'gray',
-              fontSize: 12,
-              marginTop: 6,
-            }}
-          >
-            <i>{link.alias}</i>
-          </p>
-          <p
-            style={{
-              marginTop: 10,
-            }}
-          >
-            <a href={link.url} style={{ wordBreak: 'break-all' }}>
-              {link.url}
-            </a>
-          </p>
-        </div>
+          {link.name}
+        </p>
+        <p
+          style={{
+            color: 'gray',
+            fontSize: 12,
+            marginTop: 6,
+          }}
+        >
+          <i>{link.alias}</i>
+        </p>
+        <p
+          style={{
+            marginTop: 10,
+          }}
+        >
+          <a href={link.url} style={{ wordBreak: 'break-all' }}>
+            {link.url}
+          </a>
+        </p>
       </div>
     </div>
-  )
-}
+  </div>
+)
+
