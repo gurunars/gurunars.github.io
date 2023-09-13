@@ -5,7 +5,7 @@ import jsonpack from 'jsonpack'
 import { merge } from '../utils'
 import { useState, useEffect } from 'react'
 
-interface Props<T extends Record<string, never>> {
+interface Props<T extends NonNullable<unknown>> {
   initial: T;
   prefix: string;
   children: (data: T, set: (innerData: T) => void) => React.ReactElement<any>;
@@ -31,7 +31,7 @@ const getWindowTop = (): WindowProxy => {
   return top
 }
 
-const HashAware = <T extends Record<string, never>>({ initial, prefix, children }: Props<T>) => {
+const HashAware = <T extends NonNullable<unknown>>({ initial, prefix, children }: Props<T>) => {
   const [hash, setHash] = useState(initial)
 
   const top = getWindowTop()

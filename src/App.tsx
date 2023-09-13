@@ -17,7 +17,7 @@ interface State {
   selectedTag: string;
 }
 
-const initial = {
+const initial: State = {
   selectedId: null,
   selectedSpecs: _.keys(typeToSpecMapping),
   selectedGroup: _.keys(groups)[0],
