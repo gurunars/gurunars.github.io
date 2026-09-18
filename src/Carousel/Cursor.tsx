@@ -1,7 +1,7 @@
 export interface Cursor {
-  current: number | null;
-  next: number | null;
-  previous: number | null;
+  current: number | null
+  next: number | null
+  previous: number | null
 }
 
 const getIndex = (size: number, index: number): number | null => {

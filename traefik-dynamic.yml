@@ -1,0 +1,34 @@
+# Traefik dynamic configuration (file provider — no docker socket needed).
+# Routes by hostname to the dev servers' static IPs on the devnet bridge
+# (see compose.yaml).
+http:
+  routers:
+    portfolio:
+      rule: Host(`portfolio.localhost`)
+      entryPoints:
+        - web
+      service: portfolio
+    storybook:
+      rule: Host(`storybook.localhost`)
+      entryPoints:
+        - web
+      service: storybook
+    admin:
+      rule: Host(`admin.localhost`)
+      entryPoints:
+        - web
+      service: admin
+
+  services:
+    portfolio:
+      loadBalancer:
+        servers:
+          - url: "http://10.213.87.10:8000"
+    storybook:
+      loadBalancer:
+        servers:
+          - url: "http://10.213.87.11:6006"
+    admin:
+      loadBalancer:
+        servers:
+          - url: "http://10.213.87.12:8010"

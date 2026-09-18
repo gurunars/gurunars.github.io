@@ -1,7 +1,6 @@
 import moment from 'moment'
 
-export const merge = (...sources: NonNullable<unknown>[]): NonNullable<unknown> =>
-  Object.assign({}, ...sources)
+export const merge = (...sources: NonNullable<unknown>[]): NonNullable<unknown> => Object.assign({}, ...sources)
 
 export const hashCode = (str: string): number => {
   let hash = 0
@@ -19,13 +18,11 @@ export const hashCode = (str: string): number => {
 
 const YEAR_FMT = 'YYYY-MM-DD'
 
-const sameDays = (one: Date, two: Date) =>
-  moment(one).format(YEAR_FMT) === moment(two).format(YEAR_FMT)
+const sameDays = (one: Date, two: Date) => moment(one).format(YEAR_FMT) === moment(two).format(YEAR_FMT)
 
 const isToday = (date: Date) => sameDays(new Date(), date)
 
-const formatDate = (date: Date, fmt: string) =>
-  isToday(date) ? 'TBD' : moment(date).format(fmt)
+const formatDate = (date: Date, fmt: string) => (isToday(date) ? 'TBD' : moment(date).format(fmt))
 
 export const yearToString = (date: Date) => formatDate(date, 'YYYY')
 

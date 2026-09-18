@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react'
+
 import { SizeContext } from '../SizeAware'
 
 const isMobile = () =>
@@ -9,16 +11,16 @@ const isMobile = () =>
   navigator.userAgent.match(/BlackBerry/i) ||
   navigator.userAgent.match(/Windows Phone/i)
 
-type ElementSupplier<Props> = (props: Props) => JSX.Element;
+type ElementSupplier<Props> = (props: Props) => ReactElement
 
-const responsive = <Props extends any>({
+const responsive = <Props,>({
   desktopView,
   mobileView,
   tabletView,
 }: {
-  desktopView: ElementSupplier<Props>;
-  mobileView?: ElementSupplier<Props>;
-  tabletView?: ElementSupplier<Props>;
+  desktopView: ElementSupplier<Props>
+  mobileView?: ElementSupplier<Props>
+  tabletView?: ElementSupplier<Props>
 }) => {
   tabletView = tabletView || desktopView || mobileView
   mobileView = mobileView || tabletView || desktopView
@@ -26,7 +28,7 @@ const responsive = <Props extends any>({
 
   return (props: Props) => (
     <SizeContext.Consumer>
-      {size => {
+      {(size) => {
         if (isMobile() || size.width < 770) {
           return mobileView != null ? mobileView(props) : desktopView(props)
         } else if (size.width < 1250) {

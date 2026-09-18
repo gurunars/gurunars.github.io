@@ -1,20 +1,12 @@
-import React from 'react'
-
-import { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface Props {
-  children: React.ReactElement<any>;
+  children: React.ReactElement<any>
 }
 
 const getSize = () => ({
-  width:
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth,
-  height:
-    window.innerHeight ||
-    document.documentElement.clientHeight ||
-    document.body.clientHeight,
+  width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+  height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
 })
 
 export const SizeContext = React.createContext(getSize())
@@ -22,10 +14,8 @@ export const SizeContext = React.createContext(getSize())
 const SizeAware = ({ children }: Props) => {
   const [size, setSize] = useState(getSize())
 
-  const updateDimensions = () =>
-    setSize(getSize())
-
   useEffect(() => {
+    const updateDimensions = () => setSize(getSize())
     window.addEventListener('resize', updateDimensions)
     return () => {
       window.removeEventListener('resize', updateDimensions)
@@ -42,7 +32,6 @@ const SizeAware = ({ children }: Props) => {
       {children}
     </SizeContext.Provider>
   )
-
 }
 
 export default SizeAware

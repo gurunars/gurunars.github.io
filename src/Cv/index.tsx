@@ -1,9 +1,9 @@
-import React from 'react'
+import type React from 'react'
 
 import { RawGroupedList } from '../GroupedList'
 import { groupItems } from '../GroupedList/grouping'
-import { Item, Large } from '../Item'
-import { Portfolio } from '../model'
+import { type Item, Large } from '../Item'
+import type { Portfolio } from '../model'
 import { groups } from '../Site'
 
 const Cv = (props: { portfolio: Portfolio }): React.ReactElement<any> => {
@@ -16,12 +16,7 @@ const Cv = (props: { portfolio: Portfolio }): React.ReactElement<any> => {
       }}
     >
       <RawGroupedList
-        items={groupItems(
-          props.portfolio.items,
-          group.groupBy,
-          group.sortBy,
-          group.reverse,
-        )}
+        items={groupItems(props.portfolio.items, group.groupBy, group.sortBy, group.reverse)}
         renderItem={({ item }: { item: Item }) => <Large item={item} />}
       />
     </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 import responsive from '../Responsive'
 
@@ -23,7 +23,10 @@ const OverlayDecorator = (props: { children: React.ReactNode }) => (
         left: '5%',
         width: '90%',
         height: '90%',
-        backgroundColor: 'white',
+        backgroundColor: 'var(--surface)',
+        borderRadius: 12,
+        boxShadow: 'var(--shadow-hover)',
+        overflow: 'hidden',
       }}
     >
       {props.children}
@@ -32,8 +35,8 @@ const OverlayDecorator = (props: { children: React.ReactNode }) => (
 )
 
 interface Props {
-  children: JSX.Element;
-  foregroundContent?: JSX.Element | null;
+  children: React.JSX.Element
+  foregroundContent?: React.JSX.Element | null
 }
 
 const Desktop = (props: Props) =>
@@ -51,8 +54,7 @@ const Desktop = (props: Props) =>
     props.children
   )
 
-const Mobile = (props: Props) =>
-  props.foregroundContent ? props.foregroundContent : props.children
+const Mobile = (props: Props) => (props.foregroundContent ? props.foregroundContent : props.children)
 
 export default responsive({
   desktopView: Desktop,

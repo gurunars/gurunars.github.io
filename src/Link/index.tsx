@@ -3,27 +3,19 @@ import React from 'react'
 
 import { merge } from '../utils'
 
-import getIconForType from './icons'
+import { getIconForUrl } from './icons/derive'
 
 export const DirectLinkContext = React.createContext(true)
 
 export interface Link {
-  alias: string;
-  name: string;
-  url: string;
-  type?: string;
+  alias: string
+  name: string
+  url: string
 }
 
-const asUrl = (link: Link) =>
-  window.location.href.replace(/#.*$/, '').replace(/\/$/, '') +
-  '#/sh/' +
-  link.alias
+const asUrl = (link: Link) => `${window.location.href.replace(/#.*$/, '').replace(/\/$/, '')}#/sh/${link.alias}`
 
-const DecoratedLink = (props: {
-  link: Link;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-}) => (
+const DecoratedLink = (props: { link: Link; children: React.ReactNode; style?: React.CSSProperties }) => (
   <DirectLinkContext.Consumer>
     {(isDirect: boolean) => (
       <span
@@ -50,20 +42,14 @@ const DecoratedLink = (props: {
   </DirectLinkContext.Consumer>
 )
 
-export const Url = ({
-  link,
-  style,
-}: {
-  link: Link;
-  style?: React.CSSProperties;
-}) => (
+export const Url = ({ link, style }: { link: Link; style?: React.CSSProperties }) => (
   <DecoratedLink style={style} link={link}>
     <a href={link.url}>{link.name}</a>
   </DecoratedLink>
 )
 
-const CircleType = ({ type, color }: { type?: string; color: string }) => {
-  const SvgIcon = getIconForType(type)
+const CircleType = ({ url, color }: { url?: string; color: string }) => {
+  const SvgIcon = getIconForUrl(url)
   return (
     <span
       style={{
@@ -77,7 +63,7 @@ const CircleType = ({ type, color }: { type?: string; color: string }) => {
         height: 30,
         minHeight: 30,
         borderRadius: '50%',
-        border: '2px solid ' + color,
+        border: `2px solid ${color}`,
       }}
     >
       <div
@@ -92,34 +78,18 @@ const CircleType = ({ type, color }: { type?: string; color: string }) => {
   )
 }
 
-export const CircleUrl = ({
-  link,
-  style,
-}: {
-  link: Link;
-  style?: React.CSSProperties;
-}) => (
+export const CircleUrl = ({ link, style }: { link: Link; style?: React.CSSProperties }) => (
   <DecoratedLink style={style} link={link}>
     <a title={link.name} href={link.url}>
-      <CircleType color={_.get(style, 'color') || 'black'} type={link.type} />
+      <CircleType color={_.get(style, 'color') || 'var(--icon)'} url={link.url} />
     </a>
   </DecoratedLink>
 )
 
-export const FullUrl = ({
-  link,
-  style,
-}: {
-  link: Link;
-  style?: React.CSSProperties;
-}) => (
+export const FullUrl = ({ link, style }: { link: Link; style?: React.CSSProperties }) => (
   <DecoratedLink style={style} link={link}>
-    <a
-      title={link.name}
-      style={{ alignItems: 'center', display: 'inline-flex' }}
-      href={link.url}
-    >
-      <CircleType color={_.get(style, 'color') || 'black'} type={link.type} />
+    <a title={link.name} style={{ alignItems: 'center', display: 'inline-flex' }} href={link.url}>
+      <CircleType color={_.get(style, 'color') || 'var(--icon)'} url={link.url} />
       <span
         style={{
           marginLeft: '5px',
@@ -132,14 +102,10 @@ export const FullUrl = ({
 )
 
 export interface MappingSpec {
-  [key: string]: Link;
+  [key: string]: Link
 }
 
-export const LinkPreview = ({
-  link,
-}: {
-  link: Link
-}) => (
+export const LinkPreview = ({ link }: { link: Link }) => (
   <div
     style={{
       width: '100%',
@@ -157,11 +123,11 @@ export const LinkPreview = ({
         flexDirection: 'row',
         alignContent: 'center',
         alignItems: 'center',
-        border: '1px dotted black',
+        border: '1px solid var(--border)',
         padding: 10,
       }}
     >
-      <CircleType color="black" type={link.type} />
+      <CircleType color="var(--icon)" url={link.url} />
       <div
         style={{
           marginLeft: 10,
@@ -176,7 +142,7 @@ export const LinkPreview = ({
         </p>
         <p
           style={{
-            color: 'gray',
+            color: 'var(--muted)',
             fontSize: 12,
             marginTop: 6,
           }}
@@ -196,4 +162,3 @@ export const LinkPreview = ({
     </div>
   </div>
 )
-

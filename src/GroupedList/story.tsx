@@ -1,11 +1,11 @@
-import multiTypeStory from '../Responsive/multitype'
+import { desktopFrame, mobileFrame } from '../Responsive/multitype'
 
 import Grouping from '.'
 import { groupItems } from './grouping'
 
 interface Item {
-  type: string;
-  title: string;
+  type: string
+  title: string
 }
 
 const items: Item[] = [
@@ -20,9 +20,19 @@ const items: Item[] = [
   { type: 'three', title: 'H' },
 ]
 
-multiTypeStory('GroupedList', () => (
+const view = () => (
   <Grouping
-    items={groupItems(items, item => item.type, item => item.title)}
+    items={groupItems(
+      items,
+      (item) => item.type,
+      (item) => item.title,
+    )}
     renderItem={(props: { item: Item }) => <h1>{props.item.title}</h1>}
   />
-))
+)
+
+export default { title: 'GroupedList' }
+
+export const Desktop = () => desktopFrame(view())
+
+export const Mobile = () => mobileFrame(view())

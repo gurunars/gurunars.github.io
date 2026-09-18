@@ -1,24 +1,22 @@
 import _ from 'lodash'
-import React from 'react'
-import { getId, Item, Large, Small } from '../Item'
-import BaseToolbar, {
-  GroupSpecSelection,
-  SpecSelection,
-  TagSelection,
-  TagSpec,
-  TitleToGroupSpecMapping,
-  TypeToSpecMapping,
-} from '../Toolbar'
-
+import type React from 'react'
+import type Box from '../Box'
 import Carousel from '../Carousel'
 import GroupedList from '../GroupedList'
 import { groupItems } from '../GroupedList/grouping'
+import { getId, type Item, Large, Small } from '../Item'
+import { getImportantSkills, type Portfolio } from '../model'
 import PageWithOverlay from '../PageWithOverlay'
-
-import Box from '../Box'
-import { getImportantSkills, Portfolio } from '../model'
-import PageWithSideMenu, { MenuVisibility } from '../PageWithSideMenu'
+import PageWithSideMenu, { type MenuVisibility } from '../PageWithSideMenu'
 import responsive from '../Responsive'
+import BaseToolbar, {
+  type GroupSpecSelection,
+  type SpecSelection,
+  type TagSelection,
+  type TagSpec,
+  type TitleToGroupSpecMapping,
+  type TypeToSpecMapping,
+} from '../Toolbar'
 import { yearToString } from '../utils'
 
 export const typeToSpecMapping: TypeToSpecMapping = {
@@ -87,48 +85,36 @@ export const groups: TitleToGroupSpecMapping<Item> = {
 }
 
 const filterItems = (items: Item[], types: string[]): Item[] =>
-  _.filter(items, item => types.indexOf(item.type) !== -1)
+  _.filter(items, (item) => types.indexOf(item.type) !== -1)
 
-const filterByTag = (items: Item[], tag: string): Item[] =>
-  _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1)
+const filterByTag = (items: Item[], tag: string): Item[] => _.filter(items, (item: Item) => item.tags.indexOf(tag) > -1)
 
-const Toolbar = (
-  props: { allTags: TagSpec } & SpecSelection &
-    GroupSpecSelection &
-    TagSelection,
-) => (
-  <BaseToolbar
-    groupMapping={groups}
-    filterMapping={typeToSpecMapping}
-    {...props}
-  />
+const Toolbar = (props: { allTags: TagSpec } & SpecSelection & GroupSpecSelection & TagSelection) => (
+  <BaseToolbar groupMapping={groups} filterMapping={typeToSpecMapping} {...props} />
 )
 
-interface IdHodler {
-  selectedId: Box<number | null>;
+interface IdHolder {
+  selectedId: Box<number | null>
 }
 
-const DesktopToolbarWrapper = ({
-  children,
-}: {
-  children: React.ReactChild;
-}) => (
+const DesktopToolbarWrapper = ({ children }: { children: React.ReactNode }) => (
   <div
     style={{
       width: '270px',
       overflowY: 'auto',
-      borderRight: '1px solid black',
+      borderRight: '1px solid var(--border)',
       height: '100%',
+      backgroundColor: 'var(--bg)',
     }}
   >
     {children}
   </div>
 )
 
-const MobileToolbarWrapper = ({ children }: { children: React.ReactChild }) => (
+const MobileToolbarWrapper = ({ children }: { children: React.ReactNode }) => (
   <div
     style={{
-      backgroundColor: 'white',
+      backgroundColor: 'var(--surface)',
       minHeight: '100%',
     }}
   >
@@ -143,9 +129,9 @@ const ToolbarWrapper = responsive({
 
 const Main = (
   props: {
-    children?: JSX.Element;
-    portfolio: Portfolio;
-  } & IdHodler &
+    children?: React.JSX.Element
+    portfolio: Portfolio
+  } & IdHolder &
     SpecSelection &
     GroupSpecSelection &
     MenuVisibility &
@@ -153,33 +139,22 @@ const Main = (
 ) => {
   const group = groups[props.selectedGroup.get()]
 
-  const filtered = filterByTag(
-    filterItems(props.portfolio.items, props.selectedSpecs.get()),
-    props.selectedTag.get(),
-  )
+  const filtered = filterByTag(filterItems(props.portfolio.items, props.selectedSpecs.get()), props.selectedTag.get())
 
-  const grouped = groupItems(
-    filtered,
-    group.groupBy,
-    group.sortBy,
-    group.reverse,
-  )
-  const flattened = _.flatMap(grouped, grp => grp.elements)
-  const selectedPosition = _.findIndex(
-    flattened,
-    item => props.selectedId.get() === getId(item),
-  )
+  const grouped = groupItems(filtered, group.groupBy, group.sortBy, group.reverse)
+  const flattened = _.flatMap(grouped, (grp) => grp.elements)
+  const selectedPosition = _.findIndex(flattened, (item) => props.selectedId.get() === getId(item))
   return (
     <PageWithOverlay
       foregroundContent={
         selectedPosition > -1 ? (
           <Carousel
             size={flattened.length}
-            selectedPostion={selectedPosition || 0}
+            selectedPosition={selectedPosition || 0}
             close={() => props.selectedId.set(null)}
-            goTo={pos => props.selectedId.set(getId(flattened[pos]))}
+            goTo={(pos) => props.selectedId.set(getId(flattened[pos]))}
           >
-            {pos => <Large item={flattened[pos]} />}
+            {(pos) => <Large item={flattened[pos]} />}
           </Carousel>
         ) : null
       }
@@ -196,9 +171,11 @@ const Main = (
           items={grouped}
           renderItem={({ item }: { item: Item }) => (
             <Small
-              style={{
-                backgroundColor: typeToSpecMapping[item.type].color,
-              }}
+              style={
+                {
+                  '--type-color': typeToSpecMapping[item.type].color,
+                } as React.CSSProperties
+              }
               item={item}
               onClick={() => props.selectedId.set(getId(item))}
             />

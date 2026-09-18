@@ -1,28 +1,22 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
     "module": "esnext",
-    "target": "es5",
+    "target": "es2020",
     "lib": [
-      "es6",
-      "dom"
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
     ],
     "sourceMap": true,
-    "allowJs": true,
     "jsx": "react-jsx",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "types": [
       "vite/client",
-      "vite-plugin-svgr/client"
+      "vite-plugin-svgr/client",
+      "vitest/globals"
     ],
-    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "baseUrl": "src",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -30,19 +24,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src/**/*",
+    "admin/**/*",
     ".types/*"
   ],
   "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
+    "node_modules"
   ]
 }

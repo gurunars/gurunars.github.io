@@ -30,7 +30,7 @@
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "files.trimTrailingWhitespace": true,
   "editor.renderWhitespace": "all",

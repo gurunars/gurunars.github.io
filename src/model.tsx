@@ -1,26 +1,28 @@
 import _ from 'lodash'
 
-import { Item } from './Item'
-import { Link } from './Link'
-import { TagSpec } from './Toolbar'
+import type { Item } from './Item'
+import type { Link } from './Link'
+import type { TagSpec } from './Toolbar'
 
 export interface Portfolio {
-  links: Link[];
-  items: Item[];
+  links: Link[]
+  // People available as an item's references; kept apart from resource links.
+  people: Link[]
+  items: Item[]
 }
 
 export const ALL = 'All'
 
 export const getImportantSkills: (portfolio: Portfolio) => TagSpec = _.flow([
   // we want ALL tag to be applied to each item
-  initial => _.flatMap(initial.items, it => it.tags || []),
+  (initial) => _.flatMap(initial.items, (it) => it.tags || []),
   // create a {tag: count} map
   _.countBy,
   // we are interested only in the skills that are quite frequently used
-  it => _.pickBy(it, count => count > 1),
+  (it) => _.pickBy(it, (count) => count > 1),
   // order by count (3 lines below)
   _.toPairs,
-  it => _.sortBy(it, 1).reverse(),
+  (it) => _.sortBy(it, 1).reverse(),
   _.fromPairs,
 ])
 
@@ -28,14 +30,11 @@ const isWhitespace = (char: string) => /^\s+$/.test(char)
 
 const formatSimpleTag = (tag: string) => tag
 
-export const extractTags = (
-  text: string,
-  formatTag: (tag: string) => string = formatSimpleTag,
-): [string, string[]] => {
+export const extractTags = (text: string, formatTag: (tag: string) => string = formatSimpleTag): [string, string[]] => {
   const output: string[] = []
   const tags: string[] = []
 
-  type State = 'IDLE' | 'HASH' | 'FLEX' | 'IFLEX';
+  type State = 'IDLE' | 'HASH' | 'FLEX' | 'IFLEX'
   let state: State = 'IDLE'
 
   let buffer: string[] = []
@@ -92,12 +91,14 @@ export const extractTags = (
 }
 
 const preprocess = (initial: any): Portfolio => {
-  const getLink = (alias: string) =>
-    _.find(initial.links, link => link.alias === alias)
+  const people = initial.people || []
+  const getLink = (alias: string) => _.find(initial.links, (link) => link.alias === alias)
+  const getPerson = (alias: string) => _.find(people, (person) => person.alias === alias)
 
   return {
     links: initial.links,
-    items: _.map(initial.items, item => {
+    people,
+    items: _.map(initial.items, (item) => {
       const tags = [ALL]
 
       const desc = extractTags(item.description || '')
@@ -125,7 +126,7 @@ const preprocess = (initial: any): Portfolio => {
         tags: _.uniq(tags.map((it) => _.startCase(it))),
         description: desc[0],
         location: getLink(item.location),
-        references: _.map(item.references, getLink),
+        references: _.map(item.references, getPerson),
         links: _.map(item.links, getLink),
         achievements,
       }

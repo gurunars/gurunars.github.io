@@ -1,6 +1,6 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
-import { host } from 'storybook-host'
+import { action } from 'storybook/actions'
+
+import Centralized from '../Centralized'
 
 import { Large, Small } from '.'
 
@@ -36,20 +36,17 @@ const item = {
     {
       alias: 'lnk1',
       name: 'Name of the lnk1',
-      url: 'url-to-lnk1',
-      type: 'amazon',
+      url: 'https://amazon.com/dp/123',
     },
     {
       alias: 'lnk2',
       name: 'Name of the lnk2',
-      url: 'url-to-lnk2',
-      type: 'github',
+      url: 'https://github.com/example',
     },
     {
       alias: 'lnk3',
       name: 'Name of the lnk3',
-      url: 'url-to-lnk3',
-      type: 'email',
+      url: 'mailto:someone@example.com',
     },
   ],
   duration: {
@@ -58,13 +55,23 @@ const item = {
   },
 }
 
-storiesOf('Item', module)
-  .addDecorator(
-    host({
-      align: 'center bottom',
-      height: 600,
-      width: 800,
-    }),
-  )
-  .add('small', () => <Small item={item} onClick={action('OpenItem')} />)
-  .add('large', () => <Large item={item} />)
+export default { title: 'Item' }
+
+export const SmallItem = () => (
+  <Centralized>
+    <Small item={item} onClick={action('OpenItem')} />
+  </Centralized>
+)
+
+export const LargeItem = () => (
+  <Centralized>
+    <div
+      style={{
+        width: 800,
+        height: 600,
+      }}
+    >
+      <Large item={item} />
+    </div>
+  </Centralized>
+)

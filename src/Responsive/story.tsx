@@ -1,8 +1,8 @@
 import responsive from '.'
-import multiTypeStory from './multitype'
+import { desktopFrame, mobileFrame } from './multitype'
 
 interface Props {
-  title: string;
+  title: string
 }
 
 const DesktopView = (props: Props) => <p>DESKTOP {props.title}</p>
@@ -17,4 +17,8 @@ const ResponsiveView = responsive({
   mobileView: MobileView,
 })
 
-multiTypeStory('Responsive', () => <ResponsiveView title="Sample" />)
+export default { title: 'Responsive' }
+
+export const Desktop = () => desktopFrame(<ResponsiveView title="Sample" />)
+
+export const Mobile = () => mobileFrame(<ResponsiveView title="Sample" />)

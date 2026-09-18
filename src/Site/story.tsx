@@ -1,7 +1,7 @@
 import { useBoxState } from '../Box'
 
-import { Portfolio } from '../model'
-import multiTypeStory from '../Responsive/multitype'
+import type { Portfolio } from '../model'
+import { desktopFrame, mobileFrame } from '../Responsive/multitype'
 
 import Main from '.'
 
@@ -37,20 +37,17 @@ const genItem = (title: string, location: string, type: string) => ({
     {
       alias: 'lnk1',
       name: 'Name of the lnk1',
-      url: 'url-to-lnk1',
-      type: 'amazon',
+      url: 'https://amazon.com/dp/123',
     },
     {
       alias: 'lnk2',
       name: 'Name of the lnk2',
-      url: 'url-to-lnk2',
-      type: 'github',
+      url: 'https://github.com/example',
     },
     {
       alias: 'lnk3',
       name: 'Name of the lnk3',
-      url: 'url-to-lnk3',
-      type: 'email',
+      url: 'mailto:someone@example.com',
     },
   ],
   duration: {
@@ -79,6 +76,7 @@ const items = [
 export const PORTFOLIO: Portfolio = {
   items,
   links: [],
+  people: [],
 }
 
 const StateMain = () => (
@@ -100,4 +98,8 @@ const StateMain = () => (
   />
 )
 
-multiTypeStory('Site', () => <StateMain />)
+export default { title: 'Site', excludeStories: ['PORTFOLIO'] }
+
+export const Desktop = () => desktopFrame(<StateMain />)
+
+export const Mobile = () => mobileFrame(<StateMain />)

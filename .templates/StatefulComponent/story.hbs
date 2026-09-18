@@ -1,19 +1,16 @@
-import React from "react";
-import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
-import { host } from "storybook-host";
+import { action } from "storybook/actions";
+
+import Centralized from "../Centralized";
 
 import {{name}} from ".";
 
-storiesOf("{{name}}", module)
-  .addDecorator(host({
-    align: "center middle",
-    height: 600,
-    width: 800,
-  }))
-  .add("basic", () => (
+export default { title: "{{name}}" };
+
+export const Basic = () => (
+  <Centralized>
     <{{name}}
       title="Sample Title"
       onClick={action("onClick")}
     />
-  ));
+  </Centralized>
+);

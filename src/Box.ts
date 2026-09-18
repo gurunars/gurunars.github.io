@@ -4,8 +4,8 @@ import { merge } from './utils'
 
 // TODO: avoid comparison by reference
 export default interface Box<T> {
-  set(value: T): void;
-  get(): T;
+  set(value: T): void
+  get(): T
 }
 
 export const useBoxState = <T>(initial: T): Box<T> => {
@@ -16,15 +16,13 @@ export const useBoxState = <T>(initial: T): Box<T> => {
   }
 }
 
-export const box = <T>(
-  value: T,
-  set: (newValue: T) => void,
-) => ({
+export const box = <T>(value: T, set: (newValue: T) => void) => ({
   get: () => value,
   set: (newValue: T) => set(newValue),
 })
 
-export const fieldBox = <T extends NonNullable<unknown>>(instance: Box<T>) =>
+export const fieldBox =
+  <T extends NonNullable<unknown>>(instance: Box<T>) =>
   <K extends keyof T>(key: K): Box<T[K]> => ({
     get: () => instance.get()[key],
     set: (value: any) => instance.set(merge(instance.get(), { [key]: value }) as T),

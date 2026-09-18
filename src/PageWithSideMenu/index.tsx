@@ -1,26 +1,24 @@
-import React from 'react'
-import { merge } from 'immutable'
-import { useState, useEffect } from 'react'
-
-import Box from '../Box'
+import type React from 'react'
+import { useEffect, useState } from 'react'
+import ActionIcon from '../ActionIcon'
+import type Box from '../Box'
 import { FullSize } from '../Layouts'
 import responsive from '../Responsive'
+import { merge } from '../utils'
 
-import ActionIcon from '../ActionIcon'
-
-import { ReactComponent as Close } from './icons/close.svg'
-import { ReactComponent as Menu } from './icons/menu.svg'
+import Close from './icons/close.svg?react'
+import Menu from './icons/menu.svg?react'
 
 interface Props {
-  menu: JSX.Element
-  children: JSX.Element
+  menu: React.JSX.Element
+  children: React.JSX.Element
 }
 
 export interface MenuVisibility {
   menuIsVisible: Box<boolean>
 }
 
-const Desktop = (props: Props): JSX.Element => (
+const Desktop = (props: Props): React.JSX.Element => (
   <FullSize style={{ flexDirection: 'row' }}>
     <div
       style={{
@@ -51,7 +49,7 @@ const CHUNKS = Math.ceil((DURATION / 1000) * FPS)
 const DELAY = DURATION / CHUNKS
 const STEP = 1 / CHUNKS
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const BaseStyle: React.CSSProperties = {
   position: 'absolute',
@@ -60,8 +58,6 @@ const BaseStyle: React.CSSProperties = {
   overflowY: 'auto',
 }
 
-
-// eslint-disable-next-line max-statements
 const MobileClass = (props: TProps) => {
   const [value, setValue] = useState(props.menuIsVisible.get() ? 1 : 0)
   const [wasVisible, setWasVisible] = useState(false)
@@ -71,11 +67,7 @@ const MobileClass = (props: TProps) => {
   const scale = Math.abs(0.5 - value) * 2
   const rotation = value * 360
 
-  const animate = async (
-    step: number,
-    limit: number,
-    checkBoundary: (it: number, limitInner: number) => boolean,
-  ) => {
+  const animate = async (step: number, limit: number, checkBoundary: (it: number, limitInner: number) => boolean) => {
     for (let i = value; checkBoundary(i, limit); i += step) {
       setValue(i)
       await sleep(DELAY)
@@ -92,6 +84,7 @@ const MobileClass = (props: TProps) => {
     await animate(STEP, 1, (it: number, limit: number) => it <= limit)
   }
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: `open` and `close` animate from the current `value`; re-creating them must not retrigger the effect
   useEffect(() => {
     const isVisible = props.menuIsVisible.get()
     setWasVisible(isVisible)
@@ -103,21 +96,12 @@ const MobileClass = (props: TProps) => {
     } else {
       // Do nothing
     }
-  },
-    // eslint-disable-next-line
-    [props.menuIsVisible, wasVisible, value]
-  )
+  }, [props.menuIsVisible, wasVisible, value])
 
   return (
     <FullSize style={{ overflow: 'hidden' }}>
       <div style={BaseStyle}>{props.children}</div>
-      {shouldShowMenu && (
-        <div
-          style={merge(BaseStyle, { opacity: value })}
-        >
-          {props.menu}
-        </div>
-      )}
+      {shouldShowMenu && <div style={merge(BaseStyle, { opacity: value })}>{props.menu}</div>}
 
       <ActionIcon
         style={{

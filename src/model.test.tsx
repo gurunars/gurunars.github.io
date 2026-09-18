@@ -8,15 +8,15 @@ describe('extractTags', () => {
     ])
   })
 
-  it('should iclude extra hashes into the tag value', () => {
+  it('should include extra hashes into the tag value', () => {
     expect(extractTags('one ###hash')).toEqual(['one ##hash', ['##hash']])
   })
 
-  it('should include extra left curly parantheses', () => {
+  it('should include extra left curly parentheses', () => {
     expect(extractTags('one #{{{foo}')).toEqual(['one {{foo', ['{{foo']])
   })
 
-  it('should exclude extra right curly parantheses', () => {
+  it('should exclude extra right curly parentheses', () => {
     expect(extractTags('one #{foo}}}}')).toEqual(['one foo}}}', ['foo']])
   })
 

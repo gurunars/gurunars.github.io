@@ -1,16 +1,20 @@
-import { storiesOf } from '@storybook/react'
-import { host } from 'storybook-host'
+import Centralized from '../Centralized'
 
 import { PORTFOLIO } from '../Site/story'
 
 import Cv from '.'
 
-storiesOf('Cv', module)
-  .addDecorator(
-    host({
-      align: 'center middle',
-      height: 600,
-      width: 800,
-    }),
-  )
-  .add('basic', () => <Cv portfolio={PORTFOLIO} />)
+export default { title: 'Cv' }
+
+export const Basic = () => (
+  <Centralized>
+    <div
+      style={{
+        width: 800,
+        height: 600,
+      }}
+    >
+      <Cv portfolio={PORTFOLIO} />
+    </div>
+  </Centralized>
+)

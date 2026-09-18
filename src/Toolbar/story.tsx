@@ -1,7 +1,6 @@
 import { useBoxState } from '../Box'
-
+import { desktopFrame, mobileFrame } from '../Responsive/multitype'
 import Toolbar from '.'
-import multiTypeStory from '../Responsive/multitype'
 
 const StateToolbar = () => (
   <Toolbar
@@ -39,4 +38,8 @@ const StateToolbar = () => (
   />
 )
 
-multiTypeStory('Toolbar', () => <StateToolbar />)
+export default { title: 'Toolbar' }
+
+export const Desktop = () => desktopFrame(<StateToolbar />)
+
+export const Mobile = () => mobileFrame(<StateToolbar />)

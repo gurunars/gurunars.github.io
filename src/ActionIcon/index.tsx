@@ -1,14 +1,14 @@
 import _ from 'lodash'
-import React from 'react'
+import type React from 'react'
 
 import { merge } from '../utils'
 
 const ActionIcon = (props: {
-  icon: JSX.Element;
-  onClick: () => void;
-  rotation: number;
-  scale: number;
-  style?: React.CSSProperties;
+  icon: React.JSX.Element
+  onClick: () => void
+  rotation: number
+  scale: number
+  style?: React.CSSProperties
 }): React.ReactElement<any> => (
   <div
     onClick={props.onClick}
@@ -17,13 +17,13 @@ const ActionIcon = (props: {
         height: 40,
         width: 40,
         borderRadius: '50%',
-        backgroundColor: '#1B2E3C',
+        backgroundColor: 'var(--accent)',
         display: 'flex',
         alignItems: 'center',
         zIndex: 30,
         cursor: 'pointer',
         justifyContent: 'center',
-        color: 'white',
+        color: 'var(--accent-text)',
       },
       props.style || {},
     )}
@@ -32,15 +32,8 @@ const ActionIcon = (props: {
       style={{
         width: '60%',
         height: '60%',
-        transform:
-          'rotate(' +
-          props.rotation +
-          'deg)' +
-          ' ' +
-          'scale(' +
-          props.scale +
-          ')',
-        fill: _.get(props.style, 'color', 'black'),
+        transform: `rotate(${props.rotation}deg) scale(${props.scale})`,
+        fill: _.get(props.style, 'color', 'var(--accent-text)'),
       }}
     >
       {props.icon}

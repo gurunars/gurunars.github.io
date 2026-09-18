@@ -1,75 +1,43 @@
-import { storiesOf } from '@storybook/react'
-import React from 'react'
-// tslint:disable-next-line:no-implicit-dependencies
+import type React from 'react'
 
 import { SizeContext } from '../SizeAware'
 
-const multiTypeStory = (
-  name: string,
-  children: () => React.ReactElement<any>,
-) => {
-  const style: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    padding: 10,
-  }
-
-  storiesOf(name, module)
-    .add('desktop', () => (
-      <div style={style}>
-        <div
-          style={{
-            width: '100%',
-            height: 600,
-            border: '1px dotted black',
-          }}
-        >
-          <SizeContext.Provider
-            value={{
-              width: 3000,
-              height: 100,
-            }}
-          >
-            {children()}
-          </SizeContext.Provider>
-        </div>
-      </div>
-    ))
-    /*
-    // I do not have tablet specific layouts
-    .add("tablet", () => (
-      <SizeContext.Provider value={{
-        width: 1000,
-        height: 100
-      }}>
-        {children()}
-      </ SizeContext.Provider >
-    ))
-    */
-    .add('mobile', () => (
-      <div style={style}>
-        <div
-          style={{
-            width: 500,
-            height: 600,
-            border: '1px dotted black',
-          }}
-        >
-          <SizeContext.Provider
-            value={{
-              width: 500,
-              height: 100,
-            }}
-          >
-            {children()}
-          </SizeContext.Provider>
-        </div>
-      </div>
-    ))
+const wrapperStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  padding: 10,
 }
 
-export default multiTypeStory
+const frame = (outerWidth: number | string, contextWidth: number) =>
+  function Frame(children: React.ReactElement): React.ReactElement {
+    return (
+      <div style={wrapperStyle}>
+        <div
+          style={{
+            width: outerWidth,
+            height: 600,
+            border: '1px dotted black',
+          }}
+        >
+          <SizeContext.Provider
+            value={{
+              width: contextWidth,
+              height: 100,
+            }}
+          >
+            {children}
+          </SizeContext.Provider>
+        </div>
+      </div>
+    )
+  }
+
+export const desktopFrame = frame('100%', 3000)
+
+// I do not have tablet specific layouts
+
+export const mobileFrame = frame(500, 500)

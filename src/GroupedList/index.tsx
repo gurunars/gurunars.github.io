@@ -1,17 +1,17 @@
 import React from 'react'
 
 import responsive from '../Responsive'
-import { GroupedItems } from './interfaces'
+import type { GroupedItems } from './interfaces'
 
-type RenderItem<T> = (props: { item: T }) => React.ReactElement<any>;
+type RenderItem<T> = (props: { item: T }) => React.ReactElement<any>
 
-export const RawGroupedList = <T extends any>(props: {
-  items: Array<GroupedItems<T>>;
-  renderItem: RenderItem<T>;
-  style?: React.CSSProperties;
+export const RawGroupedList = <T,>(props: {
+  items: Array<GroupedItems<T>>
+  renderItem: RenderItem<T>
+  style?: React.CSSProperties
 }): React.ReactElement<any> => (
   <div style={props.style}>
-    {props.items.map(item => (
+    {props.items.map((item) => (
       <div
         key={item.group}
         style={{
@@ -30,28 +30,26 @@ export const RawGroupedList = <T extends any>(props: {
         </h2>
         <div>
           {item.elements
-            .map(element => props.renderItem({ item: element }))
-            .map((child, index) =>
-              React.cloneElement(child, { ...child.props, key: index }),
-            )}
+            .map((element) => props.renderItem({ item: element }))
+            .map((child, index) => React.cloneElement(child, { ...child.props, key: index }))}
         </div>
       </div>
     ))}
   </div>
 )
 
-interface Props<T extends any> {
-  items: Array<GroupedItems<T>>;
-  renderItem: RenderItem<T>;
+interface Props<T> {
+  items: Array<GroupedItems<T>>
+  renderItem: RenderItem<T>
 }
 
-const Desktop = <T extends any>(props: Props<T>): React.ReactElement<any> => (
+const Desktop = <T,>(props: Props<T>): React.ReactElement<any> => (
   <RawGroupedList
     items={props.items}
     style={{
       padding: 10,
     }}
-    renderItem={item => (
+    renderItem={(item) => (
       <div
         style={{
           float: 'left',
@@ -69,10 +67,10 @@ const Desktop = <T extends any>(props: Props<T>): React.ReactElement<any> => (
   />
 )
 
-const Mobile = <T extends any>(props: Props<T>): React.ReactElement<any> => (
+const Mobile = <T,>(props: Props<T>): React.ReactElement<any> => (
   <RawGroupedList
     items={props.items}
-    renderItem={item => (
+    renderItem={(item) => (
       <div
         style={{
           display: 'inline-block',
@@ -87,9 +85,7 @@ const Mobile = <T extends any>(props: Props<T>): React.ReactElement<any> => (
   />
 )
 
-const Grouping: <T extends any>(
-  props: Props<T>
-) => React.ReactElement<any> = responsive({
+const Grouping: <T>(props: Props<T>) => React.ReactElement<any> = responsive({
   desktopView: Desktop,
   mobileView: Mobile,
 })

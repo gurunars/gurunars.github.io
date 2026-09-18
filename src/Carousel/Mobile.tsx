@@ -1,19 +1,17 @@
-import React from 'react'
+import type React from 'react'
 
 import KeyBoardListener from '../KeyBoardListener'
 import { FullSize } from '../Layouts'
-
+import { type Cursor, getCursorItems } from './Cursor'
 import CursorIcon from './CursorIcon'
-
-import { Cursor, getCursorItems } from './Cursor'
-import Props from './Props'
-
-import { ReactComponent as Close } from './icons/close.svg'
-import { ReactComponent as Next } from './icons/next.svg'
-import { ReactComponent as Prev } from './icons/prev.svg'
+import Close from './icons/close.svg?react'
+import Next from './icons/next.svg?react'
+import Prev from './icons/prev.svg?react'
+import type Props from './Props'
+import SlidingPane from './SlidingPane'
 
 const Carousel = (props: Props): React.ReactElement<any> => {
-  const cursor: Cursor = getCursorItems(props.size, props.selectedPostion)
+  const cursor: Cursor = getCursorItems(props.size, props.selectedPosition)
 
   const dims = 15
   const controlsSize = 50
@@ -26,13 +24,14 @@ const Carousel = (props: Props): React.ReactElement<any> => {
 
   const mainAreaStyle: React.CSSProperties = {
     width: '100%',
-    height: 'calc(100% - ' + controlsSize + 'px',
-    overflow: 'auto',
+    height: `calc(100% - ${controlsSize}px)`,
   }
 
   return (
     <FullSize>
-      <div style={mainAreaStyle}>{props.children(cursor.current || 0)}</div>
+      <div style={mainAreaStyle}>
+        <SlidingPane position={cursor.current || 0} render={props.children} />
+      </div>
 
       <div
         style={{
@@ -41,19 +40,14 @@ const Carousel = (props: Props): React.ReactElement<any> => {
           left: 0,
           display: 'flex',
           width: '100%',
-          backgroundColor: 'white',
+          backgroundColor: 'var(--surface)',
           height: controlsSize,
           justifyContent: 'space-between',
-          borderTop: '1px solid gray',
+          borderTop: '1px solid var(--border)',
         }}
       >
         <div style={controlsStyle}>
-          <CursorIcon
-            keyboardButton="ArrowLeft"
-            icon={<Prev />}
-            targetPosition={cursor.previous}
-            goTo={props.goTo}
-          />
+          <CursorIcon keyboardButton="ArrowLeft" icon={<Prev />} targetPosition={cursor.previous} goTo={props.goTo} />
         </div>
 
         <KeyBoardListener keyBoardKey="Escape" onPress={props.close}>
@@ -62,7 +56,7 @@ const Carousel = (props: Props): React.ReactElement<any> => {
               onClick={props.close}
               style={{
                 cursor: 'pointer',
-                color: 'black',
+                color: 'var(--text)',
                 width: dims * 2,
                 height: dims * 2,
               }}
@@ -73,12 +67,7 @@ const Carousel = (props: Props): React.ReactElement<any> => {
         </KeyBoardListener>
 
         <div style={controlsStyle}>
-          <CursorIcon
-            keyboardButton="ArrowRight"
-            icon={<Next />}
-            targetPosition={cursor.next}
-            goTo={props.goTo}
-          />
+          <CursorIcon keyboardButton="ArrowRight" icon={<Next />} targetPosition={cursor.next} goTo={props.goTo} />
         </div>
       </div>
     </FullSize>

@@ -1,7 +1,7 @@
-import React from 'react'
+import type React from 'react'
 
 import { FullUrl, Url } from '../Link'
-import { durationToRangeString, Item } from './interface'
+import { durationToRangeString, type Item } from './interface'
 import Tag from './Tag'
 
 const Section = (props: { title: string; data: any }) => (
@@ -42,7 +42,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
             height: 95,
             marginRight: 10,
             borderRadius: '50%',
-            border: '2px solid black',
+            border: '2px solid var(--border)',
           }}
         />
       )}
@@ -50,7 +50,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         <h3 style={{ marginBottom: 5 }}>{item.title}</h3>
         {item.location && (
           <p style={{ fontSize: 14 }}>
-            <b style={{ color: 'grey' }}>[at]:</b>
+            <b style={{ color: 'var(--muted)' }}>[at]:</b>
             <Url link={item.location} />
           </p>
         )}
@@ -67,33 +67,39 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         marginLeft: 5,
         marginTop: 8,
         paddingLeft: 10,
-        borderLeft: '3px solid grey',
+        borderLeft: '3px solid var(--border)',
         paddingBottom: 10,
       }}
     >
-      {item.description && item.description.length > 0 && (
-        <Section title="Description" data={item.description} />
-      )}
+      {item.description && item.description.length > 0 && <Section title="Description" data={item.description} />}
       {item.achievements && item.achievements.length > 0 && (
         <Section
           title="Achievements"
-          data={item.achievements.map(value => (
-            <li key={value}>{value}</li>
-          ))}
+          data={
+            <ul style={{ paddingLeft: 20 }}>
+              {item.achievements.map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          }
         />
       )}
       {item.references && item.references.length > 0 && (
         <Section
           title="References"
-          data={item.references.map(reference => (
-            <li key={reference.url}>
-              <Url link={reference} />
-            </li>
-          ))}
+          data={
+            <ul style={{ paddingLeft: 20 }}>
+              {item.references.map((reference) => (
+                <li key={reference.url}>
+                  <Url link={reference} />
+                </li>
+              ))}
+            </ul>
+          }
         />
       )}
       <div style={{ marginTop: 10 }}>
-        {item.tags.map(tag => (
+        {item.tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
       </div>
@@ -106,7 +112,7 @@ const ItemView = ({ item }: { item: Item }): React.ReactElement<any> => (
         marginTop: 10,
       }}
     >
-      {item.links.map(link => (
+      {item.links.map((link) => (
         <FullUrl key={link.url} link={link} style={{ marginBottom: 4 }} />
       ))}
     </div>

@@ -1,9 +1,9 @@
-import React from 'react'
+import type React from 'react'
 
 import { FullSize } from '../Layouts'
 import { CircleUrl, Url } from '../Link'
 import { merge } from '../utils'
-import { durationToRangeString, Item } from './interface'
+import { durationToRangeString, type Item } from './interface'
 
 const baseStyle = {
   display: 'block',
@@ -34,11 +34,12 @@ const ItemView = ({
   onClick,
   style,
 }: {
-  item: Item;
-  onClick: () => void;
-  style?: React.CSSProperties;
+  item: Item
+  onClick: () => void
+  style?: React.CSSProperties
 }): React.ReactElement<any> => (
   <FullSize
+    className="card"
     style={merge(
       {
         flexDirection: 'column',
@@ -50,14 +51,12 @@ const ItemView = ({
     <div style={flexMax}>
       <div style={flexMax}>
         <span
+          className="card-title"
           style={merge(baseStyle, {
             paddingBottom: 0,
             display: 'flex',
             fontWeight: 'bold',
             alignItems: 'center',
-            textDecoration: 'underline',
-            color: 'blue',
-            cursor: 'pointer',
           })}
           onClick={onClick}
         >
@@ -70,7 +69,7 @@ const ItemView = ({
                 height: 45,
                 marginRight: 10,
                 borderRadius: '50%',
-                border: '2px solid black',
+                border: '2px solid var(--border)',
               }}
             />
           )}
@@ -94,19 +93,14 @@ const ItemView = ({
           justifyContent: 'space-between',
         }}
       >
-        <Url
-          link={item.location}
-          style={merge(metaInfoStyle, { bottom: 0, width: 160 })}
-        />
-        <span style={merge(metaInfoStyle, { right: 0 })}>
-          {durationToRangeString(item.duration)}
-        </span>
+        <Url link={item.location} style={merge(metaInfoStyle, { bottom: 0, width: 160 })} />
+        <span style={merge(metaInfoStyle, { right: 0 })}>{durationToRangeString(item.duration)}</span>
       </div>
     </div>
     <div
       style={{
         position: 'relative',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: 'var(--band)',
         height: 40,
         flex: '0 1 40px',
         width: '100%',
@@ -120,7 +114,7 @@ const ItemView = ({
         justifyContent: 'flex-start',
       }}
     >
-      {item.links.map(link => (
+      {item.links.map((link) => (
         <CircleUrl style={{ marginRight: 5 }} key={link.url} link={link} />
       ))}
 
@@ -132,7 +126,7 @@ const ItemView = ({
           display: 'block',
           textAlign: 'right',
           textDecoration: 'underline',
-          color: 'blue',
+          color: 'var(--link)',
           cursor: 'pointer',
           padding: 5,
           fontSize: '0.8em',

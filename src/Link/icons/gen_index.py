@@ -15,21 +15,16 @@ dicts = []
 
 for icon in sorted(icons):
     imports.append(
-        'import {{ ReactComponent as {name} }} from "./{name}.svg"'.format(name=icon)
+        'import {name} from "./{name}.svg?react"'.format(name=icon)
     )
     dicts.append(icon)
 
 text = """
 {imports};
 
-const icons = {{
+export const icons = {{
   {dicts}
 }};
-
-const getIconForType = (type?: string) =>
-  icons[type || "link"] || link;
-
-export default getIconForType;
 """.format(
     imports=";\n".join(imports),
     dicts=",\n  ".join(dicts)

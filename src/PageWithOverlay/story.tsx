@@ -1,23 +1,35 @@
-import { storiesOf } from '@storybook/react'
-import { host } from 'storybook-host'
+import Centralized from '../Centralized'
 
 import PageWithOverlay from '.'
 
-storiesOf('PageWithOverlay', module)
-  .addDecorator(
-    host({
-      align: 'center bottom',
-      height: 600,
-      width: 800,
-    }),
-  )
-  .add('With overlay', () => (
-    <PageWithOverlay foregroundContent={<p>Foreground content</p>}>
-      <p>Background content</p>
-    </PageWithOverlay>
-  ))
-  .add('Without overlay', () => (
-    <PageWithOverlay>
-      <p>Background content</p>
-    </PageWithOverlay>
-  ))
+export default { title: 'PageWithOverlay' }
+
+export const WithOverlay = () => (
+  <Centralized>
+    <div
+      style={{
+        width: 800,
+        height: 600,
+      }}
+    >
+      <PageWithOverlay foregroundContent={<p>Foreground content</p>}>
+        <p>Background content</p>
+      </PageWithOverlay>
+    </div>
+  </Centralized>
+)
+
+export const WithoutOverlay = () => (
+  <Centralized>
+    <div
+      style={{
+        width: 800,
+        height: 600,
+      }}
+    >
+      <PageWithOverlay>
+        <p>Background content</p>
+      </PageWithOverlay>
+    </div>
+  </Centralized>
+)

@@ -1,0 +1,199 @@
+/* Theme tokens: light is the default; [data-theme="dark"] overrides them
+   with a Tron Legacy palette — near-black surfaces, neon cyan lines, orange
+   highlight accents, and a perspective light-grid floor. */
+
+:root {
+  --type-strength: 80%;
+  --bg: #f4f7f8;
+  --surface: #ffffff;
+  --card-bg: #ffffff;
+  --text: #20262b;
+  --muted: #5a6a72;
+  --border: #c8d3d8;
+  --link: #2b9fdc;
+  --band: rgba(43, 159, 220, 0.1);
+  --chip-bg: #ffffff;
+  --chip-text: #3a464d;
+  --chip-border: #c8d3d8;
+  --accent: #29a3e8;
+  --accent-text: #ffffff;
+  --icon: #3d4d55;
+  --title-hover: #e0761f;
+  --grid-line: rgba(70, 100, 120, 0.12);
+  --card-border: #d3dde2;
+  --card-glow: 0 1px 4px rgba(16, 24, 40, 0.1);
+  --card-border-hover: #63c1f0;
+  --shadow: 0 1px 4px rgba(16, 24, 40, 0.12);
+  --shadow-hover: 0 8px 24px rgba(16, 24, 40, 0.25);
+}
+
+[data-theme="dark"] {
+  --type-strength: 45%;
+  --bg: #071013;
+  --surface: #0d181c;
+  --card-bg: #0d181c;
+  --text: #cfe3e6;
+  --muted: #7fa0a8;
+  --border: rgba(64, 216, 245, 0.25);
+  --link: #40d8f5;
+  --band: rgba(64, 216, 245, 0.08);
+  --chip-bg: rgba(64, 216, 245, 0.07);
+  --chip-text: #9ecfd8;
+  --chip-border: rgba(64, 216, 245, 0.3);
+  --accent: #1fd3ee;
+  --accent-text: #05262c;
+  --icon: #52c9dd;
+  --title-hover: #ff9a3c;
+  --grid-line: rgba(64, 216, 245, 0.1);
+  --card-border: rgba(64, 216, 245, 0.35);
+  --card-glow: 0 0 8px rgba(64, 216, 245, 0.15);
+  --card-border-hover: #40e4ff;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 0 0 1px rgba(64, 216, 245, 0.5), 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* The Tron light-grid floor, receding into the lower half of the screen. */
+body::before {
+  content: "";
+  position: fixed;
+  top: 55%;
+  right: -20%;
+  bottom: -12%;
+  left: -20%;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(700px) rotateX(55deg);
+  transform-origin: 50% 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: var(--link);
+}
+
+.card {
+  /* Cards carry their entry type as a subtle border tint: the Site passes the
+     type's pastel via --type-color, blended into the theme's base border.
+     On hover the border and glow both use the full type color. */
+  --type-border: color-mix(in srgb, var(--type-color, var(--card-border)) var(--type-strength), var(--card-border));
+  --hover-color: var(--type-color, var(--card-border-hover));
+  background-color: var(--card-bg);
+  border: 1px solid var(--type-border);
+  border-radius: 10px;
+  box-shadow: var(--card-glow);
+  overflow: hidden;
+  transition:
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--hover-color);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--hover-color) 55%, transparent),
+    0 0 16px color-mix(in srgb, var(--hover-color) 45%, transparent);
+}
+
+.card-title {
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.card:hover .card-title {
+  color: var(--title-hover);
+}
+
+.pill {
+  /* Pills may carry a type color the same way cards do (--type-color); with
+     none set they fall back to the plain theme border and link-colored hover. */
+  --type-border: color-mix(in srgb, var(--type-color, var(--border)) var(--type-strength), var(--border));
+  --hover-color: var(--type-color, var(--link));
+  border: 1px solid var(--type-border);
+  border-radius: 999px;
+  background-color: var(--surface);
+  color: var(--text);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.pill:hover {
+  border-color: var(--hover-color);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--hover-color) 75%, transparent),
+    0 0 14px color-mix(in srgb, var(--hover-color) 65%, transparent);
+}
+
+/* Carousel slide transition (see src/Carousel/SlidingPane.tsx). */
+
+@media (prefers-reduced-motion: no-preference) {
+  .carousel-enter-fwd {
+    animation: carousel-in-right 0.2s ease-out both;
+  }
+
+  .carousel-enter-back {
+    animation: carousel-in-left 0.2s ease-out both;
+  }
+
+  .carousel-leave-fwd {
+    animation: carousel-out-left 0.2s ease-out both;
+  }
+
+  .carousel-leave-back {
+    animation: carousel-out-right 0.2s ease-out both;
+  }
+}
+
+@keyframes carousel-in-right {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes carousel-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes carousel-out-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes carousel-out-right {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}

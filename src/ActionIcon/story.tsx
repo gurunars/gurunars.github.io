@@ -1,23 +1,13 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
-import { host } from 'storybook-host'
-import { ReactComponent as Close } from './close.svg'
+import { action } from 'storybook/actions'
 
+import Centralized from '../Centralized'
 import ActionIcon from '.'
+import Close from './close.svg?react'
 
-storiesOf('ActionIcon', module)
-  .addDecorator(
-    host({
-      align: 'center middle',
-      height: 60,
-      width: 60,
-    }),
-  )
-  .add('basic', () => (
-    <ActionIcon
-      rotation={0}
-      scale={1}
-      icon={<Close />}
-      onClick={action('onClick')}
-    />
-  ))
+export default { title: 'ActionIcon' }
+
+export const Basic = () => (
+  <Centralized>
+    <ActionIcon rotation={0} scale={1} icon={<Close />} onClick={action('onClick')} />
+  </Centralized>
+)

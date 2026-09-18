@@ -1,12 +1,14 @@
-import React from 'react'
+import type React from 'react'
 
 import { merge } from './utils'
 
 export const FullSize = (props: {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
+  children: React.ReactNode
+  style?: React.CSSProperties
+  className?: string
 }): React.ReactElement<any> => (
   <div
+    className={props.className}
     style={merge(
       {
         display: 'flex',

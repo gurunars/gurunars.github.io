@@ -1,9 +1,11 @@
+import type { ReactElement } from 'react'
+
 import responsive from '../Responsive'
 import Desktop from './Desktop'
 import Mobile from './Mobile'
-import Props from './Props'
+import type Props from './Props'
 
-const Carousel: (props: Props) => JSX.Element = responsive({
+const Carousel: (props: Props) => ReactElement = responsive({
   desktopView: Desktop,
   mobileView: Mobile,
 })

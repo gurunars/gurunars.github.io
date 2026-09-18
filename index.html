@@ -29,6 +29,16 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+  <script>
+    // Apply the theme before first paint to avoid a light flash in dark mode.
+    try {
+      var stored = localStorage.getItem('theme')
+      document.documentElement.dataset.theme =
+        stored === 'light' || stored === 'dark'
+          ? stored
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    } catch (e) { /* default to light */ }
+  </script>
   <div id="root"></div>
   <script type="module" src="/src/index.tsx"></script>
 </body>

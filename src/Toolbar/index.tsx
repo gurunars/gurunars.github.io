@@ -1,45 +1,40 @@
-import { Set } from 'immutable'
 import _ from 'lodash'
-import React from 'react'
+import type React from 'react'
 
-import Box from '../Box'
+import type Box from '../Box'
 import Tag from '../Item/Tag'
+import ThemeToggle from '../Theme'
 import { merge } from '../utils'
 
 export interface Spec {
-  humanReadableName: string;
-  color: string;
+  humanReadableName: string
+  color: string
 }
 
 export interface TypeToSpecMapping {
-  [key: string]: Spec;
+  [key: string]: Spec
 }
 
-export interface GroupSpec<T extends Record<string, never>> {
-  humanReadableName: string;
-  groupBy: (item: T) => NonNullable<unknown>;
-  sortBy: (item: T) => NonNullable<unknown>;
-  reverse: boolean;
+export interface GroupSpec<T extends object> {
+  humanReadableName: string
+  groupBy: (item: T) => NonNullable<unknown>
+  sortBy: (item: T) => NonNullable<unknown>
+  reverse: boolean
 }
 
-export interface TitleToGroupSpecMapping<T extends Record<string, never>> {
-  [key: string]: GroupSpec<T>;
+export interface TitleToGroupSpecMapping<T extends object> {
+  [key: string]: GroupSpec<T>
 }
 
 const baseStyle = {
   cursor: 'pointer',
-  color: 'Black',
   marginBottom: 5,
-  borderRadius: 5,
   textAlign: 'center',
-  paddingTop: 5,
-  paddingBottom: 5,
+  paddingTop: 6,
+  paddingBottom: 6,
 }
 
-const NamedGroup = (props: {
-  title: string;
-  children: JSX.Element;
-}): React.ReactElement<any> => (
+const NamedGroup = (props: { title: string; children: React.JSX.Element }): React.ReactElement<any> => (
   <div
     style={{
       flexDirection: 'column',
@@ -60,19 +55,17 @@ const NamedGroup = (props: {
 )
 
 export interface SpecSelection {
-  selectedSpecs: Box<string[]>;
+  selectedSpecs: Box<string[]>
 }
 
 const ACTION_STYLE = {
-  color: 'blue',
+  color: 'var(--link)',
   cursor: 'pointer',
   fontSize: 12,
   paddingTop: 10,
 }
 
-const SpecFilter = (
-  props: { filterMapping: TypeToSpecMapping } & SpecSelection,
-): React.ReactElement<any> => (
+const SpecFilter = (props: { filterMapping: TypeToSpecMapping } & SpecSelection): React.ReactElement<any> => (
   <NamedGroup title="Data types">
     <div
       style={{
@@ -87,21 +80,13 @@ const SpecFilter = (
         return (
           <span
             key={key}
+            className="pill"
             style={merge(baseStyle, {
-              backgroundColor: value.color,
+              '--type-color': value.color,
               textDecoration: isSelected ? 'none' : 'line-through',
+              opacity: isSelected ? 1 : 0.55,
             })}
-            onClick={() =>
-              props.selectedSpecs.set(
-                isSelected
-                  ? Set(specs)
-                    .remove(key)
-                    .toArray()
-                  : Set(specs)
-                    .add(key)
-                    .toArray(),
-              )
-            }
+            onClick={() => props.selectedSpecs.set(isSelected ? specs.filter((it) => it !== key) : [...specs, key])}
           >
             {value.humanReadableName}
           </span>
@@ -119,10 +104,7 @@ const SpecFilter = (
           Hide All
         </span>
 
-        <span
-          onClick={() => props.selectedSpecs.set(_.keys(props.filterMapping))}
-          style={ACTION_STYLE}
-        >
+        <span onClick={() => props.selectedSpecs.set(_.keys(props.filterMapping))} style={ACTION_STYLE}>
           Show All
         </span>
       </div>
@@ -131,16 +113,14 @@ const SpecFilter = (
 )
 
 export interface TagSelection {
-  selectedTag: Box<string>;
+  selectedTag: Box<string>
 }
 
 export interface TagSpec {
-  [key: string]: number;
+  [key: string]: number
 }
 
-const TagFilter = (
-  props: { allTags: TagSpec } & TagSelection,
-): React.ReactElement<any> => (
+const TagFilter = (props: { allTags: TagSpec } & TagSelection): React.ReactElement<any> => (
   <NamedGroup title="Skills">
     <div>
       {_.map(props.allTags, (count, title) => {
@@ -151,12 +131,13 @@ const TagFilter = (
             style={{
               marginBottom: '5px',
               cursor: 'pointer',
-              backgroundColor: isSelected ? '#1B2E3C' : 'Beige',
-              color: isSelected ? 'white' : 'black',
+              color: isSelected ? 'var(--link)' : 'var(--chip-text)',
+              borderColor: isSelected ? 'var(--link)' : 'var(--chip-border)',
+              fontWeight: isSelected ? 'bold' : 'normal',
             }}
             onClick={() => props.selectedTag.set(title)}
           >
-            {'' + title + ' (' + count + ')'}
+            {`${title} (${count})`}
           </Tag>
         )
       })}
@@ -165,20 +146,20 @@ const TagFilter = (
 )
 
 export interface GroupSpecSelection {
-  selectedGroup: Box<string>;
+  selectedGroup: Box<string>
 }
 
 const Sep = () => (
   <div
     style={{
       width: '100%',
-      backgroundColor: 'black',
+      backgroundColor: 'var(--border)',
       height: 1,
     }}
   />
 )
 
-const GroupBy = <T extends Record<string, never>>(
+const GroupBy = <T extends object>(
   props: { groupMapping: TitleToGroupSpecMapping<T> } & GroupSpecSelection,
 ): React.ReactElement<any> => (
   <NamedGroup title="Group by">
@@ -194,10 +175,12 @@ const GroupBy = <T extends Record<string, never>>(
         return (
           <span
             key={key}
+            className="pill"
             style={merge(baseStyle, {
-              backgroundColor: isSelected ? '#1B2E3C' : 'Beige',
+              backgroundColor: isSelected ? 'var(--accent)' : undefined,
+              borderColor: isSelected ? 'transparent' : undefined,
               marginBottom: 5,
-              color: isSelected ? 'white' : 'black',
+              color: isSelected ? 'var(--accent-text)' : undefined,
             })}
             onClick={() => props.selectedGroup.set(key)}
           >
@@ -209,12 +192,12 @@ const GroupBy = <T extends Record<string, never>>(
   </NamedGroup>
 )
 
-const Toolbar = <T extends Record<string, never>>(
+const Toolbar = <T extends object>(
   props: {
-    children?: React.ReactElement<any>;
-    filterMapping: TypeToSpecMapping;
-    groupMapping: TitleToGroupSpecMapping<T>;
-    allTags: TagSpec;
+    children?: React.ReactElement<any>
+    filterMapping: TypeToSpecMapping
+    groupMapping: TitleToGroupSpecMapping<T>
+    allTags: TagSpec
   } & SpecSelection &
     GroupSpecSelection &
     TagSelection,
@@ -231,6 +214,8 @@ const Toolbar = <T extends Record<string, never>>(
     <SpecFilter {...props} />
     <Sep />
     <TagFilter {...props} />
+    <Sep />
+    <ThemeToggle />
   </div>
 )
 

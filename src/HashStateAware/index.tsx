@@ -1,27 +1,23 @@
-import React from 'react'
-
 import jsonpack from 'jsonpack'
-
+import type React from 'react'
+import { useEffect, useState } from 'react'
 import { merge } from '../utils'
-import { useState, useEffect } from 'react'
 
 interface Props<T extends NonNullable<unknown>> {
-  initial: T;
-  prefix: string;
-  children: (data: T, set: (innerData: T) => void) => React.ReactElement<any>;
+  initial: T
+  prefix: string
+  children: (data: T, set: (innerData: T) => void) => React.ReactElement<any>
 }
 
 const deserialize = (prefix: string, location: string): NonNullable<unknown> => {
   try {
-    return jsonpack.unpack(location.replace('#' + prefix + '?', ''))
+    return jsonpack.unpack(location.replace(`#${prefix}?`, ''))
   } catch {
     return {}
   }
 }
 
-const serialize = (prefix: string, params: unknown): string =>
-  '#' + prefix + '?' + jsonpack.pack(params)
-
+const serialize = (prefix: string, params: unknown): string => `#${prefix}?${jsonpack.pack(params)}`
 
 const getWindowTop = (): WindowProxy => {
   const top = window.top
@@ -36,11 +32,7 @@ const HashAware = <T extends NonNullable<unknown>>({ initial, prefix, children }
 
   const top = getWindowTop()
 
-  const updateHash = () =>
-    setHash(merge(
-      initial,
-      deserialize(prefix, top.location.hash),
-    ) as T)
+  const updateHash = () => setHash(merge(initial, deserialize(prefix, top.location.hash)) as T)
 
   useEffect(() => {
     top.addEventListener('hashchange', updateHash)
@@ -49,10 +41,9 @@ const HashAware = <T extends NonNullable<unknown>>({ initial, prefix, children }
     }
   })
 
-  return children(hash, data => {
+  return children(hash, (data) => {
     top.location.hash = serialize(prefix, data)
   })
-
 }
 
 export default HashAware

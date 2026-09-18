@@ -1,7 +1,6 @@
 import { useBoxState } from '../Box'
-
+import { desktopFrame, mobileFrame } from '../Responsive/multitype'
 import PlainPageWithSideMenu from '.'
-import multiTypeStory from '../Responsive/multitype'
 
 const View = () => (
   <PlainPageWithSideMenu
@@ -17,20 +16,23 @@ const View = () => (
         MENU
       </p>
     }
-    children={
-      <p
-        onClick={() => console.log('CLICKED')}
-        style={{
-          width: '100%',
-          height: '100%',
-          paddingRight: 20,
-        }}
-      >
-        CONTENT
-      </p>
-    }
     menuIsVisible={useBoxState(false)}
-  />
+  >
+    <p
+      onClick={() => console.log('CLICKED')}
+      style={{
+        width: '100%',
+        height: '100%',
+        paddingRight: 20,
+      }}
+    >
+      CONTENT
+    </p>
+  </PlainPageWithSideMenu>
 )
 
-multiTypeStory('PageWithSideMenu', () => <View />)
+export default { title: 'PageWithSideMenu' }
+
+export const Desktop = () => desktopFrame(<View />)
+
+export const Mobile = () => mobileFrame(<View />)

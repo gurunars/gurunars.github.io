@@ -1,25 +1,11 @@
-import { storiesOf } from '@storybook/react'
-import { host } from 'storybook-host'
+import Centralized from '../Centralized'
 
-import { CircleUrl, FullUrl, LinkPreview, MappingSpec, Url } from '.'
+import { CircleUrl, FullUrl, LinkPreview, Url } from '.'
 
-const MAP: MappingSpec = {
-  sample: {
-    alias: 'alias',
-    name: 'name',
-    url: 'foobar-zoo-loo',
-  },
-}
+export default { title: 'Link' }
 
-storiesOf('Link', module)
-  .addDecorator(
-    host({
-      align: 'center middle',
-      height: 200,
-      width: 200,
-    }),
-  )
-  .add('Url', () => (
+export const PlainUrl = () => (
+  <Centralized>
     <Url
       link={{
         alias: 'bar',
@@ -27,8 +13,11 @@ storiesOf('Link', module)
         url: 'bar',
       }}
     />
-  ))
-  .add('FullUrl with type', () => (
+  </Centralized>
+)
+
+export const FullUrlWithType = () => (
+  <Centralized>
     <FullUrl
       style={{
         color: 'red',
@@ -36,28 +25,42 @@ storiesOf('Link', module)
       link={{
         alias: 'bar',
         name: 'FOO',
-        url: 'bar',
-        type: 'amazon',
+        url: 'https://amazon.com/dp/123',
       }}
     />
-  ))
-  .add('CircleUrl with type', () => (
+  </Centralized>
+)
+
+export const CircleUrlWithType = () => (
+  <Centralized>
+    <CircleUrl
+      link={{
+        alias: 'bar',
+        name: 'FOO',
+        url: 'https://amazon.com/dp/123',
+      }}
+    />
+  </Centralized>
+)
+
+export const CircleUrlWithoutType = () => (
+  <Centralized>
     <CircleUrl
       link={{
         alias: 'bar',
         name: 'FOO',
         url: 'bar',
-        type: 'amazon',
       }}
     />
-  ))
-  .add('CircleUrl without type', () => (
-    <CircleUrl
-      link={{
-        alias: 'bar',
-        name: 'FOO',
-        url: 'bar',
-      }}
-    />
-  ))
-  .add('Link preview', () => <LinkPreview links={MAP} alias="sample" />)
+  </Centralized>
+)
+
+export const Preview = () => (
+  <LinkPreview
+    link={{
+      alias: 'sample',
+      name: 'name',
+      url: 'foobar-zoo-loo',
+    }}
+  />
+)

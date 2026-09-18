@@ -1,9 +1,9 @@
 import React from 'react'
 
 interface Props {
-  children: React.ReactElement<any>;
-  keyBoardKey: string;
-  onPress: () => void;
+  children: React.ReactElement<any>
+  keyBoardKey: string
+  onPress: () => void
 }
 
 export default class KeyBoardListener extends React.Component<Props> {

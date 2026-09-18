@@ -1,20 +1,18 @@
 import _ from 'lodash'
-import { HashRouter as Router, Redirect, Route } from 'react-router-dom'
-
+import { Navigate, Route, HashRouter as Router, Routes, useParams } from 'react-router-dom'
+import { box, fieldBox } from './Box'
 import Cv from './Cv'
 import HashStateAware from './HashStateAware'
-import { DirectLinkContext, LinkPreview } from './Link'
-import { ALL, Portfolio } from './model'
+import { DirectLinkContext, type Link, LinkPreview } from './Link'
+import { ALL, type Portfolio } from './model'
 import Site, { groups, typeToSpecMapping } from './Site'
-import { fieldBox, box } from './Box'
-import { Link } from './Link'
 
 interface State {
-  selectedId: number | null;
-  selectedSpecs: string[];
-  selectedGroup: string;
-  menuIsVisible: boolean;
-  selectedTag: string;
+  selectedId: number | null
+  selectedSpecs: string[]
+  selectedGroup: string
+  menuIsVisible: boolean
+  selectedTag: string
 }
 
 const initial: State = {
@@ -28,13 +26,14 @@ const initial: State = {
 const App = ({ portfolio }: { portfolio: Portfolio }) => {
   const mapping: Record<string, Link> = {}
 
-  portfolio.links.forEach(it => {
+  for (const it of [...portfolio.links, ...portfolio.people]) {
     mapping[it.alias] = it
-  })
+  }
 
-  const Shortener = ({ match }: { match: { params: { alias: string } } }) => (
-    <LinkPreview link={mapping[match.params.alias]} />
-  )
+  const Shortener = () => {
+    const { alias } = useParams<'alias'>()
+    return <LinkPreview link={mapping[alias as string]} />
+  }
 
   const CvView = () => (
     <DirectLinkContext.Provider value={false}>
@@ -61,10 +60,12 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
   )
   return (
     <Router>
-      <Route exact path="/" render={() => <Redirect to="/portfolio" />} />
-      <Route path="/sh/:alias" exact strict component={Shortener} />
-      <Route path="/portfolio" component={Index} />
-      <Route path="/cv" component={CvView} />
+      <Routes>
+        <Route path="/" element={<Navigate to="/portfolio" replace />} />
+        <Route path="/sh/:alias" element={<Shortener />} />
+        <Route path="/portfolio/*" element={<Index />} />
+        <Route path="/cv" element={<CvView />} />
+      </Routes>
     </Router>
   )
 }
