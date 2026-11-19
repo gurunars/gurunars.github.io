@@ -1,12 +1,15 @@
 # The project is bind-mounted into every service, so host edits are live.
 #
-# Networking: the dev servers and the traefik proxy bind hard-coded static IPs
-# on the isolated `devnet` bridge (never 0.0.0.0, never the host's
-# interfaces). The only way in from outside is traefik's published port,
-# which is pinned to the host's loopback (127.0.0.1:8088), and traefik routes
-# by hostname:
-#   http://portfolio.localhost:8088 -> devsite
-#   http://storybook.localhost:8088 -> storybook
+# Networking: every dev server binds 127.0.0.1, hard-coded, so `yarn start`
+# is loopback-only wherever it runs. The dev servers share the traefik proxy's
+# network namespace (network_mode: service:proxy), which makes that loopback
+# the one traefik dials. Traefik itself binds its static IP on the isolated
+# `devnet` bridge (never 0.0.0.0, never the host's interfaces), and the only
+# way in from outside is its published port, pinned to the host's loopback
+# (127.0.0.1:8088). Traefik routes by hostname:
+#   http://portfolio.localhost:8088 -> devsite    (127.0.0.1:8000)
+#   http://storybook.localhost:8088 -> storybook  (127.0.0.1:6006)
+#   http://admin.localhost:8088     -> admin      (127.0.0.1:8010)
 services:
   # One-shot toolchain commands (install, lint, test, build, fmt, ...).
   app:
@@ -40,9 +43,9 @@ services:
     working_dir: /app
     entrypoint: /app/entrypoint.sh
     command: start
-    networks:
-      devnet:
-        ipv4_address: 10.213.87.10
+    network_mode: service:proxy
+    depends_on:
+      - proxy
     volumes:
       - .:/app
       - node_modules:/app/node_modules
@@ -53,9 +56,9 @@ services:
     working_dir: /app
     entrypoint: /app/entrypoint.sh
     command: admin
-    networks:
-      devnet:
-        ipv4_address: 10.213.87.12
+    network_mode: service:proxy
+    depends_on:
+      - proxy
     volumes:
       - .:/app
       - node_modules:/app/node_modules
@@ -66,9 +69,9 @@ services:
     working_dir: /app
     entrypoint: /app/entrypoint.sh
     command: storybook
-    networks:
-      devnet:
-        ipv4_address: 10.213.87.11
+    network_mode: service:proxy
+    depends_on:
+      - proxy
     volumes:
       - .:/app
       - node_modules:/app/node_modules

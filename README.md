@@ -26,9 +26,11 @@ container's `entrypoint.sh`:
 
 Networking: a traefik proxy is the single entry point, published only on the
 host's loopback (`127.0.0.1:8088`), routing by hostname (`*.localhost`
-resolves to loopback in browsers). Behind it, the dev servers bind hard-coded
-static IPs on an isolated compose bridge network (`devnet` in compose.yaml) —
-never `0.0.0.0` and never a host interface. Port 8088 (rather than 80) because
+resolves to loopback in browsers). Behind it, every dev server binds a
+hard-coded `127.0.0.1` and shares the proxy's network namespace, so the proxy
+reaches them on loopback and `yarn start` works wherever it is run. The proxy
+itself binds a static IP on an isolated compose bridge network (`devnet` in
+compose.yaml) — never `0.0.0.0` and never a host interface. Port 8088 (rather than 80) because
 macOS only lets unprivileged processes bind low ports on the wildcard
 interface, which the loopback-only policy forbids.
 

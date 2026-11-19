@@ -1,6 +1,6 @@
 # Traefik dynamic configuration (file provider — no docker socket needed).
-# Routes by hostname to the dev servers' static IPs on the devnet bridge
-# (see compose.yaml).
+# Routes by hostname to the dev servers on loopback: they share this proxy's
+# network namespace (see compose.yaml).
 http:
   routers:
     portfolio:
@@ -23,12 +23,12 @@ http:
     portfolio:
       loadBalancer:
         servers:
-          - url: "http://10.213.87.10:8000"
+          - url: "http://127.0.0.1:8000"
     storybook:
       loadBalancer:
         servers:
-          - url: "http://10.213.87.11:6006"
+          - url: "http://127.0.0.1:6006"
     admin:
       loadBalancer:
         servers:
-          - url: "http://10.213.87.12:8010"
+          - url: "http://127.0.0.1:8010"

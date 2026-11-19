@@ -59,9 +59,10 @@ export default defineConfig({
   publicDir: fileURLToPath(new URL('public', import.meta.url)),
   plugins: [react(), svgr(), portfolioApi()],
   server: {
-    // The admin container's static IP on the isolated compose network
-    // (see compose.yaml); reachable only through traefik on 127.0.0.1:8088.
-    host: '10.213.87.12',
+    // Loopback, hard-coded. In the compose stack the admin server shares the
+    // traefik proxy's network namespace, so traefik dials it on this address
+    // (see compose.yaml).
+    host: '127.0.0.1',
     port: 8010,
     strictPort: true,
     // Edits made on the macOS host do not emit inotify events inside the

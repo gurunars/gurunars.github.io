@@ -23,7 +23,7 @@
     "plop": "plop",
     "lint": "biome check src admin",
     "fmt": "biome check --write src admin",
-    "docs": "storybook dev -p 6006 --host 10.213.87.11 --no-open",
+    "docs": "storybook dev -p 6006 --host 127.0.0.1 --no-open",
     "build-docs": "storybook build"
   },
   "devDependencies": {

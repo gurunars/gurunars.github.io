@@ -33,9 +33,11 @@ export default defineConfig({
     }
   },
   server: {
-    // The devsite container's static IP on the isolated compose network
-    // (see compose.yaml); published to the host as 127.0.0.1:8000 only.
-    host: "10.213.87.10",
+    // Loopback, hard-coded: the dev server is never reachable from another
+    // machine wherever it is started. In the compose stack it shares the
+    // traefik proxy's network namespace, so traefik dials it on this address
+    // (see compose.yaml).
+    host: "127.0.0.1",
     port: 8000,
     strictPort: true,
     // Edits made on the macOS host do not emit inotify events inside the
