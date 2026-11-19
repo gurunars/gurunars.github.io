@@ -1,0 +1,76 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.link-full {
+  display: inline-flex;
+  align-items: center;
+}
+
+.link-label {
+  margin-left: 5px;
+}
+
+.link-badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border: 2px solid var(--icon);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.link-badge-glyph {
+  display: block;
+  width: 70%;
+  height: 70%;
+}
+
+.link-badge-glyph svg {
+  fill: var(--icon);
+}
+
+.link-preview {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.link-preview-box {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--border);
+}
+
+.link-preview-text {
+  margin-left: 10px;
+}
+
+.link-preview-name {
+  font-size: 21px;
+}
+
+.link-preview-alias {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.link-preview-url {
+  margin-top: 10px;
+}
+
+.link-preview-url a {
+  word-break: break-all;
+}

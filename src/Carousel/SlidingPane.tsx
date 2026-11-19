@@ -1,6 +1,8 @@
 import type React from 'react'
 import { useState } from 'react'
 
+import './slidingPane.css'
+
 type Direction = 'forward' | 'back'
 
 // One state value: what is on screen and what is animating away.
@@ -10,25 +12,10 @@ interface Slide {
   direction: Direction
 }
 
-const paneStyle: React.CSSProperties = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  overflowY: 'auto',
-}
-
 // Slides the outgoing pane out and the incoming pane in whenever `position`
 // changes; the animation is invisible to the caller, which only renders a
-// position. Styles live in theme.css (carousel-* classes). Panes need an
-// opaque background matching their host so cards cannot shine through
-// mid-slide.
-const SlidingPane = (props: {
-  position: number
-  background?: string
-  render: (position: number) => React.ReactElement
-}) => {
+// position. The motion itself lives in slidingPane.css.
+const SlidingPane = (props: { position: number; render: (position: number) => React.ReactElement }) => {
   const [slide, setSlide] = useState<Slide>({ shown: props.position, leaving: null, direction: 'forward' })
 
   // Render-phase derivation: a new position starts a slide away from the pane
@@ -41,20 +28,17 @@ const SlidingPane = (props: {
     })
   }
 
-  const suffix = slide.direction === 'forward' ? 'fwd' : 'back'
-  const pane = { ...paneStyle, backgroundColor: props.background || 'var(--bg)' }
-
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+    <div className="sliding-pane" data-direction={slide.direction}>
       {slide.leaving !== null && (
-        <div key={`leaving-${slide.leaving}`} className={`carousel-leave-${suffix}`} style={pane}>
+        <div key={`leaving-${slide.leaving}`} className="sliding-pane-slide" data-motion="leave">
           {props.render(slide.leaving)}
         </div>
       )}
       <div
         key={`shown-${slide.shown}`}
-        className={slide.leaving === null ? undefined : `carousel-enter-${suffix}`}
-        style={pane}
+        className="sliding-pane-slide"
+        data-motion={slide.leaving === null ? 'none' : 'enter'}
         onAnimationEnd={() => setSlide({ ...slide, leaving: null })}
       >
         {props.render(slide.shown)}

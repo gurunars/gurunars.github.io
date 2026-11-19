@@ -1,0 +1,11 @@
+.field {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.field-label {
+  margin-bottom: 4px;
+  color: var(--admin-soft);
+  font-weight: bold;
+  font-size: 12px;
+}

@@ -8,6 +8,8 @@ export default { title: 'ActionIcon' }
 
 export const Basic = () => (
   <Centralized>
-    <ActionIcon rotation={0} scale={1} icon={<Close />} onClick={action('onClick')} />
+    <ActionIcon onClick={action('onClick')}>
+      <Close />
+    </ActionIcon>
   </Centralized>
 )

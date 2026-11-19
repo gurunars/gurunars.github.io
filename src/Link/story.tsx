@@ -19,9 +19,6 @@ export const PlainUrl = () => (
 export const FullUrlWithType = () => (
   <Centralized>
     <FullUrl
-      style={{
-        color: 'red',
-      }}
       link={{
         alias: 'bar',
         name: 'FOO',

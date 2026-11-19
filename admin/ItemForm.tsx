@@ -5,24 +5,7 @@ import Field from './Field'
 import HighlightTextarea from './HighlightTextarea'
 import { tagSegments } from './tagSegments'
 
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: 6,
-  fontSize: 14,
-  border: '1px solid #bbb',
-  borderRadius: 3,
-  boxSizing: 'border-box',
-}
-
-const smallButton: React.CSSProperties = {
-  border: '1px solid #bbb',
-  borderRadius: 3,
-  backgroundColor: 'white',
-  cursor: 'pointer',
-  padding: '2px 8px',
-}
-
-import type React from 'react'
+import './itemForm.css'
 
 const moveInList = <T,>(list: T[], from: number, to: number): T[] => {
   const next = [...list]
@@ -42,13 +25,13 @@ const ItemForm = (props: {
   return (
     <div>
       <Field label="Title">
-        <input style={inputStyle} value={item.title} onChange={(e) => onPatch({ title: e.target.value })} />
+        <input className="input" value={item.title} onChange={(e) => onPatch({ title: e.target.value })} />
       </Field>
 
-      <div style={{ display: 'flex', gap: 12 }}>
-        <div style={{ flex: 1 }}>
+      <div className="entry-form-row">
+        <div className="entry-form-cell">
           <Field label="Type">
-            <select style={inputStyle} value={item.type} onChange={(e) => onPatch({ type: e.target.value })}>
+            <select className="input" value={item.type} onChange={(e) => onPatch({ type: e.target.value })}>
               {Object.keys(typeToSpecMapping).map((key) => (
                 <option key={key} value={key}>
                   {typeToSpecMapping[key].humanReadableName}
@@ -57,10 +40,10 @@ const ItemForm = (props: {
             </select>
           </Field>
         </div>
-        <div style={{ flex: 1 }}>
+        <div className="entry-form-cell">
           <Field label="Location (link alias)">
             <select
-              style={inputStyle}
+              className="input"
               value={item.location || ''}
               onChange={(e) => onPatch({ location: e.target.value || undefined })}
             >
@@ -75,31 +58,31 @@ const ItemForm = (props: {
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: 12 }}>
-        <div style={{ flex: 1 }}>
+      <div className="entry-form-row">
+        <div className="entry-form-cell">
           <Field label="Start date">
             <input
               type="date"
-              style={inputStyle}
+              className="input"
               value={item.startDate || ''}
               onChange={(e) => onPatch({ startDate: e.target.value || undefined })}
             />
           </Field>
         </div>
-        <div style={{ flex: 1 }}>
+        <div className="entry-form-cell">
           <Field label="End date (empty = ongoing)">
             <input
               type="date"
-              style={inputStyle}
+              className="input"
               value={item.endDate || ''}
               onChange={(e) => onPatch({ endDate: e.target.value || undefined })}
             />
           </Field>
         </div>
-        <div style={{ flex: 1 }}>
+        <div className="entry-form-cell">
           <Field label="Logo URL">
             <input
-              style={inputStyle}
+              className="input"
               value={item.logo || ''}
               placeholder="/avatar.jpg"
               onChange={(e) => onPatch({ logo: e.target.value || undefined })}
@@ -119,8 +102,8 @@ const ItemForm = (props: {
       <Field label="Achievements">
         <div>
           {achievements.map((achievement, index) => (
-            <div key={index} style={{ display: 'flex', gap: 6, marginBottom: 6, alignItems: 'flex-start' }}>
-              <div style={{ flex: 1 }}>
+            <div key={index} className="entry-form-achievement">
+              <div className="entry-form-achievement-text">
                 <HighlightTextarea
                   value={achievement}
                   rows={2}
@@ -134,7 +117,7 @@ const ItemForm = (props: {
               </div>
               <button
                 type="button"
-                style={smallButton}
+                className="button-small"
                 disabled={index === 0}
                 title="Move up"
                 onClick={() => onPatch({ achievements: moveInList(achievements, index, index - 1) })}
@@ -143,7 +126,7 @@ const ItemForm = (props: {
               </button>
               <button
                 type="button"
-                style={smallButton}
+                className="button-small"
                 disabled={index === achievements.length - 1}
                 title="Move down"
                 onClick={() => onPatch({ achievements: moveInList(achievements, index, index + 1) })}
@@ -152,7 +135,8 @@ const ItemForm = (props: {
               </button>
               <button
                 type="button"
-                style={{ ...smallButton, color: '#a00' }}
+                className="button-small"
+                data-danger
                 title="Delete"
                 onClick={() => onPatch({ achievements: achievements.filter((_, position) => position !== index) })}
               >
@@ -160,7 +144,11 @@ const ItemForm = (props: {
               </button>
             </div>
           ))}
-          <button type="button" style={smallButton} onClick={() => onPatch({ achievements: [...achievements, ''] })}>
+          <button
+            type="button"
+            className="button-small"
+            onClick={() => onPatch({ achievements: [...achievements, ''] })}
+          >
             + Add achievement
           </button>
         </div>

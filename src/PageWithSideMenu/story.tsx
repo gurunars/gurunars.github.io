@@ -1,5 +1,5 @@
 import { useBoxState } from '../Box'
-import { desktopFrame, mobileFrame } from '../Responsive/multitype'
+import { desktopFrame, mobileFrame } from '../Frames'
 import PlainPageWithSideMenu from '.'
 
 const View = () => (

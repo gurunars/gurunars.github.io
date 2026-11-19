@@ -1,28 +1,15 @@
 import type React from 'react'
 
-import { merge } from '../utils'
+import './tag.css'
 
-const Tag = (props: { children: React.ReactNode; style?: React.CSSProperties; onClick?: () => void }) => (
+// A chip. It may be clickable and it may be the selected one; what either of
+// those looks like is tag.css's business.
+const Tag = (props: { children: React.ReactNode; selected?: boolean; onClick?: () => void }) => (
   <i
+    className="tag"
+    data-selected={props.selected ?? false}
+    data-clickable={props.onClick !== undefined}
     onClick={props.onClick}
-    style={merge(
-      {
-        backgroundColor: 'var(--chip-bg)',
-        border: '1px solid var(--chip-border)',
-        display: 'inline-block',
-        textDecoration: 'none',
-        whiteSpace: 'pre',
-        color: 'var(--chip-text)',
-        marginRight: 5,
-        paddingTop: 3,
-        paddingBottom: 3,
-        paddingLeft: 10,
-        paddingRight: 10,
-        fontSize: 12,
-        borderRadius: 6,
-      },
-      props.style || {},
-    )}
   >
     {props.children}
   </i>

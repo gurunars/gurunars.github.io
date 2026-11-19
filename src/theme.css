@@ -78,43 +78,13 @@ body::before {
 #root {
   position: relative;
   z-index: 1;
+  /* Layouts respond to the width of the page they are placed in, not of the
+     window: components query this container by name (@container page). */
+  container: page / inline-size;
 }
 
 a {
   color: var(--link);
-}
-
-.card {
-  /* Cards carry their entry type as a subtle border tint: the Site passes the
-     type's pastel via --type-color, blended into the theme's base border.
-     On hover the border and glow both use the full type color. */
-  --type-border: color-mix(in srgb, var(--type-color, var(--card-border)) var(--type-strength), var(--card-border));
-  --hover-color: var(--type-color, var(--card-border-hover));
-  background-color: var(--card-bg);
-  border: 1px solid var(--type-border);
-  border-radius: 10px;
-  box-shadow: var(--card-glow);
-  overflow: hidden;
-  transition:
-    box-shadow 0.15s ease,
-    border-color 0.15s ease;
-}
-
-.card:hover {
-  border-color: var(--hover-color);
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--hover-color) 55%, transparent),
-    0 0 16px color-mix(in srgb, var(--hover-color) 45%, transparent);
-}
-
-.card-title {
-  color: var(--text);
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
-
-.card:hover .card-title {
-  color: var(--title-hover);
 }
 
 .pill {
@@ -136,64 +106,4 @@ a {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--hover-color) 75%, transparent),
     0 0 14px color-mix(in srgb, var(--hover-color) 65%, transparent);
-}
-
-/* Carousel slide transition (see src/Carousel/SlidingPane.tsx). */
-
-@media (prefers-reduced-motion: no-preference) {
-  .carousel-enter-fwd {
-    animation: carousel-in-right 0.2s ease-out both;
-  }
-
-  .carousel-enter-back {
-    animation: carousel-in-left 0.2s ease-out both;
-  }
-
-  .carousel-leave-fwd {
-    animation: carousel-out-left 0.2s ease-out both;
-  }
-
-  .carousel-leave-back {
-    animation: carousel-out-right 0.2s ease-out both;
-  }
-}
-
-@keyframes carousel-in-right {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes carousel-in-left {
-  from {
-    transform: translateX(-100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes carousel-out-left {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes carousel-out-right {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(100%);
-  }
 }

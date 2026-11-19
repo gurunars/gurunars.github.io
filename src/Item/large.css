@@ -1,0 +1,66 @@
+/* The look of a portfolio entry shown in full (see Large.tsx). */
+
+.item {
+  position: relative;
+  padding: 10px;
+  break-inside: avoid;
+}
+
+.item-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.item-logo {
+  width: 95px;
+  height: 95px;
+  margin-right: 10px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+}
+
+.item-title {
+  margin-bottom: 5px;
+}
+
+.item-origin {
+  font-size: 14px;
+}
+
+.item-origin b {
+  color: var(--muted);
+}
+
+.item-meta {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.item-body {
+  margin-top: 8px;
+  margin-left: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-left: 3px solid var(--border);
+}
+
+.item-section-title {
+  padding: 10px 0;
+}
+
+.item-list {
+  padding-left: 20px;
+}
+
+.item-tags {
+  margin-top: 10px;
+}
+
+.item-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  padding-bottom: 4px;
+}

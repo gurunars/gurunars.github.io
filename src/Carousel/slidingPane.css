@@ -1,0 +1,76 @@
+.sliding-pane {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* A slide is opaque, in the host's colour (--pane-bg), so that what lies
+   behind it cannot shine through mid-slide. */
+.sliding-pane-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: var(--pane-bg, var(--bg));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sliding-pane[data-direction="forward"] > [data-motion="enter"] {
+    animation: sliding-pane-in-right 0.2s ease-out both;
+  }
+
+  .sliding-pane[data-direction="back"] > [data-motion="enter"] {
+    animation: sliding-pane-in-left 0.2s ease-out both;
+  }
+
+  .sliding-pane[data-direction="forward"] > [data-motion="leave"] {
+    animation: sliding-pane-out-left 0.2s ease-out both;
+  }
+
+  .sliding-pane[data-direction="back"] > [data-motion="leave"] {
+    animation: sliding-pane-out-right 0.2s ease-out both;
+  }
+}
+
+@keyframes sliding-pane-in-right {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sliding-pane-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sliding-pane-out-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes sliding-pane-out-right {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}

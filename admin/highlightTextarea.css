@@ -1,0 +1,46 @@
+/* The textarea's own text is transparent (its caret stays visible) and a
+   backdrop behind it draws the same text with the highlighted segments. The
+   two must set type identically, or the highlights drift off the words. */
+
+.highlight {
+  position: relative;
+  width: 100%;
+}
+
+.highlight-backdrop,
+.highlight-input {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  border: 1px solid var(--admin-line);
+  border-radius: 3px;
+}
+
+.highlight-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  color: black;
+  background-color: white;
+}
+
+.highlight-input {
+  position: relative;
+  display: block;
+  color: transparent;
+  background-color: transparent;
+  caret-color: black;
+  resize: vertical;
+}
+
+.highlight-mark {
+  background-color: #f5edc0;
+  border-radius: 3px;
+  outline: 1px solid #d9c869;
+}

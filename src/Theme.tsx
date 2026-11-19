@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import './themeToggle.css'
+
 export type Theme = 'light' | 'dark'
 
 const readTheme = (): Theme => {
@@ -18,49 +20,29 @@ const ThemeToggle = () => {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  const flip = () => setTheme(theme === 'light' ? 'dark' : 'light')
-
   const Option = ({ value }: { value: Theme }) => (
-    <span
-      onClick={() => setTheme(value)}
-      style={{
-        cursor: 'pointer',
-        fontWeight: theme === value ? 'bold' : 'normal',
-        color: theme === value ? 'var(--link)' : 'var(--muted)',
-      }}
-    >
+    <span className="theme-toggle-option" data-active={theme === value} onClick={() => setTheme(value)}>
       {value.toUpperCase()}
     </span>
   )
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 8,
-        padding: 8,
-        fontSize: 12,
-      }}
-    >
+    <div className="theme-toggle">
       <span
-        className="pill"
-        onClick={flip}
+        className="pill theme-toggle-switch"
         title="Toggle theme"
-        style={{
-          padding: '4px 12px',
-          display: 'inline-flex',
-          gap: 10,
-          cursor: 'pointer',
-          fontSize: 14,
-        }}
+        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       >
-        <span style={{ opacity: theme === 'light' ? 1 : 0.35 }}>☀</span>
-        <span style={{ opacity: theme === 'dark' ? 1 : 0.35 }}>☾</span>
+        <span className="theme-toggle-glyph" data-active={theme === 'light'}>
+          ☀
+        </span>
+        <span className="theme-toggle-glyph" data-active={theme === 'dark'}>
+          ☾
+        </span>
       </span>
-      <b style={{ color: 'var(--muted)' }}>THEME:</b>
+      <b className="theme-toggle-label">THEME:</b>
       <Option value="light" />
-      <span style={{ color: 'var(--muted)' }}>|</span>
+      <span className="theme-toggle-label">|</span>
       <Option value="dark" />
     </div>
   )

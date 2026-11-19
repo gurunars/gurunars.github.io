@@ -1,4 +1,4 @@
-import { desktopFrame, mobileFrame } from '../Responsive/multitype'
+import { desktopFrame, mobileFrame } from '../Frames'
 
 import Grouping from '.'
 import { groupItems } from './grouping'

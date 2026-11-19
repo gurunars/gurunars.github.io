@@ -222,6 +222,11 @@
     display: none;
   }
 
+  /* A size container does not break across printed pages. */
+  html #root {
+    container-type: normal;
+  }
+
   .sheet-backdrop {
     min-height: 0;
     padding: 0;

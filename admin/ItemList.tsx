@@ -3,18 +3,7 @@ import type React from 'react'
 import { typeToSpecMapping } from '../src/Site'
 import type { DocItem, DocLink } from './doc'
 
-const rowStyle = (active: boolean, typeColor: string): React.CSSProperties => ({
-  display: 'block',
-  width: '100%',
-  textAlign: 'left',
-  padding: '6px 8px',
-  border: 'none',
-  borderBottom: '1px solid rgba(0,0,0,0.15)',
-  cursor: 'pointer',
-  // The same color the site's presentation gives this entry type.
-  backgroundColor: active ? '#1b2e3c' : typeColor,
-  color: active ? 'white' : 'black',
-})
+import './itemList.css'
 
 const ItemList = (props: {
   items: DocItem[]
@@ -27,7 +16,6 @@ const ItemList = (props: {
   return (
     <div>
       {props.items.map((item, index) => {
-        const active = props.selectedIndex === index
         const subtitle = [locationName(item.location), `${item.startDate || '?'} - ${item.endDate || 'TBD'}`]
           .filter(Boolean)
           .join(' | ')
@@ -35,11 +23,14 @@ const ItemList = (props: {
           <button
             type="button"
             key={index}
+            className="entry-list-row"
+            data-active={props.selectedIndex === index}
+            // The same colour the site's presentation gives this entry type.
+            style={{ '--type-color': typeToSpecMapping[item.type]?.color } as React.CSSProperties}
             onClick={() => props.onSelect(index)}
-            style={rowStyle(active, typeToSpecMapping[item.type]?.color || 'white')}
           >
-            <div style={{ fontSize: 13 }}>{item.title || '(untitled)'}</div>
-            <div style={{ fontSize: 11, color: active ? '#bbb' : '#444' }}>{subtitle}</div>
+            <div className="entry-list-title">{item.title || '(untitled)'}</div>
+            <div className="entry-list-subtitle">{subtitle}</div>
           </button>
         )
       })}

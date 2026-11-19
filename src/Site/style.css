@@ -1,0 +1,21 @@
+/* The toolbar's place in the site: a scrolling column on a wide page, a full
+   sheet on a narrow one. */
+
+.site-toolbar {
+  width: 270px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: var(--bg);
+  border-right: 1px solid var(--border);
+}
+
+@container page (max-width: 769px) {
+  .site-toolbar {
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    overflow-y: visible;
+    background-color: var(--surface);
+    border-right: none;
+  }
+}

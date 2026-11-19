@@ -1,5 +1,5 @@
 import { action } from 'storybook/actions'
-import { desktopFrame, mobileFrame } from '../Responsive/multitype'
+import { desktopFrame, mobileFrame } from '../Frames'
 import Carousel from '.'
 
 interface Item {

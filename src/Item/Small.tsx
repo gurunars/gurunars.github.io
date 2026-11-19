@@ -1,141 +1,47 @@
 import type React from 'react'
 
-import { FullSize } from '../Layouts'
 import { CircleUrl, Url } from '../Link'
-import { merge } from '../utils'
 import { durationToRangeString, type Item } from './interface'
 
-const baseStyle = {
-  display: 'block',
-  position: 'relative',
-  paddingTop: 5,
-  paddingBottom: 5,
-  paddingLeft: 5,
-  paddingRight: 5,
-}
+import './small.css'
 
-const metaInfoStyle = {
-  bottom: 0,
-  padding: 5,
-  fontStyle: 'italic',
-  fontSize: '0.8em',
-}
-
-const flexMax: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  width: '100%',
-  flex: '1 1 auto',
-}
-
+// Structure and behaviour only: what the card shows and what a click does.
+// How it looks lives in small.css. The one value that crosses over is the
+// entry type's colour, handed to the style as the --type-color variable.
 const ItemView = ({
   item,
   onClick,
-  style,
+  typeColor,
 }: {
   item: Item
   onClick: () => void
-  style?: React.CSSProperties
+  typeColor?: string
 }): React.ReactElement<any> => (
-  <FullSize
-    className="card"
-    style={merge(
-      {
-        flexDirection: 'column',
-        marginBottom: 10,
-      },
-      style || {},
-    )}
-  >
-    <div style={flexMax}>
-      <div style={flexMax}>
-        <span
-          className="card-title"
-          style={merge(baseStyle, {
-            paddingBottom: 0,
-            display: 'flex',
-            fontWeight: 'bold',
-            alignItems: 'center',
-          })}
-          onClick={onClick}
-        >
-          {item.logo && (
-            <img
-              alt="logo"
-              src={item.logo}
-              style={{
-                width: 45,
-                height: 45,
-                marginRight: 10,
-                borderRadius: '50%',
-                border: '2px solid var(--border)',
-              }}
-            />
-          )}
-          {item.title}
+  <div className="card" style={{ '--type-color': typeColor } as React.CSSProperties}>
+    <div className="card-body">
+      <span className="card-title" onClick={onClick}>
+        {item.logo && <img className="card-logo" alt="logo" src={item.logo} />}
+        {item.title}
+      </span>
+      <span className="card-description">{item.description}</span>
+      <div className="card-meta">
+        <span className="card-origin">
+          <Url link={item.location} />
         </span>
-        <span
-          style={merge(baseStyle, {
-            fontSize: '0.8em',
-            marginTop: 10,
-            marginBottom: 10,
-          })}
-        >
-          {item.description}
-        </span>
-      </div>
-      <div
-        style={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Url link={item.location} style={merge(metaInfoStyle, { bottom: 0, width: 160 })} />
-        <span style={merge(metaInfoStyle, { right: 0 })}>{durationToRangeString(item.duration)}</span>
+        <span className="card-period">{durationToRangeString(item.duration)}</span>
       </div>
     </div>
-    <div
-      style={{
-        position: 'relative',
-        backgroundColor: 'var(--band)',
-        height: 40,
-        flex: '0 1 40px',
-        width: '100%',
-        bottom: 0,
-        left: 0,
-        padding: 5,
-        marginTop: 5,
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-      }}
-    >
-      {item.links.map((link) => (
-        <CircleUrl style={{ marginRight: 5 }} key={link.url} link={link} />
-      ))}
-
-      <span
-        onClick={onClick}
-        style={{
-          position: 'absolute',
-          right: 0,
-          display: 'block',
-          textAlign: 'right',
-          textDecoration: 'underline',
-          color: 'var(--link)',
-          cursor: 'pointer',
-          padding: 5,
-          fontSize: '0.8em',
-        }}
-      >
+    <div className="card-footer">
+      <div className="card-links">
+        {item.links.map((link) => (
+          <CircleUrl key={link.url} link={link} />
+        ))}
+      </div>
+      <span className="card-more" onClick={onClick}>
         Achievements: <b>{item.achievements.length}</b>
       </span>
     </div>
-  </FullSize>
+  </div>
 )
 
 export default ItemView

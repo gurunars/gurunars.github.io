@@ -1,16 +1,7 @@
-const Centralized = ({ children }: { children: any }) => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      minHeight: '600px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    {children}
-  </div>
-)
+import type React from 'react'
+
+import './centralized.css'
+
+const Centralized = ({ children }: { children: React.ReactNode }) => <div className="centralized">{children}</div>
 
 export default Centralized

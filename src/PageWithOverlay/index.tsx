@@ -1,62 +1,20 @@
 import type React from 'react'
 
-import responsive from '../Responsive'
+import './style.css'
 
-const OverlayDecorator = (props: { children: React.ReactNode }) => (
-  <div
-    style={{
-      position: 'absolute',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      top: '0%',
-      left: '0%',
-      zIndex: 3,
-      width: '100%',
-      height: '100%',
-    }}
-  >
-    <div
-      style={{
-        display: 'flex',
-        position: 'absolute',
-        zIndex: 100,
-        top: '5%',
-        left: '5%',
-        width: '90%',
-        height: '90%',
-        backgroundColor: 'var(--surface)',
-        borderRadius: 12,
-        boxShadow: 'var(--shadow-hover)',
-        overflow: 'hidden',
-      }}
-    >
-      {props.children}
-    </div>
+// A page that can have something shown in front of it: a dialog over a dimmed
+// page on a wide screen, a full replacement of the page on a narrow one (see
+// style.css). The page stays mounted underneath, so it keeps its scroll
+// position.
+const PageWithOverlay = (props: { children: React.JSX.Element; foregroundContent?: React.JSX.Element | null }) => (
+  <div className="overlay-host">
+    {props.children}
+    {props.foregroundContent && (
+      <div className="overlay-backdrop">
+        <div className="overlay-dialog">{props.foregroundContent}</div>
+      </div>
+    )}
   </div>
 )
 
-interface Props {
-  children: React.JSX.Element
-  foregroundContent?: React.JSX.Element | null
-}
-
-const Desktop = (props: Props) =>
-  props.foregroundContent ? (
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-      }}
-    >
-      {props.children}
-      <OverlayDecorator>{props.foregroundContent}</OverlayDecorator>
-    </div>
-  ) : (
-    props.children
-  )
-
-const Mobile = (props: Props) => (props.foregroundContent ? props.foregroundContent : props.children)
-
-export default responsive({
-  desktopView: Desktop,
-  mobileView: Mobile,
-})
+export default PageWithOverlay

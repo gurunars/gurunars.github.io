@@ -1,0 +1,22 @@
+.tag {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 3px 10px;
+  color: var(--chip-text);
+  font-size: 12px;
+  white-space: pre;
+  text-decoration: none;
+  background-color: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  border-radius: 6px;
+}
+
+.tag[data-clickable="true"] {
+  cursor: pointer;
+}
+
+.tag[data-selected="true"] {
+  color: var(--link);
+  font-weight: bold;
+  border-color: var(--link);
+}

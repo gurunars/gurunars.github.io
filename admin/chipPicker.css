@@ -1,0 +1,68 @@
+.chip-picker {
+  position: relative;
+}
+
+.chip-picker-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  padding: 4px;
+  background-color: white;
+  border: 1px solid var(--admin-line);
+  border-radius: 3px;
+  cursor: text;
+}
+
+.chip-picker-chip {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 3px 9px;
+  font-size: 13px;
+  white-space: nowrap;
+  background-color: beige;
+  border-radius: 10px;
+}
+
+.chip-picker-remove {
+  color: var(--admin-danger);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.chip-picker-input {
+  flex: 1;
+  min-width: 120px;
+  padding: 4px;
+  font-size: 13px;
+  border: none;
+  outline: none;
+}
+
+.chip-picker-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  max-height: 220px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid var(--admin-line);
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 20%);
+}
+
+.chip-picker-option {
+  padding: 6px 10px;
+  color: black;
+  font-size: 13px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.chip-picker-option[data-highlighted="true"] {
+  color: white;
+  background-color: var(--admin-ink);
+}

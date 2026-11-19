@@ -1,0 +1,12 @@
+.cursor-icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.cursor-icon[data-disabled="true"] {
+  color: var(--muted);
+  cursor: not-allowed;
+}

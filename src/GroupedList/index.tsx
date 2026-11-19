@@ -1,93 +1,29 @@
-import React from 'react'
+import type React from 'react'
 
-import responsive from '../Responsive'
 import type { GroupedItems } from './interfaces'
 
-type RenderItem<T> = (props: { item: T }) => React.ReactElement<any>
+import './style.css'
 
-export const RawGroupedList = <T,>(props: {
+// Titled groups of items: a wrapping grid of fixed-size cells on a wide page,
+// one full-width column on a narrow one (see style.css).
+const GroupedList = <T,>(props: {
   items: Array<GroupedItems<T>>
-  renderItem: RenderItem<T>
-  style?: React.CSSProperties
+  renderItem: (props: { item: T }) => React.ReactElement<any>
 }): React.ReactElement<any> => (
-  <div style={props.style}>
-    {props.items.map((item) => (
-      <div
-        key={item.group}
-        style={{
-          marginBottom: 15,
-          pageBreakInside: 'avoid',
-          overflowY: 'auto',
-        }}
-      >
-        <h2
-          style={{
-            pageBreakAfter: 'avoid',
-            marginBottom: 10,
-          }}
-        >
-          {item.group}
-        </h2>
+  <div className="grouped-list">
+    {props.items.map((group) => (
+      <div key={group.group} className="grouped-list-group">
+        <h2 className="grouped-list-title">{group.group}</h2>
         <div>
-          {item.elements
-            .map((element) => props.renderItem({ item: element }))
-            .map((child, index) => React.cloneElement(child, { ...child.props, key: index }))}
+          {group.elements.map((element, index) => (
+            <div key={index} className="grouped-list-cell">
+              {props.renderItem({ item: element })}
+            </div>
+          ))}
         </div>
       </div>
     ))}
   </div>
 )
 
-interface Props<T> {
-  items: Array<GroupedItems<T>>
-  renderItem: RenderItem<T>
-}
-
-const Desktop = <T,>(props: Props<T>): React.ReactElement<any> => (
-  <RawGroupedList
-    items={props.items}
-    style={{
-      padding: 10,
-    }}
-    renderItem={(item) => (
-      <div
-        style={{
-          float: 'left',
-          display: 'flex',
-          position: 'relative',
-          width: 340,
-          height: 250,
-          marginRight: 10,
-          marginBottom: 10,
-        }}
-      >
-        {props.renderItem(item)}
-      </div>
-    )}
-  />
-)
-
-const Mobile = <T,>(props: Props<T>): React.ReactElement<any> => (
-  <RawGroupedList
-    items={props.items}
-    renderItem={(item) => (
-      <div
-        style={{
-          display: 'inline-block',
-          position: 'relative',
-          width: '100%',
-          height: 'auto',
-        }}
-      >
-        {props.renderItem(item)}
-      </div>
-    )}
-  />
-)
-
-const Grouping: <T>(props: Props<T>) => React.ReactElement<any> = responsive({
-  desktopView: Desktop,
-  mobileView: Mobile,
-})
-
-export default Grouping
+export default GroupedList

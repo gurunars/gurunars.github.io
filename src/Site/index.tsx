@@ -8,7 +8,6 @@ import { getId, type Item, Large, Small } from '../Item'
 import { getImportantSkills, type Portfolio } from '../model'
 import PageWithOverlay from '../PageWithOverlay'
 import PageWithSideMenu, { type MenuVisibility } from '../PageWithSideMenu'
-import responsive from '../Responsive'
 import BaseToolbar, {
   type GroupSpecSelection,
   type SpecSelection,
@@ -18,6 +17,8 @@ import BaseToolbar, {
   type TypeToSpecMapping,
 } from '../Toolbar'
 import { yearToString } from '../utils'
+
+import './style.css'
 
 export const typeToSpecMapping: TypeToSpecMapping = {
   contactCard: {
@@ -97,36 +98,6 @@ interface IdHolder {
   selectedId: Box<number | null>
 }
 
-const DesktopToolbarWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div
-    style={{
-      width: '270px',
-      overflowY: 'auto',
-      borderRight: '1px solid var(--border)',
-      height: '100%',
-      backgroundColor: 'var(--bg)',
-    }}
-  >
-    {children}
-  </div>
-)
-
-const MobileToolbarWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div
-    style={{
-      backgroundColor: 'var(--surface)',
-      minHeight: '100%',
-    }}
-  >
-    {children}
-  </div>
-)
-
-const ToolbarWrapper = responsive({
-  desktopView: DesktopToolbarWrapper,
-  mobileView: MobileToolbarWrapper,
-})
-
 const Main = (
   props: {
     children?: React.JSX.Element
@@ -161,9 +132,9 @@ const Main = (
     >
       <PageWithSideMenu
         menu={
-          <ToolbarWrapper>
+          <div className="site-toolbar">
             <Toolbar allTags={getImportantSkills(props.portfolio)} {...props} />
-          </ToolbarWrapper>
+          </div>
         }
         {...props}
       >
@@ -171,11 +142,7 @@ const Main = (
           items={grouped}
           renderItem={({ item }: { item: Item }) => (
             <Small
-              style={
-                {
-                  '--type-color': typeToSpecMapping[item.type].color,
-                } as React.CSSProperties
-              }
+              typeColor={typeToSpecMapping[item.type].color}
               item={item}
               onClick={() => props.selectedId.set(getId(item))}
             />

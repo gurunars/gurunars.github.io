@@ -1,0 +1,36 @@
+/* The light/dark switch (see Theme.tsx). The palettes themselves are the
+   tokens in theme.css. */
+
+.theme-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.theme-toggle-switch {
+  display: inline-flex;
+  gap: 10px;
+  padding: 4px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.theme-toggle-glyph[data-active="false"] {
+  opacity: 0.35;
+}
+
+.theme-toggle-label {
+  color: var(--muted);
+}
+
+.theme-toggle-option {
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.theme-toggle-option[data-active="true"] {
+  color: var(--link);
+  font-weight: bold;
+}

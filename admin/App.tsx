@@ -1,4 +1,3 @@
-import type React from 'react'
 import { useEffect, useReducer } from 'react'
 
 import { loadDoc, saveDoc } from './api'
@@ -11,11 +10,7 @@ import Preview from './Preview'
 import { type AdminState, initialState, isDirty, nextState } from './state'
 import TabBar from './TabBar'
 
-const columnStyle: React.CSSProperties = {
-  height: '100%',
-  overflowY: 'auto',
-  boxSizing: 'border-box',
-}
+import './app.css'
 
 const statusLine = (state: AdminState): string => {
   if (state.status === 'loading') {
@@ -62,24 +57,19 @@ const App = () => {
   })
 
   if (state.doc === null) {
-    return <p style={{ padding: 20, color: state.error ? '#a00' : '#444' }}>{statusLine(state)}</p>
+    return (
+      <p className="app-loading" data-error={Boolean(state.error)}>
+        {statusLine(state)}
+      </p>
+    )
   }
   const doc = state.doc
   const item = doc.items[state.itemIndex]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          gap: 16,
-          padding: '8px 12px 0 12px',
-          borderBottom: '2px solid #1b2e3c',
-          backgroundColor: '#f7f7f7',
-        }}
-      >
-        <b style={{ paddingBottom: 8 }}>Portfolio admin</b>
+    <div className="app">
+      <div className="app-bar">
+        <b className="app-title">Portfolio admin</b>
         <TabBar
           tabs={[
             { key: 'entries', label: 'Entries' },
@@ -89,30 +79,23 @@ const App = () => {
           active={state.tab}
           onSelect={(tab) => dispatch({ kind: 'selectTab', tab })}
         />
-        <span style={{ fontSize: 12, color: state.error ? '#a00' : '#666', marginLeft: 'auto', paddingBottom: 12 }}>
+        <span className="app-status" data-error={Boolean(state.error)}>
           {statusLine(state)}
         </span>
         <button
           type="button"
+          className="app-save"
+          data-dirty={isDirty(state)}
           onClick={save}
           disabled={!isDirty(state) || state.status === 'saving'}
-          style={{
-            padding: '6px 18px',
-            marginBottom: 6,
-            cursor: 'pointer',
-            border: '1px solid #1b2e3c',
-            borderRadius: 3,
-            backgroundColor: isDirty(state) ? '#1b2e3c' : '#ddd',
-            color: isDirty(state) ? 'white' : '#666',
-          }}
         >
           Save
         </button>
       </div>
 
       {state.tab === 'entries' ? (
-        <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
-          <div style={{ ...columnStyle, width: 250, borderRight: '1px solid #ccc' }}>
+        <div className="app-columns">
+          <div className="app-column app-list">
             <ItemList
               items={doc.items}
               links={doc.links}
@@ -121,9 +104,9 @@ const App = () => {
             />
           </div>
 
-          <div style={{ ...columnStyle, flex: 1, padding: 14 }}>
+          <div className="app-column app-editor">
             {item === undefined ? (
-              <p style={{ color: '#666' }}>No entries yet — create one.</p>
+              <p className="app-empty">No entries yet — create one.</p>
             ) : (
               <div>
                 <ItemForm
@@ -134,15 +117,8 @@ const App = () => {
                 />
                 <button
                   type="button"
+                  className="app-delete"
                   onClick={() => dispatch({ kind: 'deleteItem', index: state.itemIndex })}
-                  style={{
-                    padding: '6px 18px',
-                    cursor: 'pointer',
-                    border: '1px solid #a00',
-                    borderRadius: 3,
-                    backgroundColor: 'white',
-                    color: '#a00',
-                  }}
                 >
                   Delete this entry
                 </button>
@@ -150,13 +126,13 @@ const App = () => {
             )}
           </div>
 
-          <div style={{ ...columnStyle, flex: 1, borderLeft: '1px solid #ccc' }}>
+          <div className="app-column app-preview">
             <Preview doc={doc} index={state.itemIndex} />
           </div>
         </div>
       ) : (
-        <div style={{ ...columnStyle, flex: 1, minHeight: 0, padding: 14 }}>
-          <div style={{ maxWidth: 900, margin: '0 auto' }}>
+        <div className="app-column app-sheet">
+          <div className="app-sheet-body">
             {state.tab === 'links' ? (
               <LinksForm
                 links={doc.links}

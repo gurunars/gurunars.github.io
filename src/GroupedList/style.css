@@ -1,0 +1,39 @@
+.grouped-list {
+  padding: 10px;
+}
+
+.grouped-list-group {
+  margin-bottom: 15px;
+  /* Contains the floated cells. */
+  overflow-y: auto;
+  break-inside: avoid;
+}
+
+.grouped-list-title {
+  margin-bottom: 10px;
+  break-after: avoid;
+}
+
+.grouped-list-cell {
+  position: relative;
+  display: flex;
+  float: left;
+  width: 340px;
+  height: 250px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+@container page (max-width: 769px) {
+  .grouped-list {
+    padding: 0;
+  }
+
+  .grouped-list-cell {
+    display: inline-block;
+    float: none;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+}

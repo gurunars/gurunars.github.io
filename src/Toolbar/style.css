@@ -1,0 +1,65 @@
+.toolbar {
+  width: 100%;
+}
+
+.toolbar-rule {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+  border: none;
+}
+
+.toolbar-group {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.toolbar-group-title {
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.toolbar-options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* The shape and hover of an option come from the shared .pill (theme.css). */
+.toolbar-option {
+  margin-bottom: 5px;
+  padding: 6px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* A type that is filtered out is struck through and dimmed. */
+.toolbar-filter[data-selected="false"] {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+/* The grouping in force is filled with the accent colour. */
+.toolbar-option.toolbar-grouping[data-selected="true"] {
+  color: var(--accent-text);
+  background-color: var(--accent);
+  border-color: transparent;
+}
+
+.toolbar-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.toolbar-action {
+  padding-top: 10px;
+  color: var(--link);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.toolbar-tags > .tag {
+  margin-bottom: 5px;
+}

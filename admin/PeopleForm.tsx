@@ -1,14 +1,6 @@
-import type React from 'react'
-
 import type { DocLink } from './doc'
 
-const inputStyle: React.CSSProperties = {
-  padding: 6,
-  fontSize: 13,
-  border: '1px solid #bbb',
-  borderRadius: 3,
-  boxSizing: 'border-box',
-}
+import './rows.css'
 
 const PeopleForm = (props: {
   people: DocLink[]
@@ -17,31 +9,27 @@ const PeopleForm = (props: {
 }) => (
   <div>
     {props.people.map((person, index) => (
-      <div key={index} style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+      <div key={index} className="rows-row">
         <input
-          style={{ ...inputStyle, flex: 1 }}
+          className="rows-input"
           value={person.alias}
           placeholder="alias"
           onChange={(e) => props.onPatch(index, { alias: e.target.value })}
         />
         <input
-          style={{ ...inputStyle, flex: 1 }}
+          className="rows-input"
           value={person.name}
           placeholder="name"
           onChange={(e) => props.onPatch(index, { name: e.target.value })}
         />
         <input
-          style={{ ...inputStyle, flex: 2 }}
+          className="rows-input"
+          data-wide
           value={person.url}
           placeholder="url"
           onChange={(e) => props.onPatch(index, { url: e.target.value })}
         />
-        <button
-          type="button"
-          title="Delete person"
-          onClick={() => props.onDelete(index)}
-          style={{ ...inputStyle, cursor: 'pointer', color: '#a00' }}
-        >
+        <button type="button" className="rows-delete" title="Delete person" onClick={() => props.onDelete(index)}>
           ✕
         </button>
       </div>

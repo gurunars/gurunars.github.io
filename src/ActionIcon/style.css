@@ -1,0 +1,18 @@
+.action-icon {
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--accent-text);
+  background-color: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.action-icon-glyph {
+  width: 60%;
+  height: 60%;
+  fill: var(--accent-text);
+}

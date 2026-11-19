@@ -1,0 +1,46 @@
+/* The links and the references are both edited as rows of plain inputs. */
+
+.rows-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.rows-input,
+.rows-delete {
+  padding: 6px;
+  font-size: 13px;
+  border: 1px solid var(--admin-line);
+  border-radius: 3px;
+}
+
+.rows-input {
+  flex: 1;
+}
+
+.rows-input[data-wide="true"] {
+  flex: 2;
+}
+
+.rows-delete {
+  color: var(--admin-danger);
+  cursor: pointer;
+}
+
+.rows-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  border: 2px solid var(--admin-soft);
+  border-radius: 50%;
+}
+
+.rows-icon svg {
+  width: 60%;
+  height: 60%;
+  fill: var(--admin-soft);
+}

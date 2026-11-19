@@ -1,6 +1,8 @@
 import type React from 'react'
 import { useState } from 'react'
 
+import './chipPicker.css'
+
 export interface ChipOption {
   key: string
   label: string
@@ -59,93 +61,39 @@ const ChipPicker = (props: {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          gap: 4,
-          padding: 4,
-          border: '1px solid #bbb',
-          borderRadius: 3,
-          backgroundColor: 'white',
-          cursor: 'text',
-        }}
-      >
+    <div className="chip-picker">
+      <div className="chip-picker-box">
         {props.selected.map((key) => (
-          <span
-            key={key}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 5,
-              backgroundColor: 'Beige',
-              borderRadius: 10,
-              padding: '3px 9px',
-              fontSize: 13,
-              whiteSpace: 'nowrap',
-            }}
-          >
+          <span key={key} className="chip-picker-chip">
             {key}
-            <span
-              title="Remove"
-              onClick={() => remove(key)}
-              style={{ cursor: 'pointer', color: '#a00', fontWeight: 'bold' }}
-            >
+            <span className="chip-picker-remove" title="Remove" onClick={() => remove(key)}>
               ×
             </span>
           </span>
         ))}
         <input
+          className="chip-picker-input"
           value={editing.query}
           placeholder={props.selected.length === 0 ? props.placeholder : undefined}
           onChange={(event) => setEditing({ query: event.target.value, highlight: 0, open: true })}
           onFocus={() => setEditing({ ...editing, open: true })}
           onBlur={() => setEditing(idle)}
           onKeyDown={onKeyDown}
-          style={{
-            flex: 1,
-            minWidth: 120,
-            border: 'none',
-            outline: 'none',
-            fontSize: 13,
-            padding: 4,
-          }}
         />
       </div>
       {editing.open && matches.length > 0 && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            right: 0,
-            maxHeight: 220,
-            overflowY: 'auto',
-            backgroundColor: 'white',
-            border: '1px solid #bbb',
-            borderRadius: 3,
-            boxShadow: '0 3px 8px rgba(0,0,0,0.2)',
-            zIndex: 20,
-          }}
-        >
+        <div className="chip-picker-menu">
           {matches.map((option, index) => (
             <div
               key={option.key}
+              className="chip-picker-option"
+              data-highlighted={index === highlight}
               // pick on mousedown so the input's blur cannot swallow the click
               onMouseDown={(event) => {
                 event.preventDefault()
                 pick(option.key)
               }}
               onMouseEnter={() => setEditing({ ...editing, highlight: index })}
-              style={{
-                padding: '6px 10px',
-                fontSize: 13,
-                cursor: 'pointer',
-                backgroundColor: index === highlight ? '#1b2e3c' : 'white',
-                color: index === highlight ? 'white' : 'black',
-              }}
             >
               {option.label}
             </div>

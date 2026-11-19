@@ -1,43 +1,15 @@
-import _ from 'lodash'
 import type React from 'react'
 
-import { merge } from '../utils'
+import './style.css'
 
+// A round floating button around whatever glyph it is given.
 const ActionIcon = (props: {
-  icon: React.JSX.Element
+  children: React.ReactNode
   onClick: () => void
-  rotation: number
-  scale: number
-  style?: React.CSSProperties
+  className?: string
 }): React.ReactElement<any> => (
-  <div
-    onClick={props.onClick}
-    style={merge(
-      {
-        height: 40,
-        width: 40,
-        borderRadius: '50%',
-        backgroundColor: 'var(--accent)',
-        display: 'flex',
-        alignItems: 'center',
-        zIndex: 30,
-        cursor: 'pointer',
-        justifyContent: 'center',
-        color: 'var(--accent-text)',
-      },
-      props.style || {},
-    )}
-  >
-    <div
-      style={{
-        width: '60%',
-        height: '60%',
-        transform: `rotate(${props.rotation}deg) scale(${props.scale})`,
-        fill: _.get(props.style, 'color', 'var(--accent-text)'),
-      }}
-    >
-      {props.icon}
-    </div>
+  <div className={props.className ? `action-icon ${props.className}` : 'action-icon'} onClick={props.onClick}>
+    <div className="action-icon-glyph">{props.children}</div>
   </div>
 )
 

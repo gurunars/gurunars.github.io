@@ -1,0 +1,32 @@
+/* A row is tinted with the colour the site gives its entry type, passed in
+   as --type-color; the selected row is inked instead. */
+
+.entry-list-row {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  color: black;
+  text-align: left;
+  background-color: var(--type-color, white);
+  border: none;
+  border-bottom: 1px solid rgb(0 0 0 / 15%);
+  cursor: pointer;
+}
+
+.entry-list-row[data-active="true"] {
+  color: white;
+  background-color: var(--admin-ink);
+}
+
+.entry-list-title {
+  font-size: 13px;
+}
+
+.entry-list-subtitle {
+  color: var(--admin-soft);
+  font-size: 11px;
+}
+
+.entry-list-row[data-active="true"] .entry-list-subtitle {
+  color: #bbb;
+}

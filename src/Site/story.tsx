@@ -1,7 +1,6 @@
 import { useBoxState } from '../Box'
-
+import { desktopFrame, mobileFrame } from '../Frames'
 import type { Portfolio } from '../model'
-import { desktopFrame, mobileFrame } from '../Responsive/multitype'
 
 import Main from '.'
 

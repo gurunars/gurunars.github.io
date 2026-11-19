@@ -1,0 +1,109 @@
+/* Wide page: the menu is a column to the left of the content and is always
+   there; the toggle button is not shown. */
+
+.side-menu {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.side-menu-panel {
+  position: relative;
+  order: 1;
+  height: 100%;
+}
+
+.side-menu-content {
+  position: relative;
+  flex: 1 1 auto;
+  order: 2;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.side-menu-toggle {
+  display: none;
+}
+
+/* Narrow page: the menu is a layer over the content that fades in and out,
+   and a floating button toggles it. */
+
+@container page (max-width: 769px) {
+  .side-menu {
+    overflow: hidden;
+  }
+
+  .side-menu-content,
+  .side-menu-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  /* A closed menu is hidden, not only transparent, so it takes no clicks;
+     visibility flips at the end of the fade-out and the start of the fade-in. */
+  .side-menu-panel {
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 250ms linear,
+      visibility 250ms;
+  }
+
+  .side-menu[data-open="true"] .side-menu-panel {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .side-menu-toggle {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+  }
+
+  /* The button's glyph makes one full turn while the menu icon shrinks away
+     in the first half and the close icon grows in the second. */
+  .side-menu-glyph {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 250ms linear;
+  }
+
+  .side-menu[data-open="true"] .side-menu-glyph {
+    transform: rotate(360deg);
+  }
+
+  .side-menu-glyph-open,
+  .side-menu-glyph-close {
+    position: absolute;
+    inset: 0;
+    transition: transform 125ms linear;
+  }
+
+  .side-menu-glyph-open {
+    transform: scale(1);
+    transition-delay: 125ms;
+  }
+
+  .side-menu-glyph-close {
+    transform: scale(0);
+    transition-delay: 0ms;
+  }
+
+  .side-menu[data-open="true"] .side-menu-glyph-open {
+    transform: scale(0);
+    transition-delay: 0ms;
+  }
+
+  .side-menu[data-open="true"] .side-menu-glyph-close {
+    transform: scale(1);
+    transition-delay: 125ms;
+  }
+}

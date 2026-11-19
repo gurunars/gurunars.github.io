@@ -4,6 +4,8 @@ import { Large } from '../src/Item'
 import preprocess from '../src/model'
 import type { Doc } from './doc'
 
+import './preview.css'
+
 // The raw document may be mid-edit; never let a preview crash take down the
 // editor.
 class Boundary extends React.Component<{ children: React.ReactNode; resetKey: string }, { failed: boolean }> {
@@ -21,7 +23,7 @@ class Boundary extends React.Component<{ children: React.ReactNode; resetKey: st
 
   public render() {
     return this.state.failed ? (
-      <p style={{ padding: 20, color: '#a00' }}>Preview unavailable for the current document state.</p>
+      <p className="preview-failed">Preview unavailable for the current document state.</p>
     ) : (
       this.props.children
     )
@@ -33,7 +35,7 @@ const Preview = (props: { doc: Doc; index: number }) => {
   const item = preprocess(props.doc).items[props.index]
   return item === undefined ? null : (
     <Boundary resetKey={JSON.stringify([props.doc, props.index])}>
-      <div style={{ padding: 10 }}>
+      <div className="preview">
         <Large item={item} />
       </div>
     </Boundary>

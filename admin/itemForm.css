@@ -1,0 +1,19 @@
+.entry-form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.entry-form-cell {
+  flex: 1;
+}
+
+.entry-form-achievement {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.entry-form-achievement-text {
+  flex: 1;
+}
