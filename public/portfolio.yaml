@@ -53,6 +53,41 @@ items:
     location: coursera
     links:
       - uc-san-diego-data-structures-and-algorithms-certificate
+  - title: DeepLearning.AI Deep Learning Specialization
+    description: >
+      Certification in #{deep learning} by DeepLearning.AI that followed a set
+      of lectures by Andrew Ng: building and training #{neural networks} in
+      #Python and #TensorFlow for computer vision, speech and natural language
+      tasks.
+    achievements:
+      - Neural Networks and Deep Learning
+      - >-
+        Improving Deep Neural Networks: Hyperparameter Tuning, Regularization
+        and Optimization
+      - Structuring Machine Learning Projects
+      - Convolutional Neural Networks
+      - Sequence Models
+    type: certificate
+    startDate: '2024-02-18'
+    endDate: '2024-07-20'
+    location: coursera
+    links:
+      - deep-learning-certificate
+  - title: DeepLearning.AI Machine Learning Specialization
+    description: >
+      Certification in #{machine learning} by DeepLearning.AI and Stanford
+      University that followed a set of lectures by Andrew Ng: supervised and
+      unsupervised learning, recommender systems and reinforcement learning.
+    achievements:
+      - 'Supervised Machine Learning: Regression and Classification'
+      - Advanced Learning Algorithms
+      - Unsupervised Learning, Recommenders, Reinforcement Learning
+    type: certificate
+    startDate: '2024-01-04'
+    endDate: '2024-01-18'
+    location: coursera
+    links:
+      - machine-learning-certificate
   - title: Stanford Algorithms Specialization
     description: >
       Certification in #{algorithm design} and #{algorithm optimization} that
@@ -345,13 +380,122 @@ items:
     links:
       - resource-api-docs
       - resource-api
-  - title: Software Engineer
+  - title: Software Engineer, Cloud AI
+    type: fullTimeJob
+    location: google
+    startDate: '2024-11-01'
+    description: >
+      Security architecture, reference implementations and partner
+      integrations for an unannounced Google Cloud AI product area. The work is
+      not public, so only the transferable engineering is described.
+    achievements:
+      - >-
+        Owned the #{security architecture} of a reference integration: built
+        and ran a live #{penetration testing} demonstration that exposed real
+        data-exposure risks in the prevailing design, which persuaded
+        stakeholders to adopt the architecture I proposed. It then cleared
+        formal security review on the first pass.
+      - >-
+        Authored the reference server implementation and the developer-facing
+        walkthrough that external integrators used to stand it up locally.
+      - >-
+        Wrote the RFC for a #{Terraform} deployment stack that made partner
+        integrations repeatable instead of bespoke, then coached another
+        engineer to implement it end to end.
+      - >-
+        Built a #{Kotlin Multiplatform} proof of concept for #Android and #iOS
+        with live audio streaming under a hard deadline, so leadership could
+        judge whether to fund the direction.
+      - >-
+        Built a reference #{gRPC} bidirectional audio streaming client in
+        #Kotlin, which unblocked the JVM-to-native transport work that
+        followed.
+      - >-
+        Diagnosed recurring service-account and permissioning failures across
+        several partner environments and pushed the fix upstream into
+        #{infrastructure as code} instead of documentation.
+      - >-
+        Bootstrapped a dedicated #{GCP} organization and project so external
+        integrators could be given secure, isolated demo deployments.
+  - title: Software Engineer, Cloud Speech-to-Text
+    type: fullTimeJob
+    location: google
+    startDate: '2023-04-01'
+    endDate: '2024-10-31'
+    description: >
+      Data and evaluation infrastructure behind Google Cloud Speech-to-Text, a
+      public Google Cloud ML product. The primary languages were #Python and
+      #SQL.
+    achievements:
+      - >-
+        Designed and built an automated toolchain for commissioning bulk human
+        transcription, replacing a collection of ad-hoc scripts that left no
+        audit trail. Every request became reviewable, reproducible and
+        version-controlled.
+      - >-
+        Scaled that process from a handful of languages to dozens of locales
+        and produced the labelled datasets that downstream model-training teams
+        depended on.
+      - >-
+        Replaced manually maintained spreadsheets with a #{SQL} #{data
+        pipeline} feeding operational dashboards, letting partner teams find
+        and correct data quality problems themselves.
+      - >-
+        Recovered a broken ingestion pipeline by rewriting legacy code built on
+        deprecated internal binaries and a defunct storage-freeze mechanism.
+      - >-
+        Ran a cross-team migration of a large distributed database to a new
+        allocation, clearing an urgent production storage quota ceiling.
+      - >-
+        Refactored and documented the data pipelines and their local end-to-end
+        testing story.
+  - title: Software Engineer, Google Assistant
     type: fullTimeJob
     location: google
     startDate: '2022-04-04'
+    endDate: '2023-03-31'
     description: >
-      I joined the Google Assistant team as an #Android developer. The primary
-      languages are #Java and #Kotlin.
+      Feature engineering and experiment analysis for Search and Assistant
+      surfaces of the Google app on #Android, a consumer surface with very
+      large reach. The primary languages were #Java and #Kotlin.
+    achievements:
+      - >-
+        Designed and shipped an #Android integration extending an
+        Assistant-adjacent surface beyond first-party devices, including the
+        data-provider layer behind it.
+      - >-
+        Authored the analysis of metric deltas across multi-arm production
+        experiments, which was the evidence base for a subsequent feature
+        launch decision.
+      - >-
+        As the first engineer on the team to hold Google's internal #Kotlin
+        readability certification, built the UI scaffold that set the team's
+        Kotlin and #{Jetpack Compose} standard.
+      - >-
+        Advised a live-experiments team on correctly comparing application
+        flows across experiment arms.
+  - title: 'US Patent 12,271,742: Automatically executing application routines with user inputs'
+    type: publication
+    location: google
+    startDate: '2023-08-04'
+    endDate: '2025-04-08'
+    description: >
+      Named inventor on a granted, active US patent assigned to Google LLC,
+      co-invented with 11 other inventors. Filed on 4 August 2023 and granted
+      on 8 April 2025.
+    achievements:
+      - >-
+        Covers how an application should be rendered when it is executed
+        automatically on a user's behalf.
+      - >-
+        The system observes a user's interactions with an application, derives
+        a confidence metric for each expected input and uses those metrics to
+        select a rendering mode.
+      - >-
+        When the user later asks for a sequence of actions to be performed, the
+        application is surfaced in the appropriate way.
+    links:
+      - patent-us12271742
   - title: Senior Software Engineer
     type: fullTimeJob
     location: homegate
@@ -663,9 +807,18 @@ links:
   - name: UC San Diego Data Structures and Algorithms Specialization Certificate
     alias: uc-san-diego-data-structures-and-algorithms-certificate
     url: https://www.coursera.org/account/accomplishments/specialization/WCPEQUF8MBZS
+  - name: DeepLearning.AI Deep Learning Specialization Certificate
+    alias: deep-learning-certificate
+    url: https://www.coursera.org/account/accomplishments/specialization/885GFTXZ9RH5
+  - name: DeepLearning.AI Machine Learning Specialization Certificate
+    alias: machine-learning-certificate
+    url: https://www.coursera.org/account/accomplishments/specialization/4SF25YVQC4GT
   - name: Google
     alias: google
     url: https://google.com
+  - name: US 12271742 B2 on Google Patents
+    alias: patent-us12271742
+    url: https://patents.google.com/patent/US12271742B2/en
 people:
   - name: Mikko Kupsu
     alias: mikko
