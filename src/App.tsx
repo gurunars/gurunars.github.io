@@ -3,7 +3,7 @@ import { Navigate, Route, HashRouter as Router, Routes, useParams } from 'react-
 import { box, fieldBox } from './Box'
 import Cv from './Cv'
 import HashStateAware from './HashStateAware'
-import { DirectLinkContext, type Link, LinkPreview } from './Link'
+import { type Link, LinkPreview } from './Link'
 import { ALL, type Portfolio } from './model'
 import Site, { groups, typeToSpecMapping } from './Site'
 
@@ -35,11 +35,7 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     return <LinkPreview link={mapping[alias as string]} />
   }
 
-  const CvView = () => (
-    <DirectLinkContext.Provider value={false}>
-      <Cv portfolio={portfolio} />
-    </DirectLinkContext.Provider>
-  )
+  const CvView = () => <Cv portfolio={portfolio} onPrint={() => window.print()} />
 
   const Index = () => (
     <HashStateAware prefix="/portfolio" initial={initial}>

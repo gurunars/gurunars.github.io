@@ -1,0 +1,245 @@
+/* A paper document. On screen it is a white A4-wide sheet floating on the
+   site's themed background; in print it is the page itself. The sheet keeps
+   its own ink colours so it reads the same in the light and dark themes. */
+
+.sheet-backdrop {
+  min-height: 100%;
+  padding: 24px 16px 48px;
+}
+
+.sheet-actions {
+  max-width: 210mm;
+  margin: 0 auto 12px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 14px;
+}
+
+.sheet-actions button {
+  padding: 7px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sheet {
+  --ink: #1b2126;
+  --ink-soft: #4b565e;
+  --rule: #c9d2d8;
+  --mark: #1c5f86;
+
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 15mm 16mm;
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: var(--shadow-hover);
+  font-size: 10.5pt;
+  line-height: 1.42;
+}
+
+.sheet,
+.sheet * {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.sheet a {
+  color: var(--mark);
+  text-decoration: none;
+}
+
+.sheet h1,
+.sheet h2 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.sheet-masthead {
+  display: flex;
+  gap: 8mm;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.sheet-masthead-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sheet h1 {
+  font-size: 25pt;
+  font-weight: normal;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.sheet-headline {
+  margin-top: 2mm;
+  font-size: 11.5pt;
+  color: var(--ink-soft);
+}
+
+.sheet-contacts {
+  margin-top: 3mm;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 6mm;
+  list-style: none;
+  font-size: 9.5pt;
+}
+
+.sheet-photo {
+  width: 26mm;
+  height: 26mm;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+
+.sheet-section {
+  margin-top: 6mm;
+}
+
+.sheet h2 {
+  margin-bottom: 2.5mm;
+  padding-bottom: 1mm;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13pt;
+  font-weight: normal;
+  color: var(--mark);
+  break-after: avoid;
+}
+
+.sheet-entry + .sheet-entry {
+  margin-top: 3.5mm;
+}
+
+/* A heading must not be left alone at the foot of a page, nor its summary
+   split from it. */
+.sheet-entry-intro {
+  break-inside: avoid;
+}
+
+/* Only an intro with points or links below it holds on to what follows:
+   otherwise a run of short entries would chain into one unbreakable block. */
+.sheet-entry-intro:not(:last-child) {
+  break-after: avoid;
+}
+
+.sheet p,
+.sheet li {
+  orphans: 2;
+  widows: 2;
+}
+
+.sheet-entry-head {
+  display: flex;
+  gap: 6mm;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.sheet h3 {
+  font-size: 10.5pt;
+  font-weight: bold;
+}
+
+.sheet-origin {
+  font-weight: normal;
+}
+
+.sheet-period {
+  flex-shrink: 0;
+  font-size: 9.5pt;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sheet-summary {
+  margin-top: 0.8mm;
+}
+
+.sheet-points {
+  margin-top: 1mm;
+  padding-left: 4.5mm;
+}
+
+.sheet-points li {
+  margin-top: 0.6mm;
+  break-inside: avoid;
+}
+
+.sheet-links {
+  margin-top: 1mm;
+  list-style: none;
+  font-size: 9pt;
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
+
+.sheet-skills {
+  color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .sheet {
+    padding: 8mm 6mm;
+  }
+
+  .sheet-entry-head {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sheet-photo {
+    width: 18mm;
+    height: 18mm;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+@media print {
+  /* The site sizes html, body and #root to the window, which would cut the
+     printout off after the first page. */
+  html:root,
+  html body,
+  html #root {
+    width: auto;
+    height: auto;
+    background: #ffffff;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .sheet-backdrop {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .sheet-actions {
+    display: none;
+  }
+
+  .sheet {
+    max-width: none;
+    padding: 0;
+    box-shadow: none;
+    font-size: 9.5pt;
+    line-height: 1.36;
+  }
+
+  .sheet h3 {
+    font-size: 9.5pt;
+  }
+}

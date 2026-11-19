@@ -90,6 +90,18 @@ export const extractTags = (text: string, formatTag: (tag: string) => string = f
   return [_.join(output, ''), tags]
 }
 
+// One spelling per skill: "open-source" and "Open Source" are the same tag, and
+// a tag that ended a sentence does not keep the full stop. Capitals inside a
+// word are the name's own (JavaScript, iOS, gRPC), so only an all-lowercase
+// word is capitalised.
+export const normaliseTag = (tag: string): string =>
+  tag
+    .replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}+#]+$/gu, '')
+    .split(/[\s\-_]+/)
+    .filter((word) => word.length > 0)
+    .map((word) => (word === word.toLowerCase() ? word[0].toUpperCase() + word.slice(1) : word))
+    .join(' ')
+
 const preprocess = (initial: any): Portfolio => {
   const people = initial.people || []
   const getLink = (alias: string) => _.find(initial.links, (link) => link.alias === alias)
@@ -123,7 +135,7 @@ const preprocess = (initial: any): Portfolio => {
         title: item.title,
         logo: item.logo,
         type: item.type,
-        tags: _.uniq(tags.map((it) => _.startCase(it))),
+        tags: _.uniq(tags.map(normaliseTag)),
         description: desc[0],
         location: getLink(item.location),
         references: _.map(item.references, getPerson),
