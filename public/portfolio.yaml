@@ -396,7 +396,7 @@ items:
         stakeholders to adopt the architecture I proposed. It then cleared
         formal security review on the first pass.
       - >-
-        Authored the reference server implementation and the developer-facing
+        Authored the reference proxy server implementation and the developer-facing
         walkthrough that external integrators used to stand it up locally.
       - >-
         Wrote the RFC for a #{Terraform} deployment stack that made partner
