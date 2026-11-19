@@ -5,18 +5,25 @@ import './sheet.css'
 // The pieces of a paper document: a sheet, a masthead, titled sections and
 // dated entries. They know nothing about what the document is about.
 
+// A link as a document carries it: what it is called, where it leads, and the
+// address to spell out on paper, where nobody can click it.
 export interface Anchor {
   label: string
   url: string
+  address: string
 }
 
-// The address as it should read on paper, where nobody can click it.
-export const printedAddress = (url: string) =>
-  url
-    .replace(/^mailto:/, '')
-    .replace(/^https?:\/\//, '')
-    .replace(/^www\./, '')
-    .replace(/\/$/, '')
+const Addresses = (props: { className: string; title?: string; anchors: Anchor[] }) => (
+  <ul className={props.className}>
+    {props.anchors.map((anchor) => (
+      <li key={anchor.url}>
+        {props.title && `${props.title}: `}
+        {anchor.label && `${anchor.label}: `}
+        <a href={anchor.url}>{anchor.address}</a>
+      </li>
+    ))}
+  </ul>
+)
 
 export const Sheet = (props: { actions?: React.ReactNode; children: React.ReactNode }) => (
   <div className="sheet-backdrop">
@@ -36,13 +43,7 @@ export const Masthead = (props: {
     <div className="sheet-masthead-text">
       <h1>{props.name}</h1>
       <p className="sheet-headline">{props.headline}</p>
-      <ul className="sheet-contacts">
-        {props.contacts.map((contact) => (
-          <li key={contact.url}>
-            <a href={contact.url}>{printedAddress(contact.url)}</a>
-          </li>
-        ))}
-      </ul>
+      <Addresses className="sheet-contacts" anchors={props.contacts.map((contact) => ({ ...contact, label: '' }))} />
       {props.children}
     </div>
     {props.photo && <img className="sheet-photo" alt={props.name} src={props.photo} />}
@@ -71,6 +72,7 @@ export const Entry = (props: {
   summary?: string
   points: string[]
   links: Anchor[]
+  references: Anchor[]
 }) => (
   <div className="sheet-entry">
     <div className="sheet-entry-intro">
@@ -89,15 +91,7 @@ export const Entry = (props: {
       {props.summary && <p className="sheet-summary">{props.summary}</p>}
     </div>
     {props.points.length > 0 && <Points points={props.points} />}
-    {props.links.length > 0 && (
-      <ul className="sheet-links">
-        {props.links.map((link) => (
-          <li key={link.url}>
-            {link.label && `${link.label}: `}
-            <a href={link.url}>{printedAddress(link.url)}</a>
-          </li>
-        ))}
-      </ul>
-    )}
+    {props.links.length > 0 && <Addresses className="sheet-links" anchors={props.links} />}
+    {props.references.length > 0 && <Addresses className="sheet-links" title="Reference" anchors={props.references} />}
   </div>
 )

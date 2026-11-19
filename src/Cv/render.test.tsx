@@ -18,7 +18,10 @@ const PORTFOLIO: Portfolio = {
       type: 'contactCard',
       tags: ['All'],
       description: 'Software Engineer.',
-      links: [{ alias: 'github', name: 'gurunars', url: 'https://github.com/gurunars' }],
+      links: [
+        { alias: 'github', name: 'gurunars', url: 'https://github.com/gurunars' },
+        { alias: 'email', name: 'someone@example.com', url: 'mailto:someone@example.com' },
+      ],
       duration: { start: new Date('1989-03-24'), end: NOW },
     },
     {
@@ -35,17 +38,26 @@ const PORTFOLIO: Portfolio = {
   ],
 }
 
-const html = renderToStaticMarkup(<Cv portfolio={PORTFOLIO} now={NOW} onPrint={() => undefined} />)
+const html = renderToStaticMarkup(
+  <Cv portfolio={PORTFOLIO} siteAddress="gurunars.com" now={NOW} onPrint={() => undefined} />,
+)
 
 describe('Cv', () => {
-  // On paper a link is only as good as the address printed next to it.
-  it('spells out the address of every link, so it survives being printed', () => {
-    expect(html).toContain('>github.com/gurunars</a>')
-    expect(html).toContain('>patents.google.com/patent/US12271742B2/en</a>')
+  // The site's link shortener exists for the printed CV: a reader holding
+  // paper has to type the address, and nobody types a 70-character one.
+  it('prints the short address of every link, which a reader can type from paper', () => {
+    expect(html).toContain('>gurunars.com/#/sh/github</a>')
+    expect(html).toContain('>gurunars.com/#/sh/patent</a>')
+    expect(html).not.toContain('>patents.google.com/patent/US12271742B2/en</a>')
   })
 
-  it('still points the spelled-out address at the real page for whoever reads the PDF', () => {
+  it('still points the short address at the real page for whoever reads the PDF', () => {
     expect(html).toContain('href="https://patents.google.com/patent/US12271742B2/en"')
+  })
+
+  it('prints an email address as it is, since it is already short and is not a page', () => {
+    expect(html).toContain('>someone@example.com</a>')
+    expect(html).not.toContain('#/sh/email')
   })
 
   it('puts each kind of work under its own heading', () => {
@@ -54,8 +66,10 @@ describe('Cv', () => {
     expect(html).not.toContain('<h2>Experience</h2>')
   })
 
-  it("does not print other people's names and profiles as references", () => {
-    expect(html).not.toContain('Somebody Else')
+  it('prints the references of an entry, each with a short address', () => {
+    expect(html).toContain(
+      'Reference: Somebody Else: <a href="https://linkedin.com/in/somebody">gurunars.com/#/sh/ref</a>',
+    )
   })
 
   it('offers a way to print the page', () => {

@@ -114,6 +114,13 @@
   break-after: avoid;
 }
 
+/* An entry is never cut in two by the end of a page: if it does not fit in
+   what is left, the page breaks before its title. (One longer than a whole
+   page still has to split.) */
+.sheet-entry {
+  break-inside: avoid;
+}
+
 .sheet-entry + .sheet-entry {
   margin-top: 3.5mm;
 }

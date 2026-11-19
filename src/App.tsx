@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { Navigate, Route, HashRouter as Router, Routes, useParams } from 'react-router-dom'
+import { Navigate, Route, HashRouter as Router, Routes, useNavigate, useParams } from 'react-router-dom'
 import { box, fieldBox } from './Box'
 import Cv from './Cv'
 import HashStateAware from './HashStateAware'
@@ -35,7 +35,17 @@ const App = ({ portfolio }: { portfolio: Portfolio }) => {
     return <LinkPreview link={mapping[alias as string]} />
   }
 
-  const CvView = () => <Cv portfolio={portfolio} onPrint={() => window.print()} />
+  const CvView = () => {
+    const navigate = useNavigate()
+    return (
+      <Cv
+        portfolio={portfolio}
+        siteAddress={window.location.host}
+        onPrint={() => window.print()}
+        onClose={() => navigate('/portfolio')}
+      />
+    )
+  }
 
   const Index = () => (
     <HashStateAware prefix="/portfolio" initial={initial}>

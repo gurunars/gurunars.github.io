@@ -14,7 +14,7 @@ export const Basic = () => (
         height: 600,
       }}
     >
-      <Cv portfolio={PORTFOLIO} />
+      <Cv portfolio={PORTFOLIO} siteAddress="example.com" />
     </div>
   </Centralized>
 )
