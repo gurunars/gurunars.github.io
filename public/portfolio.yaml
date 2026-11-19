@@ -2,28 +2,33 @@ items:
   - logo: /avatar.jpg
     title: Anton Berezin
     description: >
-      Battle-Tested™ Software Engineer. Automating the routine. Leading by
-      example. Valuing customer experience. Getting things done.
+      Software Engineer at Google working across security, data pipelines,
+      mobile, distributed systems and API design.
     achievements:
-      - 'Speak #English and #Russian fluently and #Swedish conversationally'
-      - 10+ years of solid industry experience
-      - Multilingual and multi-platform expertise
-      - Excellence in legacy system maintenance
-      - Solid track record as a technical documentation writer
+      - 'Speak #English and #Russian fluently and #Swedish conversationally.'
+      - 15+ years of industry experience.
+      - >-
+        Security-minded engineering: threat modelling, penetration testing and
+        architectures that pass formal security review.
+      - >-
+        Build, test and deployment automation that makes large codebases
+        reproducible and safe to migrate.
+      - >-
+        Technical writing and mentoring: RFCs, developer documentation, a
+        published book and engineers coached across teams.
     type: contactCard
     startDate: '1989-03-24'
     location: self
     links:
       - email
       - github
-      - skype
       - linkedin
       - stackoverflow
       - cv
   - title: UC San Diego Discrete Mathematics for CS
     description: >
       Certification in #{discrete mathematics} that followed a set of lectures
-      by UC San Diego and by the Russian Higher School of Economics
+      by UC San Diego and by the Russian Higher School of Economics.
     achievements:
       - Mathematical Thinking in Computer Science
       - Combinatorics and Probability
@@ -39,7 +44,7 @@ items:
   - title: UC San Diego Data Structures and Algorithms Specialization
     description: >
       Certification in #{algorithm design} and #{algorithm optimization} coupled
-      with an introduction to #{bioinformatics} by UC San Diego
+      with an introduction to #{bioinformatics} by UC San Diego.
     achievements:
       - Advanced Algorithms and Complexity
       - Algorithms on Strings
@@ -109,7 +114,6 @@ items:
       - >-
         Obtained a Software Engineering degree with specialization in Software
         Design.
-      - Organized multiple trips abroad with a student union.
       - >-
         Finished the whole program and wrote the thesis in three years instead
         of four.
@@ -122,13 +126,13 @@ items:
       - piironen
   - title: Test Engineer (trainee)
     description: >
-      I was accountable for catching bugs in network-related components (e.g.
-      browser, email client, VPN client) of S60 Nokia phones.
+      Tested network-related components of S60 Nokia phones, such as the
+      browser, the email client and the VPN client.
     achievements:
       - Found and reported multiple critical bugs.
       - >-
-        Contributed to #{test automation} toolchain via employing Nokia's
-        in-house scripting language.
+        Extended the #{test automation} toolchain using Nokia's in-house
+        scripting language.
     startDate: '2008-05-19'
     endDate: '2008-12-31'
     location: nokia
@@ -137,29 +141,27 @@ items:
       - hautamaa
   - title: Software Engineer
     description: >
-      I was responsible for an in-house distributed #CI system of Maemo OS and
-      was heavily involved in the process of test automation.
+      Developed the in-house distributed #CI system of Maemo OS and drove its
+      test automation.
     achievements:
       - >-
-        Implemented a new web UI leveraging #{JavaScript} and #{AJAX} for the
-        #CI system in #Django according to Nokia's internal design guidelines.
-      - 'Introduced #{integration testing} for #CI workflow'
-      - 'Documented #CI workflow using #UML diagrams'
+        Implemented a new web UI for the #CI system in #Django, #{JavaScript}
+        and #{AJAX}, following Nokia's internal design guidelines.
+      - 'Introduced #{integration testing} for the #CI workflow.'
+      - 'Documented the #CI workflow using #UML diagrams.'
       - >-
-        Together with the team employed #RabbitMQ instead of an in-house DB
-        based event management system. Integrated #RabbitMQ with our #Python
-        components.
+        Replaced an in-house database-backed event management system with
+        #RabbitMQ and integrated it with our #Python components.
       - >-
-        Leveraged #{test automation} via integrating the system for hardware
-        based #{integration testing} of Maemo apps into the UI of our #CI
-        system.
-      - 'Designed #MySQL database structure for the in-house package registry'
+        Extended #{test automation} by integrating hardware-based
+        #{integration testing} of Maemo apps into the UI of the #CI system.
+      - 'Designed the #MySQL database structure of the in-house package registry.'
       - >-
-        Implemented #REST interface for the in-house package registry using
-        #Python
-      - 'Authored a variety of #Debian packages to automate software delivery'
-      - 'Conducted several product demos in the context of #Scrum process'
-      - 'Integrated #{GIT}, #{Bugzilla} and #CI system into a seamless toolchain'
+        Implemented the #REST interface of the in-house package registry in
+        #Python.
+      - 'Authored a variety of #Debian packages to automate software delivery.'
+      - 'Presented product demos at #Scrum sprint reviews.'
+      - 'Integrated #{Git}, #{Bugzilla} and the #CI system into a single toolchain.'
     startDate: '2010-03-01'
     endDate: '2011-07-15'
     location: nokia
@@ -170,21 +172,19 @@ items:
       - kanevskiy
   - title: Product owner (deputy)
     description: >
-      I was expected to orchestrate a team of experienced software developers
-      during a transition from an in-house #CI tool to openSUSE Build Service
-      (OBS).
+      Coordinated a team of experienced software developers during the
+      transition from an in-house #CI tool to openSUSE Build Service (OBS).
     achievements:
       - >-
-        Organized work of an international team of software engineers by
-        creating #JIRA tasks and scheduling regular meetings
+        Organized the work of an international team of software engineers
+        through #JIRA planning and regular meetings.
       - >-
-        During #Scrum #{business planning} sessions made several critical
-        architectural decisions when the team could not come to a common
-        agreement
+        Made several critical architectural decisions during #Scrum #{business
+        planning} sessions when the team could not reach agreement.
       - >-
-        The team managed to transition from an in-house build system to openSUSE
-        Build Service.
-      - 'The team managed to integrate the internal #CI workflow with OBS'
+        Completed the transition from an in-house build system to openSUSE
+        Build Service with the team.
+      - 'Integrated the internal #CI workflow with OBS.'
     startDate: '2011-07-16'
     endDate: '2011-08-31'
     location: nokia
@@ -195,25 +195,20 @@ items:
       - dillon
   - title: Senior Software Engineer
     description: >
-      I was accountable for development and maintenance of Nokia's main
-      corporate web site's backend. The backend was powered by #{CoreMedia CMS}
-      (#Spring framework on steroids).
+      Developed and maintained the backend of Nokia's main corporate website,
+      powered by #{CoreMedia CMS} on top of the #Spring framework.
     achievements:
-      - The team launched 9 localized versions of the site.
+      - Launched 9 localized versions of the site with the team.
       - >-
-        Finished #{CoreMedia CMS} training and went through their #{Java EE}
-        certification.
+        Completed #{CoreMedia CMS} training and its #{Java EE} certification.
       - >-
-        Initiated transition from using IBM ClearCase to #GIT for a team of
-        roughly 40 developers. The process was finished after I left the
+        Initiated the transition from IBM ClearCase to #Git for a team of
+        roughly 40 developers. The migration was completed after I left the
         company.
       - >-
-        Implemented several UI components in #Java and packaged those using #Ant
-        and later via #Maven
-      - 'Actively contributed during #Scrum planning sessions by taking minutes'
-      - >-
-        Continuously practiced #TDD as a means to design the interfaces for the
-        new code
+        Implemented several UI components in #Java, packaged with #Ant and
+        later with #Maven.
+      - 'Practiced #TDD to design the interfaces of new code.'
     startDate: '2011-09-01'
     endDate: '2012-01-22'
     location: nokia
@@ -222,41 +217,39 @@ items:
       - kuparsaari
   - title: Software Engineer @ R&D site
     description: >
-      I had to maintain a virus analytics system's backend and its #REST
-      interface. The backend was powered by sharded #Postgres and #Cassandra
-      databases. #REST interface was implemented in #{Python}.
+      Maintained the backend of a virus analytics system and its #REST
+      interface. The backend ran on sharded #Postgres and #Cassandra databases,
+      and the #REST interface was implemented in #{Python}.
     startDate: '2012-01-23'
     endDate: '2014-11-03'
     location: f-secure
     achievements:
       - >-
-        The team managed to migrate the infrastructure from a sharded #Postgres
-        database to #Cassandra
+        Designed the #REST interfaces and packaged the #Python tooling as
+        #Debian packages for the team's migration of 10+ TB of data from a
+        sharded #Postgres database to #Cassandra.
       - >-
         Designed #HTTP interface guidelines for our systems based on Roy
-        Fielding's dissertation
+        Fielding's dissertation.
       - >-
-        Implemented and #{open-source}d the framework to expose #HTTP interfaces
-        in a declarative manner
+        Implemented a framework for exposing #HTTP interfaces declaratively and
+        released it as #{open-source}.
       - >-
-        Continuously practiced #TDD and #{pair programming} to maximize
-        knowledge exchange
+        Practiced #TDD and #{pair programming} to maximize knowledge exchange.
       - >-
-        Configured a #Debian package building toolchain out of sources stored in
-        #GIT using #Jenkins
-      - 'Designed an async event flow using #RabbitMQ'
-      - 'Documented system architecture using various #UML diagrams'
+        Set up a #Jenkins toolchain building #Debian packages from sources
+        stored in #Git.
+      - 'Designed an asynchronous event flow using #RabbitMQ.'
+      - 'Documented the system architecture using #UML diagrams.'
       - >-
-        Actively collaborated with other teams by participating in their #Scrum
-        daily meetings
+        Collaborated with other teams by joining their #Scrum daily meetings.
     type: fullTimeJob
     references:
       - lindfors
   - title: Student Mentor
     description: >
-      I was requested to guide a group of Master's degree students through the
-      process of refactoring a legacy #Android application written in #Java -
-      Lokki.
+      Guided a group of Master's degree students through refactoring Lokki, a
+      legacy #Android application written in #Java.
     startDate: '2015-01-06'
     endDate: '2015-03-30'
     location: heluni
@@ -265,44 +258,44 @@ items:
         Mentored an international group of students from the University of
         Helsinki, MIT, Harvard and Stanford.
       - >-
-        Gave multiple consultations regarding #Android development, SE best
+        Gave consultations on #Android development, software engineering best
         practices and #{test automation}.
       - >-
-        We all went to Facebook's HQ in Menlo Park and participated in the Open
-        Academy 2015 event. I was exclusively #teaching there.
+        Took part in the Open Academy 2015 event at Facebook's HQ in Menlo
+        Park, where my role was exclusively #teaching.
       - >-
-        Under my supervision students managed to improve #Android app's test
+        Under my supervision, the students raised the #Android app's test
         coverage from 0% to roughly 70%.
-      - 'Actively provided feedback in the form of #GIT merge requests'' reviews'
+      - 'Provided feedback through #Git merge request reviews.'
     type: fullTimeJob
     references:
       - kyllonen
   - title: Android Software Engineer
     description: >
-      I was accountable for #Android version of F-Secure's password management
-      app. I was responsible for continuously revamping its look and feel based
-      on PSD specs from our graphic designer.
+      Owned the #Android version of F-Secure's password management app and
+      continuously revamped its look and feel based on PSD specs from our
+      graphic designer.
     startDate: '2014-11-03'
     endDate: '2015-06-30'
     location: f-secure
     achievements:
       - Increased code coverage from 0% to 85%.
       - >-
-        Decreased codebase size by a factor of 4 by making it follow DRY
-        approach and using Occam's razor principle.
+        Reduced the codebase to a quarter of its size by removing duplication
+        and unnecessary abstractions.
       - >-
         Together with a designer, produced a UI design that complied with
         Google's style guidelines.
       - Implemented a new UI for the app based on specs from a UI designer.
-      - Added a QR code reader for the master password
+      - Added a QR code reader for the master password.
       - >-
-        Introduced #{state based testing} into the process by implementing a
-        toolkit in #Python
-      - 'Documented application workflow using #UML diagrams'
+        Introduced #{state based testing} by implementing a dedicated toolkit
+        in #Python.
+      - 'Documented the application workflow using #UML diagrams.'
       - >-
         Integrated an in-house encrypted storage into the app by writing #Java
-        adapters
-      - 'Collaborated with the team by conducting #GIT merge request reviews'
+        adapters.
+      - 'Reviewed the team''s #Git merge requests.'
     type: fullTimeJob
     references:
       - kiljander
@@ -310,26 +303,25 @@ items:
       - key
   - title: WodConnect Android
     description: >
-      I was hired to implement an #Android UI for a CrossFit training management
-      app based on the specs from a designer from Kisko Labs.
+      Implemented the #Android UI of a CrossFit training management app from
+      the specs of a Kisko Labs designer.
     startDate: '2015-04-01'
     endDate: '2015-07-08'
     location: kisko
     achievements:
       - >-
         Split the high-level goal into subtasks so that the app could be
-        implemented according to a 'progressive JPEG' #{business planning}
-        model.
-      - Organized a gradual billing process together with my accountant.
+        delivered incrementally, following a 'progressive JPEG' #{business
+        planning} model.
       - >-
-        Iteratively implemented the application with a production-ready result
-        at the end of each iteration.
+        Implemented the application iteratively, with a production-ready
+        result at the end of each iteration.
       - >-
-        Implemented integration layer between #{JavaScript} based payment
-        subsystem and standard #Java codebase
+        Implemented an integration layer between the #{JavaScript}-based
+        payment subsystem and the #Java codebase.
       - >-
-        Upon completion of the project extracted common reusable bits of code
-        into a reusable #Gradle library module outside of the main #GIT repo
+        After the project, extracted the common code into a reusable #Gradle
+        library module outside of the main #Git repo.
     type: freelance
     references:
       - akonniemi
@@ -337,8 +329,8 @@ items:
       - wodconnect
   - title: Lokki
     description: >
-      I was requested to amend the code of a geoposition-sharing app according
-      to F-Secure's legal guidelines and open-source it.
+      Amended the code of a geoposition-sharing app to comply with F-Secure's
+      legal guidelines and open-sourced it.
     location: f-secure
     startDate: '2015-01-12'
     endDate: '2015-03-30'
@@ -350,17 +342,16 @@ items:
         Opened the sources of the application and handed them to University of
         Helsinki.
       - >-
-        Answered student questions regarding #Android code layout and employed
-        #Java design patterns via bridge consultations with people who
-        originally wrote the app.
+        Answered student questions about the #Android code layout and the
+        #Java design patterns used, bridging to the people who originally wrote
+        the app.
     type: openSource
     links:
       - lokki
   - title: Resource API
     description: >
-      I was accountable for designing, implementing and integrating into
-      F-Secure's workflow a library to write #REST APIs in a declarative fashion
-      instead of an imperative one.
+      Designed, implemented and integrated into F-Secure's workflow a library
+      for writing #REST APIs declaratively instead of imperatively.
     location: f-secure
     startDate: '2014-10-13'
     achievements:
@@ -368,10 +359,10 @@ items:
         Developed a #Python framework that allowed developers to declaratively
         define resources and relationships between them.
       - >-
-        Made the framework #{open-source} according to F-Secure's guidelines and
-        published it to F-Secure's GitHub.
+        Released the framework as #{open-source} under F-Secure's guidelines
+        and published it on F-Secure's GitHub.
       - >-
-        Employed the framework in the implementation of F-Secure's #REST
+        Adopted the framework in the implementation of F-Secure's #REST
         interface.
       - >-
         Wrote extensive #{technical documentation} and a tutorial for the
@@ -433,9 +424,9 @@ items:
         audit trail. Every request became reviewable, reproducible and
         version-controlled.
       - >-
-        Scaled that process from a handful of languages to dozens of locales
-        and produced the labelled datasets that downstream model-training teams
-        depended on.
+        Scaled that process from a handful of languages to 70+ locales and
+        several petabytes of audio data, producing the labelled datasets that
+        downstream model-training teams depended on.
       - >-
         Replaced manually maintained spreadsheets with a #{SQL} #{data
         pipeline} feeding operational dashboards, letting partner teams find
@@ -502,61 +493,66 @@ items:
     startDate: '2020-06-01'
     endDate: '2022-04-03'
     description: >
-      I was responsible for #TypeScript and #Vue based frontend/backend stack
-      within the largest Swiss real estate portal.
+      Full-stack engineer on Homegate, the largest Swiss real estate portal,
+      working in #TypeScript and #Vue. Protected the listing inventory from
+      scraping, built the mortgage and fraud-reporting services, and set
+      engineering standards that most of the company's teams adopted.
     achievements:
       - >-
-        Implemented backend integration in #{TypeScript} of the Homegate portal
-        with a mortgage calculation API by UBS
+        Designed and rolled out the portal's anti-crawling defence on top of
+        #{Cloudflare} bot management and #{AWS} tooling. Inventory theft fell
+        to a single-digit percentage of its original volume, which
+        green-lighted the merger with ImmoScout24.
       - >-
-        Transitioned critical bits of internal #{infrastructure as code} from
-        #{Serverless} to #{CDK}
+        Packaged the company-wide coding style, QA standards and CI pipelines
+        into a single shared package, adopted by 7 of the 9 engineering teams.
       - >-
-        Authored #{CDK} component library for #{infrastructure as code} know-how
-        reuse
+        Authored a #{CDK} construct library capturing the company's
+        #{infrastructure as code} practices, used by practically every team.
       - >-
-        Packaged company-wide coding style guidelines, QA standards and CI
-        pipelines into a standalone package
+        Migrated the critical parts of the #{infrastructure as code} from
+        #{Serverless} to #{CDK}.
       - >-
-        Implemented an anti-crawling solution via a combination of #{Cloudflare}
-        bot management system and #{AWS} tooling
+        Integrated the portal with the UBS mortgage calculation API and built
+        the #{TypeScript} microservices behind mortgage calculations and fraud
+        report management.
       - >-
-        Crafted a set of microservices in #{TypeScript} for fraud report
-        management and mortgage calculations
+        Introduced a 'design by contract' approach to service interfaces
+        across multiple teams.
       - >-
-        Initiated a transition to 'design by contract' approach across multiple
-        teams
-      - >-
-        Implemented multiple complex #{SQL} queries for portal's usage pattern
-        analytics
-      - 'Performed in-depth #{security analysis} of Homegate''s #{Android} app'
+        Wrote the #{SQL} analytics behind the portal's usage pattern reports.
+      - 'Carried out an in-depth #{security analysis} of Homegate''s #{Android} app.'
   - title: Software Engineer
     type: fullTimeJob
     location: amazon-aws
     startDate: '2019-11-18'
     endDate: '2020-05-31'
     description: >
-      I became accountable for an in-house stack of apps responsible for network
-      hazard mitigation and remediation.
+      Member of the network hazard mitigation and remediation team, working on
+      its in-house stack of applications.
     achievements:
       - >-
+        Built an automated #{test generation} framework that let the team
+        migrate smoothly from #{Python} 2 to #{Python} 3.
+      - >-
         Made several contributions to a distributed network management app
-        written in #{Python}
+        written in #{Python}.
       - >-
         Containerized internal components using #{Docker} to simplify the dev
-        process
+        process.
       - >-
-        Collected various analytics using #{GIT} to construct comprehensive
-        diffs between various states
-      - 'Implemented #{code coverage} for #{Jinja} templates'
+        Collected analytics using #{Git} to construct comprehensive diffs
+        between states.
+      - 'Implemented #{code coverage} for #{Jinja} templates.'
       - >-
         Created a toolkit for #{snapshot based testing} of a network remediation
-        #{workflow engine}
-      - 'Crafted an automated #{test generation} toolchain'
+        #{workflow engine}.
   - title: Senior Software Engineer
     description: >
-      I was accountable for quality assurance automation, deployment automation
-      and continuous integration.
+      Owned quality assurance automation, deployment automation and continuous
+      integration. Pioneered #Docker at the company to containerize its
+      software and established a reproducible #CI setup in which every change
+      submitted to master was deployed automatically.
     location: verto
     type: fullTimeJob
     startDate: '2015-07-01'
@@ -564,30 +560,30 @@ items:
     achievements:
       - >-
         Established a #CI pipeline for building various package types in a
-        sandbox environment on minimal #Jenkins slaves within #Docker
+        sandbox environment on minimal #Jenkins agents within #Docker
         containers. Configured continuous package publication to #Artifactory.
       - >-
-        Manually developed and later on automated #CI environment setup and
-        maintenance using #Terraform, #AWS CloudFormation and #AWS Lambdas
+        Automated the setup and maintenance of the #CI environment using
+        #Terraform, #AWS CloudFormation and #AWS Lambdas.
       - >-
         Configured a toolchain for automated deployment of arbitrary software
         distributions using #AWS CloudFormation for #{configuration management}
         and #AWS Lambda and #AWS CloudWatch as a means to sync git-based
-        configuration repos with the state of deployment environment
-      - Automated builds and publication for code documentation
+        configuration repos with the state of deployment environment.
+      - Automated builds and publication for code documentation.
       - >-
         Introduced a variety of coding style guides and enforced those by custom
-        pep8 and pylint configs within the #Docker containers
+        pep8 and pylint configs within the #Docker containers.
       - >-
         Integrated #Gerrit as a tool for code reviews with #Stash used as a
-        master #GIT storage
+        master #Git storage.
       - >-
         Authored a set of libraries in #{Java}, #{Python} and #{Shell} for
         managing secrets encrypted using #AWS KMS. Packaged the libraries using
         #{Maven}, #{pip} and #{debhelper} respectively.
       - >-
         Introduced a large scale #{test automation} toolkit by crafting a set of
-        base #{Docker} images to guarantee local build reproducibility
+        base #{Docker} images to guarantee local build reproducibility.
     references:
       - avysk
       - matti
@@ -596,27 +592,29 @@ items:
     location: nordea
     type: fullTimeJob
     description: >
-      I was responsible for developing and maintaining Siirto P2P digital
-      payment application for Android. The app is used by roughly 200k people in
-      the Nordics.
+      Developed and maintained Siirto, a P2P digital payment application for
+      #Android used by roughly 200k people in the Nordics, within a team of
+      roughly 40 people.
     achievements:
-      - 'Transitioned a large #Android app codebase from #Java to #Kotlin'
-      - 'Employed #{Architecture Components} as a means of organizing the app'
-      - 'Designed and implemented Nordea''s QR code generator in #React'
-      - 'Automated #CI related aspects using #Jenkins and #Gradle'
-      - 'Integrated #Firebase #{Cloud Messaging} with Siirto'
-      - 'Added #Crashlytics error reporting to the app'
-      - Implemented QR code reader and deep link parser
+      - >-
+        Migrated the #Android app from roughly 9,000 lines of #Java to
+        3,000-4,000 lines of #Kotlin, tests and comments included.
+      - 'Structured the app around #{Architecture Components}.'
+      - 'Designed and implemented Nordea''s QR code generator in #React.'
+      - 'Automated the #CI pipeline using #Jenkins and #Gradle.'
+      - 'Integrated #Firebase #{Cloud Messaging} with Siirto.'
+      - 'Added #Crashlytics error reporting to the app.'
+      - Implemented QR code reader and deep link parser.
       - >-
         Integrated account registry from the server with the phone's contact
-        book
+        book.
       - >-
         Developed a #Gradle plugin to generate a #Dagger injector based on
-        #Android manifest definitions
-      - 'Transitioned #Retrofit async #HTTP stack from #RxJava to #coroutines'
+        #Android manifest definitions.
+      - 'Migrated the #Retrofit async #HTTP stack from #RxJava to #coroutines.'
       - >-
-        Introduced mandatory cross-team #GIT merge request reviews to boost
-        collaboration
+        Introduced mandatory cross-team #Git merge request reviews to boost
+        collaboration.
     startDate: '2018-01-15'
     endDate: '2019-11-15'
     links:
@@ -628,40 +626,35 @@ items:
   - title: Senior Software Engineer
     location: smartly
     description: >
-      I was responsible for a portion of backend performing revenue
-      optimizations for marketing campaigns via Facebook ads.
+      Worked on the backend that optimizes the revenue of marketing campaigns
+      run through Facebook ads.
     achievements:
       - >-
-        Introduced #Docker based containerization into the realm of unit testing
-        both locally and on the #CI side
+        Containerized unit testing with #Docker, both locally and in #CI.
       - >-
-        Rewrote multiple #Angular based components using #{React}, #{Redux} and
-        #{TypeScript}
-      - 'Annotated a substantial amount of existing #JavaScript code with types'
-      - >-
-        Rewrote one of the internal tools written in #Python used for data
-        processing. The main achievement was 100% unit test coverage.
+        Rewrote #Angular components in #{React}, #{Redux} and #{TypeScript},
+        and added types to the existing #JavaScript code.
       - >-
         Moved multiple build configurations from the #Jenkins UI into #{Jenkins
-        Pipelines}
+        Pipelines}.
     type: fullTimeJob
     startDate: '2017-05-15'
     endDate: '2018-01-12'
   - title: Technical editor for Python 2&3 introductory books
     description: >
-      I was a ghostwriter for several chapters and a technical editor for an
-      introductory book about how to program in #{Python}. The hiring process
-      was conducted through Upwork.
+      Ghostwrote several chapters of an introductory book on programming in
+      #{Python} and served as its technical editor. The engagement was arranged
+      through Upwork.
     type: publication
     location: self
     achievements:
       - >-
         Wrote chapters about built-in types, functions, classes, and control
-        structures (if/else/while/for)
+        structures (if/else/while/for).
       - >-
         Assisted the original author with the #{technical writing} aspects by
-        arranging content as a directed acyclic graph
-      - Edited the technical part of the text and validated code quality
+        arranging content as a directed acyclic graph.
+      - Edited the technical part of the text and validated code quality.
     startDate: '2015-01-13'
     endDate: '2015-02-24'
     references:
@@ -672,19 +665,21 @@ items:
   - title: Portfolio
     location: self
     description: |
-      Designed and implemented a personal online portfolio
+      Designed and implemented this personal online portfolio.
     startDate: '2009-01-10'
     achievements:
-      - Implemented a literally serverless URL shortener
+      - Implemented a URL shortener that needs no server.
       - >-
         Transitioned the whole site from #Angular and #JavaScript to #React and
-        #TypeScript
-      - 'Employed #{Travis CI} to automate deployment to Github Pages'
-      - 'Used #Storybook for smooth component development'
-      - Added a mobile version of the site
-      - Implemented a CV generator
-      - Used a plain YAML file to store the whole content of the portfolio
-      - 'Crafted a tag extractor using a state machine based #parser'
+        #TypeScript.
+      - >-
+        Automated linting, type checking, tests and deployment to GitHub Pages
+        with #{GitHub Actions}.
+      - 'Used #Storybook for smooth component development.'
+      - Added a mobile version of the site.
+      - Implemented a CV generator.
+      - Used a plain YAML file to store the whole content of the portfolio.
+      - 'Crafted a tag extractor using a state machine based #parser.'
     type: openSource
     links:
       - portfolio-source
@@ -756,9 +751,6 @@ links:
   - alias: email
     url: mailto:gurunars@gmail.com
     name: gurunars@gmail.com
-  - alias: skype
-    url: skype:gurunars
-    name: gurunars
   - alias: github
     url: https://github.com/gurunars
     name: gurunars
